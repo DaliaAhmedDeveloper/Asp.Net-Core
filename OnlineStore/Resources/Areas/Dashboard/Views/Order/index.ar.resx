@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="Orders" xml:space="preserve"><value>الطلبات</value></data>
+  <data name="Home" xml:space="preserve"><value>الرئيسية</value></data>
+  <data name="ListAllOrders" xml:space="preserve"><value>قائمة جميع الطلبات</value></data>
+  <data name="SearchText" xml:space="preserve"><value>نص البحث</value></data>
+  <data name="Search" xml:space="preserve"><value>بحث</value></data>
+  <data name="NoRecordsAvailable" xml:space="preserve"><value>لا توجد سجلات</value></data>
+  <data name="OrderNumber" xml:space="preserve"><value>رقم الطلب</value></data>
+  <data name="UserName" xml:space="preserve"><value>اسم المستخدم</value></data>
+  <data name="UserEmail" xml:space="preserve"><value>البريد الإلكتروني</value></data>
+  <data name="CreatedAt" xml:space="preserve"><value>تاريخ الإنشاء</value></data>
+  <data name="Actions" xml:space="preserve"><value>الإجراءات</value></data>
+  <data name="View" xml:space="preserve"><value>عرض</value></data>
+  <data name="Edit" xml:space="preserve"><value>تعديل</value></data>
+  <data name="Hide" xml:space="preserve"><value>إخفاء</value></data>
+  <data name="Delete" xml:space="preserve"><value>حذف</value></data>
+  <data name="ConfirmDelete" xml:space="preserve"><value>هل أنت متأكد أنك تريد حذف هذا العنصر؟</value></data>
+</root>

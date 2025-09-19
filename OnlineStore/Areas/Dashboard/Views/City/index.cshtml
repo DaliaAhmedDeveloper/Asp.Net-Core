@@ -1,0 +1,148 @@
+@model OnlineStore.Models.ViewModels.PagedResult<City>
+
+@using System.Globalization
+
+@{
+    var lang = CultureInfo.CurrentCulture.TwoLetterISOLanguageName;
+}
+<!--begin::App Content Header-->
+<div class="app-content-header">
+  <!--begin::Container-->
+  <div class="container-fluid">
+    <!--begin::Row-->
+    <div class="row">
+      <div class="col-sm-6">
+        <h3 class="mb-0">@Localizer["Cities"]</h3>
+      </div>
+      <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-end">
+          <li class="breadcrumb-item"><a href="#">@Localizer["Home"]</a></li>
+          <li class="breadcrumb-item active" aria-current="page">@Localizer["Cities"]</li>
+        </ol>
+      </div>
+    </div>
+    <!--end::Row-->
+  </div>
+  <!--end::Container-->
+</div>
+<!--end::App Content Header-->
+<!--begin::App Content-->
+<div class="app-content">
+  <!--begin::Container-->
+  <div class="container-fluid">
+    <!--begin::Row-->
+    <div class="row">
+
+      <!-- /.col -->
+      <div class="col-12">
+
+        <!-- /.card -->
+        <div class="card ">
+          <div class="card-header">
+            <div class="d-flex flex-wrap justify-content-between align-items-center">
+              <h3 class="card-title">@Localizer["ListAllCities"]</h3>
+              <form asp-area="Dashboard" asp-controller="City" asp-action="Index" method="GET">
+                <input class="form-control d-inline-block w-auto " type="text" name="searchTxt"
+                  placeholder="@Localizer["SearchText"]">
+                <button class="btn btn-success" type="submit">@Localizer["Search"]</button>
+              </form>
+              <a asp-area="Dashboard" asp-controller="City" asp-action="Create" class="btn btn-success">
+                @Localizer["AddNewCity"]
+                </a>
+            </div>
+          </div>
+          <!-- /.card-header -->
+          <div class="card-body p-0">
+            @if (Model == null || !Model.Items.Any())
+            {
+              <p class="p-4">@Localizer["NoRecords"]</p>
+            }
+            else
+            {
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th style="width: 10px">@Localizer["Number"]</th>
+                    <th>@Localizer["Code"]</th>
+                    <th>@Localizer["NameInArabic"]</th>
+                    <th>@Localizer["NameInEnglish"]</th>
+                    <th style="width: 40px">@Localizer["Actions"]</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  @{
+                    int serialNumber = (Model.PageNumber - 1) * Model.PageSize + 1;
+                  }
+
+                  @foreach (var City in Model.Items)
+                  {
+                    <tr class="align-middle">
+                      <td>
+                        @serialNumber
+                        @{
+                          serialNumber++;
+                        }
+                      </td>
+                      <td>@City.Name </td>
+                      <td>@City.Translations.FirstOrDefault(t => t.LanguageCode == "en")?.Name</td>
+                      <td>@City.Translations.FirstOrDefault(t => t.LanguageCode == "ar")?.Name</td>
+                      <td>
+                        <div class="btn-group">
+                          <!-- Show -->
+                          <a asp-action="Details" asp-route-id="@City.Id" class="btn m-1 rounded btn-info btn-sm"
+                            title="View">
+                            <i class="bi bi-eye-fill"></i>
+                          </a>
+
+                          <!-- Edit -->
+                          <a asp-action="Edit" asp-route-id="@City.Id" class="btn m-1 rounded btn-warning btn-sm"
+                            title="Edit">
+                            <i class="bi bi-pencil-square"></i>
+                          </a>
+
+                          <!-- Hide -->
+                          <a asp-action="Hide" asp-route-id="@City.Id" class="btn m-1 hide-row rounded btn-secondary btn-sm"
+                            title="Hide">
+                            <i class="bi bi-eye-slash-fill"></i>
+                          </a>
+
+                          <!-- Delete -->
+                          <form asp-action="Delete" asp-route-id="@City.Id" method="post" class="d-inline">
+                            <button type="submit" class="btn btn-danger rounded m-1 btn-sm" title="Delete"
+                              onclick="return confirm('Are you sure you want to delete this item?');">
+                              <i class="bi bi-trash-fill"></i>
+                            </button>
+                          </form>
+                        </div>
+                      </td>
+
+                    </tr>
+                  }
+                </tbody>
+              </table>
+            }
+            @if (Model?.TotalPages > 1)
+            {
+              <nav class="card-header">
+                <ul class="pagination">
+                  @for (int i = 1; i <= Model?.TotalPages; i++)
+                  {
+                    <li class="page-item @(i == Model.PageNumber ? "active" : "")">
+                      <a class="page-link" asp-action="Index" asp-route-page="@i">@i</a>
+                    </li>
+                  }
+                </ul>
+              </nav>
+            }
+          </div>
+          <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+      </div>
+      <!-- /.col -->
+    </div>
+    <!--end::Row-->
+  </div>
+  <!--end::Container-->
+</div>
+<!--end::App Content-->

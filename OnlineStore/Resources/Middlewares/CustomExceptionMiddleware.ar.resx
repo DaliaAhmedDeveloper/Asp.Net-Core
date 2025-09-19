@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="ErrorMessage" xml:space="preserve">
+    <value>لقد حدث خطأ ما. يرجى المحاولة مرة أخرى لاحقًا!</value>
+  </data>
+</root>

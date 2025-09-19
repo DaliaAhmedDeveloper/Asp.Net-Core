@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="UpdateProductAttribute" xml:space="preserve">
+    <value>Update Product Attribute</value>
+  </data>
+  <data name="ProductAttributes" xml:space="preserve">
+    <value>Product Attributes</value>
+  </data>
+  <data name="NameEn" xml:space="preserve">
+    <value>Name (English)</value>
+  </data>
+  <data name="NameAr" xml:space="preserve">
+    <value>Name (Arabic)</value>
+  </data>
+  <data name="Code" xml:space="preserve">
+    <value>Code / Slug</value>
+  </data>
+  <data name="Submit" xml:space="preserve">
+    <value>Submit</value>
+  </data>
+</root>

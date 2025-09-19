@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="CategoryWithIdNotFound" xml:space="preserve">
+    <value>Category with ID {0} not found.</value>
+  </data>
+</root>

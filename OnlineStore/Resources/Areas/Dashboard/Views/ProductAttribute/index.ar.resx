@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="ProductAttributes" xml:space="preserve"><value>سمات المنتج</value></data>
+  <data name="ListAllProductAttributes" xml:space="preserve"><value>قائمة جميع سمات المنتج</value></data>
+  <data name="AddNewProductAttribute" xml:space="preserve"><value>إضافة سمة جديدة للمنتج</value></data>
+  <data name="SearchText" xml:space="preserve"><value>نص البحث</value></data>
+  <data name="Search" xml:space="preserve"><value>بحث</value></data>
+  <data name="NoRecordsAvailable" xml:space="preserve"><value>لا توجد سجلات</value></data>
+  <data name="Slug" xml:space="preserve"><value>الرمز</value></data>
+  <data name="NameInArabic" xml:space="preserve"><value>الاسم بالعربية</value></data>
+  <data name="NameInEnglish" xml:space="preserve"><value>الاسم بالإنجليزية</value></data>
+  <data name="Actions" xml:space="preserve"><value>الإجراءات</value></data>
+  <data name="Edit" xml:space="preserve"><value>تعديل</value></data>
+  <data name="Hide" xml:space="preserve"><value>إخفاء</value></data>
+  <data name="Delete" xml:space="preserve"><value>حذف</value></data>
+  <data name="ConfirmDelete" xml:space="preserve"><value>هل أنت متأكد أنك تريد حذف هذا العنصر؟</value></data>
+  <data name="Home" xml:space="preserve"><value>الرئيسية</value></data>
+</root>

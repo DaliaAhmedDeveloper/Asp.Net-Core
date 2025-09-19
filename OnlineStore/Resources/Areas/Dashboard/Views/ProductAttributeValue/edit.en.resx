@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="UpdateAttributeValue" xml:space="preserve">
+    <value>Update Attribute Value</value>
+  </data>
+  <data name="AttributeValues" xml:space="preserve">
+    <value>Attribute Values</value>
+  </data>
+  <data name="NameEn" xml:space="preserve">
+    <value>Name (English)</value>
+  </data>
+  <data name="NameAr" xml:space="preserve">
+    <value>Name (Arabic)</value>
+  </data>
+  <data name="Attribute" xml:space="preserve">
+    <value>Attribute</value>
+  </data>
+  <data name="SelectAttribute" xml:space="preserve">
+    <value>-- Select Attribute --</value>
+  </data>
+  <data name="Code" xml:space="preserve">
+    <value>Code / Slug</value>
+  </data>
+  <data name="Submit" xml:space="preserve">
+    <value>Submit</value>
+  </data>
+</root>

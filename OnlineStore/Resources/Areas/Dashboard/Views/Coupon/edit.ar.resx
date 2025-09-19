@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="Coupons" xml:space="preserve">
+    <value>الكوبونات</value>
+  </data>
+  <data name="AddNewCoupon" xml:space="preserve">
+    <value>إضافة كوبون جديد</value>
+  </data>
+  <data name="UpdateCoupon" xml:space="preserve">
+    <value>تحديث الكوبون</value>
+  </data>
+  <data name="DiscountType" xml:space="preserve">
+    <value>نوع الخصم</value>
+  </data>
+  <data name="Fixed" xml:space="preserve">
+    <value>ثابت</value>
+  </data>
+  <data name="Percentage" xml:space="preserve">
+    <value>نسبة مئوية</value>
+  </data>
+  <data name="DiscountValue" xml:space="preserve">
+    <value>قيمة الخصم</value>
+  </data>
+  <data name="DiscountPercentage" xml:space="preserve">
+    <value>نسبة الخصم</value>
+  </data>
+  <data name="StartDate" xml:space="preserve">
+    <value>تاريخ البدء</value>
+  </data>
+  <data name="EndDate" xml:space="preserve">
+    <value>تاريخ الانتهاء</value>
+  </data>
+  <data name="MaxUsagePerUser" xml:space="preserve">
+    <value>الحد الأقصى للاستخدام لكل مستخدم</value>
+  </data>
+  <data name="MaxDiscountAmount" xml:space="preserve">
+    <value>الحد الأقصى لقيمة الخصم</value>
+  </data>
+  <data name="MinimumOrderAmount" xml:space="preserve">
+    <value>الحد الأدنى لقيمة الطلب</value>
+  </data>
+
+  <data name="DescriptionEn" xml:space="preserve">
+    <value>الوصف (بالإنجليزية)</value>
+  </data>
+  <data name="DescriptionAr" xml:space="preserve">
+    <value>الوصف (بالعربية)</value>
+  </data>
+  <data name="TermsAndConditionsEn" xml:space="preserve">
+    <value>الشروط والأحكام (بالإنجليزية)</value>
+  </data>
+  <data name="TermsAndConditionsAr" xml:space="preserve">
+    <value>الشروط والأحكام (بالعربية)</value>
+  </data>
+
+  <data name="IsActive" xml:space="preserve">
+    <value>هل هو مفعل؟</value>
+  </data>
+  <data name="IsForFirstOrderOnly" xml:space="preserve">
+    <value>للطلب الأول فقط؟</value>
+  </data>
+
+  <data name="Submit" xml:space="preserve">
+    <value>إرسال</value>
+  </data>
+  <data name="Update" xml:space="preserve">
+    <value>تحديث</value>
+  </data>
+</root>

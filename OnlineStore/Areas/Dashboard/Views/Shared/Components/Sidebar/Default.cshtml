@@ -1,0 +1,371 @@
+@using System.Globalization
+
+@model OnlineStore.Models.ViewModels.SidebarViewModel
+
+
+<div class="sidebar-wrapper">
+    <nav class="mt-2">
+        <ul class="nav sidebar-menu flex-column" data-lte-toggle="treeview" role="navigation"
+            aria-label="Main navigation" data-accordion="false" id="navigation">
+
+            <!-- Dashboard -->
+            <li class="nav-item menu-open">
+                <a asp-area="Dashboard" asp-controller="Home" asp-action="Index" class="nav-link active">
+                    <i class="nav-icon bi bi-speedometer2"></i>
+                    <p>@Localizer["Dashboard"]</p>
+                </a>
+            </li>
+
+            <!-- Users -->
+            @if (Model.CanAddUser || Model.CanListUser || Model.CanListRole)
+            {
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon bi bi-people-fill"></i>
+                        <p>@Localizer["Users"] <i class="nav-arrow bi bi-chevron-right"></i></p>
+                    </a>
+                    <ul class="nav nav-treeview ms-3">
+                        @if (Model.CanAddUser)
+                        {
+                            <li class="nav-item">
+                                <a asp-area="Dashboard" asp-controller="User" asp-action="Create" class="nav-link">
+                                    <i class="nav-icon bi bi-person-plus"></i>
+                                    <p>@Localizer["AddUser"]</p>
+                                </a>
+                            </li>
+                        }
+                        @if (Model.CanListUser)
+                        {
+                            <li class="nav-item">
+                                <a asp-area="Dashboard" asp-controller="User" asp-action="Index" class="nav-link">
+                                    <i class="nav-icon bi bi-list-ul"></i>
+                                    <p>@Localizer["ListUsers"]</p>
+                                </a>
+                            </li>
+                        }
+                        @if (Model.CanListRole)
+                        {
+                            <li class="nav-item">
+                                <a asp-area="Dashboard" asp-controller="Role" asp-action="Index" class="nav-link">
+                                    <i class="nav-icon bi bi-shield-lock-fill"></i>
+                                    <p>@Localizer["Roles"]</p>
+                                </a>
+                            </li>
+                        }
+                    </ul>
+                </li>
+            }
+
+            <!-- Categories -->
+            @if (Model.CanAddCategory || Model.CanListCategory)
+            {
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon bi bi-folder2-open"></i>
+                        <p>@Localizer["Categories"] <i class="nav-arrow bi bi-chevron-right"></i></p>
+                    </a>
+                    <ul class="nav nav-treeview ms-3">
+                        @if (Model.CanAddCategory)
+                        {
+                            <li class="nav-item">
+                                <a asp-area="Dashboard" asp-controller="Category" asp-action="Create" class="nav-link">
+                                    <i class="nav-icon bi bi-plus-circle"></i>
+                                    <p>@Localizer["AddCategory"]</p>
+                                </a>
+                            </li>
+                        }
+                        @if (Model.CanListCategory)
+                        {
+                            <li class="nav-item">
+                                <a asp-area="Dashboard" asp-controller="Category" asp-action="Index" class="nav-link">
+                                    <i class="nav-icon bi bi-list-check"></i>
+                                    <p>@Localizer["ListCategories"]</p>
+                                </a>
+                            </li>
+                        }
+                    </ul>
+                </li>
+            }
+
+            <!-- Products -->
+            @if (Model.CanAddProduct || Model.CanListProduct || Model.CanListTag || Model.CanListReview ||
+                        Model.CanListAttribute || Model.CanListAttributeValue)
+            {
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon bi bi-box-seam"></i>
+                        <p>@Localizer["Products"] <i class="nav-arrow bi bi-chevron-right"></i></p>
+                    </a>
+                    <ul class="nav nav-treeview ms-3">
+                        @if (Model.CanAddProduct)
+                        {
+                            <li class="nav-item">
+                                <a asp-area="Dashboard" asp-controller="Product" asp-action="Create" class="nav-link">
+                                    <i class="nav-icon bi bi-plus-square"></i>
+                                    <p>@Localizer["AddProduct"]</p>
+                                </a>
+                            </li>
+                        }
+                        @if (Model.CanListProduct)
+                        {
+                            <li class="nav-item">
+                                <a asp-area="Dashboard" asp-controller="Product" asp-action="Index" class="nav-link">
+                                    <i class="nav-icon bi bi-card-list"></i>
+                                    <p>@Localizer["ListProducts"]</p>
+                                </a>
+                            </li>
+                        }
+                        @if (Model.CanListTag)
+                        {
+                            <li class="nav-item">
+                                <a asp-area="Dashboard" asp-controller="Tag" asp-action="Index" class="nav-link">
+                                    <i class="nav-icon bi bi-tags"></i>
+                                    <p>@Localizer["Tags"]</p>
+                                </a>
+                            </li>
+                        }
+                        @if (Model.CanListReview)
+                        {
+                            <li class="nav-item">
+                                <a asp-area="Dashboard" asp-controller="Review" asp-action="Index" class="nav-link">
+                                    <i class="nav-icon bi bi-chat-square-text"></i>
+                                    <p>@Localizer["Reviews"]</p>
+                                </a>
+                            </li>
+                        }
+                        @if (Model.CanListAttribute)
+                        {
+                            <li class="nav-item">
+                                <a asp-area="Dashboard" asp-controller="ProductAttribute" asp-action="Index" class="nav-link">
+                                    <i class="nav-icon bi bi-sliders"></i>
+                                    <p>@Localizer["Attributes"]</p>
+                                </a>
+                            </li>
+                        }
+                        @if (Model.CanListAttributeValue)
+                        {
+                            <li class="nav-item">
+                                <a asp-area="Dashboard" asp-controller="ProductAttributeValue" asp-action="Index" class="nav-link">
+                                    <i class="nav-icon bi bi-slash-circle"></i>
+                                    <p>@Localizer["AttributeValues"]</p>
+                                </a>
+                            </li>
+                        }
+                    </ul>
+                </li>
+            }
+
+            <!-- Orders -->
+            @if (Model.CanListOrder)
+            {
+                <li class="nav-item">
+                    <a asp-area="Dashboard" asp-controller="Order" asp-action="Index" class="nav-link">
+                        <i class="nav-icon bi bi-receipt"></i>
+                        <p>@Localizer["Orders"]</p>
+                    </a>
+                </li>
+            }
+
+            <!-- Notifications -->
+            @if (Model.CanListNotification)
+            {
+                <li class="nav-item">
+                    <a asp-area="Dashboard" asp-controller="Notification" asp-action="Index" class="nav-link">
+                        <i class="nav-icon bi bi-bell-fill"></i>
+                        <p>@Localizer["Notifications"]</p>
+                    </a>
+                </li>
+            }
+
+            <!-- Locations -->
+            @if (Model.CanAddCountry || Model.CanListCountry || Model.CanListState || Model.CanListCity)
+            {
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon bi bi-geo-alt-fill"></i>
+                        <p>@Localizer["Locations"] <i class="nav-arrow bi bi-chevron-right"></i></p>
+                    </a>
+                    <ul class="nav nav-treeview ms-3">
+                        @if (Model.CanAddCountry)
+                        {
+                            <li class="nav-item">
+                                <a asp-area="Dashboard" asp-controller="Country" asp-action="Create" class="nav-link">
+                                    <i class="nav-icon bi bi-plus-circle"></i>
+                                    <p>@Localizer["AddCountry"]</p>
+                                </a>
+                            </li>
+                        }
+                        @if (Model.CanListCountry)
+                        {
+                            <li class="nav-item">
+                                <a asp-area="Dashboard" asp-controller="Country" asp-action="Index" class="nav-link">
+                                    <i class="nav-icon bi bi-flag-fill"></i>
+                                    <p>@Localizer["Countries"]</p>
+                                </a>
+                            </li>
+                        }
+                        @if (Model.CanListState)
+                        {
+                            <li class="nav-item">
+                                <a asp-area="Dashboard" asp-controller="State" asp-action="Index" class="nav-link">
+                                    <i class="nav-icon bi bi-geo-fill"></i>
+                                    <p>@Localizer["States"]</p>
+                                </a>
+                            </li>
+                        }
+                        @if (Model.CanListCity)
+                        {
+                            <li class="nav-item">
+                                <a asp-area="Dashboard" asp-controller="City" asp-action="Index" class="nav-link">
+                                    <i class="nav-icon bi bi-building"></i>
+                                    <p>@Localizer["Cities"]</p>
+                                </a>
+                            </li>
+                        }
+                    </ul>
+                </li>
+            }
+
+            <!-- Coupons -->
+            @if (Model.CanAddCoupon || Model.CanListCoupon)
+            {
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon bi bi-ticket-perforated-fill"></i>
+                        <p>@Localizer["Coupons"] <i class="nav-arrow bi bi-chevron-right"></i></p>
+                    </a>
+                    <ul class="nav nav-treeview ms-3">
+                        @if (Model.CanAddCoupon)
+                        {
+                            <li class="nav-item">
+                                <a asp-area="Dashboard" asp-controller="Coupon" asp-action="Create" class="nav-link">
+                                    <i class="nav-icon bi bi-plus-circle"></i>
+                                    <p>@Localizer["AddCoupon"]</p>
+                                </a>
+                            </li>
+                        }
+                        @if (Model.CanListCoupon)
+                        {
+                            <li class="nav-item">
+                                <a asp-area="Dashboard" asp-controller="Coupon" asp-action="Index" class="nav-link">
+                                    <i class="nav-icon bi bi-list-check"></i>
+                                    <p>@Localizer["ListCoupons"]</p>
+                                </a>
+                            </li>
+                        }
+                    </ul>
+                </li>
+            }
+
+            <!-- Warehouses -->
+            @if (Model.CanAddWarehouse || Model.CanListWarehouse)
+            {
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon bi bi-building"></i>
+                        <p>@Localizer["Warehouses"] <i class="nav-arrow bi bi-chevron-right"></i></p>
+                    </a>
+                    <ul class="nav nav-treeview ms-3">
+                        @if (Model.CanAddWarehouse)
+                        {
+                            <li class="nav-item">
+                                <a asp-area="Dashboard" asp-controller="Warehouse" asp-action="Create" class="nav-link">
+                                    <i class="nav-icon bi bi-plus-circle"></i>
+                                    <p>@Localizer["AddWarehouse"]</p>
+                                </a>
+                            </li>
+                        }
+                        @if (Model.CanListWarehouse)
+                        {
+                            <li class="nav-item">
+                                <a asp-area="Dashboard" asp-controller="Warehouse" asp-action="Index" class="nav-link">
+                                    <i class="nav-icon bi bi-list-check"></i>
+                                    <p>@Localizer["ListWarehouses"]</p>
+                                </a>
+                            </li>
+                        }
+                    </ul>
+                </li>
+            }
+
+            <!-- Support Tickets -->
+            @if (Model.CanListSupportTicket)
+            {
+                <li class="nav-item">
+                    <a asp-area="Dashboard" asp-controller="SupportTicket" asp-action="Index" class="nav-link">
+                        <i class="nav-icon bi bi-life-preserver"></i>
+                        <p>@Localizer["SupportTickets"]</p>
+                    </a>
+                </li>
+            }
+
+            <!-- Returns -->
+            @if (Model.CanListReturn)
+            {
+                <li class="nav-item">
+                    <a asp-area="Dashboard" asp-controller="Return" asp-action="Index" class="nav-link">
+                        <i class="nav-icon bi bi-arrow-return-left"></i>
+                        <p>@Localizer["Returns"]</p>
+                    </a>
+                </li>
+            }
+
+            <!-- Invoices -->
+            @if (Model.CanListInvoice)
+            {
+                <li class="nav-item">
+                    <a asp-area="Dashboard" asp-controller="Invoice" asp-action="Index" class="nav-link">
+                        <i class="nav-icon bi bi-receipt-cutoff"></i>
+                        <p>@Localizer["Invoices"]</p>
+                    </a>
+                </li>
+            }
+
+            <!-- Logs -->
+            @if (Model.CanListLog)
+            {
+                <li class="nav-item">
+                    <a asp-area="Dashboard" asp-controller="Log" asp-action="Index" class="nav-link">
+                        <i class="nav-icon bi bi-journal-text"></i>
+                        <p>@Localizer["Logs"]</p>
+                    </a>
+                </li>
+            }
+
+            <!-- Settings -->
+            @if (Model.CanListSettings)
+            {
+                <li class="nav-item">
+                    <a asp-area="Dashboard" asp-controller="AppSetting" asp-action="Edit" class="nav-link">
+                        <i class="nav-icon bi bi-gear-fill"></i>
+                        <p>@Localizer["Settings"]</p>
+                    </a>
+                </li>
+            }
+
+            <!-- Language Switch -->
+            <li class="nav-item">
+                @if(CultureInfo.CurrentCulture.TwoLetterISOLanguageName == "en"){
+                <a class="nav-link" asp-area="Dashboard" asp-controller="Culture" asp-action="SetLanguage" asp-route-culture="ar">
+                    <i class="bi bi-globe"></i>
+                    <p>@Localizer["Arabic"]</p>
+                </a>
+                }else{
+                <a class="nav-link" asp-area="Dashboard" asp-controller="Culture" asp-action="SetLanguage" asp-route-culture="en">
+                    <i class="bi bi-globe"></i>
+                    <p>@Localizer["English"]</p>
+                </a>
+                }
+            </li>
+
+            <!-- Logout -->
+            <li class="nav-item">
+                <a asp-area="Dashboard" asp-controller="Auth" asp-action="Logout" class="nav-link">
+                    <i class="nav-icon bi bi-box-arrow-right"></i>
+                    <p>@Localizer["LogOut"]</p>
+                </a>
+            </li>
+
+        </ul>
+    </nav>
+</div>

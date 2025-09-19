@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+<data name="Warehouses"><value>المستودعات</value></data>
+<data name="Home"><value>الرئيسية</value></data>
+<data name="ListAllWarehouses"><value>عرض جميع المستودعات</value></data>
+<data name="SearchText"><value>بحث</value></data>
+<data name="Search"><value>بحث</value></data>
+<data name="AddNewWarehouse"><value>إضافة مستودع جديد</value></data>
+<data name="NoRecordsAvailable"><value>لا توجد سجلات</value></data>
+<data name="No"><value>م</value></data>
+<data name="Name"><value>الاسم</value></data>
+<data name="Code"><value>الكود</value></data>
+<data name="Address"><value>العنوان</value></data>
+<data name="Email"><value>البريد الإلكتروني</value></data>
+<data name="Actions"><value>الإجراءات</value></data>
+<data name="View"><value>عرض</value></data>
+<data name="Edit"><value>تعديل</value></data>
+<data name="Hide"><value>إخفاء</value></data>
+<data name="Delete"><value>حذف</value></data>
+<data name="ConfirmDelete"><value>هل أنت متأكد من حذف هذا العنصر؟</value></data>
+</root>

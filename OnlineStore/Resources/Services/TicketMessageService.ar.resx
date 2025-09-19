@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="UserNotFound" xml:space="preserve">
+    <value>المستخدم غير موجود!</value>
+  </data>
+  <data name="TicketNotFound" xml:space="preserve">
+    <value>التذكرة غير موجودة!</value>
+  </data>
+</root>

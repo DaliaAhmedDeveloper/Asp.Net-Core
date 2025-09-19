@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="CategoryWithIdNotFound" xml:space="preserve">
+    <value>الفئة برقم {0} غير موجودة.</value>
+  </data>
+</root>

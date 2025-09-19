@@ -1,0 +1,75 @@
+@model OnlineStore.Models.ViewModels.ProductAttributeValueViewModel
+@{
+    ViewData["Title"] = Localizer["UpdateAttributeValue"];
+}
+<div class="app-content-header">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-6">
+                <h3 class="mb-0">@ViewData["Title"]</h3>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-end">
+                    <li class="breadcrumb-item">
+                        <a asp-area="Dashboard" asp-controller="ProductAttributeValue" asp-action="Index">
+                            @Localizer["AttributeValues"]
+                        </a>
+                    </li>
+                    <li class="breadcrumb-item active" aria-current="page">@ViewData["Title"]</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="app-content">
+    <div class="container-fluid">
+        <div class="card card-primary card-outline mb-4">
+            <form asp-area="Dashboard" asp-controller="ProductAttributeValue" asp-action="Edit" asp-route-id="@Model.Id" method="POST"
+                enctype="multipart/form-data">
+                @Html.AntiForgeryToken()
+                <div class="card-body">
+                    <div class="row g-3">
+
+                        <!-- Name En -->
+                        <div class="col-md-6">
+                            <label asp-for="NameEn" class="form-label">@Localizer["NameEn"]</label>
+                            <input asp-for="NameEn" class="form-control" />
+                            <span asp-validation-for="NameEn" class="text-danger"></span>
+                        </div>
+
+                        <!-- Name Ar -->
+                        <div class="col-md-6">
+                            <label asp-for="NameAr" class="form-label">@Localizer["NameAr"]</label>
+                            <input asp-for="NameAr" class="form-control" />
+                            <span asp-validation-for="NameAr" class="text-danger"></span>
+                        </div>
+
+                        <!-- Attribute -->
+                        <div class="col-md-6">
+                            <label asp-for="AttributeId" class="form-label">@Localizer["Attribute"]</label>
+                            <select asp-for="AttributeId" class="form-select"
+                                    asp-items="@(new SelectList(ViewBag.attributes, "Id", "Code"))">
+                                <option value="">@Localizer["SelectAttribute"]</option>
+                            </select>
+                            <span asp-validation-for="AttributeId" class="text-danger"></span>
+                        </div>
+
+                        <!-- Slug -->
+                        <div class="col-md-6">
+                            <label asp-for="Code" class="form-label">@Localizer["Code"]</label>
+                            <input asp-for="Code" class="form-control" />
+                            <span asp-validation-for="Code" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-success mt-3">@Localizer["Submit"]</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

@@ -1,0 +1,99 @@
+@model OnlineStore.Models.ViewModels.TicketMessagesPageViewModel
+
+
+<!--begin::App Content Header-->
+<div class="app-content-header">
+  <!--begin::Container-->
+  <div class="container-fluid">
+    <!--begin::Row-->
+    <div class="row">
+      <div class="col-sm-6">
+        <h3 class="mb-0">@Localizer["Messages"]</h3>
+      </div>
+      <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-end">
+          <li class="breadcrumb-item"><a href="#">@Localizer["Home"]</a></li>
+          <li class="breadcrumb-item active" aria-current="page">@Localizer["Messages"]</li>
+        </ol>
+      </div>
+    </div>
+    <!--end::Row-->
+  </div>
+  <!--end::Container-->
+</div>
+<!--end::App Content Header-->
+
+<!--begin::App Content-->
+<div class="app-content">
+  <!--begin::Container-->
+  <div class="container-fluid">
+    <!--begin::Row-->
+    <div class="row">
+
+      <div class="col-12">
+        <div class="card ">
+          <div class="card-body p-0">
+            <div class="card-header">
+              <h5>@Localizer["TicketNumber"] : @Model?.Ticket?.TicketNumber</h5>
+              <h6>@Localizer["Message"] : @Model?.Ticket?.Description</h6>
+              <h6>@Localizer["OrderNumber"] : @Model?.Ticket?.Order.ReferenceNumber</h6>
+            </div>
+            <!-- DIRECT CHAT -->
+            <div class="card direct-chat direct-chat-warning">
+              <div class="card-header">
+                <h3 class="card-title">@Localizer["DirectChat"]</h3>
+              </div>
+              <div class="card-body">
+                <div class="direct-chat-messages direct-chat-messages2">
+                  @foreach (var message in Model.Ticket.Messages)
+                  {
+                    @if (message.IsFromStaff)
+                    {
+                      <div class="direct-chat-msg">
+                        <div class="direct-chat-infos clearfix">
+                          <span class="direct-chat-name float-start">@message.User.FullName</span>
+                          <span class="direct-chat-timestamp float-end">@message.CreatedAt</span>
+                        </div>
+                        <img class="direct-chat-img" src="~/dashboard/img/default-user.jpg" alt="message user image" />
+                        <div class="direct-chat-text">
+                          @message.Message
+                        </div>
+                      </div>
+                    }
+                    else
+                    {
+                      <div class="direct-chat-msg end">
+                        <div class="direct-chat-infos clearfix">
+                          <span class="direct-chat-name float-end">@message.User.FullName</span>
+                          <span class="direct-chat-timestamp float-start">@message.CreatedAt</span>
+                        </div>
+                        <img class="direct-chat-img" src="~/dashboard/img/default-user.jpg" alt="message user image" />
+                        <div class="direct-chat-text">@message.Message</div>
+                      </div>
+                    }
+                  }
+                </div>
+              </div>
+              <div class="card-footer">
+                <form asp-controller="TicketMessage" asp-action="Create" method="POST" enctype="multipart/form-data">
+                  @Html.AntiForgeryToken()
+                  <div class="input-group">
+                    <input type="hidden" asp-for="Message.TicketId" value="@Model.Ticket.Id" />
+                    <input type="text" asp-for="Message.Message" class="form-control" placeholder="@Localizer["TypeMessage"]" />
+                    <span class="input-group-append">
+                      <button type="submit" class="btn btn-warning">@Localizer["Send"]</button>
+                    </span>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <!--end::Row-->
+  </div>
+  <!--end::Container-->
+</div>
+<!--end::App Content-->

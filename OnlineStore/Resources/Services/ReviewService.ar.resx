@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="UserNotFound" xml:space="preserve">
+    <value>المستخدم غير موجود.</value>
+  </data>
+  <data name="ProductNotFound" xml:space="preserve">
+    <value>المنتج غير موجود.</value>
+  </data>
+  <data name="OrderNotFound" xml:space="preserve">
+    <value>الطلب غير موجود.</value>
+  </data>
+  <data name="NotAllowedToReview" xml:space="preserve">
+    <value>غير مسموح بإضافة تقييم، معرف المنتج غير صحيح.</value>
+  </data>
+  <data name="UserDoesNotHaveOrder" xml:space="preserve">
+    <value>المستخدم ليس لديه طلب بهذا المعرف.</value>
+  </data>
+  <data name="AlreadyReviewed" xml:space="preserve">
+    <value>المستخدم أضاف تقييمًا لهذا العنصر مسبقًا.</value>
+  </data>
+  <data name="ReviewNotFound" xml:space="preserve">
+    <value>تم حذف التقييم بنجاح.</value>
+  </data>
+  <data name="ReviewAttachmentAdded" xml:space="preserve">
+    <value>تم إضافة المرفق للتقييم بنجاح.</value>
+  </data>
+  <data name="NewReviewSubmitted" xml:space="preserve">
+    <value>تم إضافة تقييم جديد.</value>
+  </data>
+  <data name="ReviewNotificationMessage" xml:space="preserve">
+    <value>تم إضافة تقييم جديد للمنتج: [{0}]. الرجاء مراجعته في لوحة التحكم والموافقة أو الرفض حسب الحاجة.</value>
+  </data>
+</root>

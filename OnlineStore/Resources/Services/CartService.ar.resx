@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="CartNotFound" xml:space="preserve">
+    <value>العربة غير موجودة.</value>
+  </data>
+  <data name="CartEmpty" xml:space="preserve">
+    <value>العربة فارغة ولا توجد عناصر.</value>
+  </data>
+</root>

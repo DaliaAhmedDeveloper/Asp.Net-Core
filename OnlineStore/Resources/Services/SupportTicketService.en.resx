@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="OrderNotFound" xml:space="preserve">
+    <value>Order not found!</value>
+  </data>
+  <data name="UserNotFound" xml:space="preserve">
+    <value>User not found!</value>
+  </data>
+</root>

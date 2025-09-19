@@ -1,0 +1,98 @@
+@model OnlineStore.Models.ViewModels.SupportTicketViewModel
+
+
+
+@{
+  ViewData["Title"] = Localizer["SupportTicketDetails"];
+}
+
+<div class="app-content-header">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-6">
+        <h3 class="mb-0">@ViewData["Title"]</h3>
+      </div>
+      <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-end">
+          <li class="breadcrumb-item">
+            <a asp-area="Dashboard" asp-controller="SupportTicket" asp-action="Index">
+              @Localizer["SupportTickets"]
+            </a>
+          </li>
+          <li class="breadcrumb-item active" aria-current="page">@ViewData["Title"]</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="app-content">
+  <div class="container-fluid">
+    <div class="card card-primary card-outline mb-4">
+
+      <div class="card-body">
+        <div class="row g-3">
+
+          <!-- Ticket Number -->
+          <div class="col-md-6">
+            <label asp-for="TicketNumber" class="form-label">@Localizer["TicketNumber"]</label>
+            <input readonly asp-for="TicketNumber" class="form-control" />
+          </div>
+
+          <!-- User Name -->
+          <div class="col-md-6">
+            <label asp-for="UserName" class="form-label">@Localizer["UserName"]</label>
+            <input readonly asp-for="UserName" class="form-control" />
+          </div>
+
+          <!-- Order Number -->
+          <div class="col-md-6">
+            <label asp-for="OrderNumber" class="form-label">@Localizer["OrderNumber"]</label>
+            <input readonly asp-for="OrderNumber" class="form-control" />
+          </div>
+
+          <!-- Priority -->
+          <div class="col-md-6">
+            <label asp-for="Priority" class="form-label">@Localizer["Priority"]</label>
+            <input readonly asp-for="Priority" class="form-control" />
+          </div>
+
+          <!-- Status -->
+          <div class="col-md-6">
+            <label asp-for="Status" class="form-label">@Localizer["Status"]</label>
+            <input readonly asp-for="Status" class="form-control" />
+          </div>
+
+          <!-- Category -->
+          <div class="col-md-6">
+            <label asp-for="Category" class="form-label">@Localizer["Category"]</label>
+            <input readonly asp-for="Category" class="form-control" />
+          </div>
+
+          <!-- Subject -->
+          <div class="col-md-6">
+            <label asp-for="Subject" class="form-label">@Localizer["Subject"]</label>
+            <input readonly asp-for="Subject" class="form-control" />
+          </div>
+
+          <!-- Description -->
+          <div class="col-md-12">
+            <label asp-for="Description" class="form-label">@Localizer["Description"]</label>
+            <textarea readonly asp-for="Description" class="form-control"></textarea>
+          </div>
+
+          <!-- Send A Message -->
+          <div class="col-md-12">
+            <a asp-controller="TicketMessage" asp-action="Index" asp-route-id="@Model.Id">
+              @Localizer["SendMessage"]
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+@section Scripts {
+  <partial name="_ValidationScriptsPartial" />
+}

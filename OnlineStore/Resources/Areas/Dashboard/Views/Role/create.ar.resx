@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="AddNewRole"><value>إضافة دور جديد</value></data>
+  <data name="Roles"><value>الأدوار</value></data>
+  <data name="NameEn"><value>الاسم بالإنجليزية</value></data>
+  <data name="EnterNameEn"><value>أدخل اسم الدور بالإنجليزية</value></data>
+  <data name="NameAr"><value>الاسم بالعربية</value></data>
+  <data name="EnterNameAr"><value>أدخل اسم الدور بالعربية</value></data>
+  <data name="DescriptionEn"><value>الوصف بالإنجليزية</value></data>
+  <data name="EnterDescriptionEn"><value>أدخل الوصف بالإنجليزية</value></data>
+  <data name="DescriptionAr"><value>الوصف بالعربية</value></data>
+  <data name="EnterDescriptionAr"><value>أدخل الوصف بالعربية</value></data>
+  <data name="Slug"><value>الرابط</value></data>
+  <data name="EnterSlug"><value>أدخل الرابط</value></data>
+  <data name="Permissions"><value>الصلاحيات</value></data>
+  <data name="Submit"><value>حفظ</value></data>
+</root>

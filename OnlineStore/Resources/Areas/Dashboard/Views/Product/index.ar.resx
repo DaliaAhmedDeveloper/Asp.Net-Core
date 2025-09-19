@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="Products"><value>المنتجات</value></data>
+  <data name="Home"><value>الرئيسية</value></data>
+  <data name="ListAllProducts"><value>قائمة جميع المنتجات</value></data>
+  <data name="SearchText"><value>نص البحث</value></data>
+  <data name="Search"><value>بحث</value></data>
+  <data name="AddNewProduct"><value>إضافة منتج جديد</value></data>
+  <data name="No"><value>الرقم</value></data>
+  <data name="Image"><value>الصورة</value></data>
+  <data name="Slug"><value>المعرف</value></data>
+  <data name="NameInArabic"><value>الاسم (بالعربية)</value></data>
+  <data name="NameInEnglish"><value>الاسم (بالإنجليزية)</value></data>
+  <data name="Categories"><value>الأقسام</value></data>
+  <data name="Variants"><value>الخيارات</value></data>
+  <data name="Actions"><value>الإجراءات</value></data>
+  <data name="NoRecords"><value>لا توجد بيانات متاحة.</value></data>
+  <data name="View"><value>عرض</value></data>
+  <data name="Edit"><value>تعديل</value></data>
+  <data name="Hide"><value>إخفاء</value></data>
+  <data name="Delete"><value>حذف</value></data>
+  <data name="DeleteConfirmation"><value>هل أنت متأكد أنك تريد حذف هذا العنصر؟</value></data>
+</root>

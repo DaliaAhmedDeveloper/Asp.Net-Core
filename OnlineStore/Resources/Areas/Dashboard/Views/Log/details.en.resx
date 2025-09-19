@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="LogDetails" xml:space="preserve"><value>Log Details</value></data>
+  <data name="Logs" xml:space="preserve"><value>Logs</value></data>
+  <data name="StackTrace" xml:space="preserve"><value>Stack Trace</value></data>
+  <data name="InnerException" xml:space="preserve"><value>Inner Exception</value></data>
+  <data name="ExceptionTypeEn" xml:space="preserve"><value>Exception Type (English)</value></data>
+  <data name="ExceptionMessageEn" xml:space="preserve"><value>Exception Message (English)</value></data>
+  <data name="ExceptionTypeAr" xml:space="preserve"><value>Exception Type (Arabic)</value></data>
+  <data name="ExceptionMessageAr" xml:space="preserve"><value>Exception Message (Arabic)</value></data>
+  <data name="CreatedAt" xml:space="preserve"><value>Created At</value></data>
+</root>

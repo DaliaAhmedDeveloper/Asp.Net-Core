@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="UpdateProduct" xml:space="preserve">
+    <value>Update Product</value>
+  </data>
+  <data name="Products" xml:space="preserve">
+    <value>Products</value>
+  </data>
+  <data name="Slug" xml:space="preserve">
+    <value>Slug</value>
+  </data>
+  <data name="Type" xml:space="preserve">
+    <value>Type</value>
+  </data>
+  <data name="SelectType" xml:space="preserve">
+    <value>Select Type</value>
+  </data>
+  <data name="Price" xml:space="preserve">
+    <value>Price</value>
+  </data>
+  <data name="SalePrice" xml:space="preserve">
+    <value>Sale Price</value>
+  </data>
+  <data name="NameEn" xml:space="preserve">
+    <value>Name (English)</value>
+  </data>
+  <data name="NameAr" xml:space="preserve">
+    <value>Name (Arabic)</value>
+  </data>
+  <data name="DescriptionEn" xml:space="preserve">
+    <value>Description (English)</value>
+  </data>
+  <data name="DescriptionAr" xml:space="preserve">
+    <value>Description (Arabic)</value>
+  </data>
+  <data name="BrandEn" xml:space="preserve">
+    <value>Brand (English)</value>
+  </data>
+  <data name="BrandAr" xml:space="preserve">
+    <value>Brand (Arabic)</value>
+  </data>
+  <data name="Categories" xml:space="preserve">
+    <value>Categories</value>
+  </data>
+  <data name="Tags" xml:space="preserve">
+    <value>Tags</value>
+  </data>
+  <data name="Attribute" xml:space="preserve">
+    <value>Attribute</value>
+  </data>
+  <data name="SelectAttribute" xml:space="preserve">
+    <value>Select Attribute</value>
+  </data>
+  <data name="Value" xml:space="preserve">
+    <value>Value</value>
+  </data>
+  <data name="SelectValue" xml:space="preserve">
+    <value>Select Value</value>
+  </data>
+  <data name="PriceBasedAttribute" xml:space="preserve">
+    <value>Price Based on Attribute</value>
+  </data>
+  <data name="SalePriceBasedAttribute" xml:space="preserve">
+    <value>Sale Price Based on Attribute</value>
+  </data>
+  <data name="SKU" xml:space="preserve">
+    <value>SKU</value>
+  </data>
+  <data name="ProductImage" xml:space="preserve">
+    <value>Product Image</value>
+  </data>
+  <data name="Stock" xml:space="preserve">
+    <value>Stock</value>
+  </data>
+  <data name="Warehouse" xml:space="preserve">
+    <value>Warehouse</value>
+  </data>
+  <data name="SelectWarehouse" xml:space="preserve">
+    <value>Select Warehouse</value>
+  </data>
+  <data name="TotalQuantity" xml:space="preserve">
+    <value>Total Quantity</value>
+  </data>
+  <data name="MinimumStockLevel" xml:space="preserve">
+    <value>Minimum Stock Level</value>
+  </data>
+  <data name="UnitCost" xml:space="preserve">
+    <value>Unit Cost</value>
+  </data>
+  <data name="Submit" xml:space="preserve">
+    <value>Submit</value>
+  </data>
+</root>

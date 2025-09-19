@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="AddNewCoupon"><value>إضافة كوبون جديد</value></data>
+  <data name="Coupons"><value>الكوبونات</value></data>
+  <data name="DiscountType"><value>نوع الخصم</value></data>
+  <data name="Fixed"><value>مبلغ ثابت</value></data>
+  <data name="Percentage"><value>نسبة مئوية</value></data>
+  <data name="DiscountValue"><value>قيمة الخصم</value></data>
+  <data name="DiscountPercentage"><value>نسبة الخصم</value></data>
+  <data name="StartDate"><value>تاريخ البداية</value></data>
+  <data name="EndDate"><value>تاريخ الانتهاء</value></data>
+  <data name="MaxUsagePerUser"><value>الحد الأقصى للاستخدام لكل مستخدم</value></data>
+  <data name="MaxDiscountAmount"><value>الحد الأقصى لمبلغ الخصم</value></data>
+  <data name="MinimumOrderAmount"><value>الحد الأدنى لقيمة الطلب</value></data>
+  <data name="DescriptionEn"><value>الوصف (بالإنجليزية)</value></data>
+  <data name="DescriptionAr"><value>الوصف (بالعربية)</value></data>
+  <data name="TermsAndConditionsEn"><value>الشروط والأحكام (بالإنجليزية)</value></data>
+  <data name="TermsAndConditionsAr"><value>الشروط والأحكام (بالعربية)</value></data>
+  <data name="IsActive"><value>نشط؟</value></data>
+  <data name="IsForFirstOrderOnly"><value>للأمر الأول فقط؟</value></data>
+  <data name="Submit"><value>إرسال</value></data>
+</root>

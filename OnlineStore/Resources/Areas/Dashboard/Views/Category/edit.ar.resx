@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="PageTitle" xml:space="preserve">
+    <value>تحديث الفئة</value>
+  </data>
+  <data name="Categories" xml:space="preserve">
+    <value>الفئات</value>
+  </data>
+  <data name="Slug" xml:space="preserve">
+    <value>الاسم المختصر</value>
+  </data>
+  <data name="ParentCategory" xml:space="preserve">
+    <value>الفئة الرئيسية</value>
+  </data>
+  <data name="SelectParent" xml:space="preserve">
+    <value>-- اختر الفئة الرئيسية --</value>
+  </data>
+  <data name="NameEn" xml:space="preserve">
+    <value>الاسم (بالإنجليزية)</value>
+  </data>
+  <data name="NameAr" xml:space="preserve">
+    <value>الاسم (بالعربية)</value>
+  </data>
+  <data name="DescriptionEn" xml:space="preserve">
+    <value>الوصف (بالإنجليزية)</value>
+  </data>
+  <data name="DescriptionAr" xml:space="preserve">
+    <value>الوصف (بالعربية)</value>
+  </data>
+  <data name="CategoryImage" xml:space="preserve">
+    <value>صورة الفئة</value>
+  </data>
+  <data name="IsDeal" xml:space="preserve">
+    <value>عرض خاص؟</value>
+  </data>
+  <data name="Submit" xml:space="preserve">
+    <value>حفظ</value>
+  </data>
+</root>

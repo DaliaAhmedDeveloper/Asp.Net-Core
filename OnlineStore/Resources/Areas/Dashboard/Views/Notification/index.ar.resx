@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="Notifications" xml:space="preserve">
+    <value>الإشعارات</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>الرئيسية</value>
+  </data>
+  <data name="ListAllNotifications" xml:space="preserve">
+    <value>عرض جميع الإشعارات</value>
+  </data>
+  <data name="SearchText" xml:space="preserve">
+    <value>نص البحث</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>بحث</value>
+  </data>
+  <data name="NoRecordsAvailable" xml:space="preserve">
+    <value>لا توجد سجلات متاحة</value>
+  </data>
+  <data name="ConfirmDeleteNotification" xml:space="preserve">
+    <value>هل أنت متأكد أنك تريد حذف هذا الإشعار؟</value>
+  </data>
+  <data name="Info" xml:space="preserve">
+    <value>معلومات</value>
+  </data>
+  <data name="Warning" xml:space="preserve">
+    <value>تحذير</value>
+  </data>
+  <data name="Error" xml:space="preserve">
+    <value>خطأ</value>
+  </data>
+</root>

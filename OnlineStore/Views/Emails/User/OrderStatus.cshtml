@@ -1,0 +1,43 @@
+@model OnlineStore.Models.Order
+@using OnlineStore.Models.Enums
+@{
+    Layout = null; 
+}
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Order Status Update</title>
+</head>
+<body style="margin:0; padding:0; background:#f4f4f4; font-family:Arial,sans-serif; color:#333;">
+  <table role="presentation" width="100%">
+    <tr>
+      <td align="center" style="padding:20px;">
+        <table width="600" style="background:#fff; border-radius:8px; overflow:hidden;">
+          <tr>
+            <td style="background:#28a745; color:#fff; padding:20px; text-align:center; font-size:20px; font-weight:bold;">
+              📦 Order Status Update
+            </td>
+          </tr>
+          <tr>
+            <td style="padding:20px;">
+              @if(Model.OrderStatus == OrderStatus.Delivered){
+              <p>
+                Your Order With Number @Model.ReferenceNumber Has Been @Model.OrderStatus You Can Add Reviews To Order Items
+              </p>
+              }else{
+                <p>
+                  Your Order With Number @Model.ReferenceNumber Has Been @Model.OrderStatus
+                </p>
+              }
+              <p><strong>Order ID:</strong> @Model.ReferenceNumber</p>
+              <p><strong>Status:</strong> @Model.OrderStatus</p>
+              <p style="font-size:12px;color:#888;text-align:center;margin:0;">Order status notification.</p>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>

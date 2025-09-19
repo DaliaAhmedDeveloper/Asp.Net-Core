@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="AddNewCoupon"><value>Add New Coupon</value></data>
+  <data name="Coupons"><value>Coupons</value></data>
+  <data name="DiscountType"><value>Discount Type</value></data>
+  <data name="Fixed"><value>Fixed</value></data>
+  <data name="Percentage"><value>Percentage</value></data>
+  <data name="DiscountValue"><value>Discount Value</value></data>
+  <data name="DiscountPercentage"><value>Discount Percentage</value></data>
+  <data name="StartDate"><value>Start Date</value></data>
+  <data name="EndDate"><value>End Date</value></data>
+  <data name="MaxUsagePerUser"><value>Max Usage Per User</value></data>
+  <data name="MaxDiscountAmount"><value>Max Discount Amount</value></data>
+  <data name="MinimumOrderAmount"><value>Minimum Order Amount</value></data>
+  <data name="DescriptionEn"><value>Description (English)</value></data>
+  <data name="DescriptionAr"><value>Description (Arabic)</value></data>
+  <data name="TermsAndConditionsEn"><value>Terms And Conditions (English)</value></data>
+  <data name="TermsAndConditionsAr"><value>Terms And Conditions (Arabic)</value></data>
+  <data name="IsActive"><value>Is Active?</value></data>
+  <data name="IsForFirstOrderOnly"><value>First Order Only?</value></data>
+  <data name="Submit"><value>Submit</value></data>
+</root>

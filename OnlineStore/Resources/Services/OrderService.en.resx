@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="OrderNotFound" xml:space="preserve">
+    <value>Order is not found.</value>
+  </data>
+  <data name="AddressNotFound" xml:space="preserve">
+    <value>Address ID is not correct.</value>
+  </data>
+  <data name="ShippingMethodNotFound" xml:space="preserve">
+    <value>Shipping Method ID is not correct.</value>
+  </data>
+  <data name="CannotCancelOrder" xml:space="preserve">
+    <value>You can't cancel an order after it has been shipped.</value>
+  </data>
+</root>

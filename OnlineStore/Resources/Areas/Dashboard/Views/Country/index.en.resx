@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+<data name="Countries" xml:space="preserve">
+    <value>Countries</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>Home</value>
+  </data>
+  <data name="ListAllCountries" xml:space="preserve">
+    <value>List All Countries</value>
+  </data>
+  <data name="SearchText" xml:space="preserve">
+    <value>Search Text</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="AddNewCountry" xml:space="preserve">
+    <value>Add New Country</value>
+  </data>
+  <data name="NoRecords" xml:space="preserve">
+    <value>No records available.</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="Code" xml:space="preserve">
+    <value>Code</value>
+  </data>
+  <data name="NameEn" xml:space="preserve">
+    <value>Name In English</value>
+  </data>
+  <data name="NameAr" xml:space="preserve">
+    <value>Name In Arabic</value>
+  </data>
+  <data name="Products" xml:space="preserve">
+    <value>Products</value>
+  </data>
+  <data name="Actions" xml:space="preserve">
+    <value>Actions</value>
+  </data>
+  <data name="View" xml:space="preserve">
+    <value>View</value>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="Hide" xml:space="preserve">
+    <value>Hide</value>
+  </data>
+  <data name="ConfirmDelete" xml:space="preserve">
+    <value>Are you sure you want to delete this item?</value>
+  </data>
+</root>

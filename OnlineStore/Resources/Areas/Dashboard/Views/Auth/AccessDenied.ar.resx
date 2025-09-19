@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="Access" xml:space="preserve">
+    <value>الوصول</value>
+  </data>
+  <data name="Denied" xml:space="preserve">
+    <value>مرفوض</value>
+  </data>
+  <data name="NoPermissionMessage" xml:space="preserve">
+    <value>ليست لديك صلاحية للوصول إلى هذه الصفحة.</value>
+  </data>
+</root>

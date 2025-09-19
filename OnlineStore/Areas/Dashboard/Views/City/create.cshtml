@@ -1,0 +1,75 @@
+@model OnlineStore.Models.ViewModels.CityViewModel
+
+@using System.Globalization
+
+@{
+  var lang = CultureInfo.CurrentCulture.TwoLetterISOLanguageName;
+  ViewData["Title"] = @Localizer["PageTitle"];
+}
+<div class="app-content-header">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-6">
+        <h3 class="mb-0">@ViewData["Title"]</h3>
+      </div>
+      <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-end">
+          <li class="breadcrumb-item"><a asp-area="Dashboard" asp-controller="City" asp-action="Index">@Localizer["Cities"]</a></li>
+          <li class="breadcrumb-item active" aria-current="page">@ViewData["Title"]</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="app-content">
+  <div class="container-fluid">
+    <div class="card card-primary card-outline mb-4">
+      <form asp-area="Dashboard" asp-controller="City" asp-action="Create" method="POST"
+        enctype="multipart/form-data">
+        @Html.AntiForgeryToken()
+        <div class="card-body">
+          <div class="row g-3">
+
+            <!-- Name -->
+            <div class="col-md-6">
+              <label asp-for="Name" class="form-label"></label>
+              <input asp-for="Name" class="form-control" />
+              <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+
+            <!-- State -->
+            <div class="col-md-6">
+              <label asp-for="StateId" class="form-label">@Localizer["State"]</label>
+              <select asp-for="StateId" class="form-select"
+                asp-items="@(new SelectList(ViewBag.states, "Id", "Code"))">
+                <option value="">@Localizer["SelectState"]</option>
+              </select>
+              <span asp-validation-for="StateId" class="text-danger"></span>
+            </div>
+
+            <!-- Name En -->
+            <div class="col-md-6">
+              <label asp-for="NameEn" class="form-label"></label>
+              <input asp-for="NameEn" class="form-control" />
+              <span asp-validation-for="NameEn" class="text-danger"></span>
+            </div>
+
+            <!-- Name Ar -->
+            <div class="col-md-6">
+              <label asp-for="NameAr" class="form-label"></label>
+              <input asp-for="NameAr" class="form-control" />
+              <span asp-validation-for="NameAr" class="text-danger"></span>
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-success mt-3">@Localizer["Submit"]</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+@section Scripts {
+  <partial name="_ValidationScriptsPartial" />
+}

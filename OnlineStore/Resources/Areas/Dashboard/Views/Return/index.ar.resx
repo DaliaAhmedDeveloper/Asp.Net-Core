@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="Returns"><value>المرتجعات</value></data>
+  <data name="Home"><value>الرئيسية</value></data>
+  <data name="ListAllReturns"><value>عرض جميع المرتجعات</value></data>
+  <data name="SearchText"><value>نص البحث</value></data>
+  <data name="Search"><value>بحث</value></data>
+  <data name="NoRecords"><value>لا توجد بيانات متاحة.</value></data>
+  <data name="No"><value>الرقم</value></data>
+  <data name="ReturnNumber"><value>رقم المرتجع</value></data>
+  <data name="UserName"><value>اسم المستخدم</value></data>
+  <data name="UserEmail"><value>البريد الإلكتروني</value></data>
+  <data name="CreatedAt"><value>تاريخ الإنشاء</value></data>
+  <data name="Actions"><value>الإجراءات</value></data>
+  <data name="View"><value>عرض</value></data>
+  <data name="Edit"><value>تعديل</value></data>
+  <data name="Hide"><value>إخفاء</value></data>
+  <data name="Delete"><value>حذف</value></data>
+  <data name="DeleteConfirm"><value>هل أنت متأكد أنك تريد حذف هذا العنصر؟</value></data>
+</root>

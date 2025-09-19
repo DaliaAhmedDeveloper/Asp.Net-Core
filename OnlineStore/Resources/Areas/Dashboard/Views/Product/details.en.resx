@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="ProductDetails"><value>Product Details</value></data>
+  <data name="Products"><value>Products</value></data>
+  <data name="Slug"><value>Slug</value></data>
+  <data name="Type"><value>Type</value></data>
+  <data name="Price"><value>Price</value></data>
+  <data name="SalePrice"><value>Sale Price</value></data>
+  <data name="NameEn"><value>Name (English)</value></data>
+  <data name="NameAr"><value>Name (Arabic)</value></data>
+  <data name="DescriptionEn"><value>Description (English)</value></data>
+  <data name="DescriptionAr"><value>Description (Arabic)</value></data>
+  <data name="BrandEn"><value>Brand (English)</value></data>
+  <data name="BrandAr"><value>Brand (Arabic)</value></data>
+  <data name="Categories"><value>Categories</value></data>
+  <data name="Tags"><value>Tags</value></data>
+  <data name="Attribute"><value>Attribute</value></data>
+  <data name="Value"><value>Value</value></data>
+  <data name="SelectAttribute"><value>Select Attribute</value></data>
+  <data name="SelectValue"><value>Select Value</value></data>
+  <data name="PriceBasedAttribute"><value>Price (Based on Attribute)</value></data>
+  <data name="SalePriceBasedAttribute"><value>Sale Price (Based on Attribute)</value></data>
+  <data name="SKU"><value>SKU</value></data>
+  <data name="ProductImage"><value>Product Image</value></data>
+  <data name="Stock"><value>Stock</value></data>
+  <data name="Warehouse"><value>Warehouse</value></data>
+  <data name="SelectWarehouse"><value>Select Warehouse</value></data>
+  <data name="TotalQuantity"><value>Total Quantity</value></data>
+  <data name="MinimumStockLevel"><value>Minimum Stock Level</value></data>
+  <data name="UnitCost"><value>Unit Cost</value></data>
+</root>

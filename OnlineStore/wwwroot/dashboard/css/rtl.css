@@ -1,0 +1,58 @@
+html , body{
+    direction: rtl;
+    text-align: right;
+    overflow-x: hidden;
+    font-weight: bold;
+}
+.nav.sidebar-menu{
+    padding: 0;
+}
+.sidebar-menu .nav-link p{
+    padding-left: 0;
+    padding-right: 0.5rem;
+}
+.alert-dismissible {
+    padding-left: 3rem;
+    padding-right: 1rem;
+}
+.float-end {
+    float: left !important;
+}
+.navbar-expand .navbar-nav{
+    padding-right: 0;
+    padding-left: 15px;
+}
+.navbar-expand .navbar-nav {
+    width: 100%;
+}
+.sidebar-menu .nav-link > .nav-arrow, .sidebar-menu .nav-link > p > .nav-arrow{
+    right: auto!important;
+    left: 1rem!important;
+}
+.sidebar-menu .nav-item > .nav-link .nav-arrow {
+    transform: translateY(-50%) rotate(180deg) 
+}
+.card-title{
+    float: right;
+}
+.card-header > .card-tools{
+    float: left;
+}
+.breadcrumb-item + .breadcrumb-item::before {
+    float: right;
+    padding-left: 10px;
+}
+.form-check .form-check-input{
+    float: right;
+    margin-right: -1.5rem;
+    margin-left: 0;
+}
+.form-check {
+    padding-right: 1.5rem;
+    padding-left: 0;
+}
+@media (min-width: 576px) {
+    .float-sm-end {
+        float: left !important;
+    }
+}

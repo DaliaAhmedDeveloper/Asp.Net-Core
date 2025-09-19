@@ -1,0 +1,99 @@
+@model OnlineStore.Models.ViewModels.CategoryViewModel
+
+@using System.Globalization
+
+@{
+  var lang = CultureInfo.CurrentCulture.TwoLetterISOLanguageName;
+  ViewData["Title"] = @Localizer["PageTitle"];
+}
+<div class="app-content-header">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-6">
+        <h3 class="mb-0">@ViewData["Title"]</h3>
+      </div>
+      <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-end">
+          <li class="breadcrumb-item"><a asp-area="Dashboard" asp-controller="Category" asp-action="Index"> @Localizer["Categories"]</a></li>
+          <li class="breadcrumb-item active" aria-current="page">@ViewData["Title"]</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="app-content">
+  <div class="container-fluid">
+    <div class="card card-primary card-outline mb-4">
+
+        <div class="card-body">
+          <div class="row g-3">
+
+            <!-- Slug -->
+            <div class="col-md-6">
+              <label asp-for="Slug" class="form-label"></label>
+              <input readonly asp-for="Slug" class="form-control" />
+            </div>
+
+            <!-- Parent Category -->
+            <div class="col-md-6">
+              <label asp-for="ParentId" class="form-label"> @Localizer["ParentCategory"]</label>
+              <select disabled asp-for="ParentId" class="form-select"
+                asp-items="@(new SelectList(ViewBag.Parents, "Id", "Slug"))">
+                <option value=""> @Localizer["SelectParent"]</option>
+              </select>
+            </div>
+
+            <!-- Name En -->
+            <div class="col-md-6">
+              <label asp-for="NameEn" class="form-label"></label>
+              <input readonly asp-for="NameEn" class="form-control" />
+            </div>
+
+            <!-- Name Ar -->
+            <div class="col-md-6">
+              <label asp-for="NameAr" class="form-label"></label>
+              <input readonly asp-for="NameAr" class="form-control" />
+            </div>
+
+            <!-- Description En -->
+            <div class="col-md-6">
+              <label asp-for="DescriptionEn" class="form-label"></label>
+              <textarea readonly asp-for="DescriptionEn" class="form-control"></textarea>
+            </div>
+
+            <!-- Description Ar -->
+            <div class="col-md-6">
+              <label asp-for="DescriptionAr" class="form-label"></label>
+              <textarea readonly asp-for="DescriptionAr" class="form-control"></textarea>
+            </div>
+
+            <!-- Image -->
+            <div class="col-md-6">
+              <label asp-for="ImageFile" class="form-label"> @Localizer["CategoryImage"]</label>
+              <br><!-- Preview existing image -->
+              @if (!string.IsNullOrEmpty(Model.ImageUrl))
+              {
+                <div class="mt-2">
+                  <img src="@Model.ImageUrl" alt="Product Image" class="img-thumbnail" width="150" />
+                </div>
+              }
+            </div>
+
+            <!-- Is Deal -->
+            <div class="col-md-6">
+              <div class="form-check">
+                <input disabled asp-for="IsDeal" class="form-check-input" />
+                <label asp-for="IsDeal" class="form-check-label"> @Localizer["IsDeal"]</label>
+              </div>
+            </div>
+
+          </div>
+        </div>
+    </div>
+  </div>
+</div>
+
+@section Scripts {
+  <partial name="_ValidationScriptsPartial" />
+}

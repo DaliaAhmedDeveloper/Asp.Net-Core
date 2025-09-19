@@ -1,0 +1,184 @@
+@model OnlineStore.Models.ViewModels.OrderViewModel
+@{
+    ViewData["Title"] = Localizer["OrderDetails"];
+}
+
+<div class="app-content-header">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-6">
+                <h3 class="mb-0">@ViewData["Title"]</h3>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-end">
+                    <li class="breadcrumb-item">
+                        <a asp-area="Dashboard" asp-controller="Order" asp-action="Index">
+                            @Localizer["Orders"]
+                        </a>
+                    </li>
+                    <li class="breadcrumb-item active" aria-current="page">@ViewData["Title"]</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="app-content">
+    <div class="container-fluid">
+        <div class="card card-primary card-outline mb-4">
+            <div class="card-body">
+                <div class="row g-3">
+
+                    <!-- Reference Number -->
+                    <div class="col-md-6">
+                        <label asp-for="ReferenceNumber" class="form-label">@Localizer["ReferenceNumber"]</label>
+                        <input readonly asp-for="ReferenceNumber" class="form-control" />
+                    </div>
+
+                    <!-- User Name -->
+                    <div class="col-md-6">
+                        <label asp-for="UserName" class="form-label">@Localizer["UserName"]</label>
+                        <input readonly asp-for="UserName" class="form-control" />
+                    </div>
+
+                    <!-- Total Amount Before Sale -->
+                    <div class="col-md-6">
+                        <label asp-for="TotalAmountBeforeSale" class="form-label">@Localizer["TotalAmountBeforeSale"]</label>
+                        <input readonly asp-for="TotalAmountBeforeSale" class="form-control" />
+                    </div>
+
+                    <!-- Total Amount After Sale -->
+                    <div class="col-md-6">
+                        <label asp-for="TotalAmountAfterSale" class="form-label">@Localizer["TotalAmountAfterSale"]</label>
+                        <input readonly asp-for="TotalAmountAfterSale" class="form-control" />
+                    </div>
+
+                    <!-- Sale Discount Amount -->
+                    <div class="col-md-6">
+                        <label asp-for="SaleDiscountAmount" class="form-label">@Localizer["SaleDiscountAmount"]</label>
+                        <input readonly asp-for="SaleDiscountAmount" class="form-control" />
+                    </div>
+
+                    <!-- Order Status -->
+                    <div class="col-md-6">
+                        <label asp-for="OrderStatus" class="form-label">@Localizer["OrderStatus"]</label>
+                        <input readonly asp-for="OrderStatus" class="form-control" />
+                    </div>
+
+                    <!-- Payment Method -->
+                    <div class="col-md-6">
+                        <label asp-for="PaymentMethod" class="form-label">@Localizer["PaymentMethod"]</label>
+                        <input readonly asp-for="PaymentMethod" class="form-control" />
+                    </div>
+
+                    @if (Model.PaymentMethod == PaymentMethod.Cash)
+                    {
+                        <!-- Cash Fees -->
+                        <div class="col-md-6">
+                            <label asp-for="CashFees" class="form-label">@Localizer["CashFees"]</label>
+                            <input readonly asp-for="CashFees" class="form-control" />
+                        </div>
+                    }
+
+                    <!-- Coupon -->
+                    <div class="col-md-6">
+                        <label asp-for="Coupon" class="form-label">@Localizer["Coupon"]</label>
+                        <input readonly asp-for="Coupon" class="form-control" />
+                    </div>
+
+                    <!-- Coupon Discount -->
+                    <div class="col-md-6">
+                        <label asp-for="CouponDiscountAmount" class="form-label">@Localizer["CouponDiscountAmount"]</label>
+                        <input readonly asp-for="CouponDiscountAmount" class="form-control" />
+                    </div>
+
+                    <!-- Points Used -->
+                    <div class="col-md-6">
+                        <label asp-for="PointsUsed" class="form-label">@Localizer["PointsUsed"]</label>
+                        <input readonly asp-for="PointsUsed" class="form-control" />
+                    </div>
+
+                    <!-- Points Discount -->
+                    <div class="col-md-6">
+                        <label asp-for="PointsDiscountAmount" class="form-label">@Localizer["PointsDiscountAmount"]</label>
+                        <input readonly asp-for="PointsDiscountAmount" class="form-control" />
+                    </div>
+
+                    <!-- Wallet Amount -->
+                    <div class="col-md-6">
+                        <label asp-for="WalletAmountUsed" class="form-label">@Localizer["WalletAmountUsed"]</label>
+                        <input readonly asp-for="WalletAmountUsed" class="form-control" />
+                    </div>
+
+                    <!-- Shipping Address -->
+                    <div class="col-md-6">
+                        <label asp-for="ShippingAddress" class="form-label">@Localizer["ShippingAddress"]</label>
+                        <input readonly asp-for="ShippingAddress" class="form-control" />
+                    </div>
+
+                    <!-- Shipping Method -->
+                    <div class="col-md-6">
+                        <label asp-for="ShippingMethod" class="form-label">@Localizer["ShippingMethod"]</label>
+                        <input readonly asp-for="ShippingMethod" class="form-control" />
+                    </div>
+
+                    <!-- Shipping Cost -->
+                    <div class="col-md-6">
+                        <label asp-for="ShippingMethodCost" class="form-label">@Localizer["ShippingMethodCost"]</label>
+                        <input readonly asp-for="ShippingMethodCost" class="form-control" />
+                    </div>
+
+                    <!-- Payment Info -->
+                    <div class="col-md-6">
+                        <label asp-for="Payment" class="form-label">@Localizer["Payment"]</label>
+                        <input readonly asp-for="Payment" class="form-control" />
+                    </div>
+
+                    <!-- Final Amount -->
+                    <div class="col-md-6">
+                        <label asp-for="FinalAmount" class="form-label">@Localizer["FinalAmount"]</label>
+                        <input readonly asp-for="FinalAmount" class="form-control" />
+                    </div>
+                </div>
+
+                @if (Model.OrderItems != null && Model.OrderItems.Any())
+                {
+                    <div class="items">
+                        <h6 class="mt-5">@Localizer["OrderItems"]</h6>
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th style="width: 10px">#</th>
+                                    <th>@Localizer["Image"]</th>
+                                    <th>@Localizer["Item"]</th>
+                                    <th>@Localizer["Price"]</th>
+                                    <th>@Localizer["Quantity"]</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @{
+                                    int i = 1;
+                                }
+                                @foreach (var item in Model.OrderItems)
+                                {
+                                    <tr>
+                                        <td>@i</td>
+                                        <td><img width="50" src="@item.Product.ImageUrl" alt=""></td>
+                                        <td>@item.Product.Slug</td>
+                                        <td>@item.UnitPrice</td>
+                                        <td>@item.Quantity</td>
+                                    </tr>
+                                    i++;
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

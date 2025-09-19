@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="Home" xml:space="preserve">
+    <value>الرئيسية</value>
+  </data>
+  <data name="Categories" xml:space="preserve">
+    <value>الفئات</value>
+  </data>
+  <data name="ListAllCategories" xml:space="preserve">
+    <value>قائمة جميع الفئات</value>
+  </data>
+  <data name="SearchText" xml:space="preserve">
+    <value>ابحث...</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>بحث</value>
+  </data>
+  <data name="AddNewCategory" xml:space="preserve">
+    <value>إضافة فئة جديدة</value>
+  </data>
+  <data name="NoRecords" xml:space="preserve">
+    <value>لا توجد سجلات</value>
+  </data>
+  <data name="Number" xml:space="preserve">
+    <value>#</value>
+  </data>
+  <data name="Image" xml:space="preserve">
+    <value>الصورة</value>
+  </data>
+  <data name="Slug" xml:space="preserve">
+    <value>الاسم المختصر</value>
+  </data>
+  <data name="NameInArabic" xml:space="preserve">
+    <value>الاسم (بالعربية)</value>
+  </data>
+  <data name="NameInEnglish" xml:space="preserve">
+    <value>الاسم (بالإنجليزية)</value>
+  </data>
+  <data name="Products" xml:space="preserve">
+    <value>المنتجات</value>
+  </data>
+  <data name="Actions" xml:space="preserve">
+    <value>الإجراءات</value>
+  </data>
+</root>

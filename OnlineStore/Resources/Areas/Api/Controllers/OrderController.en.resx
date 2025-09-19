@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="OrderAddedSuccessfully" xml:space="preserve">
+    <value>Order Added Successfully</value>
+  </data>
+
+  <data name="OrderCancelledSuccessfully" xml:space="preserve">
+    <value>Order Cancelled Successfully</value>
+  </data>
+
+  <data name="OrderTrackingInfo" xml:space="preserve">
+    <value>Order Tracking Information.</value>
+  </data>
+  <data name="OrderCancelledSuccess" xml:space="preserve">
+    <value>Order Cancelled Successfully</value>
+  </data>
+</root>

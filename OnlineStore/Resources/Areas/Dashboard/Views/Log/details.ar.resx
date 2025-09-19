@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="LogDetails" xml:space="preserve"><value>تفاصيل السجل</value></data>
+  <data name="Logs" xml:space="preserve"><value>السجلات</value></data>
+  <data name="StackTrace" xml:space="preserve"><value>مسار الاستدعاء</value></data>
+  <data name="InnerException" xml:space="preserve"><value>الاستثناء الداخلي</value></data>
+  <data name="ExceptionTypeEn" xml:space="preserve"><value>نوع الاستثناء (إنجليزي)</value></data>
+  <data name="ExceptionMessageEn" xml:space="preserve"><value>رسالة الاستثناء (إنجليزي)</value></data>
+  <data name="ExceptionTypeAr" xml:space="preserve"><value>نوع الاستثناء (عربي)</value></data>
+  <data name="ExceptionMessageAr" xml:space="preserve"><value>رسالة الاستثناء (عربي)</value></data>
+  <data name="CreatedAt" xml:space="preserve"><value>تاريخ الإنشاء</value></data>
+</root>

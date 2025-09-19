@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="NotEnoughWalletBalance" xml:space="preserve">
+    <value>Not enough wallet balance.</value>
+  </data>
+</root>

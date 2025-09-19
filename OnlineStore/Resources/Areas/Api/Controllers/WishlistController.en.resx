@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="ProductAlreadyExists" xml:space="preserve">
+    <value>Product already exists inside your wishlist.</value>
+  </data>
+
+  <data name="ProductAddedSuccessfully" xml:space="preserve">
+    <value>Product added to wishlist successfully.</value>
+  </data>
+
+  <data name="ProductRemovedSuccessfully" xml:space="preserve">
+    <value>Product removed from wishlist successfully.</value>
+  </data>
+</root>

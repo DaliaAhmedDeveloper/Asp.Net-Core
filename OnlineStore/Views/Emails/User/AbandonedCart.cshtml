@@ -1,0 +1,72 @@
+@model OnlineStore.Models.ViewModels.AbandonedCartEmailModel
+@{
+    Layout = null; 
+}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Don't forget your cart</title>
+</head>
+<body style="margin:0; padding:0; background-color:#f4f4f4; font-family:Arial, sans-serif; color:#333;">
+    <table role="presentation" cellpadding="0" cellspacing="0" width="100%">
+        <tr>
+            <td align="center" style="padding:20px 0;">
+                <!-- Container -->
+                <table role="presentation" cellpadding="0" cellspacing="0" width="600" style="background:#ffffff; border-radius:8px; overflow:hidden;">
+                    <!-- Header -->
+                    <tr>
+                        <td style="background:#28a745; color:#ffffff; padding:20px; text-align:center; font-size:20px; font-weight:bold;">
+                            🛒 You left something in your cart!
+                        </td>
+                    </tr>
+
+                    <!-- Body -->
+                    <tr>
+                        <td style="padding:20px;">
+                            <h2 style="margin:0 0 10px 0; font-size:18px; font-weight:normal;">
+                                Hi @Model.CustomerName,
+                            </h2>
+                            <p style="margin:0 0 20px 0; font-size:15px; line-height:1.5;">
+                                We noticed you left these items in your cart. They're waiting for you!
+                            </p>
+
+                            <!-- Items Table -->
+                            <table role="presentation" cellpadding="10" cellspacing="0" width="100%" style="border-collapse:collapse;">
+                                @foreach (var item in Model.Items)
+                                {
+                                    <tr style="border-bottom:1px solid #ddd;">
+                                        <td width="70" valign="top">
+                                            <img src="@item.Product.ImageUrl" alt="" width="64" style="display:block; border-radius:6px;" />
+                                        </td>
+                                        <td valign="top" style="font-size:14px;">
+                                            <strong>@item.Product.Slug</strong><br />
+                                            Qty: @item.Quantity
+                                        </td>
+                                        <td valign="top" align="right" style="font-size:14px; white-space:nowrap;">
+                                            @item.Product.Price.ToString("C")
+                                        </td>
+                                    </tr>
+                                }
+                            </table>
+
+                            <!-- Button -->
+                            <div style="text-align:center; margin:30px 0;">
+                                <a href="@Model.CartUrl"
+                                   style="background:#28a745; color:#ffffff; padding:12px 24px; text-decoration:none; font-size:16px; border-radius:5px; display:inline-block;">
+                                   Return to Your Cart
+                                </a>
+                            </div>
+
+                            <!-- Footer -->
+                            <p style="font-size:12px; color:#888; text-align:center; margin:0;">
+                                If you have any questions, just reply to this email – we're happy to help.
+                            </p>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

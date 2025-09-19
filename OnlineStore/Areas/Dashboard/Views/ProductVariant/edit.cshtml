@@ -1,0 +1,121 @@
+@model OnlineStore.Models.ViewModels.ProductVariantViewModel
+@using OnlineStore.Models.Enums;
+
+
+@using System.Globalization
+
+@{
+  var lang = CultureInfo.CurrentCulture.TwoLetterISOLanguageName;
+  ViewData["Title"] = "Update ProductVariant";
+}
+<div class="app-content-header">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-6">
+        <h3 class="mb-0">@ViewData["Title"]</h3>
+      </div>
+      <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-end">
+          <li class="breadcrumb-item"><a asp-area="Dashboard" asp-controller="ProductVariant" asp-action="Index">ProductVariants</a></li>
+          <li class="breadcrumb-item active" aria-current="page">@ViewData["Title"]</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="app-content">
+  <div class="container-fluid">
+    <div class="card card-primary card-outline mb-4">
+      <form asp-area="Dashboard" asp-controller="ProductVariant" asp-action="Edit" asp-route-id="@Model.Id" method="POST"
+        enctype="multipart/form-data">
+        @Html.AntiForgeryToken()
+        <div class="card-body">
+           <div class="row g-3">
+              <!-- Attribute Select -->
+            <div class="col-md-6">
+              <label class="form-label">Attribute</label>
+              <select asp-for="AttributeId" class="form-select" id="attributeSelect"
+                asp-items="@(new SelectList(ViewBag.attributes, "Id", "Code"))">
+                <option value="">-- Select Attribute --</option>
+              </select>
+              <span asp-validation-for="AttributeId" class="text-danger"></span>
+            </div>
+            <!-- Value Select -->
+            <div class="col-md-6">
+              <label class="form-label">Value</label>
+              <select asp-for="ValueId" class="form-select" id="valueSelect"
+               asp-items="@(new SelectList(ViewBag.values, "Id", "Code"))">
+                <option value="">-- Select Value --</option>
+              </select>
+              <span asp-validation-for="ValueId" class="text-danger"></span>
+            </div>
+              <!-- Price -->
+              <!-- Price -->
+            <div class="col-md-6">
+              <label asp-for="Price" class="form-label"></label>
+              <input asp-for="Price" class="form-control" />
+              <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+            <!-- Sale Price -->
+            <div class="col-md-6">
+              <label asp-for="SalePrice" class="form-label"></label>
+              <input asp-for="SalePrice" class="form-control" />
+              <span asp-validation-for="SalePrice" class="text-danger"></span>
+            </div>
+            <!-- Image Upload -->
+            <div class="col-md-6">
+              <label asp-for="ImageFile" class="form-label">ProductVariant Image</label>
+              <input asp-for="ImageFile" type="file" class="form-control" />
+              <span asp-validation-for="ImageFile" class="text-danger"></span>
+               <!-- Preview existing image -->
+              @if (!string.IsNullOrEmpty(Model.ImageUrl))
+              {
+                <div class="mt-2">
+                  <img src="@Model.ImageUrl" alt="ProductVariant Image" class="img-thumbnail" width="150" />
+                </div>
+              }
+            </div>
+            <div class="col-12">
+              <h6>Stock</h6>
+            </div>
+            <!-- Attribute Select -->
+            <div class="col-md-6">
+              <label class="form-label">Warehouse</label>
+              <select asp-for="WarehouseId" class="form-select"
+                asp-items="@(new SelectList(ViewBag.warehouses, "Id", "Name"))">
+                <option value="">-- Select Warehouse --</option>
+              </select>
+              <span asp-validation-for="WarehouseId" class="text-danger"></span>
+            </div>
+            <!-- Total Quantity -->
+            <div class="col-md-6">
+              <label asp-for="TotalQuantity" class="form-label"></label>
+              <input asp-for="TotalQuantity" class="form-control" type="number" />
+              <span asp-validation-for="TotalQuantity" class="text-danger"></span>
+            </div>
+            <!-- Minimum Stock Level -->
+            <div class="col-md-6">
+              <label asp-for="MinimumStockLevel" class="form-label"></label>
+              <input asp-for="MinimumStockLevel" class="form-control" type="number" />
+              <span asp-validation-for="MinimumStockLevel" class="text-danger"></span>
+            </div>
+
+            <!-- Unit Cost -->
+            <div class="col-md-6">
+              <label asp-for="UnitCost" class="form-label"></label>
+              <input asp-for="UnitCost" class="form-control" type="number" step="0.01" />
+              <span asp-validation-for="UnitCost" class="text-danger"></span>
+            </div>
+          </div>
+          
+          <button type="submit" class="btn btn-success mt-3">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+@section Scripts {
+  <partial name="_ValidationScriptsPartial" />
+}

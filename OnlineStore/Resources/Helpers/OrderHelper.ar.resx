@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="ItemOutOfStock" xml:space="preserve">
+    <value>العنصر {0} غير متوفر بالمخزون.</value>
+  </data>
+  <data name="NoEnoughStock" xml:space="preserve">
+    <value>لا يوجد كمية كافية للعنصر {0}.</value>
+  </data>
+  <data name="ProductNotFound" xml:space="preserve">
+    <value>المنتج غير موجود.</value>
+  </data>
+  <data name="UserNotFound" xml:space="preserve">
+    <value>المستخدم غير موجود.</value>
+  </data>
+  <data name="OrderReceivedSubject" xml:space="preserve">
+    <value>تم استلام الطلب</value>
+  </data>
+  <data name="OrderReceivedMessage" xml:space="preserve">
+    <value>لقد استلمنا طلبك بالرقم {0}.</value>
+  </data>
+  <data name="NewOrderSubject" xml:space="preserve">
+    <value>طلب جديد</value>
+  </data>
+  <data name="NewOrderMessage" xml:space="preserve">
+    <value>تم إنشاء طلب جديد بالرقم {0}. الرجاء مراجعته في لوحة التحكم.</value>
+  </data>
+  <data name="OrderStatusSubject" xml:space="preserve">
+    <value>الطلب {0} {1}</value>
+  </data>
+  <data name="OrderStatusMessage" xml:space="preserve">
+    <value>تم تغيير حالة طلبك بالرقم {0} إلى {1}.</value>
+  </data>
+  <data name="OrderDeliveredMessage" xml:space="preserve">
+    <value>تم تسليم طلبك بالرقم {0} ({1}). يمكنك الآن إضافة تقييمات للمنتجات.</value>
+  </data>
+</root>

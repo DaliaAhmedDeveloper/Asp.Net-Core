@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+    <data name="AddressIdNotFound" xml:space="preserve">
+    <value>لم يتم العثور على رقم العنوان.</value>
+    </data>
+    <data name="AddressNotFound" xml:space="preserve">
+    <value>العنوان بالرقم {0} غير موجود.</value>
+    </data>
+</root>

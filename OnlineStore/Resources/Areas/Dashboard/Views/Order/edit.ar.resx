@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="UpdateOrderStatus" xml:space="preserve">
+    <value>تحديث حالة الطلب</value>
+  </data>
+  <data name="Orders" xml:space="preserve">
+    <value>الطلبات</value>
+  </data>
+  <data name="ReferenceNumber" xml:space="preserve">
+    <value>رقم العملية</value>
+  </data>
+  <data name="OrderStatus" xml:space="preserve">
+    <value>حالة الطلب</value>
+  </data>
+  <data name="SelectStatus" xml:space="preserve">
+    <value>-- اختر الحالة --</value>
+  </data>
+  <data name="Submit" xml:space="preserve">
+    <value>حفظ</value>
+  </data>
+</root>

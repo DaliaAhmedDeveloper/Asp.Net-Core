@@ -1,0 +1,60 @@
+@model OnlineStore.Models.ViewModels.EditOrderViewModel
+@using OnlineStore.Models.Enums
+@{
+    ViewData["Title"] = Localizer["UpdateOrderStatus"];
+}
+<div class="app-content-header">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-6">
+                <h3 class="mb-0">@ViewData["Title"]</h3>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-end">
+                    <li class="breadcrumb-item">
+                        <a asp-area="Dashboard" asp-controller="Order" asp-action="Index">
+                            @Localizer["Orders"]
+                        </a>
+                    </li>
+                    <li class="breadcrumb-item active" aria-current="page">@ViewData["Title"]</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="app-content">
+    <div class="container-fluid">
+        <div class="card card-primary card-outline mb-4">
+            <form asp-area="Dashboard" asp-controller="Order" asp-action="Edit" asp-route-id="@Model.OrderId" method="POST">
+                @Html.AntiForgeryToken()
+                <div class="card-body">
+                    <div class="row g-3">
+
+                        <!-- Transaction Id -->
+                        <div class="col-md-6">
+                            <label asp-for="ReferenceNumber" class="form-label">@Localizer["ReferenceNumber"]</label>
+                            <input readonly asp-for="ReferenceNumber" class="form-control" />
+                        </div>
+
+                        <!-- Order Status -->
+                        <div class="col-md-6">
+                            <label asp-for="OrderStatus" class="form-label">@Localizer["OrderStatus"]</label>
+                            <select asp-for="OrderStatus" class="form-select" asp-items="Html.GetEnumSelectList<OrderStatus>()">
+                                <option value="">-- @Localizer["SelectStatus"] --</option>
+                            </select>
+                            <span asp-validation-for="OrderStatus" class="text-danger"></span>
+                        </div>
+
+                    </div>
+
+                    <button type="submit" class="btn btn-success mt-3">@Localizer["Submit"]</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

@@ -1,0 +1,218 @@
+@model OnlineStore.Models.ViewModels.ProductViewModel
+@using OnlineStore.Models.Enums;
+@{
+  ViewData["Title"] = Localizer["AddNewProduct"];
+}
+
+<div class="app-content-header">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-6">
+        <h3 class="mb-0">@ViewData["Title"]</h3>
+      </div>
+      <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-end">
+          <li class="breadcrumb-item">
+            <a asp-area="Dashboard" asp-controller="Product" asp-action="Index">
+              @Localizer["Products"]
+            </a>
+          </li>
+          <li class="breadcrumb-item active" aria-current="page">@ViewData["Title"]</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="app-content">
+  <div class="container-fluid">
+    <div class="card card-primary card-outline mb-4">
+      <form asp-area="Dashboard" asp-controller="Product" asp-action="Create" method="POST"
+        enctype="multipart/form-data">
+        @Html.AntiForgeryToken()
+        <div class="card-body">
+          <div class="row g-3">
+
+            <!-- Slug -->
+            <div class="col-md-6">
+              <label asp-for="Slug" class="form-label">@Localizer["Slug"]</label>
+              <input asp-for="Slug" class="form-control" />
+              <span asp-validation-for="Slug" class="text-danger"></span>
+            </div>
+
+            <!-- Type -->
+            <div class="col-md-6">
+              <label asp-for="Type" class="form-label">@Localizer["Type"]</label>
+              <select asp-for="Type" class="form-select" asp-items="Html.GetEnumSelectList<ProductType>()">
+                <option value="">@Localizer["SelectType"]</option>
+              </select>
+              <span asp-validation-for="Type" class="text-danger"></span>
+            </div>
+
+            <!-- Price -->
+            <div class="col-md-6">
+              <label asp-for="Price" class="form-label">@Localizer["Price"]</label>
+              <input asp-for="Price" class="form-control" />
+              <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+
+            <!-- Sale Price -->
+            <div class="col-md-6">
+              <label asp-for="SalePrice" class="form-label">@Localizer["SalePrice"]</label>
+              <input asp-for="SalePrice" class="form-control" />
+              <span asp-validation-for="SalePrice" class="text-danger"></span>
+            </div>
+
+            <!-- Name En -->
+            <div class="col-md-6">
+              <label asp-for="NameEn" class="form-label">@Localizer["NameEn"]</label>
+              <input asp-for="NameEn" class="form-control" />
+              <span asp-validation-for="NameEn" class="text-danger"></span>
+            </div>
+
+            <!-- Name Ar -->
+            <div class="col-md-6">
+              <label asp-for="NameAr" class="form-label">@Localizer["NameAr"]</label>
+              <input asp-for="NameAr" class="form-control" />
+              <span asp-validation-for="NameAr" class="text-danger"></span>
+            </div>
+
+            <!-- Description En -->
+            <div class="col-md-6">
+              <label asp-for="DescriptionEn" class="form-label">@Localizer["DescriptionEn"]</label>
+              <textarea asp-for="DescriptionEn" class="form-control"></textarea>
+              <span asp-validation-for="DescriptionEn" class="text-danger"></span>
+            </div>
+
+            <!-- Description Ar -->
+            <div class="col-md-6">
+              <label asp-for="DescriptionAr" class="form-label">@Localizer["DescriptionAr"]</label>
+              <textarea asp-for="DescriptionAr" class="form-control"></textarea>
+              <span asp-validation-for="DescriptionAr" class="text-danger"></span>
+            </div>
+
+            <!-- Brand En -->
+            <div class="col-md-6">
+              <label asp-for="BrandEn" class="form-label">@Localizer["BrandEn"]</label>
+              <input asp-for="BrandEn" class="form-control" />
+              <span asp-validation-for="BrandEn" class="text-danger"></span>
+            </div>
+
+            <!-- Brand Ar -->
+            <div class="col-md-6">
+              <label asp-for="BrandAr" class="form-label">@Localizer["BrandAr"]</label>
+              <input asp-for="BrandAr" class="form-control" />
+              <span asp-validation-for="BrandAr" class="text-danger"></span>
+            </div>
+
+            <!-- Categories Multi-Select -->
+            <div class="col-md-6">
+              <label class="form-label">@Localizer["Categories"]</label>
+              <select asp-for="SelectedCategoryIds" class="form-select select2"
+                asp-items="@(new SelectList(ViewBag.categories, "Id", "Slug"))" multiple>
+              </select>
+              <span asp-validation-for="SelectedCategoryIds" class="text-danger"></span>
+            </div>
+
+            <!-- Tags Multi-Select -->
+            <div class="col-md-6">
+              <label class="form-label">@Localizer["Tags"]</label>
+              <select asp-for="SelectedTagIds" class="form-select select2"
+                asp-items="@(new SelectList(ViewBag.tags, "Id", "Code"))" multiple>
+              </select>
+              <span asp-validation-for="SelectedTagIds" class="text-danger"></span>
+            </div>
+
+            <!-- Attribute Select -->
+            <div class="col-md-6">
+              <label class="form-label">@Localizer["Attribute"]</label>
+              <select asp-for="AttributeId" class="form-select" id="attributeSelect"
+                asp-items="@(new SelectList(ViewBag.attributes, "Id", "Code"))">
+                <option value="">@Localizer["SelectAttribute"]</option>
+              </select>
+              <span asp-validation-for="AttributeId" class="text-danger"></span>
+            </div>
+
+            <!-- Value Select -->
+            <div class="col-md-6">
+              <label class="form-label">@Localizer["Value"]</label>
+              <select asp-for="ValueId" class="form-select" id="valueSelect">
+                <option value="">@Localizer["SelectValue"]</option>
+              </select>
+              <span asp-validation-for="ValueId" class="text-danger"></span>
+            </div>
+
+            <!-- Price Based Attribute -->
+            <div class="col-md-6">
+              <label asp-for="PriceBasedAttribute" class="form-label">@Localizer["PriceBasedAttribute"]</label>
+              <input asp-for="PriceBasedAttribute" class="form-control" />
+              <span asp-validation-for="PriceBasedAttribute" class="text-danger"></span>
+            </div>
+
+            <!-- Sale Price Based Attribute -->
+            <div class="col-md-6">
+              <label asp-for="SalePriceBasedAttribute" class="form-label">@Localizer["SalePriceBasedAttribute"]</label>
+              <input asp-for="SalePriceBasedAttribute" class="form-control" />
+              <span asp-validation-for="SalePriceBasedAttribute" class="text-danger"></span>
+            </div>
+
+            <!-- SKU -->
+            <div class="col-md-6">
+              <label asp-for="SKU" class="form-label">@Localizer["SKU"]</label>
+              <input asp-for="SKU" class="form-control" />
+              <span asp-validation-for="SKU" class="text-danger"></span>
+            </div>
+
+            <!-- Image Upload -->
+            <div class="col-md-6">
+              <label asp-for="ImageFile" class="form-label">@Localizer["ProductImage"]</label>
+              <input asp-for="ImageFile" type="file" class="form-control" />
+              <span asp-validation-for="ImageFile" class="text-danger"></span>
+            </div>
+
+            <div class="col-12">
+              <h6>@Localizer["Stock"]</h6>
+            </div>
+
+            <!-- Warehouse -->
+            <div class="col-md-6">
+              <label class="form-label">@Localizer["Warehouse"]</label>
+              <select asp-for="WarehouseId" class="form-select"
+                asp-items="@(new SelectList(ViewBag.warehouses, "Id", "Name"))">
+                <option value="">@Localizer["SelectWarehouse"]</option>
+              </select>
+              <span asp-validation-for="WarehouseId" class="text-danger"></span>
+            </div>
+
+            <!-- Total Quantity -->
+            <div class="col-md-6">
+              <label asp-for="TotalQuantity" class="form-label">@Localizer["TotalQuantity"]</label>
+              <input asp-for="TotalQuantity" class="form-control" type="number" />
+              <span asp-validation-for="TotalQuantity" class="text-danger"></span>
+            </div>
+
+            <!-- Minimum Stock Level -->
+            <div class="col-md-6">
+              <label asp-for="MinimumStockLevel" class="form-label">@Localizer["MinimumStockLevel"]</label>
+              <input asp-for="MinimumStockLevel" class="form-control" type="number" />
+              <span asp-validation-for="MinimumStockLevel" class="text-danger"></span>
+            </div>
+
+            <!-- Unit Cost -->
+            <div class="col-md-6">
+              <label asp-for="UnitCost" class="form-label">@Localizer["UnitCost"]</label>
+              <input asp-for="UnitCost" class="form-control" type="number" step="0.01" />
+              <span asp-validation-for="UnitCost" class="text-danger"></span>
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-success mt-3">@Localizer["SaveButton"]</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+@section Scripts {
+  <partial name="_ValidationScriptsPartial" />
+}

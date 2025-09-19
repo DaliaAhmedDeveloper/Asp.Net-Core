@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="ProductNotFound" xml:space="preserve">
+    <value>رقم المنتج غير موجود.</value>
+  </data>
+  <data name="WishlistWithIdNotFound" xml:space="preserve">
+    <value>عنصر قائمة الأمنيات برقم {0} غير موجود.</value>
+  </data>
+</root>

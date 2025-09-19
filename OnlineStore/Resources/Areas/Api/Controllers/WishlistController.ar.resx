@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="ProductAlreadyExists" xml:space="preserve">
+    <value>المنتج موجود بالفعل في قائمة الأمنيات الخاصة بك.</value>
+  </data>
+
+  <data name="ProductAddedSuccessfully" xml:space="preserve">
+    <value>تمت إضافة المنتج إلى قائمة الأمنيات بنجاح.</value>
+  </data>
+
+  <data name="ProductRemovedSuccessfully" xml:space="preserve">
+    <value>تمت إزالة المنتج من قائمة الأمنيات بنجاح.</value>
+  </data>
+</root>

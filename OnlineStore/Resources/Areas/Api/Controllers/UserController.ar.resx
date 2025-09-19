@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="UserNotFound" xml:space="preserve">
+    <value>المستخدم غير موجود.</value>
+  </data>
+  <data name="ProfileUpdatedSuccessfully" xml:space="preserve">
+    <value>تم تحديث الملف الشخصي بنجاح.</value>
+  </data>
+  <data name="PasswordUpdatedSuccessfully" xml:space="preserve">
+    <value>تم تحديث كلمة المرور بنجاح.</value>
+  </data>
+  <data name="CartNotFound" xml:space="preserve">
+    <value>عربة التسوق غير موجودة. الرجاء البدء في إضافة المنتجات لإنشاء عربة التسوق الخاصة بك.</value>
+  </data>
+  <data name="WalletNotFound" xml:space="preserve">
+    <value>المحفظة غير موجودة. يرجى إنشاء معاملات لبدء إنشاء محفظتك.</value>
+  </data>
+</root>

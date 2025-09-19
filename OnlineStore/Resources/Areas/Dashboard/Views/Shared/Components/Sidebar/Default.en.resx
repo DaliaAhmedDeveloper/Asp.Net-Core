@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="Dashboard" xml:space="preserve"><value>Dashboard</value></data>
+  <data name="Users" xml:space="preserve"><value>Users</value></data>
+  <data name="AddUser" xml:space="preserve"><value>Add User</value></data>
+  <data name="ListUsers" xml:space="preserve"><value>List Users</value></data>
+  <data name="Roles" xml:space="preserve"><value>Roles</value></data>
+  <data name="Categories" xml:space="preserve"><value>Categories</value></data>
+  <data name="AddCategory" xml:space="preserve"><value>Add Category</value></data>
+  <data name="ListCategories" xml:space="preserve"><value>List Categories</value></data>
+  <data name="Products" xml:space="preserve"><value>Products</value></data>
+  <data name="AddProduct" xml:space="preserve"><value>Add Product</value></data>
+  <data name="ListProducts" xml:space="preserve"><value>List Products</value></data>
+  <data name="Tags" xml:space="preserve"><value>Tags</value></data>
+  <data name="Reviews" xml:space="preserve"><value>Reviews</value></data>
+  <data name="Attributes" xml:space="preserve"><value>Attributes</value></data>
+  <data name="AttributeValues" xml:space="preserve"><value>Attribute Values</value></data>
+  <data name="Orders" xml:space="preserve"><value>Orders</value></data>
+  <data name="Notifications" xml:space="preserve"><value>Notifications</value></data>
+  <data name="Locations" xml:space="preserve"><value>Locations</value></data>
+  <data name="AddCountry" xml:space="preserve"><value>Add Country</value></data>
+  <data name="Countries" xml:space="preserve"><value>Countries</value></data>
+  <data name="States" xml:space="preserve"><value>States</value></data>
+  <data name="Cities" xml:space="preserve"><value>Cities</value></data>
+  <data name="Coupons" xml:space="preserve"><value>Coupons</value></data>
+  <data name="AddCoupon" xml:space="preserve"><value>Add Coupon</value></data>
+  <data name="ListCoupons" xml:space="preserve"><value>List Coupons</value></data>
+  <data name="Warehouses" xml:space="preserve"><value>Warehouses</value></data>
+  <data name="AddWarehouse" xml:space="preserve"><value>Add Warehouse</value></data>
+  <data name="ListWarehouses" xml:space="preserve"><value>List Warehouses</value></data>
+  <data name="SupportTickets" xml:space="preserve"><value>Support Tickets</value></data>
+  <data name="Returns" xml:space="preserve"><value>Returns</value></data>
+  <data name="Invoices" xml:space="preserve"><value>Invoices</value></data>
+  <data name="Logs" xml:space="preserve"><value>Logs</value></data>
+  <data name="Settings" xml:space="preserve"><value>Settings</value></data>
+  <data name="Arabic" xml:space="preserve"><value>Arabic</value></data>
+  <data name="English" xml:space="preserve"><value>English</value></data>
+  <data name="LogOut" xml:space="preserve"><value>LogOut</value></data>
+</root>

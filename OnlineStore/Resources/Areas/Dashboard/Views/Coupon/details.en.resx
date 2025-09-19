@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="Coupons" xml:space="preserve">
+    <value>Coupons</value>
+  </data>
+  <data name="AddNewCoupon" xml:space="preserve">
+    <value>Add New Coupon</value>
+  </data>
+  <data name="CouponDetails" xml:space="preserve">
+    <value>Coupon Details</value>
+  </data>
+
+  <data name="DiscountType" xml:space="preserve">
+    <value>Discount Type</value>
+  </data>
+  <data name="Fixed" xml:space="preserve">
+    <value>Fixed</value>
+  </data>
+  <data name="Percentage" xml:space="preserve">
+    <value>Percentage</value>
+  </data>
+
+  <data name="DiscountValue" xml:space="preserve">
+    <value>Discount Value</value>
+  </data>
+  <data name="DiscountPercentage" xml:space="preserve">
+    <value>Discount Percentage</value>
+  </data>
+  <data name="StartDate" xml:space="preserve">
+    <value>Start Date</value>
+  </data>
+  <data name="EndDate" xml:space="preserve">
+    <value>End Date</value>
+  </data>
+  <data name="MaxUsagePerUser" xml:space="preserve">
+    <value>Max Usage Per User</value>
+  </data>
+  <data name="MaxDiscountAmount" xml:space="preserve">
+    <value>Max Discount Amount</value>
+  </data>
+  <data name="MinimumOrderAmount" xml:space="preserve">
+    <value>Minimum Order Amount</value>
+  </data>
+
+  <data name="DescriptionEn" xml:space="preserve">
+    <value>Description (English)</value>
+  </data>
+  <data name="DescriptionAr" xml:space="preserve">
+    <value>Description (Arabic)</value>
+  </data>
+  <data name="TermsAndConditionsEn" xml:space="preserve">
+    <value>Terms &amp; Conditions (English)</value>
+  </data>
+  <data name="TermsAndConditionsAr" xml:space="preserve">
+    <value>Terms &amp; Conditions (Arabic)</value>
+  </data>
+
+  <data name="IsActive" xml:space="preserve">
+    <value>Is Active?</value>
+  </data>
+  <data name="IsForFirstOrderOnly" xml:space="preserve">
+    <value>First Order Only?</value>
+  </data>
+
+  <data name="Submit" xml:space="preserve">
+    <value>Submit</value>
+  </data>
+  <data name="Update" xml:space="preserve">
+    <value>Update</value>
+  </data>
+</root>

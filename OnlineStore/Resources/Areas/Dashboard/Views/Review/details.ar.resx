@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="ReviewDetails"><value>تفاصيل التقييم</value></data>
+  <data name="Reviews"><value>التقييمات</value></data>
+  <data name="ProductName"><value>اسم المنتج</value></data>
+  <data name="UserName"><value>اسم المستخدم</value></data>
+  <data name="Accepted"><value>تم القبول</value></data>
+  <data name="Comment"><value>التعليق</value></data>
+  <data name="Rating"><value>التقييم</value></data>
+  <data name="Attachments"><value>المرفقات</value></data>
+</root>

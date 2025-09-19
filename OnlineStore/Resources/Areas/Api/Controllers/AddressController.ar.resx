@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="AddressAddedSuccessfully" xml:space="preserve">
+    <value>تمت إضافة العنوان بنجاح.</value>
+  </data>
+
+  <data name="AddressUpdatedSuccessfully" xml:space="preserve">
+    <value>تم تحديث العنوان بنجاح.</value>
+  </data>
+
+  <data name="AddressMarkedAsDefault" xml:space="preserve">
+    <value>تم تعيين العنوان كافتراضي بنجاح.</value>
+  </data>
+
+  <data name="AddressDeletedSuccessfully" xml:space="preserve">
+    <value>تم حذف العنوان بنجاح.</value>
+  </data>
+
+  <data name="AddressNotFound" xml:space="preserve">
+    <value>العنوان غير موجود.</value>
+  </data>
+</root>

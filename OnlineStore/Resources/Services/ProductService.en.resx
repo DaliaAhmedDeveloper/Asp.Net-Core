@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="ProductNotFound" xml:space="preserve">
+    <value>Product with ID {0} not found.</value>
+  </data>
+  <data name="CategoryIdIncorrect" xml:space="preserve">
+    <value>Category Id is not correct.</value>
+  </data>
+  <data name="TagIdIncorrect" xml:space="preserve">
+    <value>Tag Id is not correct.</value>
+  </data>
+  <data name="AttributeValueIdIncorrect" xml:space="preserve">
+    <value>Attribute Value Id is not correct.</value>
+  </data>
+</root>

@@ -1,0 +1,58 @@
+@model OnlineStore.Models.ViewModels.CountryViewModel
+
+@using System.Globalization
+
+@{
+  var lang = CultureInfo.CurrentCulture.TwoLetterISOLanguageName;
+  ViewData["Title"] = @Localizer["PageTitle"];
+}
+<div class="app-content-header">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-6">
+        <h3 class="mb-0">@ViewData["Title"]</h3>
+      </div>
+      <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-end">
+          <li class="breadcrumb-item"><a asp-area="Dashboard" asp-controller="Country" asp-action="Index">@Localizer["Countries"]</a></li>
+          <li class="breadcrumb-item active" aria-current="page">@ViewData["Title"]</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="app-content">
+  <div class="container-fluid">
+    <div class="card card-primary card-outline mb-4">
+
+        <div class="card-body">
+          <div class="row g-3">
+
+            <!-- Code -->
+            <div class="col-md-6">
+              <label asp-for="Code" class="form-label"></label>
+              <input readonly asp-for="Code" class="form-control" />
+            </div>
+             <div class="col-md-6"></div>
+
+            <!-- Name En -->
+            <div class="col-md-6">
+              <label asp-for="NameEn" class="form-label"></label>
+              <input readonly asp-for="NameEn" class="form-control" />
+            </div>
+
+            <!-- Name Ar -->
+            <div class="col-md-6">
+              <label asp-for="NameAr" class="form-label"></label>
+              <input readonly asp-for="NameAr" class="form-control" />
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
+</div>
+
+@section Scripts {
+  <partial name="_ValidationScriptsPartial" />
+}

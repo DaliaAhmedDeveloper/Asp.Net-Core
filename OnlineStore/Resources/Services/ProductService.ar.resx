@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="ProductNotFound" xml:space="preserve">
+    <value>المنتج بالمعرف {0} غير موجود.</value>
+  </data>
+  <data name="CategoryIdIncorrect" xml:space="preserve">
+    <value>معرف الفئة غير صحيح.</value>
+  </data>
+  <data name="TagIdIncorrect" xml:space="preserve">
+    <value>معرف الوسم غير صحيح.</value>
+  </data>
+  <data name="AttributeValueIdIncorrect" xml:space="preserve">
+    <value>معرف قيمة الخاصية غير صحيح.</value>
+  </data>
+</root>

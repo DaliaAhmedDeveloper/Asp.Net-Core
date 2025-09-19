@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="SupportTicketDetails" xml:space="preserve">
+    <value>Support Ticket Details</value>
+  </data>
+  <data name="SupportTickets" xml:space="preserve">
+    <value>Support Tickets</value>
+  </data>
+  <data name="TicketNumber" xml:space="preserve">
+    <value>Ticket Number</value>
+  </data>
+  <data name="UserName" xml:space="preserve">
+    <value>User Name</value>
+  </data>
+  <data name="OrderNumber" xml:space="preserve">
+    <value>Order Number</value>
+  </data>
+  <data name="Priority" xml:space="preserve">
+    <value>Priority</value>
+  </data>
+  <data name="Status" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="Category" xml:space="preserve">
+    <value>Category</value>
+  </data>
+  <data name="Subject" xml:space="preserve">
+    <value>Subject</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="SendMessage" xml:space="preserve">
+    <value>Send a Message</value>
+  </data>
+</root>

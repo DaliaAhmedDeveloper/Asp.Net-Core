@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="AddNewState"><value>إضافة ولاية جديدة</value></data>
+  <data name="States"><value>الولايات</value></data>
+  <data name="Code"><value>الكود</value></data>
+  <data name="Country"><value>الدولة</value></data>
+  <data name="SelectCountry"><value>اختر الدولة</value></data>
+  <data name="NameEn"><value>الاسم بالإنجليزية</value></data>
+  <data name="NameAr"><value>الاسم بالعربية</value></data>
+  <data name="Submit"><value>حفظ</value></data>
+  <data name="NoRecordsAvailable"><value>لا توجد سجلات</value></data>
+</root>

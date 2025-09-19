@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="Home" xml:space="preserve">
+    <value>Home</value>
+  </data>
+  <data name="Categories" xml:space="preserve">
+    <value>Categories</value>
+  </data>
+  <data name="ListAllCategories" xml:space="preserve">
+    <value>List of All Categories</value>
+  </data>
+  <data name="SearchText" xml:space="preserve">
+    <value>Search...</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="AddNewCategory" xml:space="preserve">
+    <value>Add New Category</value>
+  </data>
+  <data name="NoRecords" xml:space="preserve">
+    <value>No records found</value>
+  </data>
+  <data name="Number" xml:space="preserve">
+    <value>#</value>
+  </data>
+  <data name="Image" xml:space="preserve">
+    <value>Image</value>
+  </data>
+  <data name="Slug" xml:space="preserve">
+    <value>Slug</value>
+  </data>
+  <data name="NameInArabic" xml:space="preserve">
+    <value>Name (Arabic)</value>
+  </data>
+  <data name="NameInEnglish" xml:space="preserve">
+    <value>Name (English)</value>
+  </data>
+  <data name="Products" xml:space="preserve">
+    <value>Products</value>
+  </data>
+  <data name="Actions" xml:space="preserve">
+    <value>Actions</value>
+  </data>
+</root>

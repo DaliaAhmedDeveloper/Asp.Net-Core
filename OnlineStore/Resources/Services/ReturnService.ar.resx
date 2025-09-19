@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+<data name="OrderNotFound" xml:space="preserve">
+  <value>الطلب غير موجود.</value>
+</data>
+<data name="OrderItemNotFound" xml:space="preserve">
+  <value>عنصر الطلب غير موجود.</value>
+</data>
+<data name="QuantityMismatch" xml:space="preserve">
+  <value>كمية عنصر الطلب لا تتطابق مع الكمية الموجودة في الطلب.</value>
+</data>
+</root>

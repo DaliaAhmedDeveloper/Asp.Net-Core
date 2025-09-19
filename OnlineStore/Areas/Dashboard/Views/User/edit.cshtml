@@ -1,0 +1,104 @@
+@model OnlineStore.Models.ViewModels.UpdateUserViewModel
+@using OnlineStore.Models.Enums;
+
+
+@{
+  ViewData["Title"] = Localizer["UpdateUserTitle"];
+}
+<div class="app-content-header">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-6">
+        <h3 class="mb-0">@ViewData["Title"]</h3>
+      </div>
+      <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-end">
+          <li class="breadcrumb-item"><a asp-area="Dashboard" asp-controller="User" asp-action="Index">@Localizer["Users"]</a></li>
+          <li class="breadcrumb-item active" aria-current="page">@ViewData["Title"]</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="app-content">
+  <div class="container-fluid">
+    <div class="card card-primary card-outline mb-4">
+      <form asp-area="Dashboard" asp-controller="User" asp-action="Edit" asp-route-id="@Model.Id" method="POST"
+        enctype="multipart/form-data">
+        @Html.AntiForgeryToken()
+        <div class="card-body">
+          <div class="row g-3">
+            <!-- Full Name -->
+            <div class="col-md-6">
+              <label asp-for="FullName" class="form-label">@Localizer["FullName"]</label>
+              <input asp-for="FullName" class="form-control" />
+              <span asp-validation-for="FullName" class="text-danger"></span>
+            </div>
+
+            <!-- Email -->
+            <div class="col-md-6">
+              <label asp-for="Email" class="form-label">@Localizer["Email"]</label>
+              <input disabled asp-for="Email" class="form-control" />
+              <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+
+            <!-- Phone Number -->
+            <div class="col-md-6">
+              <label asp-for="PhoneNumber" class="form-label">@Localizer["PhoneNumber"]</label>
+              <input readonly asp-for="PhoneNumber" class="form-control" />
+              <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+            </div>
+            
+             <div class="col-md-6">
+              <label asp-for="PasswordHash" class="form-label">@Localizer["Password"]</label>
+              <input asp-for="PasswordHash" class="form-control" />
+              <span asp-validation-for="PasswordHash" class="text-danger"></span>
+            </div>
+
+            <!-- Country -->
+            <div class="col-md-6">
+              <label asp-for="CountryId" class="form-label">@Localizer["Country"]</label>
+              <select asp-for="CountryId" id="SelectCountry" class="form-select"
+                asp-items="@(new SelectList(ViewBag.countries, "Id", "Code"))">
+                <option value="">@Localizer["SelectCountry"]</option>
+              </select>
+              <span asp-validation-for="CountryId" class="text-danger"></span>
+            </div>
+
+            <!-- State -->
+            <div class="col-md-6">
+              <label asp-for="StateId" class="form-label">@Localizer["State"]</label>
+              <select asp-for="StateId" id="SelectState" class="form-select" asp-items="@(new SelectList(ViewBag.states, "Id", "Name"))">
+                <option value="">@Localizer["SelectState"]</option>
+              </select>
+              <span asp-validation-for="StateId" class="text-danger"></span>
+            </div>
+
+            <!-- City -->
+            <div class="col-md-6">
+              <label asp-for="CityId" class="form-label">@Localizer["City"]</label>
+              <select asp-for="CityId"id="SelectCity" class="form-select" asp-items="@(new SelectList(ViewBag.cities, "Id", "Name"))">
+                <option value="">@Localizer["SelectCity"]</option>
+              </select>
+              <span asp-validation-for="CityId" class="text-danger"></span>
+            </div>
+           <!-- Active Status -->
+            <div class="col-md-6">
+              <div class="form-check">
+                <input asp-for="IsActive" class="form-check-input" />
+                <label asp-for="IsActive" class="form-check-label">@Localizer["ActiveStatus"]</label>
+              </div>
+            </div>
+            
+          </div>
+          <button type="submit" class="btn btn-success mt-3">@Localizer["Submit"]</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+@section Scripts {
+  <partial name="_ValidationScriptsPartial" />
+}

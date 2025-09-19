@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="ErrorMessage" xml:space="preserve">
+    <value>Something Went Wrong Please Try Again Later !</value>
+  </data>
+</root>

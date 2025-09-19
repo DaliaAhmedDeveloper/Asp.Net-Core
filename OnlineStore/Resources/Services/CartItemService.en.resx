@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="ProductAndVariantRequired" xml:space="preserve">
+    <value>Product Id and Variant Id are required.</value>
+  </data>
+  <data name="CartItemNotFound" xml:space="preserve">
+    <value>CartItem with ID {0} not found.</value>
+  </data>
+  <data name="ProductNotFound" xml:space="preserve">
+    <value>Product Id not found.</value>
+  </data>
+  <data name="VariantNotFound" xml:space="preserve">
+    <value>Variant Id not found or not related to the product.</value>
+  </data>
+</root>

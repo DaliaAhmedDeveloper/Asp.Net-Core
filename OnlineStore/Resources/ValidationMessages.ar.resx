@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="FullNameRequired" xml:space="preserve">
+    <value>الاسم الكامل مطلوب.</value>
+  </data>
+
+  <data name="EmailRequired" xml:space="preserve">
+    <value>البريد الإلكتروني مطلوب.</value>
+  </data>
+
+  <data name="EmailInvalid" xml:space="preserve">
+    <value>يرجى إدخال عنوان بريد إلكتروني صالح.</value>
+  </data>
+
+  <data name="EmailUnique" xml:space="preserve">
+    <value>البريد الإلكتروني يجب أن يكون فريدًا.</value>
+  </data>
+
+  <data name="PhoneRequired" xml:space="preserve">
+    <value>رقم الهاتف مطلوب.</value>
+  </data>
+
+  <data name="PhoneInvalid" xml:space="preserve">
+    <value>تنسيق رقم الهاتف غير صالح.</value>
+  </data>
+
+  <data name="PhoneUnique" xml:space="preserve">
+    <value>رقم الهاتف يجب أن يكون فريدًا.</value>
+  </data>
+
+  <data name="PasswordRequired" xml:space="preserve">
+    <value>كلمة المرور مطلوبة.</value>
+  </data>
+
+  <data name="PasswordComplexity" xml:space="preserve">
+    <value>يجب أن تتكون كلمة المرور من 8 أحرف على الأقل وتحتوي على أحرف كبيرة وصغيرة وأرقام ورموز خاصة.</value>
+  </data>
+
+  <data name="PasswordsDoNotMatch" xml:space="preserve">
+    <value>كلمة المرور وتأكيد كلمة المرور غير متطابقين.</value>
+  </data>
+
+  <data name="ProductIdRequired" xml:space="preserve">
+    <value>معرّف المنتج مطلوب.</value>
+  </data>
+
+  <data name="VariantIdRequired" xml:space="preserve">
+    <value>معرّف المتغير مطلوب.</value>
+  </data>
+
+  <data name="CartIdRequired" xml:space="preserve">
+    <value>معرّف السلة مطلوب.</value>
+  </data>
+
+  <data name="QuantityRequired" xml:space="preserve">
+    <value>الكمية مطلوبة.</value>
+  </data>
+
+  <data name="CountryRequired" xml:space="preserve">
+    <value>البلد مطلوب.</value>
+  </data>
+
+  <data name="CityRequired" xml:space="preserve">
+    <value>المدينة مطلوبة.</value>
+  </data>
+
+  <data name="StreetRequired" xml:space="preserve">
+    <value>اسم الشارع مطلوب.</value>
+  </data>
+
+  <data name="ZipCodeRequired" xml:space="preserve">
+    <value>الرمز البريدي مطلوب.</value>
+  </data>
+
+  <data name="UserIdRequired" xml:space="preserve">
+    <value>معرّف المستخدم مطلوب.</value>
+  </data>
+  <data name="OrderIdRequired" xml:space="preserve">
+    <value>معرّف الطلب مطلوب.</value>
+  </data>
+  <data name="CategoryRequired" xml:space="preserve">
+    <value>الفئة مطلوبة.</value>
+  </data>
+  <data name="SubjectRequired" xml:space="preserve">
+    <value>الموضوع مطلوب.</value>
+  </data>
+  <data name="SubjectLimit" xml:space="preserve">
+    <value>الموضوع لا يمكن أن يتجاوز 200 حرف.</value>
+  </data>
+  <data name="DescriptionRequired" xml:space="preserve">
+    <value>الوصف مطلوب.</value>
+  </data>
+  <data name="PaymentRequired" xml:space="preserve">
+    <value>طريقة الدفع مطلوبة.</value>
+  </data>
+  <data name="TicketIdRequired" xml:space="preserve">
+    <value>معرّف التذكرة مطلوب.</value>
+  </data>
+  <data name="TicketMessageUserIdRequired" xml:space="preserve">
+    <value>معرّف المستخدم مطلوب.</value>
+  </data>
+  <data name="TicketMessageRequired" xml:space="preserve">
+    <value>الرسالة مطلوبة.</value>
+  </data>
+  <data name="TicketMessageLimit" xml:space="preserve">
+    <value>لا يمكن أن تتجاوز الرسالة 1000 حرف.</value>
+  </data>
+  <data name="LoginEmailRequired" xml:space="preserve">
+    <value>البريد الإلكتروني مطلوب.</value>
+  </data>
+  <data name="LoginEmailInvalid" xml:space="preserve">
+    <value>البريد الإلكتروني غير صالح.</value>
+  </data>
+  <data name="LoginPasswordRequired" xml:space="preserve">
+    <value>كلمة المرور مطلوبة.</value>
+  </data>
+  <data name="ResetEmailRequired" xml:space="preserve">
+    <value>البريد الإلكتروني مطلوب.</value>
+  </data>
+  <data name="ResetEmailInvalid" xml:space="preserve">
+    <value>صيغة البريد الإلكتروني غير صحيحة.</value>
+  </data>
+  <data name="ResetNewPasswordRequired" xml:space="preserve">
+    <value>كلمة المرور الجديدة مطلوبة.</value>
+  </data>
+  <data name="ResetTokenRequired" xml:space="preserve">
+    <value>رمز إعادة التعيين مطلوب.</value>
+  </data>
+  <data name="ResetNewPasswordWeak" xml:space="preserve">
+    <value>يجب أن تكون كلمة المرور 8 أحرف على الأقل.</value>
+  </data>
+  <data name="CartItemIdRequired" xml:space="preserve">
+    <value>معرف عنصر عربة التسوق مطلوب.</value>
+  </data>
+  <data name="AddressIdRequired" xml:space="preserve">
+    <value>معرّف العنوان مطلوب.</value>
+  </data>
+
+  <data name="OrderItemIdRequired" xml:space="preserve">
+    <value>معرّف عنصر الطلب مطلوب.</value>
+  </data>
+  <data name="CommentRequired" xml:space="preserve">
+    <value>التعليق مطلوب.</value>
+  </data>
+  <data name="RatingRequired" xml:space="preserve">
+    <value>التقييم مطلوب.</value>
+  </data>
+  <data name="ReasonRequired" xml:space="preserve">
+    <value>سبب الإرجاع مطلوب.</value>
+  </data>
+  <data name="ReasonMinLength" xml:space="preserve">
+    <value>يجب أن يكون السبب 30 حرفًا على الأقل.</value>
+  </data>
+  <data name="PriceFromRange" xml:space="preserve">
+    <value>يجب أن يكون السعر من أكبر من أو يساوي 0.</value>
+  </data>
+  <data name="PriceToRange" xml:space="preserve">
+    <value>يجب أن يكون السعر إلى أكبر من أو يساوي 0.</value>
+  </data>
+  <data name="PriceToGreaterThanPriceFrom" xml:space="preserve">
+    <value>يجب أن يكون السعر إلى أكبر من أو يساوي السعر من.</value>
+  </data>
+</root>

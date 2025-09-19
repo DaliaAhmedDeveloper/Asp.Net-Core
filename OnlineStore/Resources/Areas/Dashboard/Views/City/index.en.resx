@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="Cities" xml:space="preserve">
+    <value>Cities</value>
+  </data>
+   <data name="Home" xml:space="preserve">
+    <value>Home</value>
+  </data>
+  <data name="ListAllCities" xml:space="preserve">
+    <value>List All Cities</value>
+  </data>
+  <data name="SearchText" xml:space="preserve">
+    <value>Search Text</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="AddNewCity" xml:space="preserve">
+    <value>Add New City</value>
+  </data>
+  <data name="NoRecords" xml:space="preserve">
+    <value>No records available.</value>
+  </data>
+  <data name="Number" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="Code" xml:space="preserve">
+    <value>Code</value>
+  </data>
+  <data name="NameInArabic" xml:space="preserve">
+    <value>Name In Arabic</value>
+  </data>
+  <data name="NameInEnglish" xml:space="preserve">
+    <value>Name In English</value>
+  </data>
+  <data name="Actions" xml:space="preserve">
+    <value>Actions</value>
+  </data>
+</root>

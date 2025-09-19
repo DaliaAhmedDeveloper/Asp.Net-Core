@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="OrderNotFound" xml:space="preserve">
+    <value>الطلب غير موجود!</value>
+  </data>
+  <data name="UserNotFound" xml:space="preserve">
+    <value>المستخدم غير موجود!</value>
+  </data>
+</root>

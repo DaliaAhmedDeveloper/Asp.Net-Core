@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="OrderDetails"><value>Order Details</value></data>
+  <data name="Orders"><value>Orders</value></data>
+  <data name="ReferenceNumber"><value>Reference Number</value></data>
+  <data name="UserName"><value>User Name</value></data>
+  <data name="TotalAmountBeforeSale"><value>Total Amount Before Sale</value></data>
+  <data name="TotalAmountAfterSale"><value>Total Amount After Sale</value></data>
+  <data name="SaleDiscountAmount"><value>Sale Discount Amount</value></data>
+  <data name="OrderStatus"><value>Order Status</value></data>
+  <data name="PaymentMethod"><value>Payment Method</value></data>
+  <data name="CashFees"><value>Cash Fees</value></data>
+  <data name="Coupon"><value>Coupon</value></data>
+  <data name="CouponDiscountAmount"><value>Coupon Discount Amount</value></data>
+  <data name="PointsUsed"><value>Points Used</value></data>
+  <data name="PointsDiscountAmount"><value>Points Discount Amount</value></data>
+  <data name="WalletAmountUsed"><value>Wallet Amount Used</value></data>
+  <data name="ShippingAddress"><value>Shipping Address</value></data>
+  <data name="ShippingMethod"><value>Shipping Method</value></data>
+  <data name="ShippingMethodCost"><value>Shipping Method Cost</value></data>
+  <data name="Payment"><value>Payment</value></data>
+  <data name="FinalAmount"><value>Final Amount</value></data>
+  <data name="OrderItems"><value>Order Items</value></data>
+  <data name="Image"><value>Image</value></data>
+  <data name="Item"><value>Item</value></data>
+  <data name="Price"><value>Price</value></data>
+  <data name="Quantity"><value>Quantity</value></data>
+</root>

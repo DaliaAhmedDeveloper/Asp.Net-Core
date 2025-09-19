@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="UserNotFound" xml:space="preserve">
+    <value>User is not found.</value>
+  </data>
+  <data name="ProductNotFound" xml:space="preserve">
+    <value>Product is not found.</value>
+  </data>
+  <data name="OrderNotFound" xml:space="preserve">
+    <value>Order is not found.</value>
+  </data>
+  <data name="NotAllowedToReview" xml:space="preserve">
+    <value>Not allowed to review, product ID is not correct.</value>
+  </data>
+  <data name="UserDoesNotHaveOrder" xml:space="preserve">
+    <value>User does not have order with this ID.</value>
+  </data>
+  <data name="AlreadyReviewed" xml:space="preserve">
+    <value>User already added review to this item.</value>
+  </data>
+  <data name="ReviewNotFound" xml:space="preserve">
+    <value>لم يتم العثور على المراجعة ذات المعرف {0}.</value>
+  </data>
+  <data name="ReviewAttachmentAdded" xml:space="preserve">
+    <value>Review attachment added successfully.</value>
+  </data>
+  <data name="NewReviewSubmitted" xml:space="preserve">
+    <value>New review submitted.</value>
+  </data>
+  <data name="ReviewNotificationMessage" xml:space="preserve">
+    <value>A new review has been submitted for the product: [{0}]. Please review it in the dashboard and approve or reject it as needed.</value>
+  </data>
+</root>

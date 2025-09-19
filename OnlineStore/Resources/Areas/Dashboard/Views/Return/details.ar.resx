@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="OrderDetails"><value>تفاصيل الطلب</value></data>
+  <data name="Orders"><value>الطلبات</value></data>
+  <data name="ReferenceNumber"><value>رقم المرجع</value></data>
+  <data name="UserName"><value>اسم المستخدم</value></data>
+  <data name="TotalAmountBeforeSale"><value>المبلغ الإجمالي قبل الخصم</value></data>
+  <data name="TotalAmountAfterSale"><value>المبلغ الإجمالي بعد الخصم</value></data>
+  <data name="SaleDiscountAmount"><value>قيمة الخصم</value></data>
+  <data name="OrderStatus"><value>حالة الطلب</value></data>
+  <data name="PaymentMethod"><value>طريقة الدفع</value></data>
+  <data name="CashFees"><value>رسوم الدفع نقداً</value></data>
+  <data name="Coupon"><value>الكوبون</value></data>
+  <data name="CouponDiscountAmount"><value>قيمة خصم الكوبون</value></data>
+  <data name="PointsUsed"><value>النقاط المستخدمة</value></data>
+  <data name="PointsDiscountAmount"><value>قيمة خصم النقاط</value></data>
+  <data name="WalletAmountUsed"><value>المبلغ المستخدم من المحفظة</value></data>
+  <data name="ShippingAddress"><value>عنوان الشحن</value></data>
+  <data name="ShippingMethod"><value>طريقة الشحن</value></data>
+  <data name="ShippingMethodCost"><value>تكلفة الشحن</value></data>
+  <data name="Payment"><value>معلومات الدفع</value></data>
+  <data name="FinalAmount"><value>المبلغ النهائي</value></data>
+  <data name="OrderItems"><value>عناصر الطلب</value></data>
+  <data name="Image"><value>الصورة</value></data>
+  <data name="Item"><value>العنصر</value></data>
+  <data name="Price"><value>السعر</value></data>
+  <data name="Quantity"><value>الكمية</value></data>
+</root>

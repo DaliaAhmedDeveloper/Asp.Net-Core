@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="InvalidEmailOrPassword" xml:space="preserve">
+    <value>البريد الإلكتروني أو كلمة المرور غير صحيحة.</value>
+  </data>
+
+  <data name="SuccessPleaseLoginNow" xml:space="preserve">
+    <value>تم التسجيل بنجاح. يرجى تسجيل الدخول الآن.</value>
+  </data>
+
+  <data name="RefreshTokenIncorrect" xml:space="preserve">
+    <value>رمز التحديث غير صحيح.</value>
+  </data>
+
+  <data name="LoggedOutSuccessfully" xml:space="preserve">
+    <value>تم تسجيل الخروج بنجاح.</value>
+  </data>
+</root>

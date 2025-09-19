@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="UpdateRole"><value>Update Role</value></data>
+  <data name="Roles"><value>Roles</value></data>
+  <data name="NameEn"><value>Name (English)</value></data>
+  <data name="NameAr"><value>Name (Arabic)</value></data>
+  <data name="DescriptionEn"><value>Description (English)</value></data>
+  <data name="DescriptionAr"><value>Description (Arabic)</value></data>
+  <data name="Slug"><value>Slug</value></data>
+  <data name="Permissions"><value>Permissions</value></data>
+  <data name="Submit"><value>Submit</value></data>
+</root>

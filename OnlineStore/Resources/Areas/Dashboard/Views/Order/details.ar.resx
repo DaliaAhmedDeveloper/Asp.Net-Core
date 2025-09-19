@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="OrderDetails" xml:space="preserve">
+    <value>تفاصيل الطلب</value>
+  </data>
+  <data name="Orders" xml:space="preserve">
+    <value>الطلبات</value>
+  </data>
+  <data name="ReferenceNumber" xml:space="preserve">
+    <value>رقم الطلب</value>
+  </data>
+  <data name="UserName" xml:space="preserve">
+    <value>اسم المستخدم</value>
+  </data>
+  <data name="TotalAmountBeforeSale" xml:space="preserve">
+    <value>إجمالي المبلغ قبل الخصم</value>
+  </data>
+  <data name="TotalAmountAfterSale" xml:space="preserve">
+    <value>إجمالي المبلغ بعد الخصم</value>
+  </data>
+  <data name="SaleDiscountAmount" xml:space="preserve">
+    <value>قيمة خصم التخفيض</value>
+  </data>
+  <data name="OrderStatus" xml:space="preserve">
+    <value>حالة الطلب</value>
+  </data>
+  <data name="PaymentMethod" xml:space="preserve">
+    <value>طريقة الدفع</value>
+  </data>
+  <data name="CashFees" xml:space="preserve">
+    <value>رسوم الدفع نقداً</value>
+  </data>
+  <data name="Coupon" xml:space="preserve">
+    <value>الكوبون</value>
+  </data>
+  <data name="CouponDiscountAmount" xml:space="preserve">
+    <value>قيمة خصم الكوبون</value>
+  </data>
+  <data name="PointsUsed" xml:space="preserve">
+    <value>النقاط المستخدمة</value>
+  </data>
+  <data name="PointsDiscountAmount" xml:space="preserve">
+    <value>قيمة خصم النقاط</value>
+  </data>
+  <data name="WalletAmountUsed" xml:space="preserve">
+    <value>المبلغ المستخدم من المحفظة</value>
+  </data>
+  <data name="ShippingAddress" xml:space="preserve">
+    <value>عنوان الشحن</value>
+  </data>
+  <data name="ShippingMethod" xml:space="preserve">
+    <value>طريقة الشحن</value>
+  </data>
+  <data name="ShippingMethodCost" xml:space="preserve">
+    <value>تكلفة طريقة الشحن</value>
+  </data>
+  <data name="Payment" xml:space="preserve">
+    <value>معلومات الدفع</value>
+  </data>
+  <data name="FinalAmount" xml:space="preserve">
+    <value>المبلغ النهائي</value>
+  </data>
+  <data name="OrderItems" xml:space="preserve">
+    <value>عناصر الطلب</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>رقم</value>
+  </data>
+  <data name="Image" xml:space="preserve">
+    <value>صورة</value>
+  </data>
+  <data name="Item" xml:space="preserve">
+    <value>المنتج</value>
+  </data>
+  <data name="Price" xml:space="preserve">
+    <value>السعر</value>
+  </data>
+  <data name="Quantity" xml:space="preserve">
+    <value>الكمية</value>
+  </data>
+</root>

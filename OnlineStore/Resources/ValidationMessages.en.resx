@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="FullNameRequired" xml:space="preserve">
+    <value>Full Name is required.</value>
+  </data>
+
+  <data name="EmailRequired" xml:space="preserve">
+    <value>Email is required.</value>
+  </data>
+
+  <data name="EmailInvalid" xml:space="preserve">
+    <value>Please Enter Valid Email Address.</value>
+  </data>
+
+  <data name="EmailUnique" xml:space="preserve">
+    <value>Email must be unique.</value>
+  </data>
+
+  <data name="PhoneRequired" xml:space="preserve">
+    <value>Phone number is required.</value>
+  </data>
+
+  <data name="PhoneInvalid" xml:space="preserve">
+    <value>Invalid phone number format.</value>
+  </data>
+
+  <data name="PhoneUnique" xml:space="preserve">
+    <value>Phone Number must be unique.</value>
+  </data>
+
+  <data name="PasswordRequired" xml:space="preserve">
+    <value>Password is required.</value>
+  </data>
+
+  <data name="PasswordComplexity" xml:space="preserve">
+    <value>Password must be at least 8 characters long and contain uppercase, lowercase, digit, and special character.</value>
+  </data>
+
+  <data name="PasswordsDoNotMatch" xml:space="preserve">
+    <value>The password and confirmation password do not match.</value>
+  </data>
+
+  <data name="ProductIdRequired" xml:space="preserve">
+    <value>Product Id is required.</value>
+  </data>
+
+  <data name="VariantIdRequired" xml:space="preserve">
+    <value>Variant Id is required.</value>
+  </data>
+
+  <data name="CartIdRequired" xml:space="preserve">
+    <value>Cart Id is required.</value>
+  </data>
+
+  <data name="QuantityRequired" xml:space="preserve">
+    <value>Quantity is required.</value>
+  </data>
+
+  <data name="CountryRequired" xml:space="preserve">
+    <value>Country is required.</value>
+  </data>
+
+  <data name="CityRequired" xml:space="preserve">
+    <value>City is required.</value>
+  </data>
+
+  <data name="StreetRequired" xml:space="preserve">
+    <value>Street is required.</value>
+  </data>
+
+  <data name="ZipCodeRequired" xml:space="preserve">
+    <value>Zip Code is required.</value>
+  </data>
+
+  <data name="UserIdRequired" xml:space="preserve">
+    <value>User Id is required.</value>
+  </data>
+  <data name="OrderIdRequired" xml:space="preserve">
+    <value>Order Id is required.</value>
+  </data>
+  <data name="CategoryRequired" xml:space="preserve">
+    <value>Category is required.</value>
+  </data>
+  <data name="SubjectRequired" xml:space="preserve">
+    <value>Subject is required.</value>
+  </data>
+  <data name="SubjectLimit" xml:space="preserve">
+    <value>Subject cannot exceed 200 characters.</value>
+  </data>
+  <data name="DescriptionRequired" xml:space="preserve">
+    <value>Description is required.</value>
+  </data>
+  <data name="PaymentRequired" xml:space="preserve">
+  <value>Payment Method is required.</value>
+</data>
+<data name="TicketIdRequired" xml:space="preserve">
+  <value>Ticket Id is required.</value>
+</data>
+<data name="TicketMessageUserIdRequired" xml:space="preserve">
+  <value>User Id is required.</value>
+</data>
+<data name="TicketMessageRequired" xml:space="preserve">
+  <value>Message is required.</value>
+</data>
+<data name="TicketMessageLimit" xml:space="preserve">
+  <value>Message cannot exceed 1000 characters.</value>
+</data>
+<data name="LoginEmailRequired" xml:space="preserve">
+  <value>Email is required.</value>
+</data>
+<data name="LoginEmailInvalid" xml:space="preserve">
+  <value>Invalid Email.</value>
+</data>
+<data name="LoginPasswordRequired" xml:space="preserve">
+  <value>Password is required.</value>
+</data>
+<data name="ResetEmailRequired" xml:space="preserve">
+  <value>Email is required.</value>
+</data>
+<data name="ResetEmailInvalid" xml:space="preserve">
+  <value>Invalid email format.</value>
+</data>
+<data name="ResetNewPasswordRequired" xml:space="preserve">
+  <value>New password is required.</value>
+</data>
+<data name="ResetTokenRequired" xml:space="preserve">
+  <value>Reset token is required.</value>
+</data>
+<data name="ResetNewPasswordWeak" xml:space="preserve">
+  <value>Password must be at least 8 characters long.</value>
+</data>
+<data name="CartItemIdRequired" xml:space="preserve">
+  <value>Cart Item Id Is Required.</value>
+</data>
+<data name="AddressIdRequired" xml:space="preserve">
+  <value>Address Id Is Required.</value>
+</data>
+  <data name="OrderItemIdRequired" xml:space="preserve">
+    <value>Order Item Id is required.</value>
+  </data>
+  <data name="CommentRequired" xml:space="preserve">
+    <value>Comment is required.</value>
+  </data>
+  <data name="RatingRequired" xml:space="preserve">
+    <value>Rating is required.</value>
+  </data>
+  <data name="ReasonRequired" xml:space="preserve">
+    <value>Reason is required.</value>
+  </data>
+  <data name="ReasonMinLength" xml:space="preserve">
+    <value>Reason must be at least 30 characters long.</value>
+  </data>
+  <data name="PriceFromRange" xml:space="preserve">
+    <value>PriceFrom must be greater than or equal to 0.</value>
+  </data>
+  <data name="PriceToRange" xml:space="preserve">
+    <value>PriceTo must be greater than or equal to 0.</value>
+  </data>
+  <data name="PriceToGreaterThanPriceFrom" xml:space="preserve">
+    <value>PriceTo must be greater than or equal to PriceFrom.</value>
+  </data>
+</root>

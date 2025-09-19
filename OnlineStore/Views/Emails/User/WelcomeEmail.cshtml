@@ -1,0 +1,33 @@
+@model OnlineStore.Models.User
+@{
+    Layout = null; 
+}
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Welcome</title>
+</head> 
+<body style="margin:0; padding:0; background:#f4f4f4; font-family:Arial,sans-serif; color:#333;">
+  <table role="presentation" width="100%">
+    <tr>
+      <td align="center" style="padding:20px;">
+        <table width="600" style="background:#fff; border-radius:8px; overflow:hidden;">
+          <tr>
+            <td style="background:#20c997; color:#fff; padding:20px; text-align:center; font-size:20px; font-weight:bold;">
+              🎉 Welcome to Our Platform
+            </td>
+          </tr>
+          <tr>
+            <td style="padding:20px;">
+              <p>Hello @Model.FullName,</p>
+              <p>Thank you for joining us! We’re excited to have you on board.</p>
+              <p style="font-size:12px;color:#888;text-align:center;margin:0;">Your journey with us starts here.</p>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>

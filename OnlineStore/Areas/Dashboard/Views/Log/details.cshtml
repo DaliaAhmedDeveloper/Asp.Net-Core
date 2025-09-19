@@ -1,0 +1,77 @@
+@model OnlineStore.Models.ViewModels.LogViewModel
+<!--begin::App Content Header-->
+<div class="app-content-header">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-6">
+                <h3 class="mb-0">@Localizer["LogDetails"]</h3>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-end">
+                    <li class="breadcrumb-item">
+                        <a asp-area="Dashboard" asp-controller="Log" asp-action="Index">@Localizer["Logs"]</a>
+                    </li>
+                    <li class="breadcrumb-item active" aria-current="page">@Localizer["LogDetails"]</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+<!--end::App Content Header-->
+
+<div class="app-content">
+    <div class="container-fluid">
+        <div class="card card-primary card-outline mb-4">
+            <div class="card-body">
+                <div class="row g-3">
+
+                    <!-- StackTrace -->
+                    <div class="col-md-12">
+                        <label asp-for="StackTrace" class="form-label">@Localizer["StackTrace"]</label>
+                        <textarea readonly asp-for="StackTrace" class="form-control"></textarea>
+                    </div>
+
+                    <!-- InnerException -->
+                    <div class="col-md-12">
+                        <label asp-for="InnerException" class="form-label">@Localizer["InnerException"]</label>
+                        <textarea readonly asp-for="InnerException" class="form-control"></textarea>
+                    </div>
+
+                    <!-- ExceptionTypeEn -->
+                    <div class="col-md-6">
+                        <label asp-for="ExceptionTypeEn" class="form-label">@Localizer["ExceptionTypeEn"]</label>
+                        <input readonly asp-for="ExceptionTypeEn" class="form-control" />
+                    </div>
+
+                    <!-- ExceptionMessageEn -->
+                    <div class="col-md-6">
+                        <label asp-for="ExceptionMessageEn" class="form-label">@Localizer["ExceptionMessageEn"]</label>
+                        <input readonly asp-for="ExceptionMessageEn" class="form-control" />
+                    </div>
+
+                    <!-- ExceptionTypeAr -->
+                    <div class="col-md-6">
+                        <label asp-for="ExceptionTypeAr" class="form-label">@Localizer["ExceptionTypeAr"]</label>
+                        <input readonly asp-for="ExceptionTypeAr" class="form-control" />
+                    </div>
+
+                    <!-- ExceptionMessageAr -->
+                    <div class="col-md-6">
+                        <label asp-for="ExceptionMessageAr" class="form-label">@Localizer["ExceptionMessageAr"]</label>
+                        <input readonly asp-for="ExceptionMessageAr" class="form-control" />
+                    </div>
+
+                    <!-- CreatedAt -->
+                    <div class="col-md-6">
+                        <label asp-for="CreatedAt" class="form-label">@Localizer["CreatedAt"]</label>
+                        <input readonly asp-for="CreatedAt" class="form-control" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="ReviewDetails"><value>Review Details</value></data>
+  <data name="Reviews"><value>Reviews</value></data>
+  <data name="ProductName"><value>Product Name</value></data>
+  <data name="UserName"><value>User Name</value></data>
+  <data name="Accepted"><value>Accepted</value></data>
+  <data name="Comment"><value>Comment</value></data>
+  <data name="Rating"><value>Rating</value></data>
+  <data name="Attachments"><value>Attachments</value></data>
+</root>

@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="AddNewUserTitle" xml:space="preserve">
+    <value>إضافة مستخدم جديد</value>
+  </data>
+  <data name="UsersBreadcrumb" xml:space="preserve">
+    <value>المستخدمون</value>
+  </data>
+  <data name="FullName" xml:space="preserve">
+    <value>الاسم الكامل</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>البريد الإلكتروني</value>
+  </data>
+  <data name="UserType" xml:space="preserve">
+    <value>نوع المستخدم</value>
+  </data>
+  <data name="SelectUserType" xml:space="preserve">
+    <value>-- اختر نوع المستخدم --</value>
+  </data>
+  <data name="PhoneNumber" xml:space="preserve">
+    <value>رقم الهاتف</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>كلمة المرور</value>
+  </data>
+  <data name="Country" xml:space="preserve">
+    <value>الدولة</value>
+  </data>
+  <data name="SelectCountry" xml:space="preserve">
+    <value>-- اختر الدولة --</value>
+  </data>
+  <data name="State" xml:space="preserve">
+    <value>المحافظة</value>
+  </data>
+  <data name="SelectState" xml:space="preserve">
+    <value>-- اختر المحافظة --</value>
+  </data>
+  <data name="City" xml:space="preserve">
+    <value>المدينة</value>
+  </data>
+  <data name="SelectCity" xml:space="preserve">
+    <value>-- اختر المدينة --</value>
+  </data>
+  <data name="ActiveStatus" xml:space="preserve">
+    <value>نشط؟</value>
+  </data>
+  <data name="SubmitButton" xml:space="preserve">
+    <value>حفظ</value>
+  </data>
+</root>

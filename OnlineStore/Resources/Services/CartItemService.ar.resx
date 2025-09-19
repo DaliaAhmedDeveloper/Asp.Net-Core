@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="ProductAndVariantRequired" xml:space="preserve">
+    <value>معرّف المنتج ومعرّف النسخة مطلوبان.</value>
+  </data>
+  <data name="CartItemNotFound" xml:space="preserve">
+    <value>عنصر السلة بالمعرّف {0} غير موجود.</value>
+  </data>
+  <data name="ProductNotFound" xml:space="preserve">
+    <value>معرّف المنتج غير موجود.</value>
+  </data>
+  <data name="VariantNotFound" xml:space="preserve">
+    <value>معرّف النسخة غير موجود أو غير مرتبط بالمنتج.</value>
+  </data>
+</root>

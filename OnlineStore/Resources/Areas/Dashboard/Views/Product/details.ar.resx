@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="ProductDetails"><value>تفاصيل المنتج</value></data>
+  <data name="Products"><value>المنتجات</value></data>
+  <data name="Slug"><value>المعرف</value></data>
+  <data name="Type"><value>النوع</value></data>
+  <data name="Price"><value>السعر</value></data>
+  <data name="SalePrice"><value>سعر الخصم</value></data>
+  <data name="NameEn"><value>الاسم (بالإنجليزية)</value></data>
+  <data name="NameAr"><value>الاسم (بالعربية)</value></data>
+  <data name="DescriptionEn"><value>الوصف (بالإنجليزية)</value></data>
+  <data name="DescriptionAr"><value>الوصف (بالعربية)</value></data>
+  <data name="BrandEn"><value>العلامة التجارية (بالإنجليزية)</value></data>
+  <data name="BrandAr"><value>العلامة التجارية (بالعربية)</value></data>
+  <data name="Categories"><value>الأقسام</value></data>
+  <data name="Tags"><value>الوسوم</value></data>
+  <data name="Attribute"><value>الخاصية</value></data>
+  <data name="Value"><value>القيمة</value></data>
+  <data name="SelectAttribute"><value>اختر الخاصية</value></data>
+  <data name="SelectValue"><value>اختر القيمة</value></data>
+  <data name="PriceBasedAttribute"><value>السعر (حسب الخاصية)</value></data>
+  <data name="SalePriceBasedAttribute"><value>سعر الخصم (حسب الخاصية)</value></data>
+  <data name="SKU"><value>رمز التخزين (SKU)</value></data>
+  <data name="ProductImage"><value>صورة المنتج</value></data>
+  <data name="Stock"><value>المخزون</value></data>
+  <data name="Warehouse"><value>المستودع</value></data>
+  <data name="SelectWarehouse"><value>اختر المستودع</value></data>
+  <data name="TotalQuantity"><value>الكمية الكلية</value></data>
+  <data name="MinimumStockLevel"><value>الحد الأدنى للمخزون</value></data>
+  <data name="UnitCost"><value>تكلفة الوحدة</value></data>
+</root>

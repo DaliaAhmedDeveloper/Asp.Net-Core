@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="NotificationNotFound" xml:space="preserve">
+    <value>التنبيه بالمعرف {0} غير موجود.</value>
+  </data>
+</root>

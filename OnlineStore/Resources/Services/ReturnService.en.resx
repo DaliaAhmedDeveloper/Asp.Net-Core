@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+<data name="OrderNotFound" xml:space="preserve">
+  <value>Order is not found.</value>
+</data>
+<data name="OrderItemNotFound" xml:space="preserve">
+  <value>Order item is not found.</value>
+</data>
+<data name="QuantityMismatch" xml:space="preserve">
+  <value>Order item quantity does not match the quantity in the order.</value>
+</data>
+</root>

@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="Reviews"><value>التقييمات</value></data>
+  <data name="Home"><value>الرئيسية</value></data>
+  <data name="ListAllReviews"><value>عرض جميع التقييمات</value></data>
+  <data name="SearchText"><value>بحث</value></data>
+  <data name="Search"><value>بحث</value></data>
+  <data name="AddNewReview"><value>إضافة تقييم جديد</value></data>
+  <data name="ProductName"><value>اسم المنتج</value></data>
+  <data name="Rating"><value>التقييم</value></data>
+  <data name="Comment"><value>التعليق</value></data>
+  <data name="Status"><value>الحالة</value></data>
+  <data name="Actions"><value>الإجراءات</value></data>
+  <data name="Accepted"><value>مقبول</value></data>
+  <data name="Pending"><value>قيد الانتظار</value></data>
+  <data name="View"><value>عرض</value></data>
+  <data name="Edit"><value>تعديل</value></data>
+  <data name="Hide"><value>إخفاء</value></data>
+  <data name="Delete"><value>حذف</value></data>
+  <data name="ConfirmDelete"><value>هل أنت متأكد أنك تريد حذف هذا العنصر؟</value></data>
+  <data name="NoRecordsAvailable"><value>لا توجد سجلات</value></data>
+</root>

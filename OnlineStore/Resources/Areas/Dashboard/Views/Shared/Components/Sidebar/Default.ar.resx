@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="Dashboard" xml:space="preserve"><value>لوحة التحكم</value></data>
+  <data name="Users" xml:space="preserve"><value>المستخدمون</value></data>
+  <data name="AddUser" xml:space="preserve"><value>إضافة مستخدم</value></data>
+  <data name="ListUsers" xml:space="preserve"><value>عرض المستخدمين</value></data>
+  <data name="Roles" xml:space="preserve"><value>الصلاحيات</value></data>
+  <data name="Categories" xml:space="preserve"><value>الفئات</value></data>
+  <data name="AddCategory" xml:space="preserve"><value>إضافة فئة</value></data>
+  <data name="ListCategories" xml:space="preserve"><value>عرض الفئات</value></data>
+  <data name="Products" xml:space="preserve"><value>المنتجات</value></data>
+  <data name="AddProduct" xml:space="preserve"><value>إضافة منتج</value></data>
+  <data name="ListProducts" xml:space="preserve"><value>عرض المنتجات</value></data>
+  <data name="Tags" xml:space="preserve"><value>الوسوم</value></data>
+  <data name="Reviews" xml:space="preserve"><value>التقييمات</value></data>
+  <data name="Attributes" xml:space="preserve"><value>الخصائص</value></data>
+  <data name="AttributeValues" xml:space="preserve"><value>قيم الخصائص</value></data>
+  <data name="Orders" xml:space="preserve"><value>الطلبات</value></data>
+  <data name="Notifications" xml:space="preserve"><value>الإشعارات</value></data>
+  <data name="Locations" xml:space="preserve"><value>المواقع</value></data>
+  <data name="AddCountry" xml:space="preserve"><value>إضافة دولة</value></data>
+  <data name="Countries" xml:space="preserve"><value>الدول</value></data>
+  <data name="States" xml:space="preserve"><value>المحافظات</value></data>
+  <data name="Cities" xml:space="preserve"><value>المدن</value></data>
+  <data name="Coupons" xml:space="preserve"><value>الكوبونات</value></data>
+  <data name="AddCoupon" xml:space="preserve"><value>إضافة كوبون</value></data>
+  <data name="ListCoupons" xml:space="preserve"><value>عرض الكوبونات</value></data>
+  <data name="Warehouses" xml:space="preserve"><value>المستودعات</value></data>
+  <data name="AddWarehouse" xml:space="preserve"><value>إضافة مستودع</value></data>
+  <data name="ListWarehouses" xml:space="preserve"><value>عرض المستودعات</value></data>
+  <data name="SupportTickets" xml:space="preserve"><value>تذاكر الدعم</value></data>
+  <data name="Returns" xml:space="preserve"><value>المرتجعات</value></data>
+  <data name="Invoices" xml:space="preserve"><value>الفواتير</value></data>
+  <data name="Logs" xml:space="preserve"><value>السجلات</value></data>
+  <data name="Settings" xml:space="preserve"><value>الإعدادات</value></data>
+  <data name="Arabic" xml:space="preserve"><value>العربية</value></data>
+  <data name="English" xml:space="preserve"><value>الإنجليزية</value></data>
+  <data name="LogOut" xml:space="preserve"><value>تسجيل الخروج</value></data>
+</root>

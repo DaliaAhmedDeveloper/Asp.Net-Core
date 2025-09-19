@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+<data name="AddNewRole"><value>Add New Role</value></data>
+<data name="Roles"><value>Roles</value></data>
+<data name="NameEn"><value>Name (English)</value></data>
+<data name="EnterNameEn"><value>Enter role name in English</value></data>
+<data name="NameAr"><value>Name (Arabic)</value></data>
+<data name="EnterNameAr"><value>Enter role name in Arabic</value></data>
+<data name="DescriptionEn"><value>Description (English)</value></data>
+<data name="EnterDescriptionEn"><value>Enter description in English</value></data>
+<data name="DescriptionAr"><value>Description (Arabic)</value></data>
+<data name="EnterDescriptionAr"><value>Enter description in Arabic</value></data>
+<data name="Slug"><value>Slug</value></data>
+<data name="EnterSlug"><value>Enter slug</value></data>
+<data name="Permissions"><value>Permissions</value></data>
+<data name="Submit"><value>Submit</value></data>
+</root>

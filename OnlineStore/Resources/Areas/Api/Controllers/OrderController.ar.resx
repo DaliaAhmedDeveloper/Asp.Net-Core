@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="OrderAddedSuccessfully" xml:space="preserve">
+    <value>تم إضافة الطلب بنجاح.</value>
+  </data>
+
+  <data name="OrderCancelledSuccessfully" xml:space="preserve">
+    <value>تم إلغاء الطلب بنجاح.</value>
+  </data>
+
+  <data name="OrderTrackingInfo" xml:space="preserve">
+    <value>معلومات تتبع الطلب.</value>
+  </data>
+
+  <data name="OrderCancelledSuccess" xml:space="preserve">
+    <value>تم إلغاء الطلب بنجاح.</value>
+  </data>
+</root>

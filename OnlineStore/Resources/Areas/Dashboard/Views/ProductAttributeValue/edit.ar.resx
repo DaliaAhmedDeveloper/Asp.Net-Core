@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="UpdateAttributeValue" xml:space="preserve">
+    <value>تعديل قيمة الخاصية</value>
+  </data>
+  <data name="AttributeValues" xml:space="preserve">
+    <value>قيم الخصائص</value>
+  </data>
+  <data name="NameEn" xml:space="preserve">
+    <value>الاسم بالإنجليزية</value>
+  </data>
+  <data name="NameAr" xml:space="preserve">
+    <value>الاسم بالعربية</value>
+  </data>
+  <data name="Attribute" xml:space="preserve">
+    <value>الخاصية</value>
+  </data>
+  <data name="SelectAttribute" xml:space="preserve">
+    <value>-- اختر الخاصية --</value>
+  </data>
+  <data name="Code" xml:space="preserve">
+    <value>الكود / الرابط</value>
+  </data>
+  <data name="Submit" xml:space="preserve">
+    <value>حفظ</value>
+  </data>
+</root>

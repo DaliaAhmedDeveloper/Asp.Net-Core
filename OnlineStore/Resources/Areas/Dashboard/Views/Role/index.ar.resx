@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="Roles"><value>الأدوار</value></data>
+  <data name="Home"><value>الرئيسية</value></data>
+  <data name="ListAllRoles"><value>قائمة الأدوار</value></data>
+  <data name="SearchText"><value>بحث</value></data>
+  <data name="Search"><value>بحث</value></data>
+  <data name="AddNewRole"><value>إضافة دور جديد</value></data>
+  <data name="NoRecordsAvailable"><value>لا توجد سجلات</value></data>
+  <data name="No"><value>م</value></data>
+  <data name="Slug"><value>الرابط</value></data>
+  <data name="NameAr"><value>الاسم بالعربية</value></data>
+  <data name="NameEn"><value>الاسم بالإنجليزية</value></data>
+  <data name="Actions"><value>العمليات</value></data>
+  <data name="View"><value>عرض</value></data>
+  <data name="Edit"><value>تعديل</value></data>
+  <data name="Hide"><value>إخفاء</value></data>
+  <data name="Delete"><value>حذف</value></data>
+  <data name="ConfirmDelete"><value>هل أنت متأكد أنك تريد حذف هذا العنصر؟</value></data>
+</root>

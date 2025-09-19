@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="ReviewAddedSuccessfully" xml:space="preserve">
+    <value>Review Added Successfully</value>
+  </data>
+
+  <data name="ReviewDeletedSuccessfully" xml:space="preserve">
+    <value>Review Has Been Deleted Successfully</value>
+  </data>
+
+  <data name="ReviewAttachementAddedSuccessfully" xml:space="preserve">
+    <value>Review Attachement Added Successfully</value>
+  </data>
+</root>

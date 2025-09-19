@@ -1,0 +1,146 @@
+@model OnlineStore.Models.ViewModels.PagedResult<Product>
+<!--begin::App Content Header-->
+<div class="app-content-header">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-6">
+        <h3 class="mb-0">@Localizer["Products"]</h3>
+      </div>
+      <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-end">
+          <li class="breadcrumb-item"><a href="#">@Localizer["Home"]</a></li>
+          <li class="breadcrumb-item active" aria-current="page">@Localizer["Products"]</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
+<!--end::App Content Header-->
+
+<!--begin::App Content-->
+<div class="app-content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12">
+        <div class="card ">
+          <div class="card-header">
+            <div class="d-flex flex-wrap justify-content-between align-items-center">
+              <h3 class="card-title">@Localizer["ListAllProducts"]</h3>
+
+              <form asp-area="Dashboard" asp-controller="Product" asp-action="Index" method="GET">
+                <input class="form-control d-inline-block w-auto" type="text" name="searchTxt"
+                       placeholder="@Localizer["SearchText"]">
+                <button class="btn btn-success" type="submit">@Localizer["Search"]</button>
+              </form>
+
+              <a asp-area="Dashboard" asp-controller="Product" asp-action="Create" class="btn btn-success">
+                @Localizer["AddNewProduct"]
+              </a>
+            </div>
+          </div>
+
+          <div class="card-body p-0">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th style="width: 10px">@Localizer["No"]</th>
+                  <th>@Localizer["Image"]</th>
+                  <th>@Localizer["Slug"]</th>
+                  <th>@Localizer["NameInArabic"]</th>
+                  <th>@Localizer["NameInEnglish"]</th>
+                  <th>@Localizer["Categories"]</th>
+                  <th>@Localizer["Variants"]</th>
+                  <th style="width: 40px">@Localizer["Actions"]</th>
+                </tr>
+              </thead>
+              <tbody>
+                @{
+                  int serialNumber = (Model.PageNumber - 1) * Model.PageSize + 1;
+                }
+                @if (Model == null || !Model.Items.Any())
+                {
+                  <p class="p-4">@Localizer["NoRecords"]</p>
+                }
+                else
+                {
+                  foreach (var Product in Model.Items)
+                  {
+                    <tr class="align-middle">
+                      <td>
+                        @serialNumber
+                        @{ serialNumber++; }
+                      </td>
+                      <td><img width="50" src="@Product.ImageUrl" alt=""></td>
+                      <td>@Product.Slug</td>
+                      <td>@Product.Translations.FirstOrDefault(t => t.LanguageCode == "ar")?.Name</td>
+                      <td>@Product.Translations.FirstOrDefault(t => t.LanguageCode == "en")?.Name</td>
+                      <td>
+                        @foreach (var Category in Product.Categories)
+                        {
+                          <a asp-controller="Category" asp-action="Details" asp-route-Id="@Category.Id"
+                             class="btn btn-sm btn-dark p-1 m-1">
+                            @Category.Translations.FirstOrDefault(tr => tr.LanguageCode == "en")?.Name
+                          </a>
+                        }
+                      </td>
+                      <td>
+                        <a asp-controller="ProductVariant" asp-action="Index" asp-route-productId="@Product.Id"
+                           class="btn m-1 rounded btn-warning btn-sm" title="@Localizer["View"]">
+                          @Localizer["Variants"]
+                        </a>
+                      </td>
+                      <td>
+                        <div class="btn-group">
+                          <!-- Show -->
+                          <a asp-action="Details" asp-route-id="@Product.Id"
+                             class="btn m-1 rounded btn-info btn-sm" title="@Localizer["View"]">
+                            <i class="bi bi-eye-fill"></i>
+                          </a>
+
+                          <!-- Edit -->
+                          <a asp-action="Edit" asp-route-id="@Product.Id"
+                             class="btn m-1 rounded btn-warning btn-sm" title="@Localizer["Edit"]">
+                            <i class="bi bi-pencil-square"></i>
+                          </a>
+
+                          <!-- Hide -->
+                          <a asp-action="Hide" asp-route-id="@Product.Id"
+                             class="btn m-1 hide-row rounded btn-secondary btn-sm" title="@Localizer["Hide"]">
+                            <i class="bi bi-eye-slash-fill"></i>
+                          </a>
+
+                          <!-- Delete -->
+                          <form asp-action="Delete" asp-route-id="@Product.Id" method="post" class="d-inline">
+                            <button type="submit" class="btn btn-danger rounded m-1 btn-sm"
+                                    title="@Localizer["Delete"]"
+                                    onclick="return confirm('@Localizer["DeleteConfirmation"]');">
+                              <i class="bi bi-trash-fill"></i>
+                            </button>
+                          </form>
+                        </div>
+                      </td>
+                    </tr>
+                  }
+                }
+              </tbody>
+            </table>
+
+            @if (Model?.TotalPages > 1)
+            {
+              <nav class="card-header">
+                <ul class="pagination">
+                  @for (int i = 1; i <= Model?.TotalPages; i++)
+                  {
+                    <li class="page-item @(i == Model.PageNumber ? "active" : "")">
+                      <a class="page-link" asp-action="Index" asp-route-page="@i">@i</a>
+                    </li>
+                  }
+                </ul>
+              </nav>
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="UpdateProductAttribute" xml:space="preserve">
+    <value>تعديل خاصية المنتج</value>
+  </data>
+  <data name="ProductAttributes" xml:space="preserve">
+    <value>خصائص المنتج</value>
+  </data>
+  <data name="NameEn" xml:space="preserve">
+    <value>الاسم بالإنجليزية</value>
+  </data>
+  <data name="NameAr" xml:space="preserve">
+    <value>الاسم بالعربية</value>
+  </data>
+  <data name="Code" xml:space="preserve">
+    <value>الكود / الرابط</value>
+  </data>
+  <data name="Submit" xml:space="preserve">
+    <value>حفظ</value>
+  </data>
+</root>

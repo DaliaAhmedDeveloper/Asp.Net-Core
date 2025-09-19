@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+<data name="UpdateState"><value>Update State</value></data>
+<data name="States"><value>States</value></data>
+<data name="Code"><value>Code</value></data>
+<data name="Country"><value>Country</value></data>
+<data name="SelectCountry"><value>Select Country</value></data>
+<data name="NameEn"><value>Name (English)</value></data>
+<data name="NameAr"><value>Name (Arabic)</value></data>
+<data name="Submit"><value>Submit</value></data>
+</root>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="InvalidToken" xml:space="preserve">
+    <value>This token is not correct.</value>
+  </data>
+  <data name="TokenExpired" xml:space="preserve">
+    <value>This token has expired.</value>
+  </data>
+</root>

@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  
+  <data name="Tags"><value>Tags</value></data>
+<data name="Home"><value>Home</value></data>
+<data name="ListAllTags"><value>List All Tags</value></data>
+<data name="SearchText"><value>Search Text</value></data>
+<data name="Search"><value>Search</value></data>
+<data name="AddNewTag"><value>Add New Tag</value></data>
+<data name="NoRecordsAvailable"><value>No records available.</value></data>
+<data name="Slug"><value>Slug</value></data>
+<data name="NameAr"><value>Name In Arabic</value></data>
+<data name="NameEn"><value>Name In English</value></data>
+<data name="Products"><value>Products</value></data>
+<data name="Actions"><value>Actions</value></data>
+<data name="Edit"><value>Edit</value></data>
+<data name="Hide"><value>Hide</value></data>
+<data name="Delete"><value>Delete</value></data>
+<data name="ConfirmDelete"><value>Are you sure you want to delete this item?</value></data>
+</root>
+

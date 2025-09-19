@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="AddNewWarehouse"><value>Add New Warehouse</value></data>
+  <data name="Warehouses"><value>Warehouses</value></data>
+  <data name="Code"><value>Code</value></data>
+  <data name="Name"><value>Name</value></data>
+  <data name="Address"><value>Address</value></data>
+  <data name="City"><value>City</value></data>
+  <data name="State"><value>State</value></data>
+  <data name="Country"><value>Country</value></data>
+  <data name="ZipCode"><value>Zip Code</value></data>
+  <data name="Phone"><value>Phone</value></data>
+  <data name="Email"><value>Email</value></data>
+  <data name="Active"><value>Active?</value></data>
+  <data name="Default"><value>Default?</value></data>
+  <data name="Submit"><value>Submit</value></data>
+</root>

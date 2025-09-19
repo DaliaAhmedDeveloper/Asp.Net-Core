@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="UpdateOrderStatus"><value>Update Order Status</value></data>
+  <data name="Orders"><value>Orders</value></data>
+  <data name="TransactionId"><value>Transaction Id</value></data>
+  <data name="OrderStatus"><value>Order Status</value></data>
+  <data name="SelectStatus"><value>-- Select Status --</value></data>
+  <data name="UpdateStatus"><value>Update Status</value></data>
+  <data name="Cancel"><value>Cancel</value></data>
+</root>

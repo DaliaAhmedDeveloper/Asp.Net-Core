@@ -1,0 +1,110 @@
+@model OnlineStore.Models.ViewModels.PagedResult<Order>
+@{
+    ViewData["Title"] = Localizer["Orders"];
+}
+<!--begin::App Content Header-->
+<div class="app-content-header">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-6">
+        <h3 class="mb-0">@ViewData["Title"]</h3>
+      </div>
+      <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-end">
+          <li class="breadcrumb-item"><a asp-area="Dashboard" asp-controller="Home" asp-action="Index">@Localizer["Home"]</a></li>
+          <li class="breadcrumb-item active" aria-current="page">@Localizer["Orders"]</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
+<!--end::App Content Header-->
+
+<!--begin::App Content-->
+<div class="app-content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12">
+        <div class="card">
+          <div class="card-header">
+            <div class="d-flex flex-wrap justify-content-between align-items-center">
+              <h3 class="card-title">@Localizer["ListAllOrders"]</h3>
+              <form asp-area="Dashboard" asp-controller="Order" asp-action="Index" method="GET" class="d-flex">
+                <input class="form-control d-inline-block w-auto me-2" type="text" name="searchTxt" placeholder="@Localizer["SearchText"]">
+                <button class="btn btn-success" type="submit">@Localizer["Search"]</button>
+              </form>
+            </div>
+          </div>
+          <div class="card-body p-0">
+            @if (Model == null || !Model.Items.Any())
+            {
+              <p class="p-4">@Localizer["NoRecordsAvailable"]</p>
+            }
+            else
+            {
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th style="width: 10px">#</th>
+                    <th>@Localizer["OrderNumber"]</th>
+                    <th>@Localizer["UserName"]</th>
+                    <th>@Localizer["UserEmail"]</th>
+                    <th>@Localizer["CreatedAt"]</th>
+                    <th style="width: 120px">@Localizer["Actions"]</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  @{
+                    int serialNumber = (Model.PageNumber - 1) * Model.PageSize + 1;
+                  }
+                  @foreach (var order in Model.Items)
+                  {
+                    <tr class="align-middle">
+                      <td>@serialNumber</td>
+                      <td>@order.ReferenceNumber</td>
+                      <td>@order.User.FullName</td>
+                      <td>@order.User.Email</td>
+                      <td>@order.CreatedAt</td>
+                      <td>
+                        <div class="btn-group">
+                          <a asp-action="Details" asp-route-id="@order.Id" class="btn btn-info btn-sm m-1" title="@Localizer["View"]">
+                            <i class="bi bi-eye-fill"></i>
+                          </a>
+                          <a asp-action="Edit" asp-route-id="@order.Id" class="btn btn-warning btn-sm m-1" title="@Localizer["Edit"]">
+                            <i class="bi bi-pencil-square"></i>
+                          </a>
+                          <a asp-action="Hide" asp-route-id="@order.Id" class="btn btn-secondary btn-sm m-1" title="@Localizer["Hide"]">
+                            <i class="bi bi-eye-slash-fill"></i>
+                          </a>
+                          <form asp-action="Delete" asp-route-id="@order.Id" method="post" class="d-inline">
+                            <button type="submit" class="btn btn-danger btn-sm m-1" title="@Localizer["Delete"]" onclick="return confirm('@Localizer["ConfirmDelete"]');">
+                              <i class="bi bi-trash-fill"></i>
+                            </button>
+                          </form>
+                        </div>
+                      </td>
+                    </tr>
+                    serialNumber++;
+                  }
+                </tbody>
+              </table>
+            }
+            @if (Model?.TotalPages > 1)
+            {
+              <nav class="card-header">
+                <ul class="pagination">
+                  @for (int i = 1; i <= Model?.TotalPages; i++)
+                  {
+                    <li class="page-item @(i == Model.PageNumber ? "active" : "")">
+                      <a class="page-link" asp-action="Index" asp-route-page="@i">@i</a>
+                    </li>
+                  }
+                </ul>
+              </nav>
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="Tags"><value>الوسوم</value></data>
+  <data name="Home"><value>الرئيسية</value></data>
+  <data name="ListAllTags"><value>عرض جميع الوسوم</value></data>
+  <data name="SearchText"><value>بحث</value></data>
+  <data name="Search"><value>بحث</value></data>
+  <data name="AddNewTag"><value>إضافة وسم جديد</value></data>
+  <data name="NoRecordsAvailable"><value>لا توجد سجلات</value></data>
+  <data name="Slug"><value>الرمز التعريفي</value></data>
+  <data name="NameAr"><value>الاسم بالعربية</value></data>
+  <data name="NameEn"><value>الاسم بالإنجليزية</value></data>
+  <data name="Products"><value>المنتجات</value></data>
+  <data name="Actions"><value>الإجراءات</value></data>
+  <data name="Edit"><value>تعديل</value></data>
+  <data name="Hide"><value>إخفاء</value></data>
+  <data name="Delete"><value>حذف</value></data>
+  <data name="ConfirmDelete"><value>هل أنت متأكد من حذف هذا العنصر؟</value></data>
+</root>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="EmailAndPasswordRequired" xml:space="preserve">
+    <value>Email and password are required.</value>
+  </data>
+  <data name="UserNotFound" xml:space="preserve">
+    <value>User is not found.</value>
+  </data>
+  <data name="ExternalLoginFailed" xml:space="preserve">
+    <value>External login failed.</value>
+  </data>
+  <data name="UnsupportedProvider" xml:space="preserve">
+    <value>Unsupported provider.</value>
+  </data>
+  <data name="EmailNotFound" xml:space="preserve">
+    <value>Email is not found.</value>
+  </data>
+  <data name="RefreshTokenNotFound" xml:space="preserve">
+    <value>Refresh token is not found.</value>
+  </data>
+  <data name="UserWithIdNotFound" xml:space="preserve">
+    <value>User with ID {0} not found.</value>
+  </data>
+  <data name="CountryStateCityRequired" xml:space="preserve">
+    <value>Country, State, and City are required.</value>
+  </data>
+</root>

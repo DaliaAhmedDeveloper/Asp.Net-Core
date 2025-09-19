@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="Dashboard" xml:space="preserve">
+    <value>Dashboard</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>Home</value>
+  </data>
+  <data name="NewOrdersThisMonth" xml:space="preserve">
+    <value>New Orders This Month</value>
+  </data>
+  <data name="TotalOrders" xml:space="preserve">
+    <value>Total Count</value>
+  </data>
+  <data name="Coupons" xml:space="preserve">
+    <value>Coupons</value>
+  </data>
+  <data name="UserRegistrationsThisMonth" xml:space="preserve">
+    <value>User Registrations This Month</value>
+  </data>
+  <data name="TotalUsers" xml:space="preserve">
+    <value>Total Count</value>
+  </data>
+  <data name="UniqueVisitors" xml:space="preserve">
+    <value>Unique Visitors</value>
+  </data>
+  <data name="LatestMembers" xml:space="preserve">
+    <value>Latest Members</value>
+  </data>
+  <data name="NewMembersBadge" xml:space="preserve">
+    <value>{0} New Members</value>
+  </data>
+  <data name="ViewAllUsers" xml:space="preserve">
+    <value>View All Users</value>
+  </data>
+  <data name="TotalIncome" xml:space="preserve">
+    <value>Total Income</value>
+  </data>
+  <data name="TotalIncomeThisMonth" xml:space="preserve">
+    <value>Total Income This Month</value>
+  </data>
+  <data name="Returns" xml:space="preserve">
+    <value>Returns</value>
+  </data>
+  <data name="LatestOrders" xml:space="preserve">
+    <value>Latest Orders</value>
+  </data>
+  <data name="OrderNumber" xml:space="preserve">
+    <value>Order Number</value>
+  </data>
+  <data name="PaymentMethod" xml:space="preserve">
+    <value>Payment Method</value>
+  </data>
+  <data name="Status" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="FinalAmount" xml:space="preserve">
+    <value>Final Amount</value>
+  </data>
+   <data name="MoreInfo" xml:space="preserve">
+    <value>More Info</value>
+  </data>
+  <data name="ViewAllOrders" xml:space="preserve">
+    <value>View All Orders</value>
+  </data>
+  <data name="Warehouses" xml:space="preserve">
+    <value>WareHouses</value>
+  </data>
+  <data name="SupportTickets" xml:space="preserve">
+    <value>Support Tickets</value>
+  </data>
+  <data name="RecentlyAddedProducts" xml:space="preserve">
+    <value>Recently Added Products</value>
+  </data>
+  <data name="ViewAllProducts" xml:space="preserve">
+    <value>View All Products</value>
+  </data>
+  <data name="TotalStock" xml:space="preserve">
+    <value>Total Stock</value>
+  </data>
+</root>

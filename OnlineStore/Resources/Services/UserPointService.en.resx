@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="AlreadyGainedToday" xml:space="preserve">
+    <value>You already gained your points today!</value>
+  </data>
+  <data name="NotEnoughPoints" xml:space="preserve">
+    <value>User points not enough.</value>
+  </data>
+</root>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="NotificationNotFound" xml:space="preserve">
+    <value>Notification with ID {0} not found.</value>
+  </data>
+</root>

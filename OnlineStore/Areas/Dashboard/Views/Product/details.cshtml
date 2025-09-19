@@ -1,0 +1,194 @@
+@model OnlineStore.Models.ViewModels.ProductViewModel
+@using OnlineStore.Models.Enums;
+@{
+  ViewData["Title"] = Localizer["ProductDetails"];
+}
+
+<div class="app-content-header">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-6">
+        <h3 class="mb-0">@Localizer["ProductDetails"]</h3>
+      </div>
+      <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-end">
+          <li class="breadcrumb-item">
+            <a asp-area="Dashboard" asp-controller="Product" asp-action="Index">@Localizer["Products"]</a>
+          </li>
+          <li class="breadcrumb-item active" aria-current="page">@Localizer["ProductDetails"]</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="app-content">
+  <div class="container-fluid">
+    <div class="card card-primary card-outline mb-4">
+        <div class="card-body">
+        <div class="row g-3">
+
+            <!-- Slug -->
+            <div class="col-md-6">
+              <label asp-for="Slug" class="form-label">@Localizer["Slug"]</label>
+              <input readonly asp-for="Slug" class="form-control" />
+            </div>
+
+            <!-- Type -->
+            <div class="col-md-6">
+              <label asp-for="Type" class="form-label">@Localizer["Type"]</label>
+              <select disabled asp-for="Type" class="form-select" asp-items="Html.GetEnumSelectList<ProductType>()">
+              </select>
+            </div>
+
+            <!-- Price -->
+            <div class="col-md-6">
+              <label asp-for="Price" class="form-label">@Localizer["Price"]</label>
+              <input readonly asp-for="Price" class="form-control" />
+            </div>
+
+            <!-- Sale Price -->
+            <div class="col-md-6">
+              <label asp-for="SalePrice" class="form-label">@Localizer["SalePrice"]</label>
+              <input readonly asp-for="SalePrice" class="form-control" />
+            </div>
+
+            <!-- Name En -->
+            <div class="col-md-6">
+              <label asp-for="NameEn" class="form-label">@Localizer["NameEn"]</label>
+              <input readonly asp-for="NameEn" class="form-control" />
+            </div>
+
+            <!-- Name Ar -->
+            <div class="col-md-6">
+              <label asp-for="NameAr" class="form-label">@Localizer["NameAr"]</label>
+              <input readonly asp-for="NameAr" class="form-control" />
+            </div>
+
+            <!-- Description En -->
+            <div class="col-md-6">
+              <label asp-for="DescriptionEn" class="form-label">@Localizer["DescriptionEn"]</label>
+              <textarea readonly asp-for="DescriptionEn" class="form-control"></textarea>
+            </div>
+
+            <!-- Description Ar -->
+            <div class="col-md-6">
+              <label asp-for="DescriptionAr" class="form-label">@Localizer["DescriptionAr"]</label>
+              <textarea readonly asp-for="DescriptionAr" class="form-control"></textarea>
+            </div>
+
+            <!-- Brand En -->
+            <div class="col-md-6">
+              <label asp-for="BrandEn" class="form-label">@Localizer["BrandEn"]</label>
+              <input readonly asp-for="BrandEn" class="form-control" />
+            </div>
+
+            <!-- Brand Ar -->
+            <div class="col-md-6">
+              <label asp-for="BrandAr" class="form-label">@Localizer["BrandAr"]</label>
+              <input readonly asp-for="BrandAr" class="form-control" />
+            </div>
+
+            <!-- Categories -->
+            <div class="col-md-6">
+              <label class="form-label">@Localizer["Categories"]</label>
+              <select disabled asp-for="SelectedCategoryIds" class="form-select select2"
+                asp-items="@(new SelectList(ViewBag.categories, "Id", "Slug"))" multiple>
+              </select>
+            </div>
+
+            <!-- Tags -->
+            <div class="col-md-6">
+              <label class="form-label">@Localizer["Tags"]</label>
+              <select disabled asp-for="SelectedTagIds" class="form-select select2"
+                asp-items="@(new SelectList(ViewBag.tags, "Id", "Code"))" multiple>
+              </select>
+            </div>
+
+            <!-- Attribute -->
+            <div class="col-md-6">
+              <label class="form-label">@Localizer["Attribute"]</label>
+              <select disabled asp-for="AttributeId" class="form-select"
+                asp-items="@(new SelectList(ViewBag.attributes, "Id", "Code"))">
+                <option value="">-- @Localizer["SelectAttribute"] --</option>
+              </select>
+            </div>
+
+            <!-- Value -->
+            <div class="col-md-6">
+              <label class="form-label">@Localizer["Value"]</label>
+              <select disabled asp-for="ValueId" class="form-select"
+                asp-items="@(new SelectList(ViewBag.values, "Id", "Code"))">
+                <option value="">-- @Localizer["SelectValue"] --</option>
+              </select>
+            </div>
+
+            <!-- Price Based Attribute -->
+            <div class="col-md-6">
+              <label asp-for="PriceBasedAttribute" class="form-label">@Localizer["PriceBasedAttribute"]</label>
+              <input readonly asp-for="PriceBasedAttribute" class="form-control" />
+            </div>
+
+            <!-- Sale Price Based Attribute -->
+            <div class="col-md-6">
+              <label asp-for="SalePriceBasedAttribute" class="form-label">@Localizer["SalePriceBasedAttribute"]</label>
+              <input readonly asp-for="SalePriceBasedAttribute" class="form-control" />
+            </div>
+
+            <!-- SKU -->
+            <div class="col-md-6">
+              <label asp-for="SKU" class="form-label">@Localizer["SKU"]</label>
+              <input readonly asp-for="SKU" class="form-control" />
+            </div>
+
+            <!-- Image -->
+            <div class="col-md-6">
+              <label asp-for="ImageFile" class="form-label">@Localizer["ProductImage"]</label>
+              <input readonly asp-for="ImageFile" type="file" class="form-control" />
+              @if (!string.IsNullOrEmpty(Model.ImageUrl))
+              {
+                <div class="mt-2">
+                  <img src="@Model.ImageUrl" alt="Product Image" class="img-thumbnail" width="150" />
+                </div>
+              }
+            </div>
+
+            <div class="col-12">
+              <h6>@Localizer["Stock"]</h6>
+            </div>
+
+            <!-- Warehouse -->
+            <div class="col-md-6">
+              <label class="form-label">@Localizer["Warehouse"]</label>
+              <select disabled asp-for="WarehouseId" class="form-select"
+                asp-items="@(new SelectList(ViewBag.warehouses, "Id", "Name"))">
+                <option value="">-- @Localizer["SelectWarehouse"] --</option>
+              </select>
+            </div>
+
+            <!-- Total Quantity -->
+            <div class="col-md-6">
+              <label asp-for="TotalQuantity" class="form-label">@Localizer["TotalQuantity"]</label>
+              <input readonly asp-for="TotalQuantity" class="form-control" type="number" />
+            </div>
+
+            <!-- Minimum Stock Level -->
+            <div class="col-md-6">
+              <label asp-for="MinimumStockLevel" class="form-label">@Localizer["MinimumStockLevel"]</label>
+              <input readonly asp-for="MinimumStockLevel" class="form-control" type="number" />
+            </div>
+
+            <!-- Unit Cost -->
+            <div class="col-md-6">
+              <label asp-for="UnitCost" class="form-label">@Localizer["UnitCost"]</label>
+              <input readonly asp-for="UnitCost" class="form-control" type="number" step="0.01" />
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
+</div>
+
+@section Scripts {
+  <partial name="_ValidationScriptsPartial" />
+}

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="UserNotFound" xml:space="preserve">
+    <value>User is not found.</value>
+  </data>
+  <data name="ProfileUpdatedSuccessfully" xml:space="preserve">
+    <value>Profile updated successfully.</value>
+  </data>
+  <data name="PasswordUpdatedSuccessfully" xml:space="preserve">
+    <value>Password updated successfully.</value>
+  </data>
+  <data name="CartNotFound" xml:space="preserve">
+    <value>Cart is not found. Please start adding products to create your cart.</value>
+  </data>
+  <data name="WalletNotFound" xml:space="preserve">
+    <value>Wallet is not found. Start creating transactions to create your wallet.</value>
+  </data>
+</root>

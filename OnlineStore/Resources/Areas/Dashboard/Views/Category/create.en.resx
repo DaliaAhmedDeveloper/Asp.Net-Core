@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="PageTitle" xml:space="preserve">
+    <value>Add New Category</value>
+  </data>
+  <data name="Categories" xml:space="preserve">
+    <value>Categories</value>
+  </data>
+  <data name="ParentCategory" xml:space="preserve">
+    <value>Parent Category</value>
+  </data>
+  <data name="SelectParent" xml:space="preserve">
+    <value>-- Select Parent --</value>
+  </data>
+  <data name="CategoryImage" xml:space="preserve">
+    <value>Category Image</value>
+  </data>
+  <data name="IsDeal" xml:space="preserve">
+    <value>Is Deal?</value>
+  </data>
+  <data name="Submit" xml:space="preserve">
+    <value>Submit</value>
+  </data>
+</root>

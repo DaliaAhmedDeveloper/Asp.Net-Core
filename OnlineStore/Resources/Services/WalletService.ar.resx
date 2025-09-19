@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="EmailAndPasswordRequired" xml:space="preserve">
+    <value>البريد الإلكتروني وكلمة المرور مطلوبان.</value>
+  </data>
+  <data name="UserNotFound" xml:space="preserve">
+    <value>المستخدم غير موجود.</value>
+  </data>
+  <data name="ExternalLoginFailed" xml:space="preserve">
+    <value>فشل تسجيل الدخول الخارجي.</value>
+  </data>
+  <data name="UnsupportedProvider" xml:space="preserve">
+    <value>مزود غير مدعوم.</value>
+  </data>
+  <data name="EmailNotFound" xml:space="preserve">
+    <value>البريد الإلكتروني غير موجود.</value>
+  </data>
+  <data name="RefreshTokenNotFound" xml:space="preserve">
+    <value>رمز التحديث غير موجود.</value>
+  </data>
+  <data name="UserWithIdNotFound" xml:space="preserve">
+    <value>المستخدم برقم {0} غير موجود.</value>
+  </data>
+  <data name="CountryStateCityRequired" xml:space="preserve">
+    <value>البلد، المحافظة، والمدينة مطلوبة.</value>
+  </data>
+</root>

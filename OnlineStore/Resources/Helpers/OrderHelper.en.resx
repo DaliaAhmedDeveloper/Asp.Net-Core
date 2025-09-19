@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="ItemOutOfStock" xml:space="preserve">
+    <value>Item {0} is out of stock.</value>
+  </data>
+  <data name="NoEnoughStock" xml:space="preserve">
+    <value>No enough stock for item {0}.</value>
+  </data>
+  <data name="ProductNotFound" xml:space="preserve">
+    <value>Product not found.</value>
+  </data>
+  <data name="UserNotFound" xml:space="preserve">
+    <value>User not found.</value>
+  </data>
+  <data name="OrderReceivedSubject" xml:space="preserve">
+    <value>Order Received</value>
+  </data>
+  <data name="OrderReceivedMessage" xml:space="preserve">
+    <value>We received your order with number {0}.</value>
+  </data>
+  <data name="NewOrderSubject" xml:space="preserve">
+    <value>New Order Submitted</value>
+  </data>
+  <data name="NewOrderMessage" xml:space="preserve">
+    <value>New order with number {0}. Please check it inside the dashboard.</value>
+  </data>
+  <data name="OrderStatusSubject" xml:space="preserve">
+    <value>Order {0} {1}</value>
+  </data>
+  <data name="OrderStatusMessage" xml:space="preserve">
+    <value>Your order with number {0} has been {1}.</value>
+  </data>
+  <data name="OrderDeliveredMessage" xml:space="preserve">
+    <value>Your order with number {0} has been {1}. You can now add reviews to your items.</value>
+  </data>
+</root>

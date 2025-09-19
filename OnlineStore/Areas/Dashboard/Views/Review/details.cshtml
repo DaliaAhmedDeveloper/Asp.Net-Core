@@ -1,0 +1,80 @@
+@model OnlineStore.Models.Dtos.Responses.ReviewDto
+@{
+    ViewData["Title"] = Localizer["ReviewDetails"];
+}
+
+<div class="app-content-header">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-6">
+                <h3 class="mb-0">@ViewData["Title"]</h3>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-end">
+                    <li class="breadcrumb-item">
+                        <a asp-area="Dashboard" asp-controller="Review" asp-action="Index">
+                            @Localizer["Reviews"]
+                        </a>
+                    </li>
+                    <li class="breadcrumb-item active" aria-current="page">@ViewData["Title"]</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="app-content">
+    <div class="container-fluid">
+        <div class="card card-primary card-outline mb-4">
+            <div class="card-body">
+                <div class="row g-3">
+
+                    <!-- Product Name -->
+                    <div class="col-md-6">
+                        <label asp-for="ProductName" class="form-label">@Localizer["ProductName"]</label>
+                        <input readonly asp-for="ProductName" class="form-control" />
+                    </div>
+
+                    <!-- User Name -->
+                    <div class="col-md-6">
+                        <label asp-for="User.FullName" class="form-label">@Localizer["UserName"]</label>
+                        <input readonly asp-for="User.FullName" class="form-control" />
+                    </div>
+
+                    <!-- Accepted -->
+                    <div class="col-md-6">
+                        <label asp-for="Accepted" class="form-label">@Localizer["Accepted"]</label>
+                        <input readonly asp-for="Accepted" class="form-control" />
+                    </div>
+
+                    <!-- Comment -->
+                    <div class="col-md-6">
+                        <label asp-for="Comment" class="form-label">@Localizer["Comment"]</label>
+                        <textarea readonly asp-for="Comment" class="form-control"></textarea>
+                    </div>
+
+                    <!-- Rating -->
+                    <div class="col-md-6">
+                        <label asp-for="Rating" class="form-label">@Localizer["Rating"]</label>
+                        <textarea readonly asp-for="Rating" class="form-control"></textarea>
+                    </div>
+
+                    <!-- Attachments -->
+                    <div class="col-md-6">
+                        <label class="form-label">@Localizer["Attachments"]</label>
+                        @foreach(var att in Model.Attachments)
+                        {
+                            <br />
+                            <img width="150" src="@att.ImageUrl" alt="" class="mt-4" />
+                        }
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

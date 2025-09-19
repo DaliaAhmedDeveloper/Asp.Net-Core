@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="Logs" xml:space="preserve"><value>السجلات</value></data>
+  <data name="Home" xml:space="preserve"><value>الرئيسية</value></data>
+  <data name="ListAllLogs" xml:space="preserve"><value>عرض جميع السجلات</value></data>
+  <data name="SearchText" xml:space="preserve"><value>بحث</value></data>
+  <data name="Search" xml:space="preserve"><value>بحث</value></data>
+  <data name="AddNewLog" xml:space="preserve"><value>إضافة سجل جديد</value></data>
+  <data name="NoRecords" xml:space="preserve"><value>لا توجد سجلات</value></data>
+  <data name="ExceptionTitle" xml:space="preserve"><value>عنوان الاستثناء</value></data>
+  <data name="ExceptionMessage" xml:space="preserve"><value>رسالة الاستثناء</value></data>
+  <data name="CreatedAt" xml:space="preserve"><value>تاريخ الإنشاء</value></data>
+  <data name="Actions" xml:space="preserve"><value>العمليات</value></data>
+  <data name="View" xml:space="preserve"><value>عرض</value></data>
+  <data name="Hide" xml:space="preserve"><value>إخفاء</value></data>
+  <data name="Delete" xml:space="preserve"><value>حذف</value></data>
+  <data name="ConfirmDelete" xml:space="preserve"><value>هل أنت متأكد من حذف هذا العنصر؟</value></data>
+</root>

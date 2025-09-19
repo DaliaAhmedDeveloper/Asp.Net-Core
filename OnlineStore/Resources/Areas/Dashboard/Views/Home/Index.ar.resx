@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="Dashboard" xml:space="preserve">
+    <value>لوحة التحكم</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>الرئيسية</value>
+  </data>
+  <data name="NewOrdersThisMonth" xml:space="preserve">
+    <value>الطلبات الجديدة هذا الشهر</value>
+  </data>
+  <data name="TotalOrders" xml:space="preserve">
+    <value>إجمالي عدد الطلبات</value>
+  </data>
+  <data name="Coupons" xml:space="preserve">
+    <value>الكوبونات</value>
+  </data>
+  <data name="UserRegistrationsThisMonth" xml:space="preserve">
+    <value>تسجيل المستخدمين هذا الشهر</value>
+  </data>
+  <data name="TotalUsers" xml:space="preserve">
+    <value>إجمالي عدد المستخدمين</value>
+  </data>
+  <data name="UniqueVisitors" xml:space="preserve">
+    <value>زوار فريدون</value>
+  </data>
+  <data name="LatestMembers" xml:space="preserve">
+    <value>أحدث الأعضاء</value>
+  </data>
+  <data name="NewMembersBadge" xml:space="preserve">
+    <value>{0} أعضاء جدد</value>
+  </data>
+  <data name="ViewAllUsers" xml:space="preserve">
+    <value>عرض جميع المستخدمين</value>
+  </data>
+  <data name="TotalIncome" xml:space="preserve">
+    <value>إجمالي الدخل</value>
+  </data>
+  <data name="TotalIncomeThisMonth" xml:space="preserve">
+    <value>إجمالي الدخل هذا الشهر</value>
+  </data>
+  <data name="Returns" xml:space="preserve">
+    <value>مرتجعات</value>
+  </data>
+  <data name="LatestOrders" xml:space="preserve">
+    <value>أحدث الطلبات</value>
+  </data>
+  <data name="OrderNumber" xml:space="preserve">
+    <value>رقم الطلب</value>
+  </data>
+  <data name="PaymentMethod" xml:space="preserve">
+    <value>طريقة الدفع</value>
+  </data>
+    <data name="MoreInfo" xml:space="preserve">
+    <value>المزيد</value>
+  </data>
+  <data name="Status" xml:space="preserve">
+    <value>الحالة</value>
+  </data>
+  <data name="FinalAmount" xml:space="preserve">
+    <value>المبلغ النهائي</value>
+  </data>
+  <data name="ViewAllOrders" xml:space="preserve">
+    <value>عرض جميع الطلبات</value>
+  </data>
+  <data name="Warehouses" xml:space="preserve">
+    <value>المستودعات</value>
+  </data>
+  <data name="SupportTickets" xml:space="preserve">
+    <value>تذاكر الدعم</value>
+  </data>
+  <data name="RecentlyAddedProducts" xml:space="preserve">
+    <value>أحدث المنتجات المضافة</value>
+  </data>
+  <data name="ViewAllProducts" xml:space="preserve">
+    <value>عرض جميع المنتجات</value>
+  </data>
+  <data name="TotalStock" xml:space="preserve">
+    <value>إجمالي المخزون</value>
+  </data>
+</root>

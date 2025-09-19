@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="OrderNotFound" xml:space="preserve">
+    <value>الطلب غير موجود.</value>
+  </data>
+  <data name="AddressNotFound" xml:space="preserve">
+    <value>رقم العنوان غير صحيح.</value>
+  </data>
+  <data name="ShippingMethodNotFound" xml:space="preserve">
+    <value>رقم طريقة الشحن غير صحيح.</value>
+  </data>
+  <data name="CannotCancelOrder" xml:space="preserve">
+    <value>لا يمكنك إلغاء الطلب بعد شحنه.</value>
+  </data>
+</root>

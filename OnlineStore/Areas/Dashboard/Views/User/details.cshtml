@@ -1,0 +1,97 @@
+@model OnlineStore.Models.ViewModels.UserViewModel
+
+
+@{
+    ViewData["Title"] = Localizer["UserDetailsTitle"];
+}
+<div class="app-content-header">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-6">
+                <h3 class="mb-0">@ViewData["Title"]</h3>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-end">
+                    <li class="breadcrumb-item">
+                        <a asp-area="Dashboard" asp-controller="User" asp-action="Index">
+                            @Localizer["UsersBreadcrumb"]
+                        </a>
+                    </li>
+                    <li class="breadcrumb-item active" aria-current="page">@ViewData["Title"]</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="app-content">
+    <div class="container-fluid">
+        <div class="card card-primary card-outline mb-4">
+            <div class="card-body">
+                <div class="row g-3">
+
+                    <!-- Full Name -->
+                    <div class="col-md-6">
+                        <label asp-for="FullName" class="form-label">@Localizer["FullName"]</label>
+                        <input readonly asp-for="FullName" class="form-control" />
+                    </div>
+
+                    <!-- Email -->
+                    <div class="col-md-6">
+                        <label asp-for="Email" class="form-label">@Localizer["Email"]</label>
+                        <input readonly asp-for="Email" class="form-control" />
+                    </div>
+
+                    <!-- User Type -->
+                    <div class="col-md-6">
+                        <label asp-for="UserType" class="form-label">@Localizer["UserType"]</label>
+                        <input readonly asp-for="UserType" class="form-control" />
+                    </div>
+
+                    <!-- Provider -->
+                    <div class="col-md-6">
+                        <label asp-for="Provider" class="form-label">@Localizer["Provider"]</label>
+                        <input readonly asp-for="Provider" class="form-control" />
+                    </div>
+
+                    <!-- Phone Number -->
+                    <div class="col-md-6">
+                        <label asp-for="PhoneNumber" class="form-label">@Localizer["PhoneNumber"]</label>
+                        <input readonly asp-for="PhoneNumber" class="form-control" />
+                    </div>
+
+                    <!-- Country -->
+                    <div class="col-md-6">
+                        <label asp-for="CountryName" class="form-label">@Localizer["Country"]</label>
+                        <input readonly asp-for="CountryName" class="form-control" />
+                    </div>
+
+                    <!-- State -->
+                    <div class="col-md-6">
+                        <label asp-for="StateName" class="form-label">@Localizer["State"]</label>
+                        <input readonly asp-for="StateName" class="form-control" />
+                    </div>
+
+                    <!-- City -->
+                    <div class="col-md-6">
+                        <label asp-for="CityName" class="form-label">@Localizer["City"]</label>
+                        <input readonly asp-for="CityName" class="form-control" />
+                    </div>
+                </div>
+
+                <!-- Active Status -->
+                <div class="col-md-6 mt-3">
+                    <div class="form-check">
+                        <input disabled asp-for="IsActive" class="form-check-input" />
+                        <label asp-for="IsActive" class="form-check-label">@Localizer["ActiveStatus"]</label>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

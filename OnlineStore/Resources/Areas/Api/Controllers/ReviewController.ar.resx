@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="ReviewAddedSuccessfully" xml:space="preserve">
+    <value>تم إضافة التقييم بنجاح</value>
+  </data>
+
+  <data name="ReviewDeletedSuccessfully" xml:space="preserve">
+    <value>تم حذف التقييم بنجاح</value>
+  </data>
+
+  <data name="ReviewAttachementAddedSuccessfully" xml:space="preserve">
+    <value>تم إضافة المرفق للتقييم بنجاح</value>
+  </data>
+</root>

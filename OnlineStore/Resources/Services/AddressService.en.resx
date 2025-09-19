@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+    <data name="AddressIdNotFound" xml:space="preserve">
+    <value>Address Id is not found.</value>
+    </data>
+    <data name="AddressNotFound" xml:space="preserve">
+    <value>Address with ID {0} not found.</value>
+    </data>
+</root>

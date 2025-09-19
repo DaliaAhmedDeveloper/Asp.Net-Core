@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="InvalidEmailOrPassword" xml:space="preserve">
+    <value>Invalid email or password.</value>
+  </data>
+
+  <data name="SuccessPleaseLoginNow" xml:space="preserve">
+    <value>Success. Please login now.</value>
+  </data>
+
+  <data name="RefreshTokenIncorrect" xml:space="preserve">
+    <value>Refresh token is not correct.</value>
+  </data>
+
+  <data name="LoggedOutSuccessfully" xml:space="preserve">
+    <value>Logged out successfully.</value>
+  </data>
+</root>

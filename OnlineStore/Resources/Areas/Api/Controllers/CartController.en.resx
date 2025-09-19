@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="CartUpdatedSuccessfully" xml:space="preserve">
+    <value>Cart updated successfully.</value>
+  </data>
+
+  <data name="NoItemsAffected" xml:space="preserve">
+    <value>No items affected.</value>
+  </data>
+
+  <data name="ItemDeletedSuccessfully" xml:space="preserve">
+    <value>Item deleted successfully.</value>
+  </data>
+  <data name="AddedToCartSuccessfully" xml:space="preserve">
+     <value>Added To Cart Successfully</value>
+  </data>
+
+  <data name="CartIsNotFound" xml:space="preserve">
+     <value>Cart Is Not Found Please Start Adding Products To Create Your Cart</value>
+  </data>
+</root>

@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="States"><value>States</value></data>
+<data name="Home"><value>Home</value></data>
+<data name="ListAllStates"><value>List All States</value></data>
+<data name="SearchText"><value>Search Text</value></data>
+<data name="Search"><value>Search</value></data>
+<data name="AddNewState"><value>Add New State</value></data>
+<data name="NoRecords"><value>No records available.</value></data>
+<data name="Code"><value>Code</value></data>
+<data name="NameEn"><value>Name (English)</value></data>
+<data name="NameAr"><value>Name (Arabic)</value></data>
+<data name="Actions"><value>Actions</value></data>
+<data name="View"><value>View</value></data>
+<data name="Edit"><value>Edit</value></data>
+<data name="Hide"><value>Hide</value></data>
+<data name="Delete"><value>Delete</value></data>
+<data name="ConfirmDelete"><value>Are you sure you want to delete this item?</value></data>
+</root>

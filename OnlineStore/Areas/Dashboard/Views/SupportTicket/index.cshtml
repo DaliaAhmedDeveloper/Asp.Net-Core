@@ -1,0 +1,125 @@
+@model OnlineStore.Models.ViewModels.PagedResult<SupportTicket>
+
+
+
+<!--begin::App Content Header-->
+<div class="app-content-header">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-6">
+        <h3 class="mb-0">@Localizer["SupportTickets"]</h3>
+      </div>
+      <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-end">
+          <li class="breadcrumb-item"><a href="#">@Localizer["Home"]</a></li>
+          <li class="breadcrumb-item active" aria-current="page">@Localizer["SupportTickets"]</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
+<!--end::App Content Header-->
+
+<!--begin::App Content-->
+<div class="app-content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12">
+
+        <div class="card">
+          <div class="card-header">
+            <div class="d-flex flex-wrap justify-content-between align-items-center">
+              <h3 class="card-title">@Localizer["ListAllSupportTickets"]</h3>
+              <form asp-area="Dashboard" asp-controller="SupportTicket" asp-action="Index" method="GET">
+                <input class="form-control d-inline-block w-auto" type="text" name="searchTxt"
+                       placeholder="@Localizer["SearchText"]">
+                <button class="btn btn-success" type="submit">@Localizer["Search"]</button>
+              </form>
+            </div>
+          </div>
+          <!-- /.card-header -->
+
+          <div class="card-body p-0">
+            @if (Model == null || !Model.Items.Any())
+            {
+              <p class="p-4">@Localizer["NoRecords"]</p>
+            }
+            else
+            {
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th style="width: 10px">@Localizer["No"]</th>
+                    <th>@Localizer["Subject"]</th>
+                    <th>@Localizer["Description"]</th>
+                    <th>@Localizer["Category"]</th>
+                    <th style="width: 40px">@Localizer["Actions"]</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  @{
+                    int serialNumber = (Model.PageNumber - 1) * Model.PageSize + 1;
+                  }
+                  @foreach (var SupportTicket in Model.Items)
+                  {
+                    <tr class="align-middle">
+                      <td>
+                        @serialNumber
+                        @{
+                          serialNumber++;
+                        }
+                      </td>
+                      <td>@SupportTicket.Subject</td>
+                      <td>@SupportTicket.Description</td>
+                      <td>@SupportTicket.Category</td>
+                      <td>
+                        <div class="btn-group">
+                          <!-- Show -->
+                          <a asp-action="Details" asp-route-id="@SupportTicket.Id" 
+                             class="btn m-1 rounded btn-info btn-sm" title="@Localizer["View"]">
+                            <i class="bi bi-eye-fill"></i>
+                          </a>
+                          <!-- Messages -->
+                          <a asp-controller="TicketMessage" asp-action="Index" asp-route-id="@SupportTicket.Id" 
+                             class="btn m-1 rounded btn-warning btn-sm" title="@Localizer["Messages"]">
+                            <i class="bi bi-chat"></i>
+                          </a>
+                          <!-- Hide -->
+                          <a asp-action="Hide" asp-route-id="@SupportTicket.Id" 
+                             class="btn m-1 hide-row rounded btn-secondary btn-sm" title="@Localizer["Hide"]">
+                            <i class="bi bi-eye-slash-fill"></i>
+                          </a>
+                          <!-- Delete -->
+                          <form asp-action="Delete" asp-route-id="@SupportTicket.Id" method="post" class="d-inline">
+                            <button type="submit" class="btn btn-danger rounded m-1 btn-sm" title="@Localizer["Delete"]"
+                                    onclick="return confirm('@Localizer["ConfirmDelete"]');">
+                              <i class="bi bi-trash-fill"></i>
+                            </button>
+                          </form>
+                        </div>
+                      </td>
+                    </tr>
+                  }
+                </tbody>
+              </table>
+            }
+            @if (Model?.TotalPages > 1)
+            {
+              <nav class="card-header">
+                <ul class="pagination">
+                  @for (int i = 1; i <= Model?.TotalPages; i++)
+                  {
+                    <li class="page-item @(i == Model.PageNumber ? "active" : "")">
+                      <a class="page-link" asp-action="Index" asp-route-page="@i">@i</a>
+                    </li>
+                  }
+                </ul>
+              </nav>
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--end::App Content-->

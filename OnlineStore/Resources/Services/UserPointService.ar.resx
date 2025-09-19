@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="AlreadyGainedToday" xml:space="preserve">
+    <value>لقد حصلت على نقاطك لهذا اليوم مسبقًا!</value>
+  </data>
+  <data name="NotEnoughPoints" xml:space="preserve">
+    <value>النقاط المتاحة للمستخدم غير كافية.</value>
+  </data>
+</root>

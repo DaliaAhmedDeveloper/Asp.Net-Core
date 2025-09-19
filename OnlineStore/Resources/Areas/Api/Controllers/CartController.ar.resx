@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="CartUpdatedSuccessfully" xml:space="preserve">
+    <value>تم تحديث السلة بنجاح.</value>
+  </data>
+
+  <data name="NoItemsAffected" xml:space="preserve">
+    <value>لم تتأثر أي عناصر.</value>
+  </data>
+
+  <data name="ItemDeletedSuccessfully" xml:space="preserve">
+    <value>تم حذف العنصر بنجاح.</value>
+  </data>
+  <data name="AddedToCartSuccessfully" xml:space="preserve">
+     <value>تمت الاضافه بنجاح الى السلة</value>
+  </data>
+  <data name="CartIsNotFound" xml:space="preserve">
+    <value>سلة التسوق غير موجودة، يرجى البدء في إضافة المنتجات لإنشاء سلتك.</value>
+</data>
+
+</root>

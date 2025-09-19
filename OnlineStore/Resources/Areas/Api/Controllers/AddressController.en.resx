@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="AddressAddedSuccessfully" xml:space="preserve">
+    <value>Address added successfully.</value>
+  </data>
+
+  <data name="AddressUpdatedSuccessfully" xml:space="preserve">
+    <value>Address updated successfully.</value>
+  </data>
+
+  <data name="AddressMarkedAsDefault" xml:space="preserve">
+    <value>Address marked as default successfully.</value>
+  </data>
+
+  <data name="AddressDeletedSuccessfully" xml:space="preserve">
+    <value>Address deleted successfully.</value>
+  </data>
+
+  <data name="AddressNotFound" xml:space="preserve">
+    <value>Address is not found.</value>
+  </data>
+</root>
