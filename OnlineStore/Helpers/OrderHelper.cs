@@ -300,8 +300,10 @@ public class OrderHelper
         var templateService = new EmailTemplateService();
         var userEmailBody = await templateService.RenderAsync("User/NewOrder", order);
         await _email.SendEmailAsync(userEmail, "Order Received", userEmailBody);
+
+        await Task.Delay(30000);
         // send admin email
-        var adminEmailBody = await templateService.RenderAsync("User/NewOrder", order);
+        var adminEmailBody = await templateService.RenderAsync("Admin/NewOrder", order);
         await _email.SendEmailAsync(await _setting.GetValue("admin_email"), "New Order", adminEmailBody);
     }
     //send order status
@@ -349,12 +351,15 @@ public class OrderHelper
         var userEmailBody = await templateService.RenderAsync("User/OrderStatus", order);
         
         await _email.SendEmailAsync(userEmail, $"Order {referenceNumber} {orderStatus}", userEmailBody);
+        
+        await Task.Delay(30000);
+
         if (orderStatus == OrderStatus.Cancelled)
         {
             var adminEmailBody = await templateService.RenderAsync("Admin/CancelOrder", order);
             // send email
             await _email.SendEmailAsync(
-                await _setting.GetValue("admin_email"),$"Order {referenceNumber} {orderStatus}", adminEmailBody
+                await _setting.GetValue("admin_email"), $"Order {referenceNumber} {orderStatus}", adminEmailBody
             );
         }
     }

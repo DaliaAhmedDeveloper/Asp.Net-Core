@@ -49,6 +49,7 @@ Repository -> Service -> Controller -> DTO/ViewModel -> Razor View / API Respons
 - User management with **roles and permissions**
 - Razor views for admin dashboard
 - API for mobile app consumption
+- Custom Email Templates
 
 ### Security
 
@@ -117,13 +118,14 @@ Repository -> Service -> Controller -> DTO/ViewModel -> Razor View / API Respons
 /Views -> Razor views for admin dashboard
 /BackgroundTasks -> Queues, scheduled tasks, email jobs
 /wwwroot -> Static files
+/ProjectScreenshots -> screenshots from the application are stored in the `ProjectScreenshots` folder
 
 
 ## Setup Instructions
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/online-store.git
+git clone https://github.com/DaliaAhmedDeveloper/Asp.Net-Core.git
 ```
 2. Configure appsettings.json:
 

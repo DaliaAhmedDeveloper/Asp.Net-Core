@@ -67,7 +67,7 @@
                       <td>@order.CreatedAt</td>
                       <td>
                         <div class="btn-group">
-                          <a asp-action="Details" asp-route-id="@order.Id" class="btn btn-info btn-sm m-1" title="@Localizer["View"]">
+                          <a asp-area="Dashboard"asp-controller="Order" asp-action="Details" asp-route-id="@order.Id" class="btn btn-info btn-sm m-1" title="@Localizer["View"]">
                             <i class="bi bi-eye-fill"></i>
                           </a>
                           <a asp-action="Edit" asp-route-id="@order.Id" class="btn btn-warning btn-sm m-1" title="@Localizer["Edit"]">
