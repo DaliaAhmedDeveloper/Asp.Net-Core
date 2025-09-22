@@ -44,27 +44,5 @@ public class OrderConfiguration : IEntityTypeConfiguration<Order>
               builder.Property(o => o.ReferenceNumber).HasMaxLength(255);
               builder.HasIndex(o => o.ReferenceNumber).IsUnique();
               builder.Property(o => o.CreatedAt).IsRequired();
-
-              builder.HasOne(o => o.User)
-                     .WithMany(u => u.Orders)
-                     .HasForeignKey(o => o.UserId).OnDelete(DeleteBehavior.Restrict);
-
-              builder.HasOne(o => o.Coupon)
-                     .WithMany(c => c.Orders)
-                     .HasForeignKey(o => o.CouponId).OnDelete(DeleteBehavior.Restrict);
-
-              builder.HasOne(o => o.ShippingAddress)
-                     .WithMany(sa => sa.Orders)
-                     .HasForeignKey(o => o.ShippingAddressId).OnDelete(DeleteBehavior.Restrict);
-
-              builder.HasOne(o => o.ShippingMethod)
-                     .WithMany(sm => sm.Orders)
-                     .HasForeignKey(o => o.ShippingMethodId).OnDelete(DeleteBehavior.Restrict);
-
-               // one to many
-              builder.HasOne(o => o.Coupon)
-                     .WithMany(c => c.Orders)
-                     .HasForeignKey(o => o.CouponId)
-                     .OnDelete(DeleteBehavior.Restrict);
        }
 }

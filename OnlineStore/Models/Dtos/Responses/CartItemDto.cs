@@ -7,5 +7,4 @@ public class CartItemDto
     public int ProductVariantId { get; set; }
     public ProductSimpleDto Product { get; set; } = null!;
     public ProductVariantDto ProductVariant { get; set; } = null!;
-
 }

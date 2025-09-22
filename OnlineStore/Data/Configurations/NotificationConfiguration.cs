@@ -27,4 +27,5 @@ public class NotificationConfiguration : IEntityTypeConfiguration<Notification>
                .WithMany(u => u.Notifications)
                .HasForeignKey(n => n.UserId);
     }
+    
 }

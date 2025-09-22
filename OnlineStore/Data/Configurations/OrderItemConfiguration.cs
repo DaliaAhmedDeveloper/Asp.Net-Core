@@ -38,16 +38,5 @@ public class OrderItemConfiguration : IEntityTypeConfiguration<OrderItem>
                .WithMany(o => o.OrderItems)
                .HasForeignKey(oi => oi.OrderId)
                .OnDelete(DeleteBehavior.Cascade).IsRequired(false);
-
-
-              builder.HasOne(oi => oi.ProductVariant)
-                     .WithMany(pv => pv.OrderItems)
-                     .HasForeignKey(oi => oi.ProductVariantId)
-                     .OnDelete(DeleteBehavior.NoAction);
-
-              builder.HasOne(oi => oi.Product)
-                     .WithMany(p => p.OrderItems)
-                     .HasForeignKey(oi => oi.ProductId)
-                     .OnDelete(DeleteBehavior.NoAction).IsRequired(false);
        }
 }

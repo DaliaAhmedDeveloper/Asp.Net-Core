@@ -42,7 +42,7 @@ public class ReturnController : Controller
         var model = new ReturnViewModel
         {
             ReferenceNumber = Return.ReferenceNumber,
-            UserName = Return.User.FullName,
+            UserName = Return.Order.UserName,
             ReturnItems = Return.ReturnItems,
         };
 

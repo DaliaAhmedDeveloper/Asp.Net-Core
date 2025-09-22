@@ -1,7 +1,9 @@
 namespace OnlineStore.Helpers;
 
+using System.Text.Json;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Localization;
+using Microsoft.IdentityModel.Tokens;
 using OnlineStore.Models;
 using OnlineStore.Models.Dtos.Requests;
 using OnlineStore.Models.Dtos.Responses;
@@ -44,7 +46,7 @@ public class OrderHelper
     /*
     Order Mapping
     */
-    public Order OrderMapping(
+    public async Task<Order> OrderMapping(
         int userId,
         CartDto cart,
         CreateOrderDto dto,
@@ -54,6 +56,10 @@ public class OrderHelper
         int totalItemsCount
         )
     {
+        var coupon = await _unitOfWork.Coupon.GetByIdAsync(dto.CouponId);
+        var shippingAddress = await _unitOfWork.Address.GetByIdAsync(dto.ShippingAddressId);
+        var shippingMethod = await _unitOfWork.ShippingMethod.GetByIdAsync(dto.ShippingMethodId);
+        var user = await _unitOfWork.User.GetByIdAsync(userId);
         var order = new Order
         {
             TotalAmountBeforeSale = beforeDiscount,
@@ -63,13 +69,24 @@ public class OrderHelper
             PaymentMethod = dto.PaymentMethod,
             ReferenceNumber = Guid.NewGuid().ToString(),
             UserId = userId,
-            CouponId = dto.CouponId,
+            UserEmail = user?.Email ?? "" ,
+            UserName = user?.FullName ?? "", 
+            Coupon = coupon?.Code ?? "",
             CouponDiscountAmount = CouponDiscountValue,
             PointsDiscountAmount = PointsDiscountValue,
-            ShippingAddressId = dto.ShippingAddressId,
+            ShAddressFullName = shippingAddress?.FullName ?? "",
+            ShAddressCity = shippingAddress?.City ?? "",
+            ShAddressCountry = shippingAddress?.Country ?? "",
+            ShAddressZipCode = shippingAddress?.ZipCode ?? "",
             PointsUsed = dto.PointsUsed,
             WalletAmountUsed = dto.WalletAmountUsed,
-            ShippingMethodId = dto.ShippingMethodId,
+            ShippingMethod = JsonSerializer.Serialize(new
+            {
+                en = shippingMethod != null ? shippingMethod.Translations.Where(tr => tr.LanguageCode == "en").Select(tr=> tr.Name).FirstOrDefault() : "",
+                ar = shippingMethod != null ? shippingMethod.Translations.Where(tr => tr.LanguageCode == "ar").Select(tr=> tr.Name).FirstOrDefault() : "",
+            }),
+            ShippingMethodCost = shippingMethod?.Cost ?? 0m,
+            ShippingMethodDelieveryDate = shippingMethod?.DeliveryTime ?? "",
             OrderTracking = new OrderTracking(),
             Payment = new Payment
             {
@@ -93,65 +110,38 @@ public class OrderHelper
             },
             OrderItems = cart.Items.Select(i => new OrderItem
             {
-                ProductId = i.Product.Id,
-                ProductVariantId = i.ProductVariantId,
+                ProductName = JsonSerializer.Serialize(new
+                {
+                    en = i.Product.Translations.Where(tr => tr.LanguageCode == "en").Select(tr=> tr.Name).FirstOrDefault(),
+                    ar = i.Product.Translations.Where(tr => tr.LanguageCode == "ar").Select(tr=> tr.Name).FirstOrDefault()
+                }),
+                ProductAttribute = JsonSerializer.Serialize(new
+                {
+                    attribute = i.ProductVariant.VariantAttributes.Select(va => new
+                    {
+                        slug = va.Attribute.Slug,
+                        en = va.Attribute.Translations.Where(tr => tr.LanguageCode == "en").Select(tr => tr.Name).FirstOrDefault(),
+                        ar = va.Attribute.Translations.Where(tr => tr.LanguageCode == "ar").Select(tr => tr.Name).FirstOrDefault(),
+                        value = new
+                        {
+                            slug = va.Attribute?.AttributeValue != null ? va.Attribute?.AttributeValue.Slug : "",
+                            en = va.Attribute?.AttributeValue != null ? va.Attribute.AttributeValue.Translations.Where(tr => tr.LanguageCode == "en").Select(tr => tr.Name).FirstOrDefault() : "",
+                            ar = va.Attribute?.AttributeValue != null ? va.Attribute.AttributeValue.Translations.Where(tr => tr.LanguageCode == "ar").Select(tr => tr.Name).FirstOrDefault() : ""
+                        }
+                    }),
+                }),
                 Quantity = i.Quantity,
-                UnitPrice = i.Product.SalePrice ?? i.Product.Price,
-                Points = (int)Math.Round(dto.PointsUsed / (decimal)totalItemsCount),
-                WalletAmount = dto.WalletAmountUsed / totalItemsCount
+                UnitPrice = i.Product?.SalePrice ?? i.Product?.Price ?? 0m,
+                Points = totalItemsCount > 0 ? (int)Math.Round(dto.PointsUsed / (decimal)totalItemsCount) : 0,
+                WalletAmount = totalItemsCount > 0 ? dto.WalletAmountUsed / totalItemsCount : 0,
+
             }).ToList()
         };
         return order;
     }
 
-    // order response 
-    public async Task<OrderDto> OrderResponse(Order order, ShippingMethod shippingMethod, Address shippingAddress)
-    {
-        var orderDto = new OrderDto
-        {
-            TotalAmountBeforeSale = order.TotalAmountBeforeSale,
-            TotalAmountAfterSale = order.TotalAmountAfterSale,
-            SaleDiscountAmount = order.TotalAmountBeforeSale - order.TotalAmountAfterSale,
-            FinalAmount = order.FinalAmount,
-            PaymentMethod = order.PaymentMethod,
-            CashOnDeliveryFee = decimal.TryParse(await _setting.GetValue("cash_on_delivery_fees"), out var fee) ? fee : 0m,
-            ReferenceNumber = order.ReferenceNumber,
-            CouponCode = order.Coupon?.Code ?? "",
-            CouponDiscountAmount = order.CouponDiscountAmount,
-            PointsDiscountAmount = order.PointsDiscountAmount,
-            ShippingAddress = new ShippingAddressDto
-            {
-                FullName = shippingAddress.FullName,
-                City = shippingAddress.City,
-                Country = shippingAddress.Country,
-                Street = shippingAddress.Street,
-                ZipCode = shippingAddress.ZipCode,
-                IsDefault = shippingAddress.IsDefault,
-                UserId = shippingAddress.Id,
-            },
-            PointsUsed = order.PointsUsed,
-            WalletAmountUsed = order.WalletAmountUsed,
-            ShippingMethod = new ShippingMethodDto
-            {
-                Name = shippingMethod.Name,
-                Cost = shippingMethod.Cost,
-                DeliveryTime = shippingMethod.DeliveryTime,
-            },
-            OrderTracking = order.OrderTracking.TrackingNumber,
-            // Items = order.OrderItems.Select(oi => new OrderItemDto
-            // {
-            //     ProductName = oi.Product.Slug,
-            //     Quantity = oi.Quantity,
-            //     UnitPrice = oi.UnitPrice,
-            //     ImageUrl = oi.ProductVariant.ImageUrl ?? oi.Product.ImageUrl,
-            //     AttributeName = oi.ProductVariant.VariantAttributeValues.FirstOrDefault()?.Attribute.Code ?? "",
-            //     ValueName = oi.ProductVariant.VariantAttributeValues.FirstOrDefault()?.AttributeValue.Code ?? "",
-
-            // }).ToList()
-        };
-        return orderDto;
-    }
-    private async Task<decimal> ApplyPaymentFee(decimal finalPrice, PaymentMethod paymentMethod)
+    // payment fees
+    public async Task<decimal> ApplyPaymentFee(decimal finalPrice, PaymentMethod paymentMethod)
     {
         // applay cash on deleivery
         if (paymentMethod == PaymentMethod.Cash)
@@ -161,7 +151,7 @@ public class OrderHelper
         }
         return finalPrice;
     }
-    /* Calculate Final Price */
+    /* Calculate Final Price */ 
     public async Task<decimal> FinalPriceCalculations(int userId, CreateOrderDto dto, decimal afterSale, Wallet? userWallet)
     {
         decimal finalPrice = afterSale;
@@ -269,7 +259,7 @@ public class OrderHelper
     public async Task SendOrderNotifications(int userId, Order order)
     {
         var referenceNumber = order.ReferenceNumber;
-        var userEmail = order.User.Email;
+        var userEmail = order.UserEmail;
         // Notifications & email to user
         var UserNotification = PlaceOrderAdminNotification.Build(userId, referenceNumber);
         await _unitOfWork.Notification.AddAsync(UserNotification);
@@ -296,15 +286,23 @@ public class OrderHelper
     // send order email
     public async Task SendOrderEmails(int userId, Order order)
     {
-        var userEmail = order.User.Email;
+        var userEmail = order.UserEmail;
         var templateService = new EmailTemplateService();
-        var userEmailBody = await templateService.RenderAsync("User/NewOrder", order);
-        await _email.SendEmailAsync(userEmail, "Order Received", userEmailBody);
+        if (!userEmail.IsNullOrEmpty())
+        {
+            var userEmailBody = await templateService.RenderAsync("User/NewOrder", order);
+            await _email.SendEmailAsync(userEmail, "Order Received", userEmailBody);
+        }
 
         await Task.Delay(30000);
+
+        var adminEmail = await _setting.GetValue("admin_email");
         // send admin email
-        var adminEmailBody = await templateService.RenderAsync("Admin/NewOrder", order);
-        await _email.SendEmailAsync(await _setting.GetValue("admin_email"), "New Order", adminEmailBody);
+        if (!adminEmail.IsNullOrEmpty())
+        {
+            var adminEmailBody = await templateService.RenderAsync("Admin/NewOrder", order);
+            await _email.SendEmailAsync(adminEmail, "New Order", adminEmailBody);
+        }
     }
     //send order status
     public async Task SendOrderStatusNotifications(Order order)
@@ -313,11 +311,13 @@ public class OrderHelper
         var orderStatus = order.OrderStatus;
         var referenceNumber = order.ReferenceNumber;
         var userId = order.UserId;
-        var userEmail = order.User.Email;
-        var UserNotification = OrderStatusUserNotification.Build(userId, referenceNumber, orderStatus);
+        var userEmail = order.UserEmail;
+        if (userId.HasValue)
+        {
+            var UserNotification = OrderStatusUserNotification.Build(userId.Value, referenceNumber, orderStatus);
+            await _unitOfWork.Notification.AddAsync(UserNotification);
+        }
 
-        await _unitOfWork.Notification.AddAsync(UserNotification);
-        
         if (orderStatus == OrderStatus.Cancelled)
         {
             // send notification to admins 
@@ -341,40 +341,41 @@ public class OrderHelper
         }
     }
 
-     //send order status
+    //send order status
     public async Task SendOrderStatusEmails(Order order)
     {
         var orderStatus = order.OrderStatus;
         var referenceNumber = order.ReferenceNumber;
-        var userEmail = order.User.Email;
+        var userEmail = order.UserEmail;
         var templateService = new EmailTemplateService();
-        var userEmailBody = await templateService.RenderAsync("User/OrderStatus", order);
-        
-        await _email.SendEmailAsync(userEmail, $"Order {referenceNumber} {orderStatus}", userEmailBody);
-        
-        await Task.Delay(30000);
+        if (!userEmail.IsNullOrEmpty())
+        {
+            var userEmailBody = await templateService.RenderAsync("User/OrderStatus", order);
+            await _email.SendEmailAsync(userEmail, $"Order {referenceNumber} {orderStatus}", userEmailBody);
+        }
 
-        if (orderStatus == OrderStatus.Cancelled)
+        await Task.Delay(30000);
+        var adminEmail = await _setting.GetValue("admin_email");
+
+        if ( !adminEmail.IsNullOrEmpty() && orderStatus == OrderStatus.Cancelled)
         {
             var adminEmailBody = await templateService.RenderAsync("Admin/CancelOrder", order);
             // send email
             await _email.SendEmailAsync(
-                await _setting.GetValue("admin_email"), $"Order {referenceNumber} {orderStatus}", adminEmailBody
+                adminEmail, $"Order {referenceNumber} {orderStatus}", adminEmailBody
             );
         }
     }
-
     // oreder reverse
     public async Task OrderReverse(Order order)
     {
-
         // return wallet 
-        if (order.WalletAmountUsed > 0)
+        if (order.WalletAmountUsed > 0 && order.UserId.HasValue)
         {
-            var wallet = await _unitOfWork.Wallet.GetByUserIdAsync(order.UserId);
+            var wallet = await _unitOfWork.Wallet.GetByUserIdAsync(order.UserId.Value);
             if (wallet == null)
             {
-                Wallet newWallet = new Wallet { UserId = order.UserId };
+                Wallet newWallet = new Wallet { UserId = order.UserId.Value };
                 wallet = await _unitOfWork.Wallet.AddAsync(newWallet);
             }
             wallet.Balance += order.WalletAmountUsed;
@@ -398,26 +399,36 @@ public class OrderHelper
         }
 
         // check order items ,, and return points and wallet 
-        var user = await _unitOfWork.User.GetByIdAsync(order.UserId);
-        if (user != null)
+        if (order.UserId.HasValue)
         {
-            if (order.PointsUsed > 0)
+            var user = await _unitOfWork.User.GetByIdAsync(order.UserId.Value);
+            if (user != null)
             {
-                user.UserAvailablePoints += order.PointsUsed;
-                user.Points.Add(new UserPoint
+                if (order.PointsUsed > 0)
                 {
-                    Points = order.PointsUsed,
-                    Type = PointType.OrderCancellation
-                });
-                await _unitOfWork.User.UpdateAsync(user);
+                    user.UserAvailablePoints += order.PointsUsed;
+                    user.Points.Add(new UserPoint
+                    {
+                        Points = order.PointsUsed,
+                        Type = PointType.OrderCancellation
+                    });
+                    await _unitOfWork.User.UpdateAsync(user);
+                }
             }
         }
         // update stock
         foreach (var item in order.OrderItems)
         {
-            var stock = await _unitOfWork.Stock.GetByVariantIdAsync(item.ProductVariantId);
-            stock.ReservedQuantity -= item.Quantity;
-            await _unitOfWork.Stock.UpdateAsync(stock);
+            var variantId = item.ProductVariantId;
+            if (variantId.HasValue)
+            {
+                var stock = await _unitOfWork.Stock.GetByVariantIdAsync(variantId.Value);
+                if (stock == null)
+                    throw new ResponseErrorException(_localizer["ProductNotFound"]);
+
+                stock.ReservedQuantity -= item.Quantity;
+                await _unitOfWork.Stock.UpdateAsync(stock);
+            }
         }
     }
 }

@@ -45,6 +45,7 @@
               </div>
               <div class="card-body">
                 <div class="direct-chat-messages direct-chat-messages2">
+                @if(Model?.Ticket != null){
                   @foreach (var message in Model.Ticket.Messages)
                   {
                     @if (message.IsFromStaff)
@@ -72,13 +73,14 @@
                       </div>
                     }
                   }
+                  }
                 </div>
               </div>
               <div class="card-footer">
                 <form asp-controller="TicketMessage" asp-action="Create" method="POST" enctype="multipart/form-data">
                   @Html.AntiForgeryToken()
                   <div class="input-group">
-                    <input type="hidden" asp-for="Message.TicketId" value="@Model.Ticket.Id" />
+                    <input type="hidden" asp-for="Message.TicketId" value="@Model?.Ticket?.Id" />
                     <input type="text" asp-for="Message.Message" class="form-control" placeholder="@Localizer["TypeMessage"]" />
                     <span class="input-group-append">
                       <button type="submit" class="btn btn-warning">@Localizer["Send"]</button>

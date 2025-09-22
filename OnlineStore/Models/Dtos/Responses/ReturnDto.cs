@@ -6,7 +6,7 @@ public class ReturnDto
 {
     public int Id { get; set; }
     public int OrderId { get; set; }
-    public int UserId { get; set; }
+    public int? UserId { get; set; }
     public decimal TotalAmount { get; set; }
     public string ReferenceNumber { get; set; } = string.Empty;
     public string? Reason { get; set; }

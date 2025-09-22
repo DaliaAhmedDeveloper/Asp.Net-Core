@@ -44,7 +44,7 @@ public class OrderController : Controller
         var model = new OrderViewModel
         {
             ReferenceNumber = order.ReferenceNumber,
-            UserName = order.User.FullName,
+            UserName = order.UserName,
             TotalAmountBeforeSale = order.TotalAmountBeforeSale,
             TotalAmountAfterSale = order.TotalAmountAfterSale,
             SaleDiscountAmount = order.SaleDiscountAmount,
@@ -52,15 +52,15 @@ public class OrderController : Controller
             OrderStatus = order.OrderStatus,
             OrderItems = order.OrderItems,
             PaymentMethod = order.PaymentMethod,
-            Coupon = order.Coupon?.Code ?? "",
+            Coupon = order.Coupon ,
             CouponDiscountAmount = order.CouponDiscountAmount,
             PointsDiscountAmount = order.PointsDiscountAmount,
             PointsUsed = order.PointsUsed,
             CashFees = decimal.TryParse(await _setting.GetValue("cash_on_delivery_fees"), out var fee) ? fee : 0m,
             WalletAmountUsed = order.WalletAmountUsed,
-            ShippingAddress = order.ShippingAddress.FullName + ", " + order.ShippingAddress.Street + ", " + order.ShippingAddress.City + ", " + order.ShippingAddress.Country,
-            ShippingMethod = order.ShippingMethod.Name,
-            ShippingMethodCost = order.ShippingMethod.Cost,
+            ShippingAddress = order.ShAddressFullName + ", " + order.ShAddressStreet + ", " + order.ShAddressCity + ", " + order.ShAddressCountry,
+            ShippingMethod = order.ShippingMethod,
+            ShippingMethodCost = order.ShippingMethodCost,
             Payment = order.Payment != null ? $"Amount: {order.Payment.Amount}, Date: {order.Payment.PaymentDate}" : string.Empty
         };
 

@@ -3,7 +3,7 @@ using OnlineStore.Models.ViewModels;
 using OnlineStore.Models;
 
 public interface ICouponService
-{
+{ 
     //api
     Task<(decimal finalPrice, decimal couponDiscountValue)> CheckCoupon(
         int couponId,

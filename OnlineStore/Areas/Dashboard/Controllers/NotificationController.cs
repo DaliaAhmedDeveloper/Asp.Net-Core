@@ -34,17 +34,9 @@ public class NotificationController : Controller
     [Authorize(Policy = "notification.delete")]
     public async Task<IActionResult> Delete(int id)
     {
-        try
-        {
-            bool record = await _notification.DeleteForWeb(id);
-        }
-        catch (Exception e)
-        {
-            Console.WriteLine(e);
-        }
-        return Content("ll");
-        // if (!record)
-        //     return NotFound();
+        bool record = await _notification.DeleteForWeb(id);
+        if (!record)
+            return NotFound();
 
         TempData["SuccessMessage"] = "Notification deleted successfully!";
         return Content("success ");

@@ -8,8 +8,7 @@ public class Return
 
     public int OrderId { get; set; } // FK to Order
     public Order Order { get; set; } = null!;
-    public int UserId { get; set; } // Optional if guests allowed
-    public User User { get; set; } = null!;
+    public int? UserId { get; set; } 
     public decimal TotalAmount { get; set; }
     public string ReferenceNumber { get; set; } = Guid.NewGuid().ToString("N");
     public string? Reason { get; set; }

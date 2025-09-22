@@ -30,10 +30,4 @@ public class TagRepository : GenericRepository<Tag>, ITagRepository
 
         return await _context.Tags.Include(c => c.Translations).Skip((pageNumber - 1) * pageSize).Take(pageSize).ToListAsync();
     }
-
-     // get with translations
-    public async Task<Tag?> GetWithTranslationsAsync(int id)
-    {
-        return await _context.Tags.Include(c => c.Translations).Where(c => c.Id == id).FirstOrDefaultAsync();
-    }
 }

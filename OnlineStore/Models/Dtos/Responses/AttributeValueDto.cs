@@ -5,4 +5,5 @@ public class AttributeValueDto
     public int Id { get; set; }
     public string? Slug { get; set; }
     public string? Title { get; set; }    
+    public ICollection<AttributeValueTranslation> Translations { get; set; } = new List<AttributeValueTranslation>();    
 }

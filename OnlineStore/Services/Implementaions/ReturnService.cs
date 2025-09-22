@@ -1,6 +1,7 @@
 namespace OnlineStore.Services;
 
 using Microsoft.Extensions.Localization;
+using Microsoft.IdentityModel.Tokens;
 using OnlineStore.Helpers;
 using OnlineStore.Models;
 using OnlineStore.Models.Dtos.Requests;
@@ -67,24 +68,30 @@ public class ReturnService : IReturnService
         returnModel.TotalAmount = totalAmount;
 
         // send emails
-        _taskQueue.Enqueue(async token =>
+        if (!order.UserEmail.IsNullOrEmpty())
         {
-            //scope 
-            using var scope = _scopeFactory.CreateAsyncScope();
-            var _returnHelper = scope.ServiceProvider.GetRequiredService<ReturnHelper>();
-            await _returnHelper.SendOrderEmails(order.User, returnModel);
-        });
+            _taskQueue.Enqueue(async token =>
+            {
+                //scope 
+                using var scope = _scopeFactory.CreateAsyncScope();
+                var _returnHelper = scope.ServiceProvider.GetRequiredService<ReturnHelper>();
+                await _returnHelper.SendOrderEmails(order.UserEmail, returnModel);
+            });
+        }
 
         // send notifications
-        _taskQueue.Enqueue(async token =>
-        {
-            //scope 
-            using var scope = _scopeFactory.CreateAsyncScope();
-            var _returnHelper = scope.ServiceProvider.GetRequiredService<ReturnHelper>();
-            await _returnHelper.SendOrderNotifications(order.User, returnModel);
-        });
+            if (order.UserId.HasValue)
+            {
+                _taskQueue.Enqueue(async token =>
+                {
+                    //scope 
+                    using var scope = _scopeFactory.CreateAsyncScope();
+                    var _returnHelper = scope.ServiceProvider.GetRequiredService<ReturnHelper>();
+                    await _returnHelper.SendOrderNotifications(order.UserId.Value, returnModel);
+                });
+            }
         // send to shipping company
-        await _unitOfWork.Return.AddAsync(returnModel);
+            await _unitOfWork.Return.AddAsync(returnModel);
 
     }
 
@@ -94,12 +101,13 @@ public class ReturnService : IReturnService
     public async Task RetrunSuccess(int orderId, List<OrderItemDto> orderItems)
     {
         // change 
+        await Task.Delay(2000);
     }
 
     // return tracking
     public async Task RetrunTracking(int orderId, List<OrderItemDto> orderItems)
     {
-
+        await Task.Delay(2000);
     }
 
     // get all with pagination

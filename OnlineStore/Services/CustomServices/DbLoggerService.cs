@@ -44,7 +44,7 @@ public class DbLoggerService : ILogger // class Dblogger implement Ilogger inter
                     },
                     new LogTranslation{
                         ExceptionMessage = myState.MessageAr,
-                        ExceptionTitle = myState.MessageEn,
+                        ExceptionTitle = myState.TitleAr,
                         LanguageCode = "ar",
                     }
                 };

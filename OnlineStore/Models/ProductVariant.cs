@@ -10,7 +10,6 @@ public class ProductVariant
     public int ProductId { get; set; }
     public Product Product { get; set; } = null!;// one product many variants
     public ICollection<VariantAttributeValue> VariantAttributeValues { get; set; } = new List<VariantAttributeValue>(); // variant has many attr value
-    public ICollection<OrderItem> OrderItems { get; set; } = new List<OrderItem>();
     public Stock Stock { set; get; } = null!;
 
     private string _imageUrl = string.Empty;

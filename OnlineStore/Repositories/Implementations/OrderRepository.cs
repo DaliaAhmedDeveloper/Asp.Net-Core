@@ -34,33 +34,19 @@ public class OrderRepository : GenericRepository<Order>, IOrderRepository
             PaymentMethod = o.PaymentMethod,
             ReferenceNumber = o.ReferenceNumber,
             CouponDiscountAmount = o.CouponDiscountAmount,
-            Coupon = o.Coupon == null ? new CouponDto() : new CouponDto
-            {
-                Id = o.Coupon.Id,
-                Code = o.Coupon.Code,
-            },
+            Coupon = o.Coupon,
             PointsUsed = o.PointsUsed,
             PointsDiscountAmount = o.PointsDiscountAmount,
             WalletAmountUsed = o.WalletAmountUsed,
             FinalAmount = o.FinalAmount,
-            ShippingAddress = o.ShippingAddress == null ? new ShippingAddressDto() : new ShippingAddressDto
-            {
-                FullName = o.ShippingAddress.FullName,
-                City = o.ShippingAddress.City,
-                Country = o.ShippingAddress.Country,
-                Street = o.ShippingAddress.Street,
-                ZipCode = o.ShippingAddress.ZipCode,
-                UserId = o.ShippingAddress.UserId
-            },
-
-            ShippingMethod = o.ShippingMethod == null ? new ShippingMethodDto() : new ShippingMethodDto
-            {
-                Id = o.ShippingMethod.Id,
-                Name = o.ShippingMethod.Name,
-                Cost = o.ShippingMethod.Cost,
-                DeliveryTime = o.ShippingMethod.DeliveryTime
-            },
-
+            ShAddressFullName = o.ShAddressFullName,
+            ShAddressCity = o.ShAddressCity,
+            ShAddressCountry = o.ShAddressCountry,
+            ShAddressStreet = o.ShAddressStreet,
+            ShAddressZipCode = o.ShAddressZipCode,
+            ShippingMethod = o.ShippingMethod,
+            ShippingMethodCost = o.ShippingMethodCost,
+            ShippingMethodDelieveryDate = o.ShippingMethodDelieveryDate,
             Payment = o.Payment == null ? new PaymentDto() : new PaymentDto
             {
                 Id = o.Payment.Id,
@@ -70,11 +56,8 @@ public class OrderRepository : GenericRepository<Order>, IOrderRepository
             OrderItems = o.OrderItems.Select(oi => new ListOrderItemDto
             {
                 Id = oi.Id,
-                ProductName = oi.Product.Translations
-                 .Where(tr => tr.LanguageCode == lang)
-                 .Select(tr => tr.Name)
-                 .FirstOrDefault() ?? "",
-                ImageUrl = oi.ProductVariant.ImageUrl ?? oi.Product.ImageUrl
+                ProductName = oi.ProductName,
+                ImageUrl = oi.ProductImage
             }).ToList(),
             OrderTracking = o.OrderTracking == null ? new OrderTrackingDto() : new OrderTrackingDto
             {
@@ -89,7 +72,7 @@ public class OrderRepository : GenericRepository<Order>, IOrderRepository
             {
                 Id = r.Id,
                 OrderId = r.OrderId,
-                UserId = r.UserId,
+                UserId = r.UserId ,
                 TotalAmount = r.TotalAmount,
                 ReferenceNumber = r.ReferenceNumber,
                 Reason = r.Reason,
@@ -101,8 +84,7 @@ public class OrderRepository : GenericRepository<Order>, IOrderRepository
                 {
                     Id = ri.Id,
                     OrderItemId = ri.OrderItemId,
-                    ProductName = ri.OrderItem.Product.Translations.Where(tr => tr.LanguageCode == lang)
-                    .Select(tr => tr.Name).FirstOrDefault() ?? "",
+                    ProductName = ri.OrderItem.ProductName,
                     Reason = ri.Reason,
                     Quantity = ri.Quantity,
                     UnitPrice = ri.UnitPrice,
@@ -145,11 +127,8 @@ public class OrderRepository : GenericRepository<Order>, IOrderRepository
             Items = o.OrderItems.Select(oi => new ListOrderItemDto
             {
                 Id = oi.Id,
-                ProductName = oi.Product.Translations
-                .Where(tr => tr.LanguageCode == lang)
-                .Select(tr => tr.Name)
-                .FirstOrDefault() ?? "",
-                ImageUrl = oi.ProductVariant.ImageUrl ?? oi.Product.ImageUrl
+                ProductName = oi.ProductName,
+                ImageUrl = oi.ProductImage
             }).ToList()
         })
     .ToListAsync();
@@ -189,15 +168,8 @@ public class OrderRepository : GenericRepository<Order>, IOrderRepository
     {
         return await _context.Orders
         .Where(o => o.Id == id)
-        .Include(o => o.User)
-        .Include(o => o.Coupon)
         .Include(o => o.Payment)
         .Include(o => o.OrderItems)
-        .ThenInclude(oi => oi.Product)
-        .Include(o => o.OrderItems)
-        .ThenInclude(oi => oi.ProductVariant)
-        .Include(o => o.ShippingAddress)
-        .Include(o => o.ShippingMethod)
         .FirstOrDefaultAsync();
     }
 
@@ -207,7 +179,7 @@ public class OrderRepository : GenericRepository<Order>, IOrderRepository
         int pageNumber = 1,
         int pageSize = 10)
     {
-        IQueryable<Order> query = _context.Orders.OrderByDescending(o => o.CreatedAt).Include(o => o.User);
+        IQueryable<Order> query = _context.Orders.OrderByDescending(o => o.CreatedAt);
         if (!string.IsNullOrEmpty(searchTxt))
             return await query.Where(o => o.ReferenceNumber.Contains(searchTxt)).Skip((pageNumber - 1) * pageSize).Take(pageSize).ToListAsync();
 

@@ -6,4 +6,5 @@ public class AttributeDto
     public string? Slug { get; set; }
     public string? Title { get; set; }
     public AttributeValueDto AttributeValue { get; set; } = null!;
+    public ICollection<ProductAttributeTranslation> Translations { get; set; } = new List<ProductAttributeTranslation>();
 }

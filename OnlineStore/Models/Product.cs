@@ -29,7 +29,4 @@ public class Product : BaseEntity
     public ICollection<ProductVariant> ProductVariants { get; set; } = new List<ProductVariant>(); // has many variant
     public ICollection<Tag> Tags { get; set; } = new List<Tag>(); // has many product tags
     public ICollection<Review> Reviews { get; set; } = new List<Review>(); // has many reviews
-    public ICollection<OrderItem> OrderItems { get; set; } = new List<OrderItem>();
-    //public ICollection<VariantAttributeValue> VariantAttributeValues { get; set; } = new List<VariantAttributeValue>();
-
 }

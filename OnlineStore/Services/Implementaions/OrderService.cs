@@ -84,7 +84,7 @@ public class OrderService : IOrderService
                 throw new NotFoundException(_localizer["ShippingMethodNotFound"]);
             // Order Mapping
             finalPrice += shippingMethod.Cost;
-            order = _OrderHelper.OrderMapping(
+            order = await _OrderHelper.OrderMapping(
                 userId,
                 cart,
                 dto,
@@ -92,10 +92,9 @@ public class OrderService : IOrderService
                 afterSale,
                 finalPrice,
                 totalItemsCount
-                );
+            );
             // add order , with ReferenceNumber , Concurrency check
             await _unitOfWork.Order.AddAsync(order);
-            orderDto = await _OrderHelper.OrderResponse(order, shippingMethod, shippingAddress);
             // update cart stock wallet and User points (Add it to Queue for performence )
             await _OrderHelper.UpdateCartStockPointsWallet(userId, dto, userWallet);
             scope.Complete();
@@ -216,11 +215,17 @@ public class OrderService : IOrderService
                 // allow user to add reviews ,, update the stock
                 foreach (var item in order.OrderItems)
                 {
-                    int variantId = item.ProductVariantId;
-                    var stock = await _unitOfWork.Stock.GetByVariantIdAsync(variantId);
-                    stock.ReservedQuantity -= item.Quantity;
-                    stock.TotalQuantity -= item.Quantity;
-                    await _unitOfWork.Stock.UpdateAsync(stock);
+                    var variantId = item.ProductVariantId;
+                    if (variantId.HasValue)
+                    {
+                        var stock = await _unitOfWork.Stock.GetByVariantIdAsync(variantId.Value);
+                        if (stock == null)
+                            throw new ResponseErrorException(_localizer["NotFound"]);
+
+                        stock.ReservedQuantity -= item.Quantity;
+                        stock.TotalQuantity -= item.Quantity;
+                        await _unitOfWork.Stock.UpdateAsync(stock);
+                    }
                 }
             }
             scope.Complete();

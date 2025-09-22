@@ -1,5 +1,6 @@
 namespace OnlineStore.Helpers;
 
+using Microsoft.IdentityModel.Tokens;
 using OnlineStore.Models;
 using OnlineStore.Models.Dtos.Responses;
 using OnlineStore.Models.Enums;
@@ -30,11 +31,11 @@ public class ReturnHelper
     /*
     Send Order Related Notifications
     */
-    public async Task SendOrderNotifications(User user, Return _return)
+    public async Task SendOrderNotifications(int userId, Return _return)
     {
         // Notifications to user
         var referenceNumber = _return.ReferenceNumber;
-        var userNotification = ReturnRequestUserNotification.Build(user.Id, referenceNumber);
+        var userNotification = ReturnRequestUserNotification.Build(userId, referenceNumber);
         await _notificationRepo.AddAsync(userNotification);
 
         // admin Notifications
@@ -56,15 +57,22 @@ public class ReturnHelper
         }
     }
     // send order emails
-    public async Task SendOrderEmails(User user, Return _return)
+    public async Task SendOrderEmails(string userEmail, Return _return)
     {
         var templateService = new EmailTemplateService();
         //email to user
-        var userEmailBody = await templateService.RenderAsync("User/NewReturn", _return );
-        await _email.SendEmailAsync(user.Email, "Return Request Submitted", userEmailBody );
+        if (!userEmail.IsNullOrEmpty())
+        {
+            var userEmailBody = await templateService.RenderAsync("User/NewReturn", _return);
+            await _email.SendEmailAsync(userEmail, "Return Request Submitted", userEmailBody);
+        }
 
         // email to admin
-         var adminEmailBody = await templateService.RenderAsync("Admin/NewReturn", _return );
-        await _email.SendEmailAsync(await _setting.GetValue("admin_email"), "New Return Request Submitted", adminEmailBody );
+        var adminEmail = await _setting.GetValue("admin_email");
+        if (!adminEmail.IsNullOrEmpty())
+        {
+            var adminEmailBody = await templateService.RenderAsync("Admin/NewReturn", _return);
+            await _email.SendEmailAsync(adminEmail, "New Return Request Submitted", adminEmailBody);
+        }
     }
 }

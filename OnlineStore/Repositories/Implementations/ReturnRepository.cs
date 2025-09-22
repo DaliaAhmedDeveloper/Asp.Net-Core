@@ -17,7 +17,7 @@ public class ReturnRepository : GenericRepository<Return>, IReturnRepository
         int pageNumber = 1,
         int pageSize = 10)
     {
-        IQueryable<Return> query = _context.Returns.OrderByDescending(r => r.ReturnDate).Include(r => r.User);
+        IQueryable<Return> query = _context.Returns.OrderByDescending(r => r.ReturnDate);
         if (!string.IsNullOrEmpty(searchTxt))
             return await query.Where(r => r.ReferenceNumber.Contains(searchTxt)).Skip((pageNumber - 1) * pageSize).Take(pageSize).ToListAsync();
 
@@ -28,7 +28,6 @@ public class ReturnRepository : GenericRepository<Return>, IReturnRepository
     {
         return await _context.Returns
         .Where(r => r.Id == id)
-        .Include(r => r.User)
         .Include(r => r.ReturnItems)
         .FirstOrDefaultAsync();
     }

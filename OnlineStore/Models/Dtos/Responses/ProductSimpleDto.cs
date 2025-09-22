@@ -7,12 +7,13 @@ public class ProductSimpleDto
     public decimal? SalePrice { get; set; }
     public string? Title { get; set; }
     public string? _imageUrl { get; set; }
+    public ICollection<ProductTranslation> Translations { get; set; } = new List<ProductTranslation>();
     public string ImageUrl
     {
         get
         {
-        string baseUrl = "/product/image/";
-           return string.IsNullOrEmpty(_imageUrl) ? $"{baseUrl}default.png" : baseUrl + _imageUrl;
+            string baseUrl = "/product/image/";
+            return string.IsNullOrEmpty(_imageUrl) ? $"{baseUrl}default.png" : baseUrl + _imageUrl;
         }
         set
         {
