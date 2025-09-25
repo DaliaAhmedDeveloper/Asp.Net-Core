@@ -20,6 +20,7 @@ public class AttributeValueConfiguration : IEntityTypeConfiguration<AttributeVal
         builder.Property(av => av.Code).HasMaxLength(100);
         builder.HasOne(av => av.Attribute)
                .WithMany(pa => pa.Values)
-               .HasForeignKey(av => av.AttributeId);
+               .HasForeignKey(av => av.AttributeId)
+               .OnDelete(DeleteBehavior.Cascade);
     }
 }

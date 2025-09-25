@@ -26,6 +26,8 @@ public class CategoryTranslationConfiguration : IEntityTypeConfiguration<Categor
 
         builder.HasOne(ct => ct.Category)
                .WithMany(c => c.Translations)
-               .HasForeignKey(ct => ct.CategoryId).IsRequired(false);
+               .HasForeignKey(ct => ct.CategoryId)
+               .OnDelete(DeleteBehavior.Cascade)
+               ;
     }
 }

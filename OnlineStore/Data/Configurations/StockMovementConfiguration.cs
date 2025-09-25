@@ -23,11 +23,12 @@ public class StockMovementConfiguration : IEntityTypeConfiguration<StockMovement
         builder.HasIndex(sm => sm.Type);
         builder.HasIndex(sm => sm.Reference);
         builder.HasIndex(sm => sm.CreatedAt);
-        
+
         // Relationships
         builder.HasOne(sm => sm.Stock)
                .WithMany(s => s.StockMovements)
                .HasForeignKey(sm => sm.StockId)
-               .IsRequired(false);
+               .OnDelete(DeleteBehavior.Cascade)
+               ;
     }
 } 

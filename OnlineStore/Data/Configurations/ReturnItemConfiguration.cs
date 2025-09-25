@@ -38,10 +38,5 @@ public class ReturnItemConfiguration : IEntityTypeConfiguration<ReturnItem>
                      .HasForeignKey<ReturnItem>(ri => ri.OrderItemId)
                      .OnDelete(DeleteBehavior.Restrict)
                      .IsRequired();
-
-              builder.HasMany(ri => ri.Attachments)
-                     .WithOne(a => a.ReturnItem)
-                     .HasForeignKey(a => a.ReturnItemId)
-                     .OnDelete(DeleteBehavior.Cascade);
        }
 }

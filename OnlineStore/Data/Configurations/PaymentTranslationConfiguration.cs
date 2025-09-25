@@ -26,6 +26,8 @@ public class PaymentTranslationConfiguration : IEntityTypeConfiguration<PaymentT
         builder.Property(pt => pt.LanguageCode).IsRequired().HasMaxLength(10);
         builder.HasOne(pt => pt.Payment)
                .WithMany(p => p.Translations)
-               .HasForeignKey(pt => pt.PaymentId).IsRequired(false);
+               .HasForeignKey(pt => pt.PaymentId)
+               .OnDelete(DeleteBehavior.Cascade)
+               ;
     }
 }

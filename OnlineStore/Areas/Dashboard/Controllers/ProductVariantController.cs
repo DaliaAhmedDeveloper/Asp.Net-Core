@@ -36,6 +36,7 @@ public class ProductVariantController : Controller
         ViewBag.product = await _product.GetForWeb(productId);
         // return Ok(ViewBag.product);
         var result = await _productVariant.GetAllByProductForWeb(productId);
+        return Content("hhh");
         return View(result);
     }
 

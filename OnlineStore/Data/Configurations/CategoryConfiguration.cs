@@ -23,8 +23,5 @@ public class CategoryConfiguration : IEntityTypeConfiguration<Category>
           builder.HasOne(c => c.Parent)
                .WithMany(c => c.Children)
                .HasForeignKey(c => c.ParentId).OnDelete(DeleteBehavior.Restrict);
-
-          builder.HasMany(c => c.Coupons)
-               .WithMany(co => co.Categoies);
      }
 }

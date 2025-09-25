@@ -1,6 +1,6 @@
 
 using OnlineStore.Models;
-public class PermissionTranslation : BaseEntity
+public class PermissionTranslation 
 {
     public int Id { get; set; }
     public string Name { get; set; } = string.Empty;

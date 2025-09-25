@@ -143,4 +143,5 @@ public class CategoryController : Controller
         TempData["SuccessMessage"] = "Category Deleted successfully!";
         return RedirectToAction(nameof(Index));
     }
+    
 }

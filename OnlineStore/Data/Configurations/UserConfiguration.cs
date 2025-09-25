@@ -62,20 +62,18 @@ public class UserConfiguration : IEntityTypeConfiguration<User>
 
           builder.HasOne(u => u.Country)
                .WithMany(c => c.Users)
-               .HasForeignKey(u => u.CountryId);
+               .HasForeignKey(u => u.CountryId)
+               .OnDelete(DeleteBehavior.Restrict);
 
           builder.HasOne(u => u.City)
               .WithMany(c => c.Users)
-              .HasForeignKey(u => u.CityId);
+              .HasForeignKey(u => u.CityId)
+              .OnDelete(DeleteBehavior.Restrict);
 
           builder.HasOne(u => u.State)
               .WithMany(c => c.Users)
-               .HasForeignKey(u => u.StateId);
-
-          builder.HasMany(u => u.StockMovements)
-              .WithOne(sm => sm.User)
-              .HasForeignKey(sm => sm.UserId)
-              .IsRequired(false);
+               .HasForeignKey(u => u.StateId)
+               .OnDelete(DeleteBehavior.Restrict);
 
      }
 }

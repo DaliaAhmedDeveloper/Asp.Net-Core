@@ -23,6 +23,8 @@ public class ReturnAttachmentConfiguration : IEntityTypeConfiguration<ReturnAtta
         builder.Property(ra => ra.UploadedAt).IsRequired();
         builder.HasOne(ra => ra.ReturnItem)
                .WithMany(ri => ri.Attachments)
-               .HasForeignKey(ra => ra.ReturnItemId).IsRequired(false);
+               .HasForeignKey(ra => ra.ReturnItemId)
+               .OnDelete(DeleteBehavior.Cascade)
+               ;
     }
 }

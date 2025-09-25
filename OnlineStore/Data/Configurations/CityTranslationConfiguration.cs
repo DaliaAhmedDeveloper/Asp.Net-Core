@@ -27,6 +27,7 @@ public class CityTranslationConfiguration : IEntityTypeConfiguration<CityTransla
               builder.HasOne(ct => ct.City)
                      .WithMany(c => c.Translations)
                      .HasForeignKey(ct => ct.CityId)
-                     .IsRequired(false);
+                     .OnDelete(DeleteBehavior.Cascade)
+                     ;
        }
 }

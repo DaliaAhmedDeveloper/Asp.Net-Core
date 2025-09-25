@@ -21,6 +21,8 @@ public class WalletConfiguration : IEntityTypeConfiguration<Wallet>
         builder.Property(w => w.Balance).HasPrecision(18, 4).IsRequired();
         builder.HasOne(w => w.User)
                .WithOne(u => u.Wallet)
-               .HasForeignKey<Wallet>(w => w.UserId).IsRequired(false);
+               .HasForeignKey<Wallet>(w => w.UserId)
+               .OnDelete(DeleteBehavior.Cascade)
+               ;
     }
 }

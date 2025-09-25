@@ -11,16 +11,15 @@ public class CartConfiguration : IEntityTypeConfiguration<Cart>
     {
         /*
         int Id
-        DateTime CreatedAt 
         int UserId
         */
         // Table name (optional)
         builder.ToTable("Carts");
 
         builder.HasKey(c => c.Id);
-        builder.Property(c => c.UpdatedAt).IsRequired();
         builder.HasOne(c => c.User)
                .WithOne(u => u.Cart)
-               .HasForeignKey<Cart>(c => c.UserId).IsRequired(false);
+               .HasForeignKey<Cart>(c => c.UserId)
+               .OnDelete(DeleteBehavior.Cascade);
     }
 }

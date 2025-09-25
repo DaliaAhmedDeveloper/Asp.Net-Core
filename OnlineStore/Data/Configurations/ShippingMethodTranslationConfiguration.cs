@@ -24,6 +24,8 @@ public class ShippingMethodTranslationConfiguration : IEntityTypeConfiguration<S
         builder.Property(smt => smt.LanguageCode).IsRequired().HasMaxLength(10);
         builder.HasOne(smt => smt.ShippingMethod)
                .WithMany(sm => sm.Translations)
-               .HasForeignKey(smt => smt.ShippingMethodId).IsRequired(false);
+               .HasForeignKey(smt => smt.ShippingMethodId)
+               .OnDelete(DeleteBehavior.Cascade)
+               ;
     }
 }

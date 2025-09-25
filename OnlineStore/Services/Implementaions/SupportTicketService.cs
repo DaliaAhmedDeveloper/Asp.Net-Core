@@ -50,8 +50,8 @@ public class SupportTicketService : ISupportTicketService
         var orderId = dto.OrderId ?? 0;
         var userId = dto.UserId ?? 0;
 
-        var order = await _unitOfWork.Order.ExistsAsync(orderId);
-        if (!order)
+        var order = await _unitOfWork.Order.GetByIdAsync(orderId);
+        if (order == null)
             throw new NotFoundException(_localizer["OrderNotFound"]);
             
          var user = await _unitOfWork.User.ExistsAsync(userId);
@@ -64,6 +64,7 @@ public class SupportTicketService : ISupportTicketService
             Category = dto.Category,
             UserId = dto.UserId ?? 0,
             OrderId = dto.OrderId ?? 0,
+            OrderNumber = order.ReferenceNumber,
             Subject = dto.Subject,
             Description = dto.Description,
             TicketNumber = $"TCK-{DateTime.UtcNow:yyyy}-{Guid.NewGuid().ToString("N").Substring(0, 8)}"
@@ -117,8 +118,6 @@ public class SupportTicketService : ISupportTicketService
 
             await Task.Delay(30000);
             // send admin email
-            var order = await _order.GetByIdAsync(ticket.OrderId) ?? new Order();
-            ticket.Order = order;
             ticket.User = user;
             var adminEmailBody = await templateService.RenderAsync("Admin/NewTicket", ticket);
             await _email.SendEmailAsync(await _setting.GetValue("admin_email"), "New Ticket Submitted", adminEmailBody);

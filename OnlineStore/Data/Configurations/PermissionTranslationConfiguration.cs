@@ -25,7 +25,9 @@ public class PermissionConTranslationfiguration : IEntityTypeConfiguration<Permi
               builder.Property(pt => pt.LanguageCode).IsRequired().HasMaxLength(50);
               builder.HasOne(t => t.Permission)
                     .WithMany(p => p.Translations)
-                    .HasForeignKey(t=> t.PermissionId).IsRequired(false);
+                    .HasForeignKey(t => t.PermissionId)
+                    .OnDelete(DeleteBehavior.Cascade)
+                    ;
 
        }
 }

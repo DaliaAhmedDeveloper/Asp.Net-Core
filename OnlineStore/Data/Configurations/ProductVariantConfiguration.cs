@@ -20,14 +20,15 @@ public class ProductVariantConfiguration : IEntityTypeConfiguration<ProductVaria
               // Table name (optional)
               builder.ToTable("ProductVariants");
               builder.HasKey(pv => pv.Id);
-              builder.Property(pv => pv.Price).HasPrecision(18,2).IsRequired();
-              builder.Property(pv => pv.SalePrice).HasPrecision(18,2);
+              builder.Property(pv => pv.Price).HasPrecision(18, 2).IsRequired();
+              builder.Property(pv => pv.SalePrice).HasPrecision(18, 2);
               builder.Property(pv => pv.ImageUrl).HasMaxLength(200);
 
-              builder.HasIndex(pv => new { pv.Price , pv.SalePrice });
+              builder.HasIndex(pv => new { pv.Price, pv.SalePrice });
 
               builder.HasOne(pv => pv.Product)
                      .WithMany(p => p.ProductVariants)
-                     .HasForeignKey(pv => pv.ProductId).IsRequired(false);
+                     .HasForeignKey(pv => pv.ProductId)
+                     .OnDelete(DeleteBehavior.Cascade);
        }
 }

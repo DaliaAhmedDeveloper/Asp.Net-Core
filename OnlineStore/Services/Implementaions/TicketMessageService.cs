@@ -61,26 +61,29 @@ public class TicketMessageService : ITicketMessageService
             var _user = scope.ServiceProvider.GetRequiredService<IUserRepository>();
             var _ticket = scope.ServiceProvider.GetRequiredService<ISupportTicketRepository>();
             var _push = scope.ServiceProvider.GetRequiredService<PushNotificationHelper>();
-            var user = await _user.GetByIdAsync(message.UserId) ?? new User();
-            var ticket = await _ticket.GetByIdAsync(message.TicketId) ?? new SupportTicket();
-
-            // send  notification to admins + signalR
-            var admins = await _user.GetAdminsAsync();
-            foreach (var admin in admins)
+            if (message.UserId != null)
             {
-                var adminNotification = TicketMessageAdminNotification.Build(admin.Id, ticket , user);
-                await _notification.Add(adminNotification);
-                // signalR
-                var notificationDto = new NotificationDto
+                var user = await _user.GetByIdAsync(message.UserId ?? 0) ?? new User();
+                var ticket = await _ticket.GetByIdAsync(message.TicketId) ?? new SupportTicket();
+
+                // send  notification to admins + signalR
+                var admins = await _user.GetAdminsAsync();
+                foreach (var admin in admins)
                 {
-                    Type = adminNotification.Type,
-                    Url = adminNotification.Url,
-                    Title = adminNotification.Translations.Where(tr => tr.LanguageCode == "en").Select(tr => tr.Title).FirstOrDefault() ?? "",
-                    Message = adminNotification.Translations.Where(tr => tr.LanguageCode == "en").Select(tr => tr.Message).FirstOrDefault() ?? "",
-                    NotificationRelated = PushNotificationType.NewMessage.ToString()
-                };
-                // push notification
-                await _push.PushToUser(admin.Id, notificationDto);
+                    var adminNotification = TicketMessageAdminNotification.Build(admin.Id, ticket, user);
+                    await _notification.Add(adminNotification);
+                    // signalR
+                    var notificationDto = new NotificationDto
+                    {
+                        Type = adminNotification.Type,
+                        Url = adminNotification.Url,
+                        Title = adminNotification.Translations.Where(tr => tr.LanguageCode == "en").Select(tr => tr.Title).FirstOrDefault() ?? "",
+                        Message = adminNotification.Translations.Where(tr => tr.LanguageCode == "en").Select(tr => tr.Message).FirstOrDefault() ?? "",
+                        NotificationRelated = PushNotificationType.NewMessage.ToString()
+                    };
+                    // push notification
+                    await _push.PushToUser(admin.Id, notificationDto);
+                }
             }
         });
 
@@ -93,19 +96,22 @@ public class TicketMessageService : ITicketMessageService
             var _ticket = scope.ServiceProvider.GetRequiredService<ISupportTicketRepository>();
             var _setting = scope.ServiceProvider.GetRequiredService<AppSettingHelper>();
             var templateService = new EmailTemplateService();
-            var user = await _user.GetByIdAsync(message.UserId) ?? new User();            
-            var ticket = await _ticket.GetByIdAsync(message.TicketId) ?? new SupportTicket();
-            message.User = user;
-            message.Ticket = ticket;
-            // send user email
-            var userEmailBody = await templateService.RenderAsync("User/NewMessage", message);
-            await _email.SendEmailAsync(user.Email, "Your Message Received", userEmailBody);
-            
-            await Task.Delay(30000);
+            if (message.UserId != null)
+            {
+                var user = await _user.GetByIdAsync(message.UserId ?? 0) ?? new User();
+                var ticket = await _ticket.GetByIdAsync(message.TicketId) ?? new SupportTicket();
+                message.User = user;
+                message.Ticket = ticket;
+                // send user email
+                var userEmailBody = await templateService.RenderAsync("User/NewMessage", message);
+                await _email.SendEmailAsync(user.Email, "Your Message Received", userEmailBody);
 
-            // send email to admin email
-            var adminEmailBody = await templateService.RenderAsync("Admin/NewMessage", message);
-            await _email.SendEmailAsync(await _setting.GetValue("admin_email"), "New Message Submitted", adminEmailBody);
+                await Task.Delay(30000);
+
+                // send email to admin email
+                var adminEmailBody = await templateService.RenderAsync("Admin/NewMessage", message);
+                await _email.SendEmailAsync(await _setting.GetValue("admin_email"), "New Message Submitted", adminEmailBody);
+            }
         });
         return message;
     }
@@ -175,12 +181,14 @@ public class TicketMessageService : ITicketMessageService
             var _email = scope.ServiceProvider.GetRequiredService<IEmailService>();
             var _user = scope.ServiceProvider.GetRequiredService<IUserService>();
             var templateService = new EmailTemplateService();
-            var user = await _user.Find(ticketMessage.UserId);
+            if (ticketMessage.UserId != null)
+            {
+                var user = await _user.Find(ticketMessage.UserId ?? 0);
 
-            // send user email
-            var userEmailBody = await templateService.RenderAsync("User/NewMessage", ticketMessage);
-            await _email.SendEmailAsync(user.Email, "New Reply to Your Support Ticket", userEmailBody);
-            
+                // send user email
+                var userEmailBody = await templateService.RenderAsync("User/NewMessage", ticketMessage);
+                await _email.SendEmailAsync(user.Email, "New Reply to Your Support Ticket", userEmailBody);
+            }
         });
         return ticketMessage;
     }

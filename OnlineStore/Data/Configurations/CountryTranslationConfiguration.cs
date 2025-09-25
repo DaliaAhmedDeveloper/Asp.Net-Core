@@ -21,12 +21,13 @@ public class CountryTranslationConfiguration : IEntityTypeConfiguration<CountryT
               // Optionally make Name unique within a State
               builder.HasIndex(ct => ct.LanguageCode);
 
-              // Relationships
+        // Relationships
 
-              // City -> CityTranslations (One-to-Many)
-              builder.HasOne(ct => ct.Country)
-                     .WithMany(c => c.Translations)
-                     .HasForeignKey(ct => ct.CountryId)
-                     .IsRequired(false);
+        // City -> CityTranslations (One-to-Many)
+        builder.HasOne(ct => ct.Country)
+               .WithMany(c => c.Translations)
+               .HasForeignKey(ct => ct.CountryId)
+               .OnDelete(DeleteBehavior.Cascade)
+                ;
     }
 }

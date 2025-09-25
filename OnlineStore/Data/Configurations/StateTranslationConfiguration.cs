@@ -27,6 +27,7 @@ public class StateTranslationConfiguration : IEntityTypeConfiguration<StateTrans
               builder.HasOne(ct => ct.State)
                      .WithMany(c => c.Translations)
                      .HasForeignKey(ct => ct.StateId)
-                     .IsRequired(false);
+                     .OnDelete(DeleteBehavior.Cascade)
+                     ;
        }
 }

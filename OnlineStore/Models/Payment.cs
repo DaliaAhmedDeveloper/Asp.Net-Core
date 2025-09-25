@@ -1,5 +1,6 @@
 namespace OnlineStore.Models;
-public class Payment : BaseEntity
+
+public class Payment : SoftDeleteEntity
 {
     public int Id { get; set; }
     public decimal Amount { get; set; }

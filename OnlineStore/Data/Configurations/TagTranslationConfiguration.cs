@@ -22,6 +22,7 @@ public class TagTranslationConfiguration : IEntityTypeConfiguration<TagTranslati
         builder.Property(tt => tt.LanguageCode).IsRequired().HasMaxLength(10);
         builder.HasOne(tt => tt.Tag)
                .WithMany(t => t.Translations)
-               .HasForeignKey(tt => tt.TagId);
+               .HasForeignKey(tt => tt.TagId)
+               .OnDelete(DeleteBehavior.Cascade);
     }
 }

@@ -21,12 +21,16 @@ public class CartItemConfiguration : IEntityTypeConfiguration<CartItem>
               builder.Property(ci => ci.Quantity).IsRequired();
               builder.HasOne(ci => ci.Cart)
                      .WithMany(c => c.Items)
-                     .HasForeignKey(ci => ci.CartId);
+                     .HasForeignKey(ci => ci.CartId)
+                     .OnDelete(DeleteBehavior.Cascade);
               builder.HasOne(ci => ci.ProductVariant)
                      .WithMany()
-                     .HasForeignKey(ci => ci.VariantId);
+                     .HasForeignKey(ci => ci.VariantId)
+                     .OnDelete(DeleteBehavior.Restrict);
               builder.HasOne(ci => ci.Product)
                      .WithMany()
-                     .HasForeignKey(ci => ci.ProductId).IsRequired(false);
+                     .HasForeignKey(ci => ci.ProductId)
+                     .OnDelete(DeleteBehavior.Restrict); 
+                     
        }
 }

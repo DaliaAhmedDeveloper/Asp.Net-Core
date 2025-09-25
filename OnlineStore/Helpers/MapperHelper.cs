@@ -20,7 +20,7 @@ public static class MapperHelper
             Subject = ticket.Subject,
             Description = ticket.Description,
             Messages = ticket.Messages?.Select(m => new TicketMessageDto
-            {
+            { 
                 Id = m.Id,
                 TicketId = m.TicketId,
                 UserId = m.UserId,

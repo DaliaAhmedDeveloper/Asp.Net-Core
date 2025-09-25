@@ -25,6 +25,8 @@ public class CouponTranslationConfiguration : IEntityTypeConfiguration<CouponTra
         builder.Property(ct => ct.LanguageCode).IsRequired().HasMaxLength(10);
         builder.HasOne(ct => ct.Coupon)
                .WithMany(ct => ct.Translations)
-               .HasForeignKey(ct => ct.CouponId).IsRequired(false);
+               .HasForeignKey(ct => ct.CouponId)
+               .OnDelete(DeleteBehavior.Cascade)
+               ;
     }
 }

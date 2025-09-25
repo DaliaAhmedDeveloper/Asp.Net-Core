@@ -26,6 +26,7 @@ public class NotificationTranslationConfiguration : IEntityTypeConfiguration<Not
 
         builder.HasOne(nt => nt.Notification)
                .WithMany(n => n.Translations)
-               .HasForeignKey(nt => nt.NotificationId);
+               .HasForeignKey(nt => nt.NotificationId)
+               .OnDelete(DeleteBehavior.Cascade);
     }
 }

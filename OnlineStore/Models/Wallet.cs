@@ -1,5 +1,5 @@
 namespace OnlineStore.Models;
-public class Wallet
+public class Wallet : BaseEntity
 {
     public int Id { get; set; }
     public int UserId { get; set; }

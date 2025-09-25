@@ -51,8 +51,8 @@ public class ProductAttributeValueService : IProductAttributeValueService
             AttributeId = model.AttributeId,  
             Translations = new List<AttributeValueTranslation>
             {
-                new AttributeValueTranslation { LanguageCode = "en" },
-                new AttributeValueTranslation { LanguageCode = "ar" }
+                new AttributeValueTranslation { LanguageCode = "en" , Name = model.NameEn },
+                new AttributeValueTranslation { LanguageCode = "ar" , Name = model.NameAr }
             }
         };
 

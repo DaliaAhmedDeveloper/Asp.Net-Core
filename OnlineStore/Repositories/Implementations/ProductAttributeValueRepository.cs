@@ -14,10 +14,11 @@ public class ProductAttributeValueRepository : GenericRepository<AttributeValue>
         int pageNumber = 1,
         int pageSize = 10)
     {
+        var query = _context.AttributeValues.Include(av => av.Translations).Where(av => av.Attribute.IsDeleted == false);
         if (!string.IsNullOrEmpty(searchTxt))
-            return await _context.AttributeValues.Include(av => av.Translations).Where(av => av.Code != null && av.Code.Contains(searchTxt) || av.Translations.Any(t => t.Name.Contains(searchTxt))).Skip((pageNumber - 1) * pageSize).Take(pageSize).ToListAsync();
+            return await  query.Where(av => av.Code != null && av.Code.Contains(searchTxt) || av.Translations.Any(t => t.Name.Contains(searchTxt))).Skip((pageNumber - 1) * pageSize).Take(pageSize).ToListAsync();
 
-        return await _context.AttributeValues.Include(av => av.Translations).Skip((pageNumber - 1) * pageSize).Take(pageSize).ToListAsync();
+        return await  query.Skip((pageNumber - 1) * pageSize).Take(pageSize).ToListAsync();
     }
 
 }

@@ -23,14 +23,17 @@ public class ReviewConfiguration : IEntityTypeConfiguration<Review>
         builder.Property(r => r.Rating).IsRequired();
         builder.Property(r => r.Comment).HasMaxLength(500);
         builder.Property(r => r.CreatedAt).IsRequired();
-        builder.HasOne(r => r.User)
-               .WithMany(u => u.Reviews)
-               .HasForeignKey(r => r.UserId);
-        builder.HasOne(r => r.Product)
-               .WithMany(p => p.Reviews)
-               .HasForeignKey(r => r.ProductId);
-        builder.HasOne(r => r.order)
-               .WithMany(u => u.Reviews)
-               .HasForeignKey(r => r.OrderId);
+              builder.HasOne(r => r.User)
+                     .WithMany(u => u.Reviews)
+                     .HasForeignKey(r => r.UserId)
+                     .OnDelete(DeleteBehavior.SetNull);
+              builder.HasOne(r => r.Product)
+                     .WithMany(p => p.Reviews)
+                     .HasForeignKey(r => r.ProductId)
+                     .OnDelete(DeleteBehavior.Cascade);
+              builder.HasOne(r => r.Order)
+                     .WithMany(u => u.Reviews)
+                     .HasForeignKey(r => r.OrderId)
+                     .OnDelete(DeleteBehavior.SetNull);
     }
 }

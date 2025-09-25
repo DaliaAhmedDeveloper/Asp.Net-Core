@@ -26,7 +26,8 @@ public class RoleTranslationConfiguration : IEntityTypeConfiguration<RoleTransla
 
               builder.HasOne(t => t.Role)
                     .WithMany(r => r.Translations)
-                    .HasForeignKey(t => t.RoleId);
+                    .HasForeignKey(t => t.RoleId)
+                    .OnDelete(DeleteBehavior.Cascade);
 
        }
 }

@@ -32,8 +32,10 @@ public class ReturnConfiguration : IEntityTypeConfiguration<Return>
         builder.Property(r => r.ReturnDate).IsRequired();
         builder.Property(r => r.TotalAmount).IsRequired().HasPrecision(18, 2);
 
-         builder.HasOne(r => r.Order)
-               .WithMany(o => o.Returns)
-               .HasForeignKey(o => o.OrderId).IsRequired(false);
+        builder.HasOne(r => r.Order)
+              .WithMany(o => o.Returns)
+              .HasForeignKey(o => o.OrderId)
+              .OnDelete(DeleteBehavior.Cascade)
+              ;
     }
 }

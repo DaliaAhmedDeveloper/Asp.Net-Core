@@ -20,6 +20,8 @@ public class ReturnTrackingConfiguration : IEntityTypeConfiguration<ReturnTracki
         builder.HasKey(rt => rt.Id);
         builder.HasOne(rt => rt.Return)
                .WithOne(r => r.ReturnTracking)
-               .HasForeignKey<ReturnTracking>(rt => rt.ReturnId).IsRequired(false);
+               .HasForeignKey<ReturnTracking>(rt => rt.ReturnId)
+               .OnDelete(DeleteBehavior.Cascade)
+               ;
     }
 }

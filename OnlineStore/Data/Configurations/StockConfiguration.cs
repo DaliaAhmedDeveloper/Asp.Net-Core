@@ -20,10 +20,11 @@ public class StockConfiguration : IEntityTypeConfiguration<Stock>
         
         // Indexes
         builder.HasIndex(s => new { s.ProductVariantId, s.WarehouseId });
-        
+
         // Relationships
         builder.HasOne(s => s.ProductVariant)
                .WithOne(pv => pv.Stock)
-               .HasForeignKey<Stock>(s => s.ProductVariantId);
+               .HasForeignKey<Stock>(s => s.ProductVariantId)
+               .OnDelete(DeleteBehavior.Cascade);
     }
 } 

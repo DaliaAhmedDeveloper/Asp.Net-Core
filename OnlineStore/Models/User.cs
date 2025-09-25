@@ -1,7 +1,7 @@
 namespace OnlineStore.Models;
 
 using OnlineStore.Models.Enums;
-public class User : BaseEntity
+public class User : SoftDeleteEntity
 {
     public int Id { get; set; }
     public string FullName { get; set; } = string.Empty;
@@ -33,7 +33,5 @@ public class User : BaseEntity
 
     public ICollection<TicketMessage> TicketMessages { set; get; } = new List<TicketMessage>();
     public ICollection<SupportTicket> SupportTickets { set; get; } = new List<SupportTicket>();
-    public ICollection<StockMovement> StockMovements { get; set; } = new List<StockMovement>();
     public ICollection<CouponUser> CouponUsers { get; set; } = new List<CouponUser>();
-
 }

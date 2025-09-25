@@ -19,7 +19,7 @@ public class ReviewAttachmentConfiguration : IEntityTypeConfiguration<ReviewAtta
             .HasDefaultValueSql("GETUTCDATE()");
 
         builder.HasOne(ra => ra.Review)
-            .WithMany(r => r.Attachments) // لازم تضيف ICollection<ReviewAttachment> Attachments في Review
+            .WithMany(r => r.Attachments)
             .HasForeignKey(ra => ra.ReviewId)
             .OnDelete(DeleteBehavior.Cascade);
     }

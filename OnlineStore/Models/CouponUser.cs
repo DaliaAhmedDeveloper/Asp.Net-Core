@@ -9,4 +9,5 @@ public class CouponUser
     public Coupon Coupon { get; set; } = null!;
     public DateTime UsedAt { get; set; } = DateTime.UtcNow;
     public int UsageCount { get; set; } = 1;
+    
 }

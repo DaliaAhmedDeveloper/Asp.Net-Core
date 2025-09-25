@@ -27,6 +27,7 @@ public class StateConfiguration : IEntityTypeConfiguration<State>
         // State -> Country (Many-to-One)
         builder.HasOne(s => s.Country)
                .WithMany(c => c.States)
-               .HasForeignKey(s => s.CountryId);
+               .HasForeignKey(s => s.CountryId)
+               .OnDelete(DeleteBehavior.Cascade);
     }
 }

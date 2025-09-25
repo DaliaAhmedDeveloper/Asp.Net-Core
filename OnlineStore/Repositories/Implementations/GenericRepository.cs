@@ -1,8 +1,5 @@
 namespace OnlineStore.Repositories;
-
-using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.EntityFrameworkCore;
-using OnlineStore.Data;
 
 public class GenericRepository<T> : IGenericRepository<T> where T : class
 {

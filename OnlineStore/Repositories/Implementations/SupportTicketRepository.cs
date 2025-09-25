@@ -23,7 +23,6 @@ public class SupportTicketRepository : GenericRepository<SupportTicket>, ISuppor
     {
         return await _context.SupportTickets
                              .Where(st => st.UserId == userId)
-                             .Include(st => st.Order)
                              .Include(st => st.Messages)
                              .ToListAsync();
     }
@@ -34,7 +33,6 @@ public class SupportTicketRepository : GenericRepository<SupportTicket>, ISuppor
     {
         return await _context.SupportTickets
         .Include(st => st.User)
-        .Include(st => st.Order)
         .FirstOrDefaultAsync(st => st.Id == id);
      }
 

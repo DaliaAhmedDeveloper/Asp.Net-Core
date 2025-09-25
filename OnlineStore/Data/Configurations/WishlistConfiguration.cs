@@ -11,7 +11,7 @@ public class WishlistConfiguration : IEntityTypeConfiguration<Wishlist>
         builder.HasKey(w => w.Id);
         builder.HasOne(w => w.User)
             .WithMany(u => u.Wishlists)
-            .HasForeignKey(w => w.UserId).IsRequired(false);
+            .HasForeignKey(w => w.UserId);
 
         builder.HasOne(w => w.Product)
             .WithMany()

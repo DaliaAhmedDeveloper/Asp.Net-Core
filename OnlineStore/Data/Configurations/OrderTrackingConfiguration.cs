@@ -22,6 +22,8 @@ public class OrderTrackingConfiguration : IEntityTypeConfiguration<OrderTracking
         builder.HasKey(ot => ot.Id);
         builder.HasOne(ot => ot.Order)
                .WithOne(o => o.OrderTracking)
-               .HasForeignKey<OrderTracking>(ot => ot.OrderId).IsRequired(false);
+               .HasForeignKey<OrderTracking>(ot => ot.OrderId)
+               .OnDelete(DeleteBehavior.Cascade)
+               ;
     }
 }

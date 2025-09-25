@@ -39,6 +39,6 @@ public class NotificationController : Controller
             return NotFound();
 
         TempData["SuccessMessage"] = "Notification deleted successfully!";
-        return Content("success ");
+        return RedirectToAction(nameof(Index));
     }
 }

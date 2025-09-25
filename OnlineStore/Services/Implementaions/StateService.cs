@@ -93,9 +93,7 @@ public class StateService : IStateService
         if (State == null)
             return false;
 
-        State.IsDeleted = true;
-        State.UpdatedAt = DateTime.UtcNow;
-        await _stateRepo.UpdateAsync(State);
+        await _stateRepo.DeleteAsync(id);
         return true;
     }
 }

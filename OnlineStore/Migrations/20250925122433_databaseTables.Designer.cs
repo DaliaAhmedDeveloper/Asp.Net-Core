@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace OnlineStore.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250902141255_UpdateTables")]
-    partial class UpdateTables
+    [Migration("20250925122433_databaseTables")]
+    partial class databaseTables
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -23,21 +23,6 @@ namespace OnlineStore.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
-
-            modelBuilder.Entity("CategoryCoupon", b =>
-                {
-                    b.Property<int>("CategoiesId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("CouponsId")
-                        .HasColumnType("int");
-
-                    b.HasKey("CategoiesId", "CouponsId");
-
-                    b.HasIndex("CouponsId");
-
-                    b.ToTable("CategoryCoupon");
-                });
 
             modelBuilder.Entity("CategoryProduct", b =>
                 {
@@ -214,6 +199,9 @@ namespace OnlineStore.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("FullName")
                         .IsRequired()
                         .HasMaxLength(100)
@@ -226,6 +214,9 @@ namespace OnlineStore.Migrations
                         .IsRequired()
                         .HasMaxLength(200)
                         .HasColumnType("nvarchar(200)");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
 
                     b.Property<int>("UserId")
                         .HasColumnType("int");
@@ -635,6 +626,18 @@ namespace OnlineStore.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DeletedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
                     b.HasKey("Id");
 
                     b.HasIndex("AttributeId");
@@ -646,61 +649,81 @@ namespace OnlineStore.Migrations
                         {
                             Id = 1,
                             AttributeId = 1,
-                            Code = "Red"
+                            Code = "Red",
+                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsDeleted = false
                         },
                         new
                         {
                             Id = 2,
                             AttributeId = 1,
-                            Code = "Black"
+                            Code = "Black",
+                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsDeleted = false
                         },
                         new
                         {
                             Id = 3,
                             AttributeId = 1,
-                            Code = "Green"
+                            Code = "Green",
+                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsDeleted = false
                         },
                         new
                         {
                             Id = 4,
                             AttributeId = 2,
-                            Code = "XL"
+                            Code = "XL",
+                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsDeleted = false
                         },
                         new
                         {
                             Id = 5,
                             AttributeId = 2,
-                            Code = "XXL"
+                            Code = "XXL",
+                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsDeleted = false
                         },
                         new
                         {
                             Id = 6,
                             AttributeId = 2,
-                            Code = "XXXL"
+                            Code = "XXXL",
+                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsDeleted = false
                         },
                         new
                         {
                             Id = 7,
                             AttributeId = 3,
-                            Code = "ZARA"
+                            Code = "ZARA",
+                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsDeleted = false
                         },
                         new
                         {
                             Id = 8,
                             AttributeId = 3,
-                            Code = "MAX"
+                            Code = "MAX",
+                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsDeleted = false
                         },
                         new
                         {
                             Id = 9,
                             AttributeId = 4,
-                            Code = "FERRARI"
+                            Code = "FERRARI",
+                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsDeleted = false
                         },
                         new
                         {
                             Id = 10,
                             AttributeId = 4,
-                            Code = "TOYOTA"
+                            Code = "TOYOTA",
+                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsDeleted = false
                         });
                 });
 
@@ -882,7 +905,10 @@ namespace OnlineStore.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<DateTime>("UpdatedAt")
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("UpdatedAt")
                         .HasColumnType("datetime2");
 
                     b.Property<int>("UserId")
@@ -907,11 +933,17 @@ namespace OnlineStore.Migrations
                     b.Property<int>("CartId")
                         .HasColumnType("int");
 
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
                     b.Property<int>("ProductId")
                         .HasColumnType("int");
 
                     b.Property<int>("Quantity")
                         .HasColumnType("int");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
 
                     b.Property<int>("VariantId")
                         .HasColumnType("int");
@@ -945,9 +977,6 @@ namespace OnlineStore.Migrations
                     b.Property<bool>("IsDeal")
                         .HasColumnType("bit");
 
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
                     b.Property<int?>("ParentId")
                         .HasColumnType("int");
 
@@ -972,7 +1001,6 @@ namespace OnlineStore.Migrations
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImageUrl = "default.png",
                             IsDeal = false,
-                            IsDeleted = false,
                             Slug = "Uncategorized"
                         },
                         new
@@ -981,7 +1009,6 @@ namespace OnlineStore.Migrations
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImageUrl = "default.png",
                             IsDeal = false,
-                            IsDeleted = false,
                             Slug = "electronics"
                         },
                         new
@@ -990,7 +1017,6 @@ namespace OnlineStore.Migrations
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImageUrl = "default.png",
                             IsDeal = false,
-                            IsDeleted = false,
                             ParentId = 1,
                             Slug = "tV"
                         },
@@ -1000,7 +1026,6 @@ namespace OnlineStore.Migrations
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImageUrl = "default.png",
                             IsDeal = false,
-                            IsDeleted = false,
                             ParentId = 1,
                             Slug = "laptops"
                         },
@@ -1010,7 +1035,6 @@ namespace OnlineStore.Migrations
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImageUrl = "default.png",
                             IsDeal = false,
-                            IsDeleted = false,
                             ParentId = 1,
                             Slug = "fridges"
                         });
@@ -1141,9 +1165,6 @@ namespace OnlineStore.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(100)
@@ -1167,7 +1188,6 @@ namespace OnlineStore.Migrations
                         {
                             Id = 1,
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsDeleted = false,
                             Name = "Downtown Dubai",
                             StateId = 1
                         },
@@ -1175,7 +1195,6 @@ namespace OnlineStore.Migrations
                         {
                             Id = 2,
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsDeleted = false,
                             Name = "Marina",
                             StateId = 1
                         },
@@ -1183,7 +1202,6 @@ namespace OnlineStore.Migrations
                         {
                             Id = 3,
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsDeleted = false,
                             Name = "Nasr City",
                             StateId = 3
                         });
@@ -1281,9 +1299,6 @@ namespace OnlineStore.Migrations
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
 
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
                     b.Property<string>("PhoneCode")
                         .IsRequired()
                         .HasMaxLength(10)
@@ -1306,7 +1321,6 @@ namespace OnlineStore.Migrations
                             Code = "AE",
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
-                            IsDeleted = false,
                             PhoneCode = "+971"
                         },
                         new
@@ -1315,7 +1329,6 @@ namespace OnlineStore.Migrations
                             Code = "EG",
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
-                            IsDeleted = false,
                             PhoneCode = "+20"
                         });
                 });
@@ -1400,6 +1413,12 @@ namespace OnlineStore.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DeletedAt")
+                        .HasColumnType("datetime2");
+
                     b.Property<int?>("DiscountPrecentage")
                         .HasColumnType("int");
 
@@ -1413,6 +1432,9 @@ namespace OnlineStore.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
                     b.Property<bool>("IsForFirstOrderOnly")
@@ -1432,6 +1454,9 @@ namespace OnlineStore.Migrations
                     b.Property<DateTime>("StartDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
                     b.HasKey("Id");
 
                     b.HasIndex("Code")
@@ -1444,10 +1469,12 @@ namespace OnlineStore.Migrations
                         {
                             Id = 1,
                             Code = "FIRST50",
+                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DiscountPrecentage = 50,
                             DiscountType = 1,
                             EndDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
+                            IsDeleted = false,
                             IsForFirstOrderOnly = true,
                             MaxDiscountAmount = 100m,
                             MaxUsagePerUser = 1,
@@ -1458,10 +1485,12 @@ namespace OnlineStore.Migrations
                         {
                             Id = 2,
                             Code = "SAVE20",
+                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DiscountPrecentage = 20,
                             DiscountType = 1,
                             EndDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
+                            IsDeleted = false,
                             IsForFirstOrderOnly = false,
                             MaxDiscountAmount = 200m,
                             MaxUsagePerUser = 5,
@@ -1472,10 +1501,12 @@ namespace OnlineStore.Migrations
                         {
                             Id = 3,
                             Code = "FLAT100",
+                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DiscountType = 0,
                             DiscountValue = 100m,
                             EndDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
+                            IsDeleted = false,
                             IsForFirstOrderOnly = false,
                             MaxDiscountAmount = 100m,
                             MaxUsagePerUser = 3,
@@ -1556,6 +1587,9 @@ namespace OnlineStore.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("Details")
                         .HasColumnType("nvarchar(max)");
 
@@ -1574,6 +1608,9 @@ namespace OnlineStore.Migrations
 
                     b.Property<int>("Try")
                         .HasColumnType("int");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 
@@ -1598,6 +1635,9 @@ namespace OnlineStore.Migrations
                         .IsRequired()
                         .HasMaxLength(255)
                         .HasColumnType("nvarchar(255)");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 
@@ -1646,9 +1686,6 @@ namespace OnlineStore.Migrations
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
 
                     b.Property<bool>("IsRead")
                         .HasColumnType("bit");
@@ -1713,6 +1750,10 @@ namespace OnlineStore.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<string>("Coupon")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<decimal>("CouponDiscountAmount")
                         .HasPrecision(18, 4)
                         .HasColumnType("decimal(18,4)");
@@ -1721,6 +1762,9 @@ namespace OnlineStore.Migrations
                         .HasColumnType("int");
 
                     b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DeletedAt")
                         .HasColumnType("datetime2");
 
                     b.Property<decimal>("FinalAmount")
@@ -1756,10 +1800,38 @@ namespace OnlineStore.Migrations
                         .HasPrecision(18, 4)
                         .HasColumnType("decimal(18,4)");
 
-                    b.Property<int>("ShippingAddressId")
-                        .HasColumnType("int");
+                    b.Property<string>("ShAddressCity")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("ShippingMethodId")
+                    b.Property<string>("ShAddressCountry")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ShAddressFullName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ShAddressStreet")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ShAddressZipCode")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ShippingMethod")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("ShippingMethodCost")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<string>("ShippingMethodDelieveryDate")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("ShippingMethodId")
                         .HasColumnType("int");
 
                     b.Property<decimal>("TotalAmountAfterSale")
@@ -1773,8 +1845,16 @@ namespace OnlineStore.Migrations
                     b.Property<DateTime?>("UpdatedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("UserId")
+                    b.Property<string>("UserEmail")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("UserId")
                         .HasColumnType("int");
+
+                    b.Property<string>("UserName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<decimal>("WalletAmountUsed")
                         .HasPrecision(18, 4)
@@ -1786,8 +1866,6 @@ namespace OnlineStore.Migrations
 
                     b.HasIndex("ReferenceNumber")
                         .IsUnique();
-
-                    b.HasIndex("ShippingAddressId");
 
                     b.HasIndex("ShippingMethodId");
 
@@ -1816,10 +1894,26 @@ namespace OnlineStore.Migrations
                     b.Property<int>("Points")
                         .HasColumnType("int");
 
-                    b.Property<int>("ProductId")
+                    b.Property<string>("ProductAttribute")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("ProductId")
                         .HasColumnType("int");
 
-                    b.Property<int>("ProductVariantId")
+                    b.Property<string>("ProductImage")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ProductName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ProductSlug")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("ProductVariantId")
                         .HasColumnType("int");
 
                     b.Property<int>("Quantity")
@@ -1837,10 +1931,6 @@ namespace OnlineStore.Migrations
 
                     b.HasIndex("OrderId");
 
-                    b.HasIndex("ProductId");
-
-                    b.HasIndex("ProductVariantId");
-
                     b.ToTable("OrderItems", (string)null);
                 });
 
@@ -1851,6 +1941,9 @@ namespace OnlineStore.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("DriverName")
                         .IsRequired()
@@ -1874,7 +1967,7 @@ namespace OnlineStore.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("UpdatedAt")
+                    b.Property<DateTime?>("UpdatedAt")
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
@@ -1932,6 +2025,9 @@ namespace OnlineStore.Migrations
                         .HasColumnType("decimal(18,4)");
 
                     b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DeletedAt")
                         .HasColumnType("datetime2");
 
                     b.Property<bool>("IsDeleted")
@@ -1996,6 +2092,9 @@ namespace OnlineStore.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DeletedAt")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("ImageUrl")
@@ -2270,6 +2369,18 @@ namespace OnlineStore.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DeletedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
                     b.HasKey("Id");
 
                     b.ToTable("ProductAttributes", (string)null);
@@ -2278,22 +2389,30 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 1,
-                            Code = "Color"
+                            Code = "Color",
+                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsDeleted = false
                         },
                         new
                         {
                             Id = 2,
-                            Code = "Size"
+                            Code = "Size",
+                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsDeleted = false
                         },
                         new
                         {
                             Id = 3,
-                            Code = "Brand"
+                            Code = "Brand",
+                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsDeleted = false
                         },
                         new
                         {
                             Id = 4,
-                            Code = "Model"
+                            Code = "Model",
+                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsDeleted = false
                         });
                 });
 
@@ -2791,6 +2910,9 @@ namespace OnlineStore.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("ImageUrl")
                         .IsRequired()
                         .HasMaxLength(200)
@@ -2810,6 +2932,9 @@ namespace OnlineStore.Migrations
                         .HasPrecision(18, 2)
                         .HasColumnType("decimal(18,2)");
 
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
                     b.HasKey("Id");
 
                     b.HasIndex("ProductId");
@@ -2822,6 +2947,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 1,
+                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImageUrl = "default.png",
                             IsDefault = false,
                             Price = 0m,
@@ -2830,6 +2956,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 2,
+                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImageUrl = "default.png",
                             IsDefault = false,
                             Price = 0m,
@@ -2838,6 +2965,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 3,
+                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImageUrl = "default.png",
                             IsDefault = false,
                             Price = 0m,
@@ -2846,6 +2974,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 4,
+                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImageUrl = "default.png",
                             IsDefault = false,
                             Price = 0m,
@@ -2854,6 +2983,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 5,
+                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImageUrl = "default.png",
                             IsDefault = false,
                             Price = 0m,
@@ -2862,6 +2992,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 6,
+                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImageUrl = "default.png",
                             IsDefault = false,
                             Price = 0m,
@@ -2870,6 +3001,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 7,
+                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImageUrl = "default.png",
                             IsDefault = false,
                             Price = 0m,
@@ -2878,6 +3010,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 8,
+                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImageUrl = "default.png",
                             IsDefault = false,
                             Price = 0m,
@@ -2886,6 +3019,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 9,
+                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImageUrl = "default.png",
                             IsDefault = false,
                             Price = 0m,
@@ -2894,6 +3028,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 10,
+                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImageUrl = "default.png",
                             IsDefault = false,
                             Price = 0m,
@@ -2914,9 +3049,6 @@ namespace OnlineStore.Migrations
 
                     b.Property<DateTime>("ExpiryDate")
                         .HasColumnType("datetime2");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
 
                     b.Property<bool>("IsRevoked")
                         .HasColumnType("bit");
@@ -2949,6 +3081,9 @@ namespace OnlineStore.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
                     b.Property<int>("OrderId")
                         .HasColumnType("int");
 
@@ -2975,7 +3110,10 @@ namespace OnlineStore.Migrations
                         .HasPrecision(18, 2)
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<int>("UserId")
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("UserId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -3104,10 +3242,7 @@ namespace OnlineStore.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<int>("OrderId")
+                    b.Property<int?>("OrderId")
                         .HasColumnType("int");
 
                     b.Property<int>("ProductId")
@@ -3119,7 +3254,7 @@ namespace OnlineStore.Migrations
                     b.Property<DateTime?>("UpdatedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("UserId")
+                    b.Property<int?>("UserId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -3180,9 +3315,6 @@ namespace OnlineStore.Migrations
                         .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -3266,9 +3398,6 @@ namespace OnlineStore.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
                     b.Property<DateTime?>("UpdatedAt")
                         .HasColumnType("datetime2");
 
@@ -3287,24 +3416,21 @@ namespace OnlineStore.Migrations
                             Id = 1,
                             Code = "DXB",
                             CountryId = 1,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsDeleted = false
+                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             Id = 2,
                             Code = "ABU",
                             CountryId = 1,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsDeleted = false
+                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             Id = 3,
                             Code = "CAI",
                             CountryId = 2,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsDeleted = false
+                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         });
                 });
 
@@ -3392,9 +3518,6 @@ namespace OnlineStore.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
                     b.Property<DateTime>("LastRestocked")
                         .HasColumnType("datetime2");
 
@@ -3445,7 +3568,6 @@ namespace OnlineStore.Migrations
                         {
                             Id = 1,
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsDeleted = false,
                             LastRestocked = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             LastStockCount = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             MinimumStockLevel = 20,
@@ -3460,7 +3582,6 @@ namespace OnlineStore.Migrations
                         {
                             Id = 2,
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsDeleted = false,
                             LastRestocked = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             LastStockCount = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             MinimumStockLevel = 25,
@@ -3475,7 +3596,6 @@ namespace OnlineStore.Migrations
                         {
                             Id = 3,
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsDeleted = false,
                             LastRestocked = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             LastStockCount = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             MinimumStockLevel = 10,
@@ -3490,7 +3610,6 @@ namespace OnlineStore.Migrations
                         {
                             Id = 4,
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsDeleted = false,
                             LastRestocked = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             LastStockCount = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             MinimumStockLevel = 10,
@@ -3505,7 +3624,6 @@ namespace OnlineStore.Migrations
                         {
                             Id = 5,
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsDeleted = false,
                             LastRestocked = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             LastStockCount = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             MinimumStockLevel = 30,
@@ -3520,7 +3638,6 @@ namespace OnlineStore.Migrations
                         {
                             Id = 6,
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsDeleted = false,
                             LastRestocked = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             LastStockCount = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             MinimumStockLevel = 15,
@@ -3535,7 +3652,6 @@ namespace OnlineStore.Migrations
                         {
                             Id = 7,
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsDeleted = false,
                             LastRestocked = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             LastStockCount = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             MinimumStockLevel = 20,
@@ -3550,7 +3666,6 @@ namespace OnlineStore.Migrations
                         {
                             Id = 8,
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsDeleted = false,
                             LastRestocked = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             LastStockCount = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             MinimumStockLevel = 25,
@@ -3565,7 +3680,6 @@ namespace OnlineStore.Migrations
                         {
                             Id = 9,
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsDeleted = false,
                             LastRestocked = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             LastStockCount = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             MinimumStockLevel = 10,
@@ -3580,7 +3694,6 @@ namespace OnlineStore.Migrations
                         {
                             Id = 10,
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsDeleted = false,
                             LastRestocked = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             LastStockCount = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             MinimumStockLevel = 15,
@@ -3603,9 +3716,6 @@ namespace OnlineStore.Migrations
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
 
                     b.Property<string>("Notes")
                         .IsRequired()
@@ -3633,8 +3743,16 @@ namespace OnlineStore.Migrations
                     b.Property<DateTime?>("UpdatedAt")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("UserEmail")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int?>("UserId")
                         .HasColumnType("int");
+
+                    b.Property<string>("UserName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -3645,8 +3763,6 @@ namespace OnlineStore.Migrations
                     b.HasIndex("StockId");
 
                     b.HasIndex("Type");
-
-                    b.HasIndex("UserId");
 
                     b.ToTable("StockMovements", (string)null);
                 });
@@ -3672,6 +3788,9 @@ namespace OnlineStore.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
+                    b.Property<DateTime?>("DeletedAt")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasMaxLength(2000)
@@ -3680,8 +3799,12 @@ namespace OnlineStore.Migrations
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
-                    b.Property<int>("OrderId")
+                    b.Property<int?>("OrderId")
                         .HasColumnType("int");
+
+                    b.Property<string>("OrderNumber")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Priority")
                         .IsRequired()
@@ -3738,6 +3861,12 @@ namespace OnlineStore.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
                     b.HasKey("Id");
 
                     b.ToTable("Tags", (string)null);
@@ -3746,32 +3875,38 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 1,
-                            Code = "Electronics"
+                            Code = "Electronics",
+                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             Id = 2,
-                            Code = "Smart"
+                            Code = "Smart",
+                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             Id = 3,
-                            Code = "Electricity"
+                            Code = "Electricity",
+                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             Id = 4,
-                            Code = "White"
+                            Code = "White",
+                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             Id = 5,
-                            Code = "Large"
+                            Code = "Large",
+                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             Id = 6,
-                            Code = "Good Deal"
+                            Code = "Good Deal",
+                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         });
                 });
 
@@ -3900,6 +4035,9 @@ namespace OnlineStore.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
+                    b.Property<DateTime?>("DeletedAt")
+                        .HasColumnType("datetime2");
+
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
@@ -3932,7 +4070,7 @@ namespace OnlineStore.Migrations
                     b.Property<DateTime?>("UpdatedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("UserId")
+                    b.Property<int?>("UserId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -3959,6 +4097,9 @@ namespace OnlineStore.Migrations
                         .HasColumnType("int");
 
                     b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DeletedAt")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Email")
@@ -4072,6 +4213,9 @@ namespace OnlineStore.Migrations
 
                     b.Property<byte>("Type")
                         .HasColumnType("tinyint");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
 
                     b.Property<int>("UserId")
                         .HasColumnType("int");
@@ -4216,6 +4360,12 @@ namespace OnlineStore.Migrations
                         .HasPrecision(18, 4)
                         .HasColumnType("decimal(18,4)");
 
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
                     b.Property<int>("UserId")
                         .HasMaxLength(100)
                         .HasColumnType("int");
@@ -4247,6 +4397,9 @@ namespace OnlineStore.Migrations
                         .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
 
                     b.Property<int>("WalletId")
                         .HasColumnType("int");
@@ -4283,6 +4436,9 @@ namespace OnlineStore.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DeletedAt")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Email")
@@ -4338,6 +4494,23 @@ namespace OnlineStore.Migrations
                             Phone = "+971 50 123 4567",
                             State = "Dubai",
                             ZipCode = "00000"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Address = "123 Business Street",
+                            City = "Downtown Dubai",
+                            Code = "WH002",
+                            Country = "United Arab Emirates",
+                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Email = "warehouse@effortz.co",
+                            IsActive = true,
+                            IsDefault = true,
+                            IsDeleted = false,
+                            Name = "Second Warehouse",
+                            Phone = "+971 50 123 4567",
+                            State = "Dubai",
+                            ZipCode = "00000"
                         });
                 });
 
@@ -4349,8 +4522,14 @@ namespace OnlineStore.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
                     b.Property<int>("ProductId")
                         .HasColumnType("int");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
 
                     b.Property<int>("UserId")
                         .HasColumnType("int");
@@ -4375,9 +4554,6 @@ namespace OnlineStore.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
                     b.Property<string>("Slug")
                         .IsRequired()
                         .HasMaxLength(100)
@@ -4395,595 +4571,510 @@ namespace OnlineStore.Migrations
                         {
                             Id = 1,
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsDeleted = false,
                             Slug = "user.add"
                         },
                         new
                         {
                             Id = 2,
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsDeleted = false,
                             Slug = "user.update"
                         },
                         new
                         {
                             Id = 3,
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsDeleted = false,
                             Slug = "user.list"
                         },
                         new
                         {
                             Id = 4,
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsDeleted = false,
                             Slug = "user.show"
                         },
                         new
                         {
                             Id = 5,
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsDeleted = false,
                             Slug = "user.delete"
                         },
                         new
                         {
                             Id = 6,
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsDeleted = false,
                             Slug = "tag.add"
                         },
                         new
                         {
                             Id = 7,
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsDeleted = false,
                             Slug = "tag.update"
                         },
                         new
                         {
                             Id = 8,
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsDeleted = false,
                             Slug = "tag.list"
                         },
                         new
                         {
                             Id = 9,
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsDeleted = false,
                             Slug = "tag.show"
                         },
                         new
                         {
                             Id = 10,
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsDeleted = false,
                             Slug = "tag.delete"
                         },
                         new
                         {
                             Id = 11,
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsDeleted = false,
                             Slug = "category.add"
                         },
                         new
                         {
                             Id = 12,
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsDeleted = false,
                             Slug = "category.update"
                         },
                         new
                         {
                             Id = 13,
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsDeleted = false,
                             Slug = "category.list"
                         },
                         new
                         {
                             Id = 14,
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsDeleted = false,
                             Slug = "category.show"
                         },
                         new
                         {
                             Id = 15,
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsDeleted = false,
                             Slug = "category.delete"
                         },
                         new
                         {
                             Id = 16,
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsDeleted = false,
                             Slug = "country.add"
                         },
                         new
                         {
                             Id = 17,
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsDeleted = false,
                             Slug = "country.update"
                         },
                         new
                         {
                             Id = 18,
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsDeleted = false,
                             Slug = "country.list"
                         },
                         new
                         {
                             Id = 19,
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsDeleted = false,
                             Slug = "country.show"
                         },
                         new
                         {
                             Id = 20,
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsDeleted = false,
                             Slug = "country.delete"
                         },
                         new
                         {
                             Id = 21,
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsDeleted = false,
                             Slug = "state.add"
                         },
                         new
                         {
                             Id = 22,
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsDeleted = false,
                             Slug = "state.update"
                         },
                         new
                         {
                             Id = 23,
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsDeleted = false,
                             Slug = "state.list"
                         },
                         new
                         {
                             Id = 24,
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsDeleted = false,
                             Slug = "state.show"
                         },
                         new
                         {
                             Id = 25,
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsDeleted = false,
                             Slug = "state.delete"
                         },
                         new
                         {
                             Id = 26,
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsDeleted = false,
                             Slug = "city.add"
                         },
                         new
                         {
                             Id = 27,
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsDeleted = false,
                             Slug = "city.update"
                         },
                         new
                         {
                             Id = 28,
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsDeleted = false,
                             Slug = "city.list"
                         },
                         new
                         {
                             Id = 29,
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsDeleted = false,
                             Slug = "city.show"
                         },
                         new
                         {
                             Id = 30,
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsDeleted = false,
                             Slug = "city.delete"
                         },
                         new
                         {
                             Id = 31,
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsDeleted = false,
                             Slug = "logs.list"
                         },
                         new
                         {
                             Id = 32,
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsDeleted = false,
                             Slug = "logs.show"
                         },
                         new
                         {
                             Id = 33,
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsDeleted = false,
                             Slug = "notification.list"
                         },
                         new
                         {
                             Id = 34,
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsDeleted = false,
                             Slug = "notification.show"
                         },
                         new
                         {
                             Id = 35,
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsDeleted = false,
                             Slug = "notification.delete"
                         },
                         new
                         {
                             Id = 36,
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsDeleted = false,
                             Slug = "notification.deleteAll"
                         },
                         new
                         {
                             Id = 37,
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsDeleted = false,
                             Slug = "settings.list"
                         },
                         new
                         {
                             Id = 38,
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsDeleted = false,
                             Slug = "settings.show"
                         },
                         new
                         {
                             Id = 39,
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsDeleted = false,
                             Slug = "settings.update"
                         },
                         new
                         {
                             Id = 40,
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsDeleted = false,
                             Slug = "review.list"
                         },
                         new
                         {
                             Id = 41,
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsDeleted = false,
                             Slug = "review.show"
                         },
                         new
                         {
                             Id = 42,
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsDeleted = false,
                             Slug = "review.accept"
                         },
                         new
                         {
                             Id = 43,
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsDeleted = false,
                             Slug = "attribute.add"
                         },
                         new
                         {
                             Id = 44,
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsDeleted = false,
                             Slug = "attribute.update"
                         },
                         new
                         {
                             Id = 45,
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsDeleted = false,
                             Slug = "attribute.list"
                         },
                         new
                         {
                             Id = 46,
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsDeleted = false,
                             Slug = "attribute.show"
                         },
                         new
                         {
                             Id = 47,
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsDeleted = false,
                             Slug = "attribute.delete"
                         },
                         new
                         {
                             Id = 48,
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsDeleted = false,
                             Slug = "attributeValue.add"
                         },
                         new
                         {
                             Id = 49,
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsDeleted = false,
                             Slug = "attributeValue.update"
                         },
                         new
                         {
                             Id = 50,
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsDeleted = false,
                             Slug = "attributeValue.list"
                         },
                         new
                         {
                             Id = 51,
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsDeleted = false,
                             Slug = "attributeValue.show"
                         },
                         new
                         {
                             Id = 52,
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsDeleted = false,
                             Slug = "attributeValue.delete"
                         },
                         new
                         {
                             Id = 53,
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsDeleted = false,
                             Slug = "role.add"
                         },
                         new
                         {
                             Id = 54,
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsDeleted = false,
                             Slug = "role.update"
                         },
                         new
                         {
                             Id = 55,
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsDeleted = false,
                             Slug = "role.list"
                         },
                         new
                         {
                             Id = 56,
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsDeleted = false,
                             Slug = "role.show"
                         },
                         new
                         {
                             Id = 57,
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsDeleted = false,
                             Slug = "role.delete"
                         },
                         new
                         {
                             Id = 58,
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsDeleted = false,
                             Slug = "product.add"
                         },
                         new
                         {
                             Id = 59,
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsDeleted = false,
                             Slug = "product.update"
                         },
                         new
                         {
                             Id = 60,
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsDeleted = false,
                             Slug = "product.list"
                         },
                         new
                         {
                             Id = 61,
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsDeleted = false,
                             Slug = "product.show"
                         },
                         new
                         {
                             Id = 62,
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsDeleted = false,
                             Slug = "product.delete"
                         },
                         new
                         {
                             Id = 63,
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsDeleted = false,
                             Slug = "order.list"
                         },
                         new
                         {
                             Id = 64,
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsDeleted = false,
                             Slug = "order.show"
                         },
                         new
                         {
                             Id = 65,
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsDeleted = false,
                             Slug = "order.update"
                         },
                         new
                         {
                             Id = 66,
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsDeleted = false,
                             Slug = "order.delete"
                         },
                         new
                         {
                             Id = 67,
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsDeleted = false,
                             Slug = "return.list"
                         },
                         new
                         {
                             Id = 68,
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsDeleted = false,
                             Slug = "return.show"
                         },
                         new
                         {
                             Id = 69,
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsDeleted = false,
                             Slug = "return.update"
                         },
                         new
                         {
                             Id = 70,
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsDeleted = false,
                             Slug = "return.delete"
                         },
                         new
                         {
                             Id = 71,
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsDeleted = false,
                             Slug = "coupon.add"
                         },
                         new
                         {
                             Id = 72,
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsDeleted = false,
                             Slug = "coupon.update"
                         },
                         new
                         {
                             Id = 73,
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsDeleted = false,
                             Slug = "coupon.list"
                         },
                         new
                         {
                             Id = 74,
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsDeleted = false,
                             Slug = "coupon.show"
                         },
                         new
                         {
                             Id = 75,
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsDeleted = false,
                             Slug = "coupon.delete"
                         },
                         new
                         {
                             Id = 76,
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsDeleted = false,
                             Slug = "warehouse.add"
                         },
                         new
                         {
                             Id = 77,
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsDeleted = false,
                             Slug = "warehouse.update"
                         },
                         new
                         {
                             Id = 78,
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsDeleted = false,
                             Slug = "warehouse.list"
                         },
                         new
                         {
                             Id = 79,
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsDeleted = false,
                             Slug = "warehouse.show"
                         },
                         new
                         {
                             Id = 80,
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsDeleted = false,
                             Slug = "warehouse.delete"
                         },
                         new
                         {
                             Id = 81,
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsDeleted = false,
                             Slug = "supportTicket.list"
                         },
                         new
                         {
                             Id = 82,
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsDeleted = false,
                             Slug = "supportTicket.show"
                         },
                         new
                         {
                             Id = 83,
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsDeleted = false,
                             Slug = "ticketMessage.add"
                         },
                         new
                         {
                             Id = 84,
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsDeleted = false,
                             Slug = "ticketMessage.list"
                         },
                         new
                         {
                             Id = 85,
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsDeleted = false,
                             Slug = "ticketMessage.show"
                         });
                 });
@@ -5318,16 +5409,10 @@ namespace OnlineStore.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime2");
-
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
 
                     b.Property<string>("LanguageCode")
                         .IsRequired()
@@ -5342,9 +5427,6 @@ namespace OnlineStore.Migrations
                     b.Property<int>("PermissionId")
                         .HasColumnType("int");
 
-                    b.Property<DateTime?>("UpdatedAt")
-                        .HasColumnType("datetime2");
-
                     b.HasKey("Id");
 
                     b.HasIndex("PermissionId");
@@ -5355,9 +5437,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "إضافة مستخدم",
-                            IsDeleted = false,
                             LanguageCode = "ar",
                             Name = "إضافة مستخدم",
                             PermissionId = 1
@@ -5365,9 +5445,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 2,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Add User",
-                            IsDeleted = false,
                             LanguageCode = "en",
                             Name = "Add User",
                             PermissionId = 1
@@ -5375,9 +5453,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 3,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "تعديل مستخدم",
-                            IsDeleted = false,
                             LanguageCode = "ar",
                             Name = "تعديل مستخدم",
                             PermissionId = 2
@@ -5385,9 +5461,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 4,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Update User",
-                            IsDeleted = false,
                             LanguageCode = "en",
                             Name = "Update User",
                             PermissionId = 2
@@ -5395,9 +5469,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 5,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "عرض المستخدمين",
-                            IsDeleted = false,
                             LanguageCode = "ar",
                             Name = "عرض المستخدمين",
                             PermissionId = 3
@@ -5405,9 +5477,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 6,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "List Users",
-                            IsDeleted = false,
                             LanguageCode = "en",
                             Name = "List Users",
                             PermissionId = 3
@@ -5415,9 +5485,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 7,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "عرض مستخدم",
-                            IsDeleted = false,
                             LanguageCode = "ar",
                             Name = "عرض مستخدم",
                             PermissionId = 4
@@ -5425,9 +5493,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 8,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Show User",
-                            IsDeleted = false,
                             LanguageCode = "en",
                             Name = "Show User",
                             PermissionId = 4
@@ -5435,9 +5501,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 9,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "حذف مستخدم",
-                            IsDeleted = false,
                             LanguageCode = "ar",
                             Name = "حذف مستخدم",
                             PermissionId = 5
@@ -5445,9 +5509,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 10,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Delete User",
-                            IsDeleted = false,
                             LanguageCode = "en",
                             Name = "Delete User",
                             PermissionId = 5
@@ -5455,9 +5517,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 11,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "إضافة تاج",
-                            IsDeleted = false,
                             LanguageCode = "ar",
                             Name = "إضافة تاج",
                             PermissionId = 6
@@ -5465,9 +5525,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 12,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Add Tag",
-                            IsDeleted = false,
                             LanguageCode = "en",
                             Name = "Add Tag",
                             PermissionId = 6
@@ -5475,9 +5533,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 13,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "تعديل تاج",
-                            IsDeleted = false,
                             LanguageCode = "ar",
                             Name = "تعديل تاج",
                             PermissionId = 7
@@ -5485,9 +5541,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 14,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Update Tag",
-                            IsDeleted = false,
                             LanguageCode = "en",
                             Name = "Update Tag",
                             PermissionId = 7
@@ -5495,9 +5549,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 15,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "عرض التاجات",
-                            IsDeleted = false,
                             LanguageCode = "ar",
                             Name = "عرض التاجات",
                             PermissionId = 8
@@ -5505,9 +5557,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 16,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "List Tags",
-                            IsDeleted = false,
                             LanguageCode = "en",
                             Name = "List Tags",
                             PermissionId = 8
@@ -5515,9 +5565,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 17,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "عرض تاج",
-                            IsDeleted = false,
                             LanguageCode = "ar",
                             Name = "عرض تاج",
                             PermissionId = 9
@@ -5525,9 +5573,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 18,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Show Tag",
-                            IsDeleted = false,
                             LanguageCode = "en",
                             Name = "Show Tag",
                             PermissionId = 9
@@ -5535,9 +5581,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 19,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "حذف تاج",
-                            IsDeleted = false,
                             LanguageCode = "ar",
                             Name = "حذف تاج",
                             PermissionId = 10
@@ -5545,9 +5589,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 20,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Delete Tag",
-                            IsDeleted = false,
                             LanguageCode = "en",
                             Name = "Delete Tag",
                             PermissionId = 10
@@ -5555,9 +5597,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 21,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "إضافة تصنيف",
-                            IsDeleted = false,
                             LanguageCode = "ar",
                             Name = "إضافة تصنيف",
                             PermissionId = 11
@@ -5565,9 +5605,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 22,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Add Category",
-                            IsDeleted = false,
                             LanguageCode = "en",
                             Name = "Add Category",
                             PermissionId = 11
@@ -5575,9 +5613,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 23,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "تعديل تصنيف",
-                            IsDeleted = false,
                             LanguageCode = "ar",
                             Name = "تعديل تصنيف",
                             PermissionId = 12
@@ -5585,9 +5621,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 24,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Update Category",
-                            IsDeleted = false,
                             LanguageCode = "en",
                             Name = "Update Category",
                             PermissionId = 12
@@ -5595,9 +5629,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 25,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "عرض التصنيفات",
-                            IsDeleted = false,
                             LanguageCode = "ar",
                             Name = "عرض التصنيفات",
                             PermissionId = 13
@@ -5605,9 +5637,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 26,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "List Categories",
-                            IsDeleted = false,
                             LanguageCode = "en",
                             Name = "List Categories",
                             PermissionId = 13
@@ -5615,9 +5645,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 27,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "عرض تصنيف",
-                            IsDeleted = false,
                             LanguageCode = "ar",
                             Name = "عرض تصنيف",
                             PermissionId = 14
@@ -5625,9 +5653,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 28,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Show Category",
-                            IsDeleted = false,
                             LanguageCode = "en",
                             Name = "Show Category",
                             PermissionId = 14
@@ -5635,9 +5661,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 29,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "حذف تصنيف",
-                            IsDeleted = false,
                             LanguageCode = "ar",
                             Name = "حذف تصنيف",
                             PermissionId = 15
@@ -5645,9 +5669,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 30,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Delete Category",
-                            IsDeleted = false,
                             LanguageCode = "en",
                             Name = "Delete Category",
                             PermissionId = 15
@@ -5655,9 +5677,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 31,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "إضافة دولة",
-                            IsDeleted = false,
                             LanguageCode = "ar",
                             Name = "إضافة دولة",
                             PermissionId = 16
@@ -5665,9 +5685,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 32,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Add Country",
-                            IsDeleted = false,
                             LanguageCode = "en",
                             Name = "Add Country",
                             PermissionId = 16
@@ -5675,9 +5693,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 33,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "تعديل دولة",
-                            IsDeleted = false,
                             LanguageCode = "ar",
                             Name = "تعديل دولة",
                             PermissionId = 17
@@ -5685,9 +5701,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 34,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Update Country",
-                            IsDeleted = false,
                             LanguageCode = "en",
                             Name = "Update Country",
                             PermissionId = 17
@@ -5695,9 +5709,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 35,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "عرض الدول",
-                            IsDeleted = false,
                             LanguageCode = "ar",
                             Name = "عرض الدول",
                             PermissionId = 18
@@ -5705,9 +5717,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 36,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "List Countries",
-                            IsDeleted = false,
                             LanguageCode = "en",
                             Name = "List Countries",
                             PermissionId = 18
@@ -5715,9 +5725,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 37,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "عرض دولة",
-                            IsDeleted = false,
                             LanguageCode = "ar",
                             Name = "عرض دولة",
                             PermissionId = 19
@@ -5725,9 +5733,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 38,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Show Country",
-                            IsDeleted = false,
                             LanguageCode = "en",
                             Name = "Show Country",
                             PermissionId = 19
@@ -5735,9 +5741,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 39,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "حذف دولة",
-                            IsDeleted = false,
                             LanguageCode = "ar",
                             Name = "حذف دولة",
                             PermissionId = 20
@@ -5745,9 +5749,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 40,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Delete Country",
-                            IsDeleted = false,
                             LanguageCode = "en",
                             Name = "Delete Country",
                             PermissionId = 20
@@ -5755,9 +5757,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 41,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "إضافة ولاية",
-                            IsDeleted = false,
                             LanguageCode = "ar",
                             Name = "إضافة ولاية",
                             PermissionId = 21
@@ -5765,9 +5765,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 42,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Add State",
-                            IsDeleted = false,
                             LanguageCode = "en",
                             Name = "Add State",
                             PermissionId = 21
@@ -5775,9 +5773,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 43,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "تعديل ولاية",
-                            IsDeleted = false,
                             LanguageCode = "ar",
                             Name = "تعديل ولاية",
                             PermissionId = 22
@@ -5785,9 +5781,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 44,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Update State",
-                            IsDeleted = false,
                             LanguageCode = "en",
                             Name = "Update State",
                             PermissionId = 22
@@ -5795,9 +5789,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 45,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "عرض الولايات",
-                            IsDeleted = false,
                             LanguageCode = "ar",
                             Name = "عرض الولايات",
                             PermissionId = 23
@@ -5805,9 +5797,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 46,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "List States",
-                            IsDeleted = false,
                             LanguageCode = "en",
                             Name = "List States",
                             PermissionId = 23
@@ -5815,9 +5805,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 47,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "عرض ولاية",
-                            IsDeleted = false,
                             LanguageCode = "ar",
                             Name = "عرض ولاية",
                             PermissionId = 24
@@ -5825,9 +5813,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 48,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Show State",
-                            IsDeleted = false,
                             LanguageCode = "en",
                             Name = "Show State",
                             PermissionId = 24
@@ -5835,9 +5821,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 49,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "حذف ولاية",
-                            IsDeleted = false,
                             LanguageCode = "ar",
                             Name = "حذف ولاية",
                             PermissionId = 25
@@ -5845,9 +5829,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 50,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Delete State",
-                            IsDeleted = false,
                             LanguageCode = "en",
                             Name = "Delete State",
                             PermissionId = 25
@@ -5855,9 +5837,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 51,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "إضافة مدينة",
-                            IsDeleted = false,
                             LanguageCode = "ar",
                             Name = "إضافة مدينة",
                             PermissionId = 26
@@ -5865,9 +5845,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 52,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Add City",
-                            IsDeleted = false,
                             LanguageCode = "en",
                             Name = "Add City",
                             PermissionId = 26
@@ -5875,9 +5853,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 53,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "تعديل مدينة",
-                            IsDeleted = false,
                             LanguageCode = "ar",
                             Name = "تعديل مدينة",
                             PermissionId = 27
@@ -5885,9 +5861,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 54,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Update City",
-                            IsDeleted = false,
                             LanguageCode = "en",
                             Name = "Update City",
                             PermissionId = 27
@@ -5895,9 +5869,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 55,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "عرض المدن",
-                            IsDeleted = false,
                             LanguageCode = "ar",
                             Name = "عرض المدن",
                             PermissionId = 28
@@ -5905,9 +5877,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 56,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "List Cities",
-                            IsDeleted = false,
                             LanguageCode = "en",
                             Name = "List Cities",
                             PermissionId = 28
@@ -5915,9 +5885,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 57,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "عرض مدينة",
-                            IsDeleted = false,
                             LanguageCode = "ar",
                             Name = "عرض مدينة",
                             PermissionId = 29
@@ -5925,9 +5893,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 58,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Show City",
-                            IsDeleted = false,
                             LanguageCode = "en",
                             Name = "Show City",
                             PermissionId = 29
@@ -5935,9 +5901,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 59,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "حذف مدينة",
-                            IsDeleted = false,
                             LanguageCode = "ar",
                             Name = "حذف مدينة",
                             PermissionId = 30
@@ -5945,9 +5909,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 60,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Delete City",
-                            IsDeleted = false,
                             LanguageCode = "en",
                             Name = "Delete City",
                             PermissionId = 30
@@ -5955,9 +5917,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 61,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "عرض السجلات",
-                            IsDeleted = false,
                             LanguageCode = "ar",
                             Name = "عرض السجلات",
                             PermissionId = 31
@@ -5965,9 +5925,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 62,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "List Logs",
-                            IsDeleted = false,
                             LanguageCode = "en",
                             Name = "List Logs",
                             PermissionId = 31
@@ -5975,9 +5933,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 63,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "عرض سجل",
-                            IsDeleted = false,
                             LanguageCode = "ar",
                             Name = "عرض سجل",
                             PermissionId = 32
@@ -5985,9 +5941,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 64,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Show Log",
-                            IsDeleted = false,
                             LanguageCode = "en",
                             Name = "Show Log",
                             PermissionId = 32
@@ -5995,9 +5949,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 65,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "عرض الإشعارات",
-                            IsDeleted = false,
                             LanguageCode = "ar",
                             Name = "عرض الإشعارات",
                             PermissionId = 33
@@ -6005,9 +5957,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 66,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "List Notifications",
-                            IsDeleted = false,
                             LanguageCode = "en",
                             Name = "List Notifications",
                             PermissionId = 33
@@ -6015,9 +5965,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 67,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "عرض إشعار",
-                            IsDeleted = false,
                             LanguageCode = "ar",
                             Name = "عرض إشعار",
                             PermissionId = 34
@@ -6025,9 +5973,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 68,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Show Notification",
-                            IsDeleted = false,
                             LanguageCode = "en",
                             Name = "Show Notification",
                             PermissionId = 34
@@ -6035,9 +5981,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 69,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "حذف إشعار",
-                            IsDeleted = false,
                             LanguageCode = "ar",
                             Name = "حذف إشعار",
                             PermissionId = 35
@@ -6045,9 +5989,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 70,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Delete Notification",
-                            IsDeleted = false,
                             LanguageCode = "en",
                             Name = "Delete Notification",
                             PermissionId = 35
@@ -6055,9 +5997,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 71,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "حذف كل الإشعارات",
-                            IsDeleted = false,
                             LanguageCode = "ar",
                             Name = "حذف كل الإشعارات",
                             PermissionId = 36
@@ -6065,9 +6005,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 72,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Delete All Notifications",
-                            IsDeleted = false,
                             LanguageCode = "en",
                             Name = "Delete All Notifications",
                             PermissionId = 36
@@ -6075,9 +6013,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 73,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "عرض الإعدادات",
-                            IsDeleted = false,
                             LanguageCode = "ar",
                             Name = "عرض الإعدادات",
                             PermissionId = 37
@@ -6085,9 +6021,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 74,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "List Settings",
-                            IsDeleted = false,
                             LanguageCode = "en",
                             Name = "List Settings",
                             PermissionId = 37
@@ -6095,9 +6029,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 75,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "عرض إعداد",
-                            IsDeleted = false,
                             LanguageCode = "ar",
                             Name = "عرض إعداد",
                             PermissionId = 38
@@ -6105,9 +6037,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 76,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Show Setting",
-                            IsDeleted = false,
                             LanguageCode = "en",
                             Name = "Show Setting",
                             PermissionId = 38
@@ -6115,9 +6045,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 77,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "تعديل الإعدادات",
-                            IsDeleted = false,
                             LanguageCode = "ar",
                             Name = "تعديل الإعدادات",
                             PermissionId = 39
@@ -6125,9 +6053,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 78,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Update Settings",
-                            IsDeleted = false,
                             LanguageCode = "en",
                             Name = "Update Settings",
                             PermissionId = 39
@@ -6135,9 +6061,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 79,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "عرض التقييمات",
-                            IsDeleted = false,
                             LanguageCode = "ar",
                             Name = "عرض التقييمات",
                             PermissionId = 40
@@ -6145,9 +6069,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 80,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "List Reviews",
-                            IsDeleted = false,
                             LanguageCode = "en",
                             Name = "List Reviews",
                             PermissionId = 40
@@ -6155,9 +6077,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 81,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "عرض تقييم",
-                            IsDeleted = false,
                             LanguageCode = "ar",
                             Name = "عرض تقييم",
                             PermissionId = 41
@@ -6165,9 +6085,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 82,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Show Review",
-                            IsDeleted = false,
                             LanguageCode = "en",
                             Name = "Show Review",
                             PermissionId = 41
@@ -6175,9 +6093,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 83,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "قبول التقييم",
-                            IsDeleted = false,
                             LanguageCode = "ar",
                             Name = "قبول التقييم",
                             PermissionId = 42
@@ -6185,9 +6101,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 84,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Accept Review",
-                            IsDeleted = false,
                             LanguageCode = "en",
                             Name = "Accept Review",
                             PermissionId = 42
@@ -6195,9 +6109,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 85,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "إضافة خاصية",
-                            IsDeleted = false,
                             LanguageCode = "ar",
                             Name = "إضافة خاصية",
                             PermissionId = 43
@@ -6205,9 +6117,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 86,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Add Attribute",
-                            IsDeleted = false,
                             LanguageCode = "en",
                             Name = "Add Attribute",
                             PermissionId = 43
@@ -6215,9 +6125,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 87,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "تعديل خاصية",
-                            IsDeleted = false,
                             LanguageCode = "ar",
                             Name = "تعديل خاصية",
                             PermissionId = 44
@@ -6225,9 +6133,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 88,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Update Attribute",
-                            IsDeleted = false,
                             LanguageCode = "en",
                             Name = "Update Attribute",
                             PermissionId = 44
@@ -6235,9 +6141,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 89,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "عرض الخصائص",
-                            IsDeleted = false,
                             LanguageCode = "ar",
                             Name = "عرض الخصائص",
                             PermissionId = 45
@@ -6245,9 +6149,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 90,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "List Attributes",
-                            IsDeleted = false,
                             LanguageCode = "en",
                             Name = "List Attributes",
                             PermissionId = 45
@@ -6255,9 +6157,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 91,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "عرض خاصية",
-                            IsDeleted = false,
                             LanguageCode = "ar",
                             Name = "عرض خاصية",
                             PermissionId = 46
@@ -6265,9 +6165,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 92,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Show Attribute",
-                            IsDeleted = false,
                             LanguageCode = "en",
                             Name = "Show Attribute",
                             PermissionId = 46
@@ -6275,9 +6173,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 93,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "حذف خاصية",
-                            IsDeleted = false,
                             LanguageCode = "ar",
                             Name = "حذف خاصية",
                             PermissionId = 47
@@ -6285,9 +6181,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 94,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Delete Attribute",
-                            IsDeleted = false,
                             LanguageCode = "en",
                             Name = "Delete Attribute",
                             PermissionId = 47
@@ -6295,9 +6189,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 95,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "إضافة قيمة خاصية",
-                            IsDeleted = false,
                             LanguageCode = "ar",
                             Name = "إضافة قيمة خاصية",
                             PermissionId = 48
@@ -6305,9 +6197,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 96,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Add Attribute Value",
-                            IsDeleted = false,
                             LanguageCode = "en",
                             Name = "Add Attribute Value",
                             PermissionId = 48
@@ -6315,9 +6205,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 97,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "تعديل قيمة خاصية",
-                            IsDeleted = false,
                             LanguageCode = "ar",
                             Name = "تعديل قيمة خاصية",
                             PermissionId = 49
@@ -6325,9 +6213,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 98,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Update Attribute Value",
-                            IsDeleted = false,
                             LanguageCode = "en",
                             Name = "Update Attribute Value",
                             PermissionId = 49
@@ -6335,9 +6221,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 99,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "عرض قيم الخصائص",
-                            IsDeleted = false,
                             LanguageCode = "ar",
                             Name = "عرض قيم الخصائص",
                             PermissionId = 50
@@ -6345,9 +6229,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 100,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "List Attribute Values",
-                            IsDeleted = false,
                             LanguageCode = "en",
                             Name = "List Attribute Values",
                             PermissionId = 50
@@ -6355,9 +6237,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 101,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "عرض قيمة خاصية",
-                            IsDeleted = false,
                             LanguageCode = "ar",
                             Name = "عرض قيمة خاصية",
                             PermissionId = 51
@@ -6365,9 +6245,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 102,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Show Attribute Value",
-                            IsDeleted = false,
                             LanguageCode = "en",
                             Name = "Show Attribute Value",
                             PermissionId = 51
@@ -6375,9 +6253,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 103,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "حذف قيمة خاصية",
-                            IsDeleted = false,
                             LanguageCode = "ar",
                             Name = "حذف قيمة خاصية",
                             PermissionId = 52
@@ -6385,9 +6261,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 104,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Delete Attribute Value",
-                            IsDeleted = false,
                             LanguageCode = "en",
                             Name = "Delete Attribute Value",
                             PermissionId = 52
@@ -6395,9 +6269,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 105,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "إضافة دور",
-                            IsDeleted = false,
                             LanguageCode = "ar",
                             Name = "إضافة دور",
                             PermissionId = 53
@@ -6405,9 +6277,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 106,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Add Role",
-                            IsDeleted = false,
                             LanguageCode = "en",
                             Name = "Add Role",
                             PermissionId = 53
@@ -6415,9 +6285,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 107,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "تعديل دور",
-                            IsDeleted = false,
                             LanguageCode = "ar",
                             Name = "تعديل دور",
                             PermissionId = 54
@@ -6425,9 +6293,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 108,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Update Role",
-                            IsDeleted = false,
                             LanguageCode = "en",
                             Name = "Update Role",
                             PermissionId = 54
@@ -6435,9 +6301,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 109,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "عرض الأدوار",
-                            IsDeleted = false,
                             LanguageCode = "ar",
                             Name = "عرض الأدوار",
                             PermissionId = 55
@@ -6445,9 +6309,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 110,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "List Roles",
-                            IsDeleted = false,
                             LanguageCode = "en",
                             Name = "List Roles",
                             PermissionId = 55
@@ -6455,9 +6317,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 111,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "عرض دور",
-                            IsDeleted = false,
                             LanguageCode = "ar",
                             Name = "عرض دور",
                             PermissionId = 56
@@ -6465,9 +6325,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 112,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Show Role",
-                            IsDeleted = false,
                             LanguageCode = "en",
                             Name = "Show Role",
                             PermissionId = 56
@@ -6475,9 +6333,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 113,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "حذف دور",
-                            IsDeleted = false,
                             LanguageCode = "ar",
                             Name = "حذف دور",
                             PermissionId = 57
@@ -6485,9 +6341,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 114,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Delete Role",
-                            IsDeleted = false,
                             LanguageCode = "en",
                             Name = "Delete Role",
                             PermissionId = 57
@@ -6495,9 +6349,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 115,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "إضافة منتج",
-                            IsDeleted = false,
                             LanguageCode = "ar",
                             Name = "إضافة منتج",
                             PermissionId = 58
@@ -6505,9 +6357,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 116,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Add Product",
-                            IsDeleted = false,
                             LanguageCode = "en",
                             Name = "Add Product",
                             PermissionId = 58
@@ -6515,9 +6365,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 117,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "تعديل منتج",
-                            IsDeleted = false,
                             LanguageCode = "ar",
                             Name = "تعديل منتج",
                             PermissionId = 59
@@ -6525,9 +6373,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 118,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Update Product",
-                            IsDeleted = false,
                             LanguageCode = "en",
                             Name = "Update Product",
                             PermissionId = 59
@@ -6535,9 +6381,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 119,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "عرض المنتجات",
-                            IsDeleted = false,
                             LanguageCode = "ar",
                             Name = "عرض المنتجات",
                             PermissionId = 60
@@ -6545,9 +6389,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 120,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "List Products",
-                            IsDeleted = false,
                             LanguageCode = "en",
                             Name = "List Products",
                             PermissionId = 60
@@ -6555,9 +6397,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 121,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "عرض منتج",
-                            IsDeleted = false,
                             LanguageCode = "ar",
                             Name = "عرض منتج",
                             PermissionId = 61
@@ -6565,9 +6405,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 122,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Show Product",
-                            IsDeleted = false,
                             LanguageCode = "en",
                             Name = "Show Product",
                             PermissionId = 61
@@ -6575,9 +6413,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 123,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "حذف منتج",
-                            IsDeleted = false,
                             LanguageCode = "ar",
                             Name = "حذف منتج",
                             PermissionId = 62
@@ -6585,9 +6421,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 124,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Delete Product",
-                            IsDeleted = false,
                             LanguageCode = "en",
                             Name = "Delete Product",
                             PermissionId = 62
@@ -6595,9 +6429,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 125,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "عرض الطلبات",
-                            IsDeleted = false,
                             LanguageCode = "ar",
                             Name = "عرض الطلبات",
                             PermissionId = 63
@@ -6605,9 +6437,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 126,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "List Orders",
-                            IsDeleted = false,
                             LanguageCode = "en",
                             Name = "List Orders",
                             PermissionId = 63
@@ -6615,9 +6445,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 127,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "عرض طلب",
-                            IsDeleted = false,
                             LanguageCode = "ar",
                             Name = "عرض طلب",
                             PermissionId = 64
@@ -6625,9 +6453,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 128,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Show Order",
-                            IsDeleted = false,
                             LanguageCode = "en",
                             Name = "Show Order",
                             PermissionId = 64
@@ -6635,9 +6461,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 129,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "تعديل الطلب",
-                            IsDeleted = false,
                             LanguageCode = "ar",
                             Name = "تعديل الطلب",
                             PermissionId = 65
@@ -6645,9 +6469,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 130,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Update Order",
-                            IsDeleted = false,
                             LanguageCode = "en",
                             Name = "Update Order",
                             PermissionId = 65
@@ -6655,9 +6477,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 131,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "حذف الطلب",
-                            IsDeleted = false,
                             LanguageCode = "ar",
                             Name = "حذف الطلب",
                             PermissionId = 66
@@ -6665,9 +6485,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 132,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Delete Order",
-                            IsDeleted = false,
                             LanguageCode = "en",
                             Name = "Delete Order",
                             PermissionId = 66
@@ -6675,9 +6493,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 133,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "عرض المرتجعات",
-                            IsDeleted = false,
                             LanguageCode = "ar",
                             Name = "عرض المرتجعات",
                             PermissionId = 67
@@ -6685,9 +6501,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 134,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "List Returns",
-                            IsDeleted = false,
                             LanguageCode = "en",
                             Name = "List Returns",
                             PermissionId = 67
@@ -6695,9 +6509,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 135,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "عرض مرتجع",
-                            IsDeleted = false,
                             LanguageCode = "ar",
                             Name = "عرض مرتجع",
                             PermissionId = 68
@@ -6705,9 +6517,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 136,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Show Return",
-                            IsDeleted = false,
                             LanguageCode = "en",
                             Name = "Show Return",
                             PermissionId = 68
@@ -6715,9 +6525,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 137,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "تعديل المرتجع",
-                            IsDeleted = false,
                             LanguageCode = "ar",
                             Name = "تعديل المرتجع",
                             PermissionId = 69
@@ -6725,9 +6533,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 138,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Update Return",
-                            IsDeleted = false,
                             LanguageCode = "en",
                             Name = "Update Return",
                             PermissionId = 69
@@ -6735,9 +6541,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 139,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "حذف المرتجع",
-                            IsDeleted = false,
                             LanguageCode = "ar",
                             Name = "حذف المرتجع",
                             PermissionId = 70
@@ -6745,9 +6549,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 140,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Delete Return",
-                            IsDeleted = false,
                             LanguageCode = "en",
                             Name = "Delete Return",
                             PermissionId = 70
@@ -6755,9 +6557,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 141,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "إضافة كوبون",
-                            IsDeleted = false,
                             LanguageCode = "ar",
                             Name = "إضافة كوبون",
                             PermissionId = 71
@@ -6765,9 +6565,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 142,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Add Coupon",
-                            IsDeleted = false,
                             LanguageCode = "en",
                             Name = "Add Coupon",
                             PermissionId = 71
@@ -6775,9 +6573,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 143,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "تعديل كوبون",
-                            IsDeleted = false,
                             LanguageCode = "ar",
                             Name = "تعديل كوبون",
                             PermissionId = 72
@@ -6785,9 +6581,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 144,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Update Coupon",
-                            IsDeleted = false,
                             LanguageCode = "en",
                             Name = "Update Coupon",
                             PermissionId = 72
@@ -6795,9 +6589,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 145,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "عرض الكوبونات",
-                            IsDeleted = false,
                             LanguageCode = "ar",
                             Name = "عرض الكوبونات",
                             PermissionId = 73
@@ -6805,9 +6597,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 146,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "List Coupons",
-                            IsDeleted = false,
                             LanguageCode = "en",
                             Name = "List Coupons",
                             PermissionId = 73
@@ -6815,9 +6605,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 147,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "عرض كوبون",
-                            IsDeleted = false,
                             LanguageCode = "ar",
                             Name = "عرض كوبون",
                             PermissionId = 74
@@ -6825,9 +6613,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 148,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Show Coupon",
-                            IsDeleted = false,
                             LanguageCode = "en",
                             Name = "Show Coupon",
                             PermissionId = 74
@@ -6835,9 +6621,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 149,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "حذف كوبون",
-                            IsDeleted = false,
                             LanguageCode = "ar",
                             Name = "حذف كوبون",
                             PermissionId = 75
@@ -6845,9 +6629,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 150,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Delete Coupon",
-                            IsDeleted = false,
                             LanguageCode = "en",
                             Name = "Delete Coupon",
                             PermissionId = 75
@@ -6855,9 +6637,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 151,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "إضافة مستودع",
-                            IsDeleted = false,
                             LanguageCode = "ar",
                             Name = "إضافة مستودع",
                             PermissionId = 76
@@ -6865,9 +6645,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 152,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Add Warehouse",
-                            IsDeleted = false,
                             LanguageCode = "en",
                             Name = "Add Warehouse",
                             PermissionId = 76
@@ -6875,9 +6653,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 153,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "تعديل مستودع",
-                            IsDeleted = false,
                             LanguageCode = "ar",
                             Name = "تعديل مستودع",
                             PermissionId = 77
@@ -6885,9 +6661,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 154,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Update Warehouse",
-                            IsDeleted = false,
                             LanguageCode = "en",
                             Name = "Update Warehouse",
                             PermissionId = 77
@@ -6895,9 +6669,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 155,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "عرض المستودعات",
-                            IsDeleted = false,
                             LanguageCode = "ar",
                             Name = "عرض المستودعات",
                             PermissionId = 78
@@ -6905,9 +6677,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 156,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "List Warehouses",
-                            IsDeleted = false,
                             LanguageCode = "en",
                             Name = "List Warehouses",
                             PermissionId = 78
@@ -6915,9 +6685,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 157,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "عرض مستودع",
-                            IsDeleted = false,
                             LanguageCode = "ar",
                             Name = "عرض مستودع",
                             PermissionId = 79
@@ -6925,9 +6693,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 158,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Show Warehouse",
-                            IsDeleted = false,
                             LanguageCode = "en",
                             Name = "Show Warehouse",
                             PermissionId = 79
@@ -6935,9 +6701,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 159,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "حذف مستودع",
-                            IsDeleted = false,
                             LanguageCode = "ar",
                             Name = "حذف مستودع",
                             PermissionId = 80
@@ -6945,9 +6709,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 160,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Delete Warehouse",
-                            IsDeleted = false,
                             LanguageCode = "en",
                             Name = "Delete Warehouse",
                             PermissionId = 80
@@ -6955,9 +6717,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 161,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "عرض التذاكر",
-                            IsDeleted = false,
                             LanguageCode = "ar",
                             Name = "عرض التذاكر",
                             PermissionId = 81
@@ -6965,9 +6725,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 162,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "List Support Tickets",
-                            IsDeleted = false,
                             LanguageCode = "en",
                             Name = "List Support Tickets",
                             PermissionId = 81
@@ -6975,9 +6733,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 163,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "عرض تذكرة",
-                            IsDeleted = false,
                             LanguageCode = "ar",
                             Name = "عرض تذكرة",
                             PermissionId = 82
@@ -6985,9 +6741,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 164,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Show Support Ticket",
-                            IsDeleted = false,
                             LanguageCode = "en",
                             Name = "Show Support Ticket",
                             PermissionId = 82
@@ -6995,9 +6749,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 165,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "إضافة رسالة تذكرة",
-                            IsDeleted = false,
                             LanguageCode = "ar",
                             Name = "إضافة رسالة تذكرة",
                             PermissionId = 83
@@ -7005,9 +6757,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 166,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Add Ticket Message",
-                            IsDeleted = false,
                             LanguageCode = "en",
                             Name = "Add Ticket Message",
                             PermissionId = 83
@@ -7015,9 +6765,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 167,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "عرض رسائل التذاكر",
-                            IsDeleted = false,
                             LanguageCode = "ar",
                             Name = "عرض رسائل التذاكر",
                             PermissionId = 84
@@ -7025,9 +6773,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 168,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "List Ticket Messages",
-                            IsDeleted = false,
                             LanguageCode = "en",
                             Name = "List Ticket Messages",
                             PermissionId = 84
@@ -7035,9 +6781,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 169,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "عرض رسالة تذكرة",
-                            IsDeleted = false,
                             LanguageCode = "ar",
                             Name = "عرض رسالة تذكرة",
                             PermissionId = 85
@@ -7045,9 +6789,7 @@ namespace OnlineStore.Migrations
                         new
                         {
                             Id = 170,
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Show Ticket Message",
-                            IsDeleted = false,
                             LanguageCode = "en",
                             Name = "Show Ticket Message",
                             PermissionId = 85
@@ -7107,9 +6849,6 @@ namespace OnlineStore.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
                     b.Property<string>("Slug")
                         .IsRequired()
                         .HasMaxLength(100)
@@ -7127,14 +6866,12 @@ namespace OnlineStore.Migrations
                         {
                             Id = 1,
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsDeleted = false,
                             Slug = "SuperAdmin"
                         },
                         new
                         {
                             Id = 2,
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsDeleted = false,
                             Slug = "Admin"
                         });
                 });
@@ -7154,9 +6891,6 @@ namespace OnlineStore.Migrations
                         .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
 
                     b.Property<string>("LanguageCode")
                         .IsRequired()
@@ -7186,7 +6920,6 @@ namespace OnlineStore.Migrations
                             Id = 1,
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "مدير",
-                            IsDeleted = false,
                             LanguageCode = "ar",
                             Name = "مدير",
                             RoleId = 1
@@ -7196,7 +6929,6 @@ namespace OnlineStore.Migrations
                             Id = 2,
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "رئيس المديرين",
-                            IsDeleted = false,
                             LanguageCode = "ar",
                             Name = "رئيس المديرين",
                             RoleId = 2
@@ -7206,7 +6938,6 @@ namespace OnlineStore.Migrations
                             Id = 3,
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Admin",
-                            IsDeleted = false,
                             LanguageCode = "en",
                             Name = "Admin",
                             RoleId = 1
@@ -7216,7 +6947,6 @@ namespace OnlineStore.Migrations
                             Id = 4,
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Super Admin",
-                            IsDeleted = false,
                             LanguageCode = "en",
                             Name = "Super Admin",
                             RoleId = 2
@@ -7245,21 +6975,6 @@ namespace OnlineStore.Migrations
                         });
                 });
 
-            modelBuilder.Entity("CategoryCoupon", b =>
-                {
-                    b.HasOne("OnlineStore.Models.Category", null)
-                        .WithMany()
-                        .HasForeignKey("CategoiesId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("OnlineStore.Models.Coupon", null)
-                        .WithMany()
-                        .HasForeignKey("CouponsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
             modelBuilder.Entity("CategoryProduct", b =>
                 {
                     b.HasOne("OnlineStore.Models.Category", null)
@@ -7279,7 +6994,9 @@ namespace OnlineStore.Migrations
                 {
                     b.HasOne("OnlineStore.Models.User", "User")
                         .WithMany("Addresses")
-                        .HasForeignKey("UserId");
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("User");
                 });
@@ -7321,7 +7038,9 @@ namespace OnlineStore.Migrations
                 {
                     b.HasOne("OnlineStore.Models.User", "User")
                         .WithOne("Cart")
-                        .HasForeignKey("OnlineStore.Models.Cart", "UserId");
+                        .HasForeignKey("OnlineStore.Models.Cart", "UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("User");
                 });
@@ -7336,12 +7055,14 @@ namespace OnlineStore.Migrations
 
                     b.HasOne("OnlineStore.Models.Product", "Product")
                         .WithMany()
-                        .HasForeignKey("ProductId");
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
 
                     b.HasOne("OnlineStore.Models.ProductVariant", "ProductVariant")
                         .WithMany()
                         .HasForeignKey("VariantId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("Cart");
@@ -7365,7 +7086,9 @@ namespace OnlineStore.Migrations
                 {
                     b.HasOne("OnlineStore.Models.Category", "Category")
                         .WithMany("Translations")
-                        .HasForeignKey("CategoryId");
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Category");
                 });
@@ -7374,7 +7097,9 @@ namespace OnlineStore.Migrations
                 {
                     b.HasOne("OnlineStore.Models.State", "State")
                         .WithMany("Cities")
-                        .HasForeignKey("StateId");
+                        .HasForeignKey("StateId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("State");
                 });
@@ -7383,7 +7108,9 @@ namespace OnlineStore.Migrations
                 {
                     b.HasOne("OnlineStore.Models.City", "City")
                         .WithMany("Translations")
-                        .HasForeignKey("CityId");
+                        .HasForeignKey("CityId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("City");
                 });
@@ -7392,7 +7119,9 @@ namespace OnlineStore.Migrations
                 {
                     b.HasOne("OnlineStore.Models.Country", "Country")
                         .WithMany("Translations")
-                        .HasForeignKey("CountryId");
+                        .HasForeignKey("CountryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Country");
                 });
@@ -7401,7 +7130,9 @@ namespace OnlineStore.Migrations
                 {
                     b.HasOne("OnlineStore.Models.Coupon", "Coupon")
                         .WithMany("Translations")
-                        .HasForeignKey("CouponId");
+                        .HasForeignKey("CouponId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Coupon");
                 });
@@ -7447,43 +7178,26 @@ namespace OnlineStore.Migrations
                 {
                     b.HasOne("OnlineStore.Models.Notification", "Notification")
                         .WithMany("Translations")
-                        .HasForeignKey("NotificationId");
+                        .HasForeignKey("NotificationId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Notification");
                 });
 
             modelBuilder.Entity("OnlineStore.Models.Order", b =>
                 {
-                    b.HasOne("OnlineStore.Models.Coupon", "Coupon")
+                    b.HasOne("OnlineStore.Models.Coupon", null)
                         .WithMany("Orders")
-                        .HasForeignKey("CouponId")
-                        .OnDelete(DeleteBehavior.Restrict);
+                        .HasForeignKey("CouponId");
 
-                    b.HasOne("OnlineStore.Models.Address", "ShippingAddress")
+                    b.HasOne("OnlineStore.Models.ShippingMethod", null)
                         .WithMany("Orders")
-                        .HasForeignKey("ShippingAddressId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
+                        .HasForeignKey("ShippingMethodId");
 
-                    b.HasOne("OnlineStore.Models.ShippingMethod", "ShippingMethod")
+                    b.HasOne("OnlineStore.Models.User", null)
                         .WithMany("Orders")
-                        .HasForeignKey("ShippingMethodId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.HasOne("OnlineStore.Models.User", "User")
-                        .WithMany("Orders")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.Navigation("Coupon");
-
-                    b.Navigation("ShippingAddress");
-
-                    b.Navigation("ShippingMethod");
-
-                    b.Navigation("User");
+                        .HasForeignKey("UserId");
                 });
 
             modelBuilder.Entity("OnlineStore.Models.OrderItem", b =>
@@ -7491,31 +7205,19 @@ namespace OnlineStore.Migrations
                     b.HasOne("OnlineStore.Models.Order", "Order")
                         .WithMany("OrderItems")
                         .HasForeignKey("OrderId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("OnlineStore.Models.Product", "Product")
-                        .WithMany("OrderItems")
-                        .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.NoAction);
-
-                    b.HasOne("OnlineStore.Models.ProductVariant", "ProductVariant")
-                        .WithMany("OrderItems")
-                        .HasForeignKey("ProductVariantId")
-                        .OnDelete(DeleteBehavior.NoAction)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Order");
-
-                    b.Navigation("Product");
-
-                    b.Navigation("ProductVariant");
                 });
 
             modelBuilder.Entity("OnlineStore.Models.OrderTracking", b =>
                 {
                     b.HasOne("OnlineStore.Models.Order", "Order")
                         .WithOne("OrderTracking")
-                        .HasForeignKey("OnlineStore.Models.OrderTracking", "OrderId");
+                        .HasForeignKey("OnlineStore.Models.OrderTracking", "OrderId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Order");
                 });
@@ -7535,7 +7237,9 @@ namespace OnlineStore.Migrations
                 {
                     b.HasOne("OnlineStore.Models.Payment", "Payment")
                         .WithMany("Translations")
-                        .HasForeignKey("PaymentId");
+                        .HasForeignKey("PaymentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Payment");
                 });
@@ -7555,7 +7259,9 @@ namespace OnlineStore.Migrations
                 {
                     b.HasOne("OnlineStore.Models.Product", "Product")
                         .WithMany("Translations")
-                        .HasForeignKey("ProductId");
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Product");
                 });
@@ -7564,7 +7270,9 @@ namespace OnlineStore.Migrations
                 {
                     b.HasOne("OnlineStore.Models.Product", "Product")
                         .WithMany("ProductVariants")
-                        .HasForeignKey("ProductId");
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Product");
                 });
@@ -7584,15 +7292,15 @@ namespace OnlineStore.Migrations
                 {
                     b.HasOne("OnlineStore.Models.Order", "Order")
                         .WithMany("Returns")
-                        .HasForeignKey("OrderId");
+                        .HasForeignKey("OrderId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                    b.HasOne("OnlineStore.Models.User", "User")
+                    b.HasOne("OnlineStore.Models.User", null)
                         .WithMany("Returns")
                         .HasForeignKey("UserId");
 
                     b.Navigation("Order");
-
-                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("OnlineStore.Models.ReturnAttachment", b =>
@@ -7600,7 +7308,8 @@ namespace OnlineStore.Migrations
                     b.HasOne("OnlineStore.Models.ReturnItem", "ReturnItem")
                         .WithMany("Attachments")
                         .HasForeignKey("ReturnItemId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("ReturnItem");
                 });
@@ -7628,18 +7337,19 @@ namespace OnlineStore.Migrations
                 {
                     b.HasOne("OnlineStore.Models.Return", "Return")
                         .WithOne("ReturnTracking")
-                        .HasForeignKey("OnlineStore.Models.ReturnTracking", "ReturnId");
+                        .HasForeignKey("OnlineStore.Models.ReturnTracking", "ReturnId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Return");
                 });
 
             modelBuilder.Entity("OnlineStore.Models.Review", b =>
                 {
-                    b.HasOne("OnlineStore.Models.Order", "order")
+                    b.HasOne("OnlineStore.Models.Order", "Order")
                         .WithMany("Reviews")
                         .HasForeignKey("OrderId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.SetNull);
 
                     b.HasOne("OnlineStore.Models.Product", "Product")
                         .WithMany("Reviews")
@@ -7650,14 +7360,13 @@ namespace OnlineStore.Migrations
                     b.HasOne("OnlineStore.Models.User", "User")
                         .WithMany("Reviews")
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.SetNull);
+
+                    b.Navigation("Order");
 
                     b.Navigation("Product");
 
                     b.Navigation("User");
-
-                    b.Navigation("order");
                 });
 
             modelBuilder.Entity("OnlineStore.Models.ReviewAttachment", b =>
@@ -7675,7 +7384,9 @@ namespace OnlineStore.Migrations
                 {
                     b.HasOne("OnlineStore.Models.ShippingMethod", "ShippingMethod")
                         .WithMany("Translations")
-                        .HasForeignKey("ShippingMethodId");
+                        .HasForeignKey("ShippingMethodId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("ShippingMethod");
                 });
@@ -7684,7 +7395,9 @@ namespace OnlineStore.Migrations
                 {
                     b.HasOne("OnlineStore.Models.Country", "Country")
                         .WithMany("States")
-                        .HasForeignKey("CountryId");
+                        .HasForeignKey("CountryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Country");
                 });
@@ -7693,7 +7406,9 @@ namespace OnlineStore.Migrations
                 {
                     b.HasOne("OnlineStore.Models.State", "State")
                         .WithMany("Translations")
-                        .HasForeignKey("StateId");
+                        .HasForeignKey("StateId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("State");
                 });
@@ -7721,20 +7436,16 @@ namespace OnlineStore.Migrations
                 {
                     b.HasOne("OnlineStore.Models.Stock", "Stock")
                         .WithMany("StockMovements")
-                        .HasForeignKey("StockId");
-
-                    b.HasOne("OnlineStore.Models.User", "User")
-                        .WithMany("StockMovements")
-                        .HasForeignKey("UserId");
+                        .HasForeignKey("StockId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Stock");
-
-                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("OnlineStore.Models.SupportTicket", b =>
                 {
-                    b.HasOne("OnlineStore.Models.Order", "Order")
+                    b.HasOne("OnlineStore.Models.Order", null)
                         .WithMany("SupportTickets")
                         .HasForeignKey("OrderId");
 
@@ -7743,8 +7454,6 @@ namespace OnlineStore.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Order");
 
                     b.Navigation("User");
                 });
@@ -7764,11 +7473,14 @@ namespace OnlineStore.Migrations
                 {
                     b.HasOne("OnlineStore.Models.SupportTicket", "Ticket")
                         .WithMany("Messages")
-                        .HasForeignKey("TicketId");
+                        .HasForeignKey("TicketId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("OnlineStore.Models.User", "User")
                         .WithMany("TicketMessages")
-                        .HasForeignKey("UserId");
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.NoAction);
 
                     b.Navigation("Ticket");
 
@@ -7780,19 +7492,19 @@ namespace OnlineStore.Migrations
                     b.HasOne("OnlineStore.Models.City", "City")
                         .WithMany("Users")
                         .HasForeignKey("CityId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("OnlineStore.Models.Country", "Country")
                         .WithMany("Users")
                         .HasForeignKey("CountryId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("OnlineStore.Models.State", "State")
                         .WithMany("Users")
                         .HasForeignKey("StateId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("City");
@@ -7806,7 +7518,9 @@ namespace OnlineStore.Migrations
                 {
                     b.HasOne("OnlineStore.Models.User", "User")
                         .WithMany("Points")
-                        .HasForeignKey("UserId");
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("User");
                 });
@@ -7842,7 +7556,9 @@ namespace OnlineStore.Migrations
                 {
                     b.HasOne("OnlineStore.Models.User", "User")
                         .WithOne("Wallet")
-                        .HasForeignKey("OnlineStore.Models.Wallet", "UserId");
+                        .HasForeignKey("OnlineStore.Models.Wallet", "UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("User");
                 });
@@ -7866,7 +7582,9 @@ namespace OnlineStore.Migrations
 
                     b.HasOne("OnlineStore.Models.User", "User")
                         .WithMany("Wishlists")
-                        .HasForeignKey("UserId");
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Product");
 
@@ -7892,7 +7610,9 @@ namespace OnlineStore.Migrations
                 {
                     b.HasOne("Permission", "Permission")
                         .WithMany("Translations")
-                        .HasForeignKey("PermissionId");
+                        .HasForeignKey("PermissionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Permission");
                 });
@@ -7936,11 +7656,6 @@ namespace OnlineStore.Migrations
                         .HasForeignKey("UsersId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("OnlineStore.Models.Address", b =>
-                {
-                    b.Navigation("Orders");
                 });
 
             modelBuilder.Entity("OnlineStore.Models.AppSetting", b =>
@@ -8031,8 +7746,6 @@ namespace OnlineStore.Migrations
 
             modelBuilder.Entity("OnlineStore.Models.Product", b =>
                 {
-                    b.Navigation("OrderItems");
-
                     b.Navigation("ProductVariants");
 
                     b.Navigation("Reviews");
@@ -8051,8 +7764,6 @@ namespace OnlineStore.Migrations
 
             modelBuilder.Entity("OnlineStore.Models.ProductVariant", b =>
                 {
-                    b.Navigation("OrderItems");
-
                     b.Navigation("Stock")
                         .IsRequired();
 
@@ -8128,8 +7839,6 @@ namespace OnlineStore.Migrations
                     b.Navigation("Returns");
 
                     b.Navigation("Reviews");
-
-                    b.Navigation("StockMovements");
 
                     b.Navigation("SupportTickets");
 

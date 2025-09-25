@@ -29,18 +29,17 @@ public class TicketMessageConfiguration : IEntityTypeConfiguration<TicketMessage
                .IsRequired()
                .HasDefaultValue(false);
 
-        builder.Property(tm => tm.ReadAt)
-               .IsRequired(false);
+        builder.Property(tm => tm.ReadAt);
 
-        // Relationships
-        builder.HasOne(tm => tm.Ticket)
-               .WithMany(t => t.Messages)
-               .HasForeignKey(tm => tm.TicketId)
-               .IsRequired(false);
+              // Relationships
+              builder.HasOne(tm => tm.Ticket)
+                     .WithMany(t => t.Messages)
+                     .HasForeignKey(tm => tm.TicketId)
+                     .OnDelete(DeleteBehavior.Cascade);
 
-        builder.HasOne(tm => tm.User)
-               .WithMany(u => u.TicketMessages)
-               .HasForeignKey(tm => tm.UserId)
-               .IsRequired(false);
+              builder.HasOne(tm => tm.User)
+              .WithMany(u => u.TicketMessages)
+              .HasForeignKey(tm => tm.UserId)
+              .OnDelete(DeleteBehavior.NoAction);
     }
 }

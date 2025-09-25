@@ -29,6 +29,6 @@ public class AddressConfiguration : IEntityTypeConfiguration<Address>
         builder.Property(a => a.IsDefault).IsRequired();
         builder.HasOne(a => a.User)
                .WithMany(u => u.Addresses)
-               .HasForeignKey(a => a.UserId).IsRequired(false);
+               .HasForeignKey(a => a.UserId);
     }
 }

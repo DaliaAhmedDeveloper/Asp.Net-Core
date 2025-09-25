@@ -27,12 +27,13 @@ public class CountryConfiguration : IEntityTypeConfiguration<Country>
         // Make Code unique
         builder.HasIndex(c => c.Code).IsUnique();
 
-        // Relationships
+              // Relationships
 
-        // Country -> States (One-to-Many)
-        builder.HasMany(c => c.States)
-               .WithOne(s => s.Country)
-               .HasForeignKey(s => s.CountryId)
-               .IsRequired(false);
+              // Country -> States (One-to-Many)
+              builder.HasMany(c => c.States)
+                     .WithOne(s => s.Country)
+                     .HasForeignKey(s => s.CountryId)
+                     .OnDelete(DeleteBehavior.Cascade)
+                     ;
     }
 }

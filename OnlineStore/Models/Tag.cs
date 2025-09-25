@@ -1,6 +1,6 @@
 namespace OnlineStore.Models;
 using System.ComponentModel.DataAnnotations;
-public class Tag
+public class Tag : BaseEntity
 {
     public int Id { get; set; }
 

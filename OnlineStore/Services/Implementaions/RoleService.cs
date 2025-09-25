@@ -105,9 +105,7 @@ public class RoleService : IRoleService
         if (Role == null)
             return false;
 
-        Role.IsDeleted = true;
-        Role.UpdatedAt = DateTime.UtcNow;
-        await _RoleRepo.UpdateAsync(Role);
+        await _RoleRepo.DeleteAsync(id);
         return true;
     }
 }

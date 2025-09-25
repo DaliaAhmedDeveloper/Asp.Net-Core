@@ -1,7 +1,7 @@
 namespace OnlineStore.Models;
 
 using OnlineStore.Models.Enums;
-public class Coupon
+public class Coupon : SoftDeleteEntity
 {
     public int Id { get; set; }
     public string Code { get; set; } = string.Empty;
@@ -18,7 +18,6 @@ public class Coupon
 
     // public ICollection<UserGroup> UserGroups { get; set; }
     public ICollection<CouponTranslation> Translations { get; set; } = new List<CouponTranslation>();
-    public ICollection<Category> Categoies { get; set; } = new List<Category>(); // applied on which categories
     public ICollection<User> Users { get; set; } = new List<User>(); // user can have list of copouns to choose from
     public ICollection<Order> Orders { get; set; } = new List<Order>(); // has many orders
     public ICollection<CouponUser> CouponUsers { get; set; } = new List<CouponUser>();

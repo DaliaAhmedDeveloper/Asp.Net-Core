@@ -64,14 +64,5 @@ public class CouponConfiguration : IEntityTypeConfiguration<Coupon>
               builder.Property(c => c.EndDate)
                      .IsRequired();
 
-              // one coupon has many translations
-              builder.HasMany(c => c.Translations)
-               .WithOne(t => t.Coupon)
-               .HasForeignKey(t => t.CouponId);
-
-              // many to many
-              builder.HasMany(c => c.Categoies)
-                     .WithMany(cat => cat.Coupons);
-
        }
 }

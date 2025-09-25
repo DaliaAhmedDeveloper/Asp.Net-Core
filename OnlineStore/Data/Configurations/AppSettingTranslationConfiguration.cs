@@ -20,6 +20,7 @@ public class AppSettingTranslationConfiguration : IEntityTypeConfiguration<AppSe
 
         builder.HasOne(at => at.AppSetting)
                .WithMany(a => a.Translations)
-               .HasForeignKey(at => at.AppSettingId);
+               .HasForeignKey(at => at.AppSettingId)
+               .OnDelete(DeleteBehavior.Cascade);
     }
 }

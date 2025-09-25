@@ -30,7 +30,7 @@ Make the relationship required false
  modelBuilder.Entity<Address>()
     .HasOne(a => a.User)
     .WithMany()
-    .IsRequired(false);
+    ;
 ```
 
 This Tell EF Core how to handle it when the related entity is missing or filtered out.

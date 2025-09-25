@@ -1,6 +1,6 @@
 namespace OnlineStore.Models;
 
-public class AppSettingTranslation
+public class AppSettingTranslation 
 {
     public int Id { get; set; }
     public string Key { get; set; } = string.Empty;

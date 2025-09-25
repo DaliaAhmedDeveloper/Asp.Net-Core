@@ -1,6 +1,6 @@
 namespace OnlineStore.Models;
 using OnlineStore.Models.Enums;
-public class Product : BaseEntity
+public class Product : SoftDeleteEntity
 {
     public int Id { get; set; }
     public string Slug { get; set; } = string.Empty;
@@ -14,8 +14,8 @@ public class Product : BaseEntity
     {
         get
         {
-        string baseUrl = "/Product/image/";
-           return string.IsNullOrEmpty(_imageUrl) ? $"{baseUrl}default.png" : baseUrl + _imageUrl;
+            string baseUrl = "/Product/image/";
+            return string.IsNullOrEmpty(_imageUrl) ? $"{baseUrl}default.png" : baseUrl + _imageUrl;
         }
         set
         {

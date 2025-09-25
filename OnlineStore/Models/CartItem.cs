@@ -1,5 +1,5 @@
 namespace OnlineStore.Models;
-public class CartItem
+public class CartItem : BaseEntity
 {
     public int Id { get; set; }
     public int Quantity { get; set; }

@@ -1,3 +1,4 @@
+using System.Transactions;
 using Microsoft.Extensions.Localization;
 using OnlineStore.Helpers;
 using OnlineStore.Models;
@@ -28,7 +29,7 @@ public class CategoryService : ICategoryService
         return await _categoryRepo.GetAllBasedOnLangAsync();
     }
 
-     // category details
+    // category details
     public async Task<CategoryDetailsDto> Find(int id)
     {
         var category = await _categoryRepo.GetWithProductsBasedOnLangAsync(id);
@@ -69,38 +70,38 @@ public class CategoryService : ICategoryService
     public async Task<Category> CreateForWeb(CategoryViewModel model)
     {
         // Map ViewModel to Model
-            var category = new Category
-            {
-                Slug = model.Slug,
-                ParentId = model.ParentId,
-                IsDeal = model.IsDeal,
-            };
-            // Handle Image Upload
-            if (model.ImageFile != null)
-            {
-               var fileName = await FileUploadHelper.UploadFileAsync(model.ImageFile , "Uploads/Categories" );
-                category.ImageUrl = fileName;
-            }
+        var category = new Category
+        {
+            Slug = model.Slug,
+            ParentId = model.ParentId,
+            IsDeal = model.IsDeal,
+        };
+        // Handle Image Upload
+        if (model.ImageFile != null)
+        {
+            var fileName = await FileUploadHelper.UploadFileAsync(model.ImageFile, "Uploads/Categories");
+            category.ImageUrl = fileName;
+        }
 
-            // Add translations
-            category.Translations.Add(new CategoryTranslation
-            {
-                LanguageCode = "en",
-                Name = model.NameEn,
-                Description = model.DescriptionEn
-            });
-            category.Translations.Add(new CategoryTranslation
-            {
-                LanguageCode = "ar",
-                Name = model.NameAr,
-                Description = model.DescriptionAr
-            });
+        // Add translations
+        category.Translations.Add(new CategoryTranslation
+        {
+            LanguageCode = "en",
+            Name = model.NameEn,
+            Description = model.DescriptionEn
+        });
+        category.Translations.Add(new CategoryTranslation
+        {
+            LanguageCode = "ar",
+            Name = model.NameAr,
+            Description = model.DescriptionAr
+        });
 
         await _categoryRepo.AddAsync(category);
         return category;
     }
     // update category
-    public async Task<Category> UpdateForWeb(CategoryViewModel model,Category category)
+    public async Task<Category> UpdateForWeb(CategoryViewModel model, Category category)
     {
         category.Slug = model.Slug;
         category.ParentId = model.ParentId;
@@ -119,22 +120,73 @@ public class CategoryService : ICategoryService
                 translation.Description = model.DescriptionAr;
             }
         }
-         // Handle Image Upload
-            if (model.ImageFile != null)
-            {
-               var fileName = await FileUploadHelper.UploadFileAsync(model.ImageFile , "Uploads/Categories" );
-                category.ImageUrl = fileName;
-            }
+        // Handle Image Upload
+        if (model.ImageFile != null)
+        {
+            var fileName = await FileUploadHelper.UploadFileAsync(model.ImageFile, "Uploads/Categories");
+            category.ImageUrl = fileName;
+        }
 
         await _categoryRepo.UpdateAsync(category);
         return category;
     }
-   
-    // delete category
+
+    /**
+   delete a category, move all products in it to the ‘Uncategorized’ category 
+   if they don’t belong to any other category.
+
+   also it has child categories delete them also
+   **/
     public async Task<bool> DeleteForWeb(int id)
     {
-        var category = await _categoryRepo.GetByIdAsync(id);
-        return await _categoryRepo.DeleteAsync(id);
+        var category = await _categoryRepo.GetByIdAndRelationsAsync(id);
+
+        if (category == null)
+            return false;
+
+        var uncategorized = await _categoryRepo.GetBySlug("uncategorized");
+        if (uncategorized == null)
+            throw new Exception("Uncategorized category not found");
+
+        using (var scope = new TransactionScope(TransactionScopeAsyncFlowOption.Enabled))
+        {
+            foreach (var product in category.Products)
+            {
+                if (product.Categories.Count <= 1)
+                {
+                    product.Categories.Clear();
+                    product.Categories.Add(uncategorized);
+                }
+                else
+                {
+                    product.Categories.Remove(category);
+                }
+            }
+
+            if (category.Children != null)
+            {
+                foreach (var child in category.Children.ToList())
+                {
+                    foreach (var product in child.Products)
+                    {
+                        if (product.Categories.Count <= 1)
+                        {
+                            product.Categories.Clear();
+                            product.Categories.Add(uncategorized);
+                        }
+                        else
+                        {
+                            product.Categories.Remove(child);
+                        }
+                    }
+
+                    await _categoryRepo.DeleteAsync(child);
+                }
+            }
+            scope.Complete();
+            return await _categoryRepo.DeleteAsync(category);
+        }
+
     }
-   
+
 }

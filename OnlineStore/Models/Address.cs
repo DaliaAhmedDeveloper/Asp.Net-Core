@@ -1,6 +1,6 @@
 namespace OnlineStore.Models;
 
-public class Address
+public class Address : BaseEntity
 {
     
     public int Id { get; set; }

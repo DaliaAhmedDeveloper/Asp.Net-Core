@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace OnlineStore.Migrations
 {
     /// <inheritdoc />
-    public partial class UpdateTables : Migration
+    public partial class databaseTables : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -38,8 +38,7 @@ namespace OnlineStore.Migrations
                     IsDeal = table.Column<bool>(type: "bit", nullable: false),
                     ImageUrl = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
+                    UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -62,8 +61,7 @@ namespace OnlineStore.Migrations
                     PhoneCode = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: false),
                     IsActive = table.Column<bool>(type: "bit", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
+                    UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -86,7 +84,11 @@ namespace OnlineStore.Migrations
                     MaxDiscountAmount = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     MinimumOrderAmount = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
                     IsActive = table.Column<bool>(type: "bit", nullable: false),
-                    IsForFirstOrderOnly = table.Column<bool>(type: "bit", nullable: false)
+                    IsForFirstOrderOnly = table.Column<bool>(type: "bit", nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
+                    DeletedAt = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -104,7 +106,9 @@ namespace OnlineStore.Migrations
                     FailedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
                     ExceptionMessage = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     StackTrace = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Try = table.Column<int>(type: "int", nullable: false)
+                    Try = table.Column<int>(type: "int", nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -119,7 +123,8 @@ namespace OnlineStore.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     StackTrace = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: false),
                     InnerException = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -151,8 +156,7 @@ namespace OnlineStore.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Slug = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
+                    UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -165,7 +169,11 @@ namespace OnlineStore.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Code = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true)
+                    Code = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
+                    DeletedAt = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -186,7 +194,8 @@ namespace OnlineStore.Migrations
                     ImageUrl = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
+                    DeletedAt = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -201,8 +210,7 @@ namespace OnlineStore.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Slug = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
+                    UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -219,8 +227,7 @@ namespace OnlineStore.Migrations
                     Cost = table.Column<decimal>(type: "decimal(18,4)", precision: 18, scale: 4, nullable: false),
                     DeliveryTime = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
+                    UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -247,7 +254,9 @@ namespace OnlineStore.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Code = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true)
+                    Code = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -273,7 +282,8 @@ namespace OnlineStore.Migrations
                     IsDefault = table.Column<bool>(type: "bit", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
+                    DeletedAt = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -319,7 +329,8 @@ namespace OnlineStore.Migrations
                         name: "FK_CategoryTranslations_Categories_CategoryId",
                         column: x => x.CategoryId,
                         principalTable: "Categories",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -340,7 +351,8 @@ namespace OnlineStore.Migrations
                         name: "FK_CountryTranslations_Countries_CountryId",
                         column: x => x.CountryId,
                         principalTable: "Countries",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -352,8 +364,7 @@ namespace OnlineStore.Migrations
                     Code = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     CountryId = table.Column<int>(type: "int", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
+                    UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -362,29 +373,6 @@ namespace OnlineStore.Migrations
                         name: "FK_States_Countries_CountryId",
                         column: x => x.CountryId,
                         principalTable: "Countries",
-                        principalColumn: "Id");
-                });
-
-            migrationBuilder.CreateTable(
-                name: "CategoryCoupon",
-                columns: table => new
-                {
-                    CategoiesId = table.Column<int>(type: "int", nullable: false),
-                    CouponsId = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_CategoryCoupon", x => new { x.CategoiesId, x.CouponsId });
-                    table.ForeignKey(
-                        name: "FK_CategoryCoupon_Categories_CategoiesId",
-                        column: x => x.CategoiesId,
-                        principalTable: "Categories",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_CategoryCoupon_Coupons_CouponsId",
-                        column: x => x.CouponsId,
-                        principalTable: "Coupons",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -407,7 +395,8 @@ namespace OnlineStore.Migrations
                         name: "FK_CouponTranslations_Coupons_CouponId",
                         column: x => x.CouponId,
                         principalTable: "Coupons",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -441,10 +430,7 @@ namespace OnlineStore.Migrations
                     Name = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     Description = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     PermissionId = table.Column<int>(type: "int", nullable: false),
-                    LanguageCode = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
+                    LanguageCode = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -453,7 +439,8 @@ namespace OnlineStore.Migrations
                         name: "FK_PermissionTranslations_Permissions_PermissionId",
                         column: x => x.PermissionId,
                         principalTable: "Permissions",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -463,7 +450,11 @@ namespace OnlineStore.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     AttributeId = table.Column<int>(type: "int", nullable: false),
-                    Code = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true)
+                    Code = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
+                    DeletedAt = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -540,7 +531,8 @@ namespace OnlineStore.Migrations
                         name: "FK_ProductTranslations_Products_ProductId",
                         column: x => x.ProductId,
                         principalTable: "Products",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -553,7 +545,9 @@ namespace OnlineStore.Migrations
                     SalePrice = table.Column<decimal>(type: "decimal(18,2)", precision: 18, scale: 2, nullable: true),
                     IsDefault = table.Column<bool>(type: "bit", nullable: false),
                     ProductId = table.Column<int>(type: "int", nullable: false),
-                    ImageUrl = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false)
+                    ImageUrl = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -562,7 +556,8 @@ namespace OnlineStore.Migrations
                         name: "FK_ProductVariants_Products_ProductId",
                         column: x => x.ProductId,
                         principalTable: "Products",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -600,8 +595,7 @@ namespace OnlineStore.Migrations
                     RoleId = table.Column<int>(type: "int", nullable: false),
                     LanguageCode = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
+                    UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -631,7 +625,8 @@ namespace OnlineStore.Migrations
                         name: "FK_ShippingMethodTranslations_ShippingMethods_ShippingMethodId",
                         column: x => x.ShippingMethodId,
                         principalTable: "ShippingMethods",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -688,8 +683,7 @@ namespace OnlineStore.Migrations
                     Name = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     StateId = table.Column<int>(type: "int", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
+                    UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -698,7 +692,8 @@ namespace OnlineStore.Migrations
                         name: "FK_Cities_States_StateId",
                         column: x => x.StateId,
                         principalTable: "States",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -718,7 +713,8 @@ namespace OnlineStore.Migrations
                         name: "FK_StateTranslations_States_StateId",
                         column: x => x.StateId,
                         principalTable: "States",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -758,8 +754,7 @@ namespace OnlineStore.Migrations
                     LastRestocked = table.Column<DateTime>(type: "datetime2", nullable: false),
                     LastStockCount = table.Column<DateTime>(type: "datetime2", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
+                    UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -828,7 +823,8 @@ namespace OnlineStore.Migrations
                         name: "FK_CityTranslations_Cities_CityId",
                         column: x => x.CityId,
                         principalTable: "Cities",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -850,7 +846,8 @@ namespace OnlineStore.Migrations
                     StateId = table.Column<int>(type: "int", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
+                    DeletedAt = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -860,17 +857,46 @@ namespace OnlineStore.Migrations
                         column: x => x.CityId,
                         principalTable: "Cities",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Users_Countries_CountryId",
                         column: x => x.CountryId,
                         principalTable: "Countries",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Users_States_StateId",
                         column: x => x.StateId,
                         principalTable: "States",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "StockMovements",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    StockId = table.Column<int>(type: "int", nullable: false),
+                    Quantity = table.Column<int>(type: "int", nullable: false),
+                    Type = table.Column<int>(type: "int", nullable: false),
+                    Reference = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    Notes = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: false),
+                    UserId = table.Column<int>(type: "int", nullable: true),
+                    UnitCost = table.Column<decimal>(type: "decimal(18,4)", precision: 18, scale: 4, nullable: false),
+                    UserName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    UserEmail = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_StockMovements", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_StockMovements_Stock_StockId",
+                        column: x => x.StockId,
+                        principalTable: "Stock",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -887,7 +913,9 @@ namespace OnlineStore.Migrations
                     Street = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
                     ZipCode = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
                     IsDefault = table.Column<bool>(type: "bit", nullable: false),
-                    UserId = table.Column<int>(type: "int", nullable: false)
+                    UserId = table.Column<int>(type: "int", nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -896,7 +924,8 @@ namespace OnlineStore.Migrations
                         name: "FK_Addresses_Users_UserId",
                         column: x => x.UserId,
                         principalTable: "Users",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -906,7 +935,8 @@ namespace OnlineStore.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     UserId = table.Column<int>(type: "int", nullable: false),
-                    UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -915,7 +945,8 @@ namespace OnlineStore.Migrations
                         name: "FK_Carts_Users_UserId",
                         column: x => x.UserId,
                         principalTable: "Users",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -955,8 +986,7 @@ namespace OnlineStore.Migrations
                     IsRead = table.Column<bool>(type: "bit", nullable: false),
                     UserId = table.Column<int>(type: "int", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
+                    UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -970,6 +1000,62 @@ namespace OnlineStore.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Orders",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    TotalAmountBeforeSale = table.Column<decimal>(type: "decimal(18,4)", precision: 18, scale: 4, nullable: false),
+                    TotalAmountAfterSale = table.Column<decimal>(type: "decimal(18,4)", precision: 18, scale: 4, nullable: false),
+                    SaleDiscountAmount = table.Column<decimal>(type: "decimal(18,4)", precision: 18, scale: 4, nullable: false),
+                    OrderStatus = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    PaymentMethod = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    ReferenceNumber = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: false),
+                    UserId = table.Column<int>(type: "int", nullable: true),
+                    UserEmail = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    UserName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CouponDiscountAmount = table.Column<decimal>(type: "decimal(18,4)", precision: 18, scale: 4, nullable: false),
+                    Coupon = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    PointsUsed = table.Column<int>(type: "int", nullable: false),
+                    PointsDiscountAmount = table.Column<decimal>(type: "decimal(18,4)", precision: 18, scale: 4, nullable: false),
+                    WalletAmountUsed = table.Column<decimal>(type: "decimal(18,4)", precision: 18, scale: 4, nullable: false),
+                    FinalAmount = table.Column<decimal>(type: "decimal(18,4)", precision: 18, scale: 4, nullable: false),
+                    ShAddressFullName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ShAddressCity = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ShAddressCountry = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ShAddressStreet = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ShAddressZipCode = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ShippingMethodId = table.Column<int>(type: "int", nullable: true),
+                    ShippingMethod = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ShippingMethodCost = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    ShippingMethodDelieveryDate = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CouponId = table.Column<int>(type: "int", nullable: true),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
+                    DeletedAt = table.Column<DateTime>(type: "datetime2", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Orders", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Orders_Coupons_CouponId",
+                        column: x => x.CouponId,
+                        principalTable: "Coupons",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_Orders_ShippingMethods_ShippingMethodId",
+                        column: x => x.ShippingMethodId,
+                        principalTable: "ShippingMethods",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_Orders_Users_UserId",
+                        column: x => x.UserId,
+                        principalTable: "Users",
+                        principalColumn: "Id");
+                });
+
+            migrationBuilder.CreateTable(
                 name: "RefreshTokens",
                 columns: table => new
                 {
@@ -980,8 +1066,7 @@ namespace OnlineStore.Migrations
                     ExpiryDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     IsRevoked = table.Column<bool>(type: "bit", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
+                    UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -1019,38 +1104,6 @@ namespace OnlineStore.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "StockMovements",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    StockId = table.Column<int>(type: "int", nullable: false),
-                    Quantity = table.Column<int>(type: "int", nullable: false),
-                    Type = table.Column<int>(type: "int", nullable: false),
-                    Reference = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
-                    Notes = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: false),
-                    UserId = table.Column<int>(type: "int", nullable: true),
-                    UnitCost = table.Column<decimal>(type: "decimal(18,4)", precision: 18, scale: 4, nullable: false),
-                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_StockMovements", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_StockMovements_Stock_StockId",
-                        column: x => x.StockId,
-                        principalTable: "Stock",
-                        principalColumn: "Id");
-                    table.ForeignKey(
-                        name: "FK_StockMovements_Users_UserId",
-                        column: x => x.UserId,
-                        principalTable: "Users",
-                        principalColumn: "Id");
-                });
-
-            migrationBuilder.CreateTable(
                 name: "UserPoints",
                 columns: table => new
                 {
@@ -1059,9 +1112,10 @@ namespace OnlineStore.Migrations
                     UserId = table.Column<int>(type: "int", nullable: false),
                     Points = table.Column<int>(type: "int", nullable: false),
                     Type = table.Column<byte>(type: "tinyint", nullable: false),
-                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
                     ExpiryAt = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Expired = table.Column<bool>(type: "bit", nullable: false)
+                    Expired = table.Column<bool>(type: "bit", nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -1070,7 +1124,8 @@ namespace OnlineStore.Migrations
                         name: "FK_UserPoints_Users_UserId",
                         column: x => x.UserId,
                         principalTable: "Users",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -1080,7 +1135,9 @@ namespace OnlineStore.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     UserId = table.Column<int>(type: "int", maxLength: 100, nullable: false),
-                    Balance = table.Column<decimal>(type: "decimal(18,4)", precision: 18, scale: 4, nullable: false)
+                    Balance = table.Column<decimal>(type: "decimal(18,4)", precision: 18, scale: 4, nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -1089,7 +1146,8 @@ namespace OnlineStore.Migrations
                         name: "FK_Wallets_Users_UserId",
                         column: x => x.UserId,
                         principalTable: "Users",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -1099,7 +1157,9 @@ namespace OnlineStore.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     UserId = table.Column<int>(type: "int", nullable: false),
-                    ProductId = table.Column<int>(type: "int", nullable: false)
+                    ProductId = table.Column<int>(type: "int", nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -1113,61 +1173,8 @@ namespace OnlineStore.Migrations
                         name: "FK_Wishlist_Users_UserId",
                         column: x => x.UserId,
                         principalTable: "Users",
-                        principalColumn: "Id");
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Orders",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    TotalAmountBeforeSale = table.Column<decimal>(type: "decimal(18,4)", precision: 18, scale: 4, nullable: false),
-                    TotalAmountAfterSale = table.Column<decimal>(type: "decimal(18,4)", precision: 18, scale: 4, nullable: false),
-                    SaleDiscountAmount = table.Column<decimal>(type: "decimal(18,4)", precision: 18, scale: 4, nullable: false),
-                    OrderStatus = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    PaymentMethod = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    ReferenceNumber = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: false),
-                    UserId = table.Column<int>(type: "int", nullable: false),
-                    CouponId = table.Column<int>(type: "int", nullable: true),
-                    CouponDiscountAmount = table.Column<decimal>(type: "decimal(18,4)", precision: 18, scale: 4, nullable: false),
-                    PointsUsed = table.Column<int>(type: "int", nullable: false),
-                    PointsDiscountAmount = table.Column<decimal>(type: "decimal(18,4)", precision: 18, scale: 4, nullable: false),
-                    WalletAmountUsed = table.Column<decimal>(type: "decimal(18,4)", precision: 18, scale: 4, nullable: false),
-                    FinalAmount = table.Column<decimal>(type: "decimal(18,4)", precision: 18, scale: 4, nullable: false),
-                    ShippingAddressId = table.Column<int>(type: "int", nullable: false),
-                    ShippingMethodId = table.Column<int>(type: "int", nullable: false),
-                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Orders", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Orders_Addresses_ShippingAddressId",
-                        column: x => x.ShippingAddressId,
-                        principalTable: "Addresses",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Orders_Coupons_CouponId",
-                        column: x => x.CouponId,
-                        principalTable: "Coupons",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Orders_ShippingMethods_ShippingMethodId",
-                        column: x => x.ShippingMethodId,
-                        principalTable: "ShippingMethods",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Orders_Users_UserId",
-                        column: x => x.UserId,
-                        principalTable: "Users",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -1179,7 +1186,9 @@ namespace OnlineStore.Migrations
                     Quantity = table.Column<int>(type: "int", nullable: false),
                     CartId = table.Column<int>(type: "int", nullable: false),
                     VariantId = table.Column<int>(type: "int", nullable: false),
-                    ProductId = table.Column<int>(type: "int", nullable: false)
+                    ProductId = table.Column<int>(type: "int", nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -1195,12 +1204,13 @@ namespace OnlineStore.Migrations
                         column: x => x.VariantId,
                         principalTable: "ProductVariants",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_CartItems_Products_ProductId",
                         column: x => x.ProductId,
                         principalTable: "Products",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -1221,27 +1231,6 @@ namespace OnlineStore.Migrations
                         name: "FK_NotificationTranslations_Notifications_NotificationId",
                         column: x => x.NotificationId,
                         principalTable: "Notifications",
-                        principalColumn: "Id");
-                });
-
-            migrationBuilder.CreateTable(
-                name: "WalletTransactions",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    WalletId = table.Column<int>(type: "int", nullable: false),
-                    Amount = table.Column<decimal>(type: "decimal(18,4)", precision: 18, scale: 4, nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
-                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_WalletTransactions", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_WalletTransactions_Wallets_WalletId",
-                        column: x => x.WalletId,
-                        principalTable: "Wallets",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -1253,8 +1242,12 @@ namespace OnlineStore.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     OrderId = table.Column<int>(type: "int", nullable: false),
-                    ProductId = table.Column<int>(type: "int", nullable: false),
-                    ProductVariantId = table.Column<int>(type: "int", nullable: false),
+                    ProductId = table.Column<int>(type: "int", nullable: true),
+                    ProductVariantId = table.Column<int>(type: "int", nullable: true),
+                    ProductSlug = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ProductName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ProductImage = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ProductAttribute = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Quantity = table.Column<int>(type: "int", nullable: false),
                     UnitPrice = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     Points = table.Column<int>(type: "int", nullable: false),
@@ -1271,16 +1264,6 @@ namespace OnlineStore.Migrations
                         principalTable: "Orders",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_OrderItems_ProductVariants_ProductVariantId",
-                        column: x => x.ProductVariantId,
-                        principalTable: "ProductVariants",
-                        principalColumn: "Id");
-                    table.ForeignKey(
-                        name: "FK_OrderItems_Products_ProductId",
-                        column: x => x.ProductId,
-                        principalTable: "Products",
-                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
@@ -1295,7 +1278,8 @@ namespace OnlineStore.Migrations
                     TrackingUrl = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     DriverName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     DriverPhone = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -1304,7 +1288,8 @@ namespace OnlineStore.Migrations
                         name: "FK_OrderTracking_Orders_OrderId",
                         column: x => x.OrderId,
                         principalTable: "Orders",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -1318,7 +1303,8 @@ namespace OnlineStore.Migrations
                     OrderId = table.Column<int>(type: "int", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
+                    DeletedAt = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -1338,13 +1324,15 @@ namespace OnlineStore.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     OrderId = table.Column<int>(type: "int", nullable: false),
-                    UserId = table.Column<int>(type: "int", nullable: false),
+                    UserId = table.Column<int>(type: "int", nullable: true),
                     TotalAmount = table.Column<decimal>(type: "decimal(18,2)", precision: 18, scale: 2, nullable: false),
                     ReferenceNumber = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: false),
                     Reason = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     Status = table.Column<int>(type: "int", nullable: false),
                     ReturnDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    RefundType = table.Column<int>(type: "int", nullable: false)
+                    RefundType = table.Column<int>(type: "int", nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -1353,7 +1341,8 @@ namespace OnlineStore.Migrations
                         name: "FK_Returns_Orders_OrderId",
                         column: x => x.OrderId,
                         principalTable: "Orders",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Returns_Users_UserId",
                         column: x => x.UserId,
@@ -1370,12 +1359,11 @@ namespace OnlineStore.Migrations
                     Rating = table.Column<int>(type: "int", nullable: false),
                     Comment = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: false),
                     Accepted = table.Column<bool>(type: "bit", nullable: false),
-                    UserId = table.Column<int>(type: "int", nullable: false),
-                    OrderId = table.Column<int>(type: "int", nullable: false),
+                    UserId = table.Column<int>(type: "int", nullable: true),
+                    OrderId = table.Column<int>(type: "int", nullable: true),
                     ProductId = table.Column<int>(type: "int", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
+                    UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -1385,7 +1373,7 @@ namespace OnlineStore.Migrations
                         column: x => x.OrderId,
                         principalTable: "Orders",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.SetNull);
                     table.ForeignKey(
                         name: "FK_Reviews_Products_ProductId",
                         column: x => x.ProductId,
@@ -1397,7 +1385,7 @@ namespace OnlineStore.Migrations
                         column: x => x.UserId,
                         principalTable: "Users",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.SetNull);
                 });
 
             migrationBuilder.CreateTable(
@@ -1408,7 +1396,8 @@ namespace OnlineStore.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     TicketNumber = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     UserId = table.Column<int>(type: "int", nullable: false),
-                    OrderId = table.Column<int>(type: "int", nullable: false),
+                    OrderId = table.Column<int>(type: "int", nullable: true),
+                    OrderNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Priority = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Status = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Category = table.Column<string>(type: "nvarchar(max)", nullable: false),
@@ -1420,7 +1409,8 @@ namespace OnlineStore.Migrations
                     Resolution = table.Column<string>(type: "nvarchar(2000)", maxLength: 2000, nullable: true),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
+                    DeletedAt = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -1434,6 +1424,29 @@ namespace OnlineStore.Migrations
                         name: "FK_SupportTickets_Users_UserId",
                         column: x => x.UserId,
                         principalTable: "Users",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "WalletTransactions",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    WalletId = table.Column<int>(type: "int", nullable: false),
+                    Amount = table.Column<decimal>(type: "decimal(18,4)", precision: 18, scale: 4, nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_WalletTransactions", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_WalletTransactions_Wallets_WalletId",
+                        column: x => x.WalletId,
+                        principalTable: "Wallets",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -1456,7 +1469,8 @@ namespace OnlineStore.Migrations
                         name: "FK_PaymentTransltions_Payments_PaymentId",
                         column: x => x.PaymentId,
                         principalTable: "Payments",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -1507,7 +1521,8 @@ namespace OnlineStore.Migrations
                         name: "FK_ReturnTracking_Returns_ReturnId",
                         column: x => x.ReturnId,
                         principalTable: "Returns",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -1538,7 +1553,7 @@ namespace OnlineStore.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     TicketId = table.Column<int>(type: "int", nullable: false),
-                    UserId = table.Column<int>(type: "int", nullable: false),
+                    UserId = table.Column<int>(type: "int", nullable: true),
                     Message = table.Column<string>(type: "nvarchar(2000)", maxLength: 2000, nullable: false),
                     IsFromStaff = table.Column<bool>(type: "bit", nullable: false, defaultValue: false),
                     IsInternal = table.Column<bool>(type: "bit", nullable: false, defaultValue: false),
@@ -1546,7 +1561,8 @@ namespace OnlineStore.Migrations
                     ReadAt = table.Column<DateTime>(type: "datetime2", nullable: true),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
+                    DeletedAt = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -1555,7 +1571,8 @@ namespace OnlineStore.Migrations
                         name: "FK_TicketMessages_SupportTickets_TicketId",
                         column: x => x.TicketId,
                         principalTable: "SupportTickets",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_TicketMessages_Users_UserId",
                         column: x => x.UserId,
@@ -1609,188 +1626,192 @@ namespace OnlineStore.Migrations
 
             migrationBuilder.InsertData(
                 table: "Categories",
-                columns: new[] { "Id", "CreatedAt", "ImageUrl", "IsDeal", "IsDeleted", "ParentId", "Slug", "UpdatedAt" },
+                columns: new[] { "Id", "CreatedAt", "ImageUrl", "IsDeal", "ParentId", "Slug", "UpdatedAt" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "default.png", false, false, null, "Uncategorized", null },
-                    { 2, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "default.png", false, false, null, "electronics", null }
+                    { 1, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "default.png", false, null, "Uncategorized", null },
+                    { 2, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "default.png", false, null, "electronics", null }
                 });
 
             migrationBuilder.InsertData(
                 table: "Countries",
-                columns: new[] { "Id", "Code", "CreatedAt", "IsActive", "IsDeleted", "PhoneCode", "UpdatedAt" },
+                columns: new[] { "Id", "Code", "CreatedAt", "IsActive", "PhoneCode", "UpdatedAt" },
                 values: new object[,]
                 {
-                    { 1, "AE", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, false, "+971", null },
-                    { 2, "EG", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, false, "+20", null }
+                    { 1, "AE", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, "+971", null },
+                    { 2, "EG", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, "+20", null }
                 });
 
             migrationBuilder.InsertData(
                 table: "Coupons",
-                columns: new[] { "Id", "Code", "DiscountPrecentage", "DiscountType", "DiscountValue", "EndDate", "IsActive", "IsForFirstOrderOnly", "MaxDiscountAmount", "MaxUsagePerUser", "MinimumOrderAmount", "StartDate" },
+                columns: new[] { "Id", "Code", "CreatedAt", "DeletedAt", "DiscountPrecentage", "DiscountType", "DiscountValue", "EndDate", "IsActive", "IsDeleted", "IsForFirstOrderOnly", "MaxDiscountAmount", "MaxUsagePerUser", "MinimumOrderAmount", "StartDate", "UpdatedAt" },
                 values: new object[,]
                 {
-                    { 1, "FIRST50", 50, 1, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, true, 100m, 1, 50m, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) },
-                    { 2, "SAVE20", 20, 1, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, false, 200m, 5, 100m, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) },
-                    { 3, "FLAT100", null, 0, 100m, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, false, 100m, 3, 200m, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) }
+                    { 1, "FIRST50", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, 50, 1, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, false, true, 100m, 1, 50m, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null },
+                    { 2, "SAVE20", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, 20, 1, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, false, false, 200m, 5, 100m, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null },
+                    { 3, "FLAT100", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, 0, 100m, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, false, false, 100m, 3, 200m, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null }
                 });
 
             migrationBuilder.InsertData(
                 table: "Permissions",
-                columns: new[] { "Id", "CreatedAt", "IsDeleted", "Slug", "UpdatedAt" },
+                columns: new[] { "Id", "CreatedAt", "Slug", "UpdatedAt" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, "user.add", null },
-                    { 2, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, "user.update", null },
-                    { 3, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, "user.list", null },
-                    { 4, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, "user.show", null },
-                    { 5, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, "user.delete", null },
-                    { 6, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, "tag.add", null },
-                    { 7, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, "tag.update", null },
-                    { 8, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, "tag.list", null },
-                    { 9, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, "tag.show", null },
-                    { 10, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, "tag.delete", null },
-                    { 11, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, "category.add", null },
-                    { 12, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, "category.update", null },
-                    { 13, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, "category.list", null },
-                    { 14, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, "category.show", null },
-                    { 15, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, "category.delete", null },
-                    { 16, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, "country.add", null },
-                    { 17, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, "country.update", null },
-                    { 18, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, "country.list", null },
-                    { 19, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, "country.show", null },
-                    { 20, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, "country.delete", null },
-                    { 21, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, "state.add", null },
-                    { 22, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, "state.update", null },
-                    { 23, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, "state.list", null },
-                    { 24, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, "state.show", null },
-                    { 25, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, "state.delete", null },
-                    { 26, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, "city.add", null },
-                    { 27, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, "city.update", null },
-                    { 28, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, "city.list", null },
-                    { 29, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, "city.show", null },
-                    { 30, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, "city.delete", null },
-                    { 31, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, "logs.list", null },
-                    { 32, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, "logs.show", null },
-                    { 33, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, "notification.list", null },
-                    { 34, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, "notification.show", null },
-                    { 35, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, "notification.delete", null },
-                    { 36, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, "notification.deleteAll", null },
-                    { 37, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, "settings.list", null },
-                    { 38, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, "settings.show", null },
-                    { 39, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, "settings.update", null },
-                    { 40, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, "review.list", null },
-                    { 41, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, "review.show", null },
-                    { 42, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, "review.accept", null },
-                    { 43, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, "attribute.add", null },
-                    { 44, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, "attribute.update", null },
-                    { 45, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, "attribute.list", null },
-                    { 46, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, "attribute.show", null },
-                    { 47, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, "attribute.delete", null },
-                    { 48, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, "attributeValue.add", null },
-                    { 49, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, "attributeValue.update", null },
-                    { 50, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, "attributeValue.list", null },
-                    { 51, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, "attributeValue.show", null },
-                    { 52, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, "attributeValue.delete", null },
-                    { 53, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, "role.add", null },
-                    { 54, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, "role.update", null },
-                    { 55, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, "role.list", null },
-                    { 56, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, "role.show", null },
-                    { 57, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, "role.delete", null },
-                    { 58, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, "product.add", null },
-                    { 59, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, "product.update", null },
-                    { 60, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, "product.list", null },
-                    { 61, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, "product.show", null },
-                    { 62, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, "product.delete", null },
-                    { 63, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, "order.list", null },
-                    { 64, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, "order.show", null },
-                    { 65, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, "order.update", null },
-                    { 66, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, "order.delete", null },
-                    { 67, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, "return.list", null },
-                    { 68, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, "return.show", null },
-                    { 69, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, "return.update", null },
-                    { 70, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, "return.delete", null },
-                    { 71, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, "coupon.add", null },
-                    { 72, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, "coupon.update", null },
-                    { 73, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, "coupon.list", null },
-                    { 74, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, "coupon.show", null },
-                    { 75, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, "coupon.delete", null },
-                    { 76, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, "warehouse.add", null },
-                    { 77, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, "warehouse.update", null },
-                    { 78, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, "warehouse.list", null },
-                    { 79, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, "warehouse.show", null },
-                    { 80, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, "warehouse.delete", null },
-                    { 81, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, "supportTicket.list", null },
-                    { 82, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, "supportTicket.show", null },
-                    { 83, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, "ticketMessage.add", null },
-                    { 84, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, "ticketMessage.list", null },
-                    { 85, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, "ticketMessage.show", null }
+                    { 1, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "user.add", null },
+                    { 2, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "user.update", null },
+                    { 3, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "user.list", null },
+                    { 4, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "user.show", null },
+                    { 5, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "user.delete", null },
+                    { 6, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "tag.add", null },
+                    { 7, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "tag.update", null },
+                    { 8, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "tag.list", null },
+                    { 9, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "tag.show", null },
+                    { 10, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "tag.delete", null },
+                    { 11, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "category.add", null },
+                    { 12, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "category.update", null },
+                    { 13, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "category.list", null },
+                    { 14, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "category.show", null },
+                    { 15, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "category.delete", null },
+                    { 16, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "country.add", null },
+                    { 17, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "country.update", null },
+                    { 18, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "country.list", null },
+                    { 19, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "country.show", null },
+                    { 20, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "country.delete", null },
+                    { 21, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "state.add", null },
+                    { 22, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "state.update", null },
+                    { 23, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "state.list", null },
+                    { 24, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "state.show", null },
+                    { 25, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "state.delete", null },
+                    { 26, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "city.add", null },
+                    { 27, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "city.update", null },
+                    { 28, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "city.list", null },
+                    { 29, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "city.show", null },
+                    { 30, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "city.delete", null },
+                    { 31, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "logs.list", null },
+                    { 32, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "logs.show", null },
+                    { 33, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "notification.list", null },
+                    { 34, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "notification.show", null },
+                    { 35, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "notification.delete", null },
+                    { 36, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "notification.deleteAll", null },
+                    { 37, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "settings.list", null },
+                    { 38, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "settings.show", null },
+                    { 39, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "settings.update", null },
+                    { 40, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "review.list", null },
+                    { 41, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "review.show", null },
+                    { 42, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "review.accept", null },
+                    { 43, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "attribute.add", null },
+                    { 44, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "attribute.update", null },
+                    { 45, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "attribute.list", null },
+                    { 46, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "attribute.show", null },
+                    { 47, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "attribute.delete", null },
+                    { 48, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "attributeValue.add", null },
+                    { 49, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "attributeValue.update", null },
+                    { 50, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "attributeValue.list", null },
+                    { 51, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "attributeValue.show", null },
+                    { 52, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "attributeValue.delete", null },
+                    { 53, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "role.add", null },
+                    { 54, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "role.update", null },
+                    { 55, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "role.list", null },
+                    { 56, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "role.show", null },
+                    { 57, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "role.delete", null },
+                    { 58, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "product.add", null },
+                    { 59, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "product.update", null },
+                    { 60, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "product.list", null },
+                    { 61, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "product.show", null },
+                    { 62, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "product.delete", null },
+                    { 63, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "order.list", null },
+                    { 64, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "order.show", null },
+                    { 65, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "order.update", null },
+                    { 66, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "order.delete", null },
+                    { 67, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "return.list", null },
+                    { 68, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "return.show", null },
+                    { 69, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "return.update", null },
+                    { 70, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "return.delete", null },
+                    { 71, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "coupon.add", null },
+                    { 72, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "coupon.update", null },
+                    { 73, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "coupon.list", null },
+                    { 74, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "coupon.show", null },
+                    { 75, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "coupon.delete", null },
+                    { 76, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "warehouse.add", null },
+                    { 77, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "warehouse.update", null },
+                    { 78, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "warehouse.list", null },
+                    { 79, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "warehouse.show", null },
+                    { 80, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "warehouse.delete", null },
+                    { 81, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "supportTicket.list", null },
+                    { 82, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "supportTicket.show", null },
+                    { 83, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "ticketMessage.add", null },
+                    { 84, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "ticketMessage.list", null },
+                    { 85, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "ticketMessage.show", null }
                 });
 
             migrationBuilder.InsertData(
                 table: "ProductAttributes",
-                columns: new[] { "Id", "Code" },
+                columns: new[] { "Id", "Code", "CreatedAt", "DeletedAt", "IsDeleted", "UpdatedAt" },
                 values: new object[,]
                 {
-                    { 1, "Color" },
-                    { 2, "Size" },
-                    { 3, "Brand" },
-                    { 4, "Model" }
+                    { 1, "Color", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, false, null },
+                    { 2, "Size", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, false, null },
+                    { 3, "Brand", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, false, null },
+                    { 4, "Model", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, false, null }
                 });
 
             migrationBuilder.InsertData(
                 table: "Products",
-                columns: new[] { "Id", "CreatedAt", "ImageUrl", "IsDeleted", "Price", "SKU", "SalePrice", "Slug", "Type", "UpdatedAt" },
+                columns: new[] { "Id", "CreatedAt", "DeletedAt", "ImageUrl", "IsDeleted", "Price", "SKU", "SalePrice", "Slug", "Type", "UpdatedAt" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "default.png", false, 1500m, "SKU1001", null, "smart-tv", "Simple", null },
-                    { 2, new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "default.png", false, 200m, "SKU1002", null, "wireless-headphones", "Simple", null },
-                    { 3, new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "default.png", false, 2500m, "SKU1003", null, "laptop-pro-15", "Simple", null },
-                    { 4, new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "default.png", false, 999m, "SKU1004", null, "smartphone-x12", "Simple", null },
-                    { 5, new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "default.png", false, 500m, "SKU1005", null, "gaming-console-z", "Simple", null },
-                    { 6, new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "default.png", false, 80m, "SKU1006", null, "bluetooth-speaker", "Simple", null },
-                    { 7, new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "default.png", false, 300m, "SKU1007", null, "4k-action-camera", "Simple", null },
-                    { 8, new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "default.png", false, 299m, "SKU1008", null, "smart-watch-s9", "Simple", null },
-                    { 9, new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "default.png", false, 350m, "SKU1009", null, "vr-headset", "Simple", null },
-                    { 10, new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "default.png", false, 1200m, "SKU1010", null, "drone-camera", "Simple", null },
-                    { 11, new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "default.png", false, 150m, "SKU1011", null, "e-reader", "Simple", null },
-                    { 12, new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "default.png", false, 130m, "SKU1012", null, "smart-home-hub", "Simple", null },
-                    { 13, new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "default.png", false, 120m, "SKU1013", null, "wireless-router", "Simple", null },
-                    { 14, new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "default.png", false, 1800m, "SKU1014", null, "desktop-pc", "Simple", null },
-                    { 15, new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "default.png", false, 75m, "SKU1015", null, "portable-hard-drive", "Simple", null },
-                    { 16, new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "default.png", false, 170m, "SKU1016", null, "noise-cancelling-earbuds", "Simple", null },
-                    { 17, new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "default.png", false, 220m, "SKU1017", null, "smart-thermostat", "Simple", null },
-                    { 18, new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "default.png", false, 900m, "SKU1018", null, "digital-camera", "Simple", null },
-                    { 19, new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "default.png", false, 850m, "SKU1019", null, "tablet-pro", "Simple", null },
-                    { 20, new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "default.png", false, 60m, "SKU1020", null, "smart-light-bulbs", "Simple", null }
+                    { 1, new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "default.png", false, 1500m, "SKU1001", null, "smart-tv", "Simple", null },
+                    { 2, new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "default.png", false, 200m, "SKU1002", null, "wireless-headphones", "Simple", null },
+                    { 3, new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "default.png", false, 2500m, "SKU1003", null, "laptop-pro-15", "Simple", null },
+                    { 4, new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "default.png", false, 999m, "SKU1004", null, "smartphone-x12", "Simple", null },
+                    { 5, new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "default.png", false, 500m, "SKU1005", null, "gaming-console-z", "Simple", null },
+                    { 6, new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "default.png", false, 80m, "SKU1006", null, "bluetooth-speaker", "Simple", null },
+                    { 7, new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "default.png", false, 300m, "SKU1007", null, "4k-action-camera", "Simple", null },
+                    { 8, new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "default.png", false, 299m, "SKU1008", null, "smart-watch-s9", "Simple", null },
+                    { 9, new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "default.png", false, 350m, "SKU1009", null, "vr-headset", "Simple", null },
+                    { 10, new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "default.png", false, 1200m, "SKU1010", null, "drone-camera", "Simple", null },
+                    { 11, new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "default.png", false, 150m, "SKU1011", null, "e-reader", "Simple", null },
+                    { 12, new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "default.png", false, 130m, "SKU1012", null, "smart-home-hub", "Simple", null },
+                    { 13, new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "default.png", false, 120m, "SKU1013", null, "wireless-router", "Simple", null },
+                    { 14, new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "default.png", false, 1800m, "SKU1014", null, "desktop-pc", "Simple", null },
+                    { 15, new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "default.png", false, 75m, "SKU1015", null, "portable-hard-drive", "Simple", null },
+                    { 16, new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "default.png", false, 170m, "SKU1016", null, "noise-cancelling-earbuds", "Simple", null },
+                    { 17, new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "default.png", false, 220m, "SKU1017", null, "smart-thermostat", "Simple", null },
+                    { 18, new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "default.png", false, 900m, "SKU1018", null, "digital-camera", "Simple", null },
+                    { 19, new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "default.png", false, 850m, "SKU1019", null, "tablet-pro", "Simple", null },
+                    { 20, new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "default.png", false, 60m, "SKU1020", null, "smart-light-bulbs", "Simple", null }
                 });
 
             migrationBuilder.InsertData(
                 table: "Roles",
-                columns: new[] { "Id", "CreatedAt", "IsDeleted", "Slug", "UpdatedAt" },
+                columns: new[] { "Id", "CreatedAt", "Slug", "UpdatedAt" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, "SuperAdmin", null },
-                    { 2, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, "Admin", null }
+                    { 1, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "SuperAdmin", null },
+                    { 2, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Admin", null }
                 });
 
             migrationBuilder.InsertData(
                 table: "Tags",
-                columns: new[] { "Id", "Code" },
+                columns: new[] { "Id", "Code", "CreatedAt", "UpdatedAt" },
                 values: new object[,]
                 {
-                    { 1, "Electronics" },
-                    { 2, "Smart" },
-                    { 3, "Electricity" },
-                    { 4, "White" },
-                    { 5, "Large" },
-                    { 6, "Good Deal" }
+                    { 1, "Electronics", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null },
+                    { 2, "Smart", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null },
+                    { 3, "Electricity", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null },
+                    { 4, "White", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null },
+                    { 5, "Large", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null },
+                    { 6, "Good Deal", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null }
                 });
 
             migrationBuilder.InsertData(
                 table: "Warehouses",
-                columns: new[] { "Id", "Address", "City", "Code", "Country", "CreatedAt", "Email", "IsActive", "IsDefault", "IsDeleted", "Name", "Phone", "State", "UpdatedAt", "ZipCode" },
-                values: new object[] { 1, "123 Business Street", "Downtown Dubai", "WH001", "United Arab Emirates", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "warehouse@effortz.co", true, true, false, "Main Warehouse", "+971 50 123 4567", "Dubai", null, "00000" });
+                columns: new[] { "Id", "Address", "City", "Code", "Country", "CreatedAt", "DeletedAt", "Email", "IsActive", "IsDefault", "IsDeleted", "Name", "Phone", "State", "UpdatedAt", "ZipCode" },
+                values: new object[,]
+                {
+                    { 1, "123 Business Street", "Downtown Dubai", "WH001", "United Arab Emirates", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "warehouse@effortz.co", true, true, false, "Main Warehouse", "+971 50 123 4567", "Dubai", null, "00000" },
+                    { 2, "123 Business Street", "Downtown Dubai", "WH002", "United Arab Emirates", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "warehouse@effortz.co", true, true, false, "Second Warehouse", "+971 50 123 4567", "Dubai", null, "00000" }
+                });
 
             migrationBuilder.InsertData(
                 table: "AppSettingTranslations",
@@ -1833,29 +1854,29 @@ namespace OnlineStore.Migrations
 
             migrationBuilder.InsertData(
                 table: "AttributeValues",
-                columns: new[] { "Id", "AttributeId", "Code" },
+                columns: new[] { "Id", "AttributeId", "Code", "CreatedAt", "DeletedAt", "IsDeleted", "UpdatedAt" },
                 values: new object[,]
                 {
-                    { 1, 1, "Red" },
-                    { 2, 1, "Black" },
-                    { 3, 1, "Green" },
-                    { 4, 2, "XL" },
-                    { 5, 2, "XXL" },
-                    { 6, 2, "XXXL" },
-                    { 7, 3, "ZARA" },
-                    { 8, 3, "MAX" },
-                    { 9, 4, "FERRARI" },
-                    { 10, 4, "TOYOTA" }
+                    { 1, 1, "Red", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, false, null },
+                    { 2, 1, "Black", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, false, null },
+                    { 3, 1, "Green", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, false, null },
+                    { 4, 2, "XL", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, false, null },
+                    { 5, 2, "XXL", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, false, null },
+                    { 6, 2, "XXXL", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, false, null },
+                    { 7, 3, "ZARA", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, false, null },
+                    { 8, 3, "MAX", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, false, null },
+                    { 9, 4, "FERRARI", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, false, null },
+                    { 10, 4, "TOYOTA", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, false, null }
                 });
 
             migrationBuilder.InsertData(
                 table: "Categories",
-                columns: new[] { "Id", "CreatedAt", "ImageUrl", "IsDeal", "IsDeleted", "ParentId", "Slug", "UpdatedAt" },
+                columns: new[] { "Id", "CreatedAt", "ImageUrl", "IsDeal", "ParentId", "Slug", "UpdatedAt" },
                 values: new object[,]
                 {
-                    { 3, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "default.png", false, false, 1, "tV", null },
-                    { 4, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "default.png", false, false, 1, "laptops", null },
-                    { 5, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "default.png", false, false, 1, "fridges", null }
+                    { 3, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "default.png", false, 1, "tV", null },
+                    { 4, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "default.png", false, 1, "laptops", null },
+                    { 5, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "default.png", false, 1, "fridges", null }
                 });
 
             migrationBuilder.InsertData(
@@ -1971,179 +1992,179 @@ namespace OnlineStore.Migrations
 
             migrationBuilder.InsertData(
                 table: "PermissionTranslations",
-                columns: new[] { "Id", "CreatedAt", "Description", "IsDeleted", "LanguageCode", "Name", "PermissionId", "UpdatedAt" },
+                columns: new[] { "Id", "Description", "LanguageCode", "Name", "PermissionId" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "إضافة مستخدم", false, "ar", "إضافة مستخدم", 1, null },
-                    { 2, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Add User", false, "en", "Add User", 1, null },
-                    { 3, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "تعديل مستخدم", false, "ar", "تعديل مستخدم", 2, null },
-                    { 4, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Update User", false, "en", "Update User", 2, null },
-                    { 5, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "عرض المستخدمين", false, "ar", "عرض المستخدمين", 3, null },
-                    { 6, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "List Users", false, "en", "List Users", 3, null },
-                    { 7, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "عرض مستخدم", false, "ar", "عرض مستخدم", 4, null },
-                    { 8, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Show User", false, "en", "Show User", 4, null },
-                    { 9, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "حذف مستخدم", false, "ar", "حذف مستخدم", 5, null },
-                    { 10, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Delete User", false, "en", "Delete User", 5, null },
-                    { 11, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "إضافة تاج", false, "ar", "إضافة تاج", 6, null },
-                    { 12, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Add Tag", false, "en", "Add Tag", 6, null },
-                    { 13, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "تعديل تاج", false, "ar", "تعديل تاج", 7, null },
-                    { 14, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Update Tag", false, "en", "Update Tag", 7, null },
-                    { 15, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "عرض التاجات", false, "ar", "عرض التاجات", 8, null },
-                    { 16, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "List Tags", false, "en", "List Tags", 8, null },
-                    { 17, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "عرض تاج", false, "ar", "عرض تاج", 9, null },
-                    { 18, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Show Tag", false, "en", "Show Tag", 9, null },
-                    { 19, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "حذف تاج", false, "ar", "حذف تاج", 10, null },
-                    { 20, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Delete Tag", false, "en", "Delete Tag", 10, null },
-                    { 21, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "إضافة تصنيف", false, "ar", "إضافة تصنيف", 11, null },
-                    { 22, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Add Category", false, "en", "Add Category", 11, null },
-                    { 23, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "تعديل تصنيف", false, "ar", "تعديل تصنيف", 12, null },
-                    { 24, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Update Category", false, "en", "Update Category", 12, null },
-                    { 25, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "عرض التصنيفات", false, "ar", "عرض التصنيفات", 13, null },
-                    { 26, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "List Categories", false, "en", "List Categories", 13, null },
-                    { 27, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "عرض تصنيف", false, "ar", "عرض تصنيف", 14, null },
-                    { 28, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Show Category", false, "en", "Show Category", 14, null },
-                    { 29, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "حذف تصنيف", false, "ar", "حذف تصنيف", 15, null },
-                    { 30, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Delete Category", false, "en", "Delete Category", 15, null },
-                    { 31, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "إضافة دولة", false, "ar", "إضافة دولة", 16, null },
-                    { 32, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Add Country", false, "en", "Add Country", 16, null },
-                    { 33, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "تعديل دولة", false, "ar", "تعديل دولة", 17, null },
-                    { 34, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Update Country", false, "en", "Update Country", 17, null },
-                    { 35, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "عرض الدول", false, "ar", "عرض الدول", 18, null },
-                    { 36, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "List Countries", false, "en", "List Countries", 18, null },
-                    { 37, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "عرض دولة", false, "ar", "عرض دولة", 19, null },
-                    { 38, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Show Country", false, "en", "Show Country", 19, null },
-                    { 39, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "حذف دولة", false, "ar", "حذف دولة", 20, null },
-                    { 40, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Delete Country", false, "en", "Delete Country", 20, null },
-                    { 41, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "إضافة ولاية", false, "ar", "إضافة ولاية", 21, null },
-                    { 42, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Add State", false, "en", "Add State", 21, null },
-                    { 43, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "تعديل ولاية", false, "ar", "تعديل ولاية", 22, null },
-                    { 44, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Update State", false, "en", "Update State", 22, null },
-                    { 45, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "عرض الولايات", false, "ar", "عرض الولايات", 23, null },
-                    { 46, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "List States", false, "en", "List States", 23, null },
-                    { 47, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "عرض ولاية", false, "ar", "عرض ولاية", 24, null },
-                    { 48, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Show State", false, "en", "Show State", 24, null },
-                    { 49, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "حذف ولاية", false, "ar", "حذف ولاية", 25, null },
-                    { 50, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Delete State", false, "en", "Delete State", 25, null },
-                    { 51, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "إضافة مدينة", false, "ar", "إضافة مدينة", 26, null },
-                    { 52, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Add City", false, "en", "Add City", 26, null },
-                    { 53, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "تعديل مدينة", false, "ar", "تعديل مدينة", 27, null },
-                    { 54, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Update City", false, "en", "Update City", 27, null },
-                    { 55, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "عرض المدن", false, "ar", "عرض المدن", 28, null },
-                    { 56, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "List Cities", false, "en", "List Cities", 28, null },
-                    { 57, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "عرض مدينة", false, "ar", "عرض مدينة", 29, null },
-                    { 58, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Show City", false, "en", "Show City", 29, null },
-                    { 59, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "حذف مدينة", false, "ar", "حذف مدينة", 30, null },
-                    { 60, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Delete City", false, "en", "Delete City", 30, null },
-                    { 61, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "عرض السجلات", false, "ar", "عرض السجلات", 31, null },
-                    { 62, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "List Logs", false, "en", "List Logs", 31, null },
-                    { 63, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "عرض سجل", false, "ar", "عرض سجل", 32, null },
-                    { 64, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Show Log", false, "en", "Show Log", 32, null },
-                    { 65, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "عرض الإشعارات", false, "ar", "عرض الإشعارات", 33, null },
-                    { 66, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "List Notifications", false, "en", "List Notifications", 33, null },
-                    { 67, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "عرض إشعار", false, "ar", "عرض إشعار", 34, null },
-                    { 68, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Show Notification", false, "en", "Show Notification", 34, null },
-                    { 69, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "حذف إشعار", false, "ar", "حذف إشعار", 35, null },
-                    { 70, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Delete Notification", false, "en", "Delete Notification", 35, null },
-                    { 71, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "حذف كل الإشعارات", false, "ar", "حذف كل الإشعارات", 36, null },
-                    { 72, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Delete All Notifications", false, "en", "Delete All Notifications", 36, null },
-                    { 73, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "عرض الإعدادات", false, "ar", "عرض الإعدادات", 37, null },
-                    { 74, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "List Settings", false, "en", "List Settings", 37, null },
-                    { 75, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "عرض إعداد", false, "ar", "عرض إعداد", 38, null },
-                    { 76, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Show Setting", false, "en", "Show Setting", 38, null },
-                    { 77, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "تعديل الإعدادات", false, "ar", "تعديل الإعدادات", 39, null },
-                    { 78, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Update Settings", false, "en", "Update Settings", 39, null },
-                    { 79, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "عرض التقييمات", false, "ar", "عرض التقييمات", 40, null },
-                    { 80, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "List Reviews", false, "en", "List Reviews", 40, null },
-                    { 81, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "عرض تقييم", false, "ar", "عرض تقييم", 41, null },
-                    { 82, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Show Review", false, "en", "Show Review", 41, null },
-                    { 83, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "قبول التقييم", false, "ar", "قبول التقييم", 42, null },
-                    { 84, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Accept Review", false, "en", "Accept Review", 42, null },
-                    { 85, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "إضافة خاصية", false, "ar", "إضافة خاصية", 43, null },
-                    { 86, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Add Attribute", false, "en", "Add Attribute", 43, null },
-                    { 87, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "تعديل خاصية", false, "ar", "تعديل خاصية", 44, null },
-                    { 88, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Update Attribute", false, "en", "Update Attribute", 44, null },
-                    { 89, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "عرض الخصائص", false, "ar", "عرض الخصائص", 45, null },
-                    { 90, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "List Attributes", false, "en", "List Attributes", 45, null },
-                    { 91, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "عرض خاصية", false, "ar", "عرض خاصية", 46, null },
-                    { 92, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Show Attribute", false, "en", "Show Attribute", 46, null },
-                    { 93, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "حذف خاصية", false, "ar", "حذف خاصية", 47, null },
-                    { 94, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Delete Attribute", false, "en", "Delete Attribute", 47, null },
-                    { 95, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "إضافة قيمة خاصية", false, "ar", "إضافة قيمة خاصية", 48, null },
-                    { 96, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Add Attribute Value", false, "en", "Add Attribute Value", 48, null },
-                    { 97, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "تعديل قيمة خاصية", false, "ar", "تعديل قيمة خاصية", 49, null },
-                    { 98, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Update Attribute Value", false, "en", "Update Attribute Value", 49, null },
-                    { 99, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "عرض قيم الخصائص", false, "ar", "عرض قيم الخصائص", 50, null },
-                    { 100, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "List Attribute Values", false, "en", "List Attribute Values", 50, null },
-                    { 101, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "عرض قيمة خاصية", false, "ar", "عرض قيمة خاصية", 51, null },
-                    { 102, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Show Attribute Value", false, "en", "Show Attribute Value", 51, null },
-                    { 103, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "حذف قيمة خاصية", false, "ar", "حذف قيمة خاصية", 52, null },
-                    { 104, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Delete Attribute Value", false, "en", "Delete Attribute Value", 52, null },
-                    { 105, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "إضافة دور", false, "ar", "إضافة دور", 53, null },
-                    { 106, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Add Role", false, "en", "Add Role", 53, null },
-                    { 107, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "تعديل دور", false, "ar", "تعديل دور", 54, null },
-                    { 108, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Update Role", false, "en", "Update Role", 54, null },
-                    { 109, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "عرض الأدوار", false, "ar", "عرض الأدوار", 55, null },
-                    { 110, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "List Roles", false, "en", "List Roles", 55, null },
-                    { 111, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "عرض دور", false, "ar", "عرض دور", 56, null },
-                    { 112, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Show Role", false, "en", "Show Role", 56, null },
-                    { 113, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "حذف دور", false, "ar", "حذف دور", 57, null },
-                    { 114, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Delete Role", false, "en", "Delete Role", 57, null },
-                    { 115, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "إضافة منتج", false, "ar", "إضافة منتج", 58, null },
-                    { 116, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Add Product", false, "en", "Add Product", 58, null },
-                    { 117, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "تعديل منتج", false, "ar", "تعديل منتج", 59, null },
-                    { 118, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Update Product", false, "en", "Update Product", 59, null },
-                    { 119, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "عرض المنتجات", false, "ar", "عرض المنتجات", 60, null },
-                    { 120, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "List Products", false, "en", "List Products", 60, null },
-                    { 121, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "عرض منتج", false, "ar", "عرض منتج", 61, null },
-                    { 122, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Show Product", false, "en", "Show Product", 61, null },
-                    { 123, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "حذف منتج", false, "ar", "حذف منتج", 62, null },
-                    { 124, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Delete Product", false, "en", "Delete Product", 62, null },
-                    { 125, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "عرض الطلبات", false, "ar", "عرض الطلبات", 63, null },
-                    { 126, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "List Orders", false, "en", "List Orders", 63, null },
-                    { 127, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "عرض طلب", false, "ar", "عرض طلب", 64, null },
-                    { 128, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Show Order", false, "en", "Show Order", 64, null },
-                    { 129, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "تعديل الطلب", false, "ar", "تعديل الطلب", 65, null },
-                    { 130, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Update Order", false, "en", "Update Order", 65, null },
-                    { 131, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "حذف الطلب", false, "ar", "حذف الطلب", 66, null },
-                    { 132, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Delete Order", false, "en", "Delete Order", 66, null },
-                    { 133, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "عرض المرتجعات", false, "ar", "عرض المرتجعات", 67, null },
-                    { 134, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "List Returns", false, "en", "List Returns", 67, null },
-                    { 135, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "عرض مرتجع", false, "ar", "عرض مرتجع", 68, null },
-                    { 136, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Show Return", false, "en", "Show Return", 68, null },
-                    { 137, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "تعديل المرتجع", false, "ar", "تعديل المرتجع", 69, null },
-                    { 138, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Update Return", false, "en", "Update Return", 69, null },
-                    { 139, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "حذف المرتجع", false, "ar", "حذف المرتجع", 70, null },
-                    { 140, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Delete Return", false, "en", "Delete Return", 70, null },
-                    { 141, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "إضافة كوبون", false, "ar", "إضافة كوبون", 71, null },
-                    { 142, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Add Coupon", false, "en", "Add Coupon", 71, null },
-                    { 143, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "تعديل كوبون", false, "ar", "تعديل كوبون", 72, null },
-                    { 144, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Update Coupon", false, "en", "Update Coupon", 72, null },
-                    { 145, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "عرض الكوبونات", false, "ar", "عرض الكوبونات", 73, null },
-                    { 146, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "List Coupons", false, "en", "List Coupons", 73, null },
-                    { 147, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "عرض كوبون", false, "ar", "عرض كوبون", 74, null },
-                    { 148, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Show Coupon", false, "en", "Show Coupon", 74, null },
-                    { 149, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "حذف كوبون", false, "ar", "حذف كوبون", 75, null },
-                    { 150, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Delete Coupon", false, "en", "Delete Coupon", 75, null },
-                    { 151, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "إضافة مستودع", false, "ar", "إضافة مستودع", 76, null },
-                    { 152, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Add Warehouse", false, "en", "Add Warehouse", 76, null },
-                    { 153, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "تعديل مستودع", false, "ar", "تعديل مستودع", 77, null },
-                    { 154, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Update Warehouse", false, "en", "Update Warehouse", 77, null },
-                    { 155, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "عرض المستودعات", false, "ar", "عرض المستودعات", 78, null },
-                    { 156, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "List Warehouses", false, "en", "List Warehouses", 78, null },
-                    { 157, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "عرض مستودع", false, "ar", "عرض مستودع", 79, null },
-                    { 158, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Show Warehouse", false, "en", "Show Warehouse", 79, null },
-                    { 159, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "حذف مستودع", false, "ar", "حذف مستودع", 80, null },
-                    { 160, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Delete Warehouse", false, "en", "Delete Warehouse", 80, null },
-                    { 161, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "عرض التذاكر", false, "ar", "عرض التذاكر", 81, null },
-                    { 162, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "List Support Tickets", false, "en", "List Support Tickets", 81, null },
-                    { 163, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "عرض تذكرة", false, "ar", "عرض تذكرة", 82, null },
-                    { 164, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Show Support Ticket", false, "en", "Show Support Ticket", 82, null },
-                    { 165, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "إضافة رسالة تذكرة", false, "ar", "إضافة رسالة تذكرة", 83, null },
-                    { 166, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Add Ticket Message", false, "en", "Add Ticket Message", 83, null },
-                    { 167, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "عرض رسائل التذاكر", false, "ar", "عرض رسائل التذاكر", 84, null },
-                    { 168, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "List Ticket Messages", false, "en", "List Ticket Messages", 84, null },
-                    { 169, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "عرض رسالة تذكرة", false, "ar", "عرض رسالة تذكرة", 85, null },
-                    { 170, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Show Ticket Message", false, "en", "Show Ticket Message", 85, null }
+                    { 1, "إضافة مستخدم", "ar", "إضافة مستخدم", 1 },
+                    { 2, "Add User", "en", "Add User", 1 },
+                    { 3, "تعديل مستخدم", "ar", "تعديل مستخدم", 2 },
+                    { 4, "Update User", "en", "Update User", 2 },
+                    { 5, "عرض المستخدمين", "ar", "عرض المستخدمين", 3 },
+                    { 6, "List Users", "en", "List Users", 3 },
+                    { 7, "عرض مستخدم", "ar", "عرض مستخدم", 4 },
+                    { 8, "Show User", "en", "Show User", 4 },
+                    { 9, "حذف مستخدم", "ar", "حذف مستخدم", 5 },
+                    { 10, "Delete User", "en", "Delete User", 5 },
+                    { 11, "إضافة تاج", "ar", "إضافة تاج", 6 },
+                    { 12, "Add Tag", "en", "Add Tag", 6 },
+                    { 13, "تعديل تاج", "ar", "تعديل تاج", 7 },
+                    { 14, "Update Tag", "en", "Update Tag", 7 },
+                    { 15, "عرض التاجات", "ar", "عرض التاجات", 8 },
+                    { 16, "List Tags", "en", "List Tags", 8 },
+                    { 17, "عرض تاج", "ar", "عرض تاج", 9 },
+                    { 18, "Show Tag", "en", "Show Tag", 9 },
+                    { 19, "حذف تاج", "ar", "حذف تاج", 10 },
+                    { 20, "Delete Tag", "en", "Delete Tag", 10 },
+                    { 21, "إضافة تصنيف", "ar", "إضافة تصنيف", 11 },
+                    { 22, "Add Category", "en", "Add Category", 11 },
+                    { 23, "تعديل تصنيف", "ar", "تعديل تصنيف", 12 },
+                    { 24, "Update Category", "en", "Update Category", 12 },
+                    { 25, "عرض التصنيفات", "ar", "عرض التصنيفات", 13 },
+                    { 26, "List Categories", "en", "List Categories", 13 },
+                    { 27, "عرض تصنيف", "ar", "عرض تصنيف", 14 },
+                    { 28, "Show Category", "en", "Show Category", 14 },
+                    { 29, "حذف تصنيف", "ar", "حذف تصنيف", 15 },
+                    { 30, "Delete Category", "en", "Delete Category", 15 },
+                    { 31, "إضافة دولة", "ar", "إضافة دولة", 16 },
+                    { 32, "Add Country", "en", "Add Country", 16 },
+                    { 33, "تعديل دولة", "ar", "تعديل دولة", 17 },
+                    { 34, "Update Country", "en", "Update Country", 17 },
+                    { 35, "عرض الدول", "ar", "عرض الدول", 18 },
+                    { 36, "List Countries", "en", "List Countries", 18 },
+                    { 37, "عرض دولة", "ar", "عرض دولة", 19 },
+                    { 38, "Show Country", "en", "Show Country", 19 },
+                    { 39, "حذف دولة", "ar", "حذف دولة", 20 },
+                    { 40, "Delete Country", "en", "Delete Country", 20 },
+                    { 41, "إضافة ولاية", "ar", "إضافة ولاية", 21 },
+                    { 42, "Add State", "en", "Add State", 21 },
+                    { 43, "تعديل ولاية", "ar", "تعديل ولاية", 22 },
+                    { 44, "Update State", "en", "Update State", 22 },
+                    { 45, "عرض الولايات", "ar", "عرض الولايات", 23 },
+                    { 46, "List States", "en", "List States", 23 },
+                    { 47, "عرض ولاية", "ar", "عرض ولاية", 24 },
+                    { 48, "Show State", "en", "Show State", 24 },
+                    { 49, "حذف ولاية", "ar", "حذف ولاية", 25 },
+                    { 50, "Delete State", "en", "Delete State", 25 },
+                    { 51, "إضافة مدينة", "ar", "إضافة مدينة", 26 },
+                    { 52, "Add City", "en", "Add City", 26 },
+                    { 53, "تعديل مدينة", "ar", "تعديل مدينة", 27 },
+                    { 54, "Update City", "en", "Update City", 27 },
+                    { 55, "عرض المدن", "ar", "عرض المدن", 28 },
+                    { 56, "List Cities", "en", "List Cities", 28 },
+                    { 57, "عرض مدينة", "ar", "عرض مدينة", 29 },
+                    { 58, "Show City", "en", "Show City", 29 },
+                    { 59, "حذف مدينة", "ar", "حذف مدينة", 30 },
+                    { 60, "Delete City", "en", "Delete City", 30 },
+                    { 61, "عرض السجلات", "ar", "عرض السجلات", 31 },
+                    { 62, "List Logs", "en", "List Logs", 31 },
+                    { 63, "عرض سجل", "ar", "عرض سجل", 32 },
+                    { 64, "Show Log", "en", "Show Log", 32 },
+                    { 65, "عرض الإشعارات", "ar", "عرض الإشعارات", 33 },
+                    { 66, "List Notifications", "en", "List Notifications", 33 },
+                    { 67, "عرض إشعار", "ar", "عرض إشعار", 34 },
+                    { 68, "Show Notification", "en", "Show Notification", 34 },
+                    { 69, "حذف إشعار", "ar", "حذف إشعار", 35 },
+                    { 70, "Delete Notification", "en", "Delete Notification", 35 },
+                    { 71, "حذف كل الإشعارات", "ar", "حذف كل الإشعارات", 36 },
+                    { 72, "Delete All Notifications", "en", "Delete All Notifications", 36 },
+                    { 73, "عرض الإعدادات", "ar", "عرض الإعدادات", 37 },
+                    { 74, "List Settings", "en", "List Settings", 37 },
+                    { 75, "عرض إعداد", "ar", "عرض إعداد", 38 },
+                    { 76, "Show Setting", "en", "Show Setting", 38 },
+                    { 77, "تعديل الإعدادات", "ar", "تعديل الإعدادات", 39 },
+                    { 78, "Update Settings", "en", "Update Settings", 39 },
+                    { 79, "عرض التقييمات", "ar", "عرض التقييمات", 40 },
+                    { 80, "List Reviews", "en", "List Reviews", 40 },
+                    { 81, "عرض تقييم", "ar", "عرض تقييم", 41 },
+                    { 82, "Show Review", "en", "Show Review", 41 },
+                    { 83, "قبول التقييم", "ar", "قبول التقييم", 42 },
+                    { 84, "Accept Review", "en", "Accept Review", 42 },
+                    { 85, "إضافة خاصية", "ar", "إضافة خاصية", 43 },
+                    { 86, "Add Attribute", "en", "Add Attribute", 43 },
+                    { 87, "تعديل خاصية", "ar", "تعديل خاصية", 44 },
+                    { 88, "Update Attribute", "en", "Update Attribute", 44 },
+                    { 89, "عرض الخصائص", "ar", "عرض الخصائص", 45 },
+                    { 90, "List Attributes", "en", "List Attributes", 45 },
+                    { 91, "عرض خاصية", "ar", "عرض خاصية", 46 },
+                    { 92, "Show Attribute", "en", "Show Attribute", 46 },
+                    { 93, "حذف خاصية", "ar", "حذف خاصية", 47 },
+                    { 94, "Delete Attribute", "en", "Delete Attribute", 47 },
+                    { 95, "إضافة قيمة خاصية", "ar", "إضافة قيمة خاصية", 48 },
+                    { 96, "Add Attribute Value", "en", "Add Attribute Value", 48 },
+                    { 97, "تعديل قيمة خاصية", "ar", "تعديل قيمة خاصية", 49 },
+                    { 98, "Update Attribute Value", "en", "Update Attribute Value", 49 },
+                    { 99, "عرض قيم الخصائص", "ar", "عرض قيم الخصائص", 50 },
+                    { 100, "List Attribute Values", "en", "List Attribute Values", 50 },
+                    { 101, "عرض قيمة خاصية", "ar", "عرض قيمة خاصية", 51 },
+                    { 102, "Show Attribute Value", "en", "Show Attribute Value", 51 },
+                    { 103, "حذف قيمة خاصية", "ar", "حذف قيمة خاصية", 52 },
+                    { 104, "Delete Attribute Value", "en", "Delete Attribute Value", 52 },
+                    { 105, "إضافة دور", "ar", "إضافة دور", 53 },
+                    { 106, "Add Role", "en", "Add Role", 53 },
+                    { 107, "تعديل دور", "ar", "تعديل دور", 54 },
+                    { 108, "Update Role", "en", "Update Role", 54 },
+                    { 109, "عرض الأدوار", "ar", "عرض الأدوار", 55 },
+                    { 110, "List Roles", "en", "List Roles", 55 },
+                    { 111, "عرض دور", "ar", "عرض دور", 56 },
+                    { 112, "Show Role", "en", "Show Role", 56 },
+                    { 113, "حذف دور", "ar", "حذف دور", 57 },
+                    { 114, "Delete Role", "en", "Delete Role", 57 },
+                    { 115, "إضافة منتج", "ar", "إضافة منتج", 58 },
+                    { 116, "Add Product", "en", "Add Product", 58 },
+                    { 117, "تعديل منتج", "ar", "تعديل منتج", 59 },
+                    { 118, "Update Product", "en", "Update Product", 59 },
+                    { 119, "عرض المنتجات", "ar", "عرض المنتجات", 60 },
+                    { 120, "List Products", "en", "List Products", 60 },
+                    { 121, "عرض منتج", "ar", "عرض منتج", 61 },
+                    { 122, "Show Product", "en", "Show Product", 61 },
+                    { 123, "حذف منتج", "ar", "حذف منتج", 62 },
+                    { 124, "Delete Product", "en", "Delete Product", 62 },
+                    { 125, "عرض الطلبات", "ar", "عرض الطلبات", 63 },
+                    { 126, "List Orders", "en", "List Orders", 63 },
+                    { 127, "عرض طلب", "ar", "عرض طلب", 64 },
+                    { 128, "Show Order", "en", "Show Order", 64 },
+                    { 129, "تعديل الطلب", "ar", "تعديل الطلب", 65 },
+                    { 130, "Update Order", "en", "Update Order", 65 },
+                    { 131, "حذف الطلب", "ar", "حذف الطلب", 66 },
+                    { 132, "Delete Order", "en", "Delete Order", 66 },
+                    { 133, "عرض المرتجعات", "ar", "عرض المرتجعات", 67 },
+                    { 134, "List Returns", "en", "List Returns", 67 },
+                    { 135, "عرض مرتجع", "ar", "عرض مرتجع", 68 },
+                    { 136, "Show Return", "en", "Show Return", 68 },
+                    { 137, "تعديل المرتجع", "ar", "تعديل المرتجع", 69 },
+                    { 138, "Update Return", "en", "Update Return", 69 },
+                    { 139, "حذف المرتجع", "ar", "حذف المرتجع", 70 },
+                    { 140, "Delete Return", "en", "Delete Return", 70 },
+                    { 141, "إضافة كوبون", "ar", "إضافة كوبون", 71 },
+                    { 142, "Add Coupon", "en", "Add Coupon", 71 },
+                    { 143, "تعديل كوبون", "ar", "تعديل كوبون", 72 },
+                    { 144, "Update Coupon", "en", "Update Coupon", 72 },
+                    { 145, "عرض الكوبونات", "ar", "عرض الكوبونات", 73 },
+                    { 146, "List Coupons", "en", "List Coupons", 73 },
+                    { 147, "عرض كوبون", "ar", "عرض كوبون", 74 },
+                    { 148, "Show Coupon", "en", "Show Coupon", 74 },
+                    { 149, "حذف كوبون", "ar", "حذف كوبون", 75 },
+                    { 150, "Delete Coupon", "en", "Delete Coupon", 75 },
+                    { 151, "إضافة مستودع", "ar", "إضافة مستودع", 76 },
+                    { 152, "Add Warehouse", "en", "Add Warehouse", 76 },
+                    { 153, "تعديل مستودع", "ar", "تعديل مستودع", 77 },
+                    { 154, "Update Warehouse", "en", "Update Warehouse", 77 },
+                    { 155, "عرض المستودعات", "ar", "عرض المستودعات", 78 },
+                    { 156, "List Warehouses", "en", "List Warehouses", 78 },
+                    { 157, "عرض مستودع", "ar", "عرض مستودع", 79 },
+                    { 158, "Show Warehouse", "en", "Show Warehouse", 79 },
+                    { 159, "حذف مستودع", "ar", "حذف مستودع", 80 },
+                    { 160, "Delete Warehouse", "en", "Delete Warehouse", 80 },
+                    { 161, "عرض التذاكر", "ar", "عرض التذاكر", 81 },
+                    { 162, "List Support Tickets", "en", "List Support Tickets", 81 },
+                    { 163, "عرض تذكرة", "ar", "عرض تذكرة", 82 },
+                    { 164, "Show Support Ticket", "en", "Show Support Ticket", 82 },
+                    { 165, "إضافة رسالة تذكرة", "ar", "إضافة رسالة تذكرة", 83 },
+                    { 166, "Add Ticket Message", "en", "Add Ticket Message", 83 },
+                    { 167, "عرض رسائل التذاكر", "ar", "عرض رسائل التذاكر", 84 },
+                    { 168, "List Ticket Messages", "en", "List Ticket Messages", 84 },
+                    { 169, "عرض رسالة تذكرة", "ar", "عرض رسالة تذكرة", 85 },
+                    { 170, "Show Ticket Message", "en", "Show Ticket Message", 85 }
                 });
 
             migrationBuilder.InsertData(
@@ -2222,40 +2243,40 @@ namespace OnlineStore.Migrations
 
             migrationBuilder.InsertData(
                 table: "ProductVariants",
-                columns: new[] { "Id", "ImageUrl", "IsDefault", "Price", "ProductId", "SalePrice" },
+                columns: new[] { "Id", "CreatedAt", "ImageUrl", "IsDefault", "Price", "ProductId", "SalePrice", "UpdatedAt" },
                 values: new object[,]
                 {
-                    { 1, "default.png", false, 0m, 1, null },
-                    { 2, "default.png", false, 0m, 1, null },
-                    { 3, "default.png", false, 0m, 2, null },
-                    { 4, "default.png", false, 0m, 2, null },
-                    { 5, "default.png", false, 0m, 3, null },
-                    { 6, "default.png", false, 0m, 3, null },
-                    { 7, "default.png", false, 0m, 4, null },
-                    { 8, "default.png", false, 0m, 4, null },
-                    { 9, "default.png", false, 0m, 5, null },
-                    { 10, "default.png", false, 0m, 5, null }
+                    { 1, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "default.png", false, 0m, 1, null, null },
+                    { 2, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "default.png", false, 0m, 1, null, null },
+                    { 3, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "default.png", false, 0m, 2, null, null },
+                    { 4, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "default.png", false, 0m, 2, null, null },
+                    { 5, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "default.png", false, 0m, 3, null, null },
+                    { 6, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "default.png", false, 0m, 3, null, null },
+                    { 7, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "default.png", false, 0m, 4, null, null },
+                    { 8, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "default.png", false, 0m, 4, null, null },
+                    { 9, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "default.png", false, 0m, 5, null, null },
+                    { 10, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "default.png", false, 0m, 5, null, null }
                 });
 
             migrationBuilder.InsertData(
                 table: "RoleTranslations",
-                columns: new[] { "Id", "CreatedAt", "Description", "IsDeleted", "LanguageCode", "Name", "RoleId", "UpdatedAt" },
+                columns: new[] { "Id", "CreatedAt", "Description", "LanguageCode", "Name", "RoleId", "UpdatedAt" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "مدير", false, "ar", "مدير", 1, null },
-                    { 2, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "رئيس المديرين", false, "ar", "رئيس المديرين", 2, null },
-                    { 3, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Admin", false, "en", "Admin", 1, null },
-                    { 4, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Super Admin", false, "en", "Super Admin", 2, null }
+                    { 1, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "مدير", "ar", "مدير", 1, null },
+                    { 2, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "رئيس المديرين", "ar", "رئيس المديرين", 2, null },
+                    { 3, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Admin", "en", "Admin", 1, null },
+                    { 4, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Super Admin", "en", "Super Admin", 2, null }
                 });
 
             migrationBuilder.InsertData(
                 table: "States",
-                columns: new[] { "Id", "Code", "CountryId", "CreatedAt", "IsDeleted", "UpdatedAt" },
+                columns: new[] { "Id", "Code", "CountryId", "CreatedAt", "UpdatedAt" },
                 values: new object[,]
                 {
-                    { 1, "DXB", 1, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, null },
-                    { 2, "ABU", 1, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, null },
-                    { 3, "CAI", 2, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, null }
+                    { 1, "DXB", 1, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null },
+                    { 2, "ABU", 1, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null },
+                    { 3, "CAI", 2, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null }
                 });
 
             migrationBuilder.InsertData(
@@ -2340,12 +2361,12 @@ namespace OnlineStore.Migrations
 
             migrationBuilder.InsertData(
                 table: "Cities",
-                columns: new[] { "Id", "CreatedAt", "IsDeleted", "Name", "StateId", "UpdatedAt" },
+                columns: new[] { "Id", "CreatedAt", "Name", "StateId", "UpdatedAt" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, "Downtown Dubai", 1, null },
-                    { 2, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, "Marina", 1, null },
-                    { 3, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, "Nasr City", 3, null }
+                    { 1, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Downtown Dubai", 1, null },
+                    { 2, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Marina", 1, null },
+                    { 3, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Nasr City", 3, null }
                 });
 
             migrationBuilder.InsertData(
@@ -2363,19 +2384,19 @@ namespace OnlineStore.Migrations
 
             migrationBuilder.InsertData(
                 table: "Stock",
-                columns: new[] { "Id", "CreatedAt", "IsDeleted", "LastRestocked", "LastStockCount", "MinimumStockLevel", "ProductVariantId", "ReservedQuantity", "TotalQuantity", "UnitCost", "UpdatedAt", "WarehouseId" },
+                columns: new[] { "Id", "CreatedAt", "LastRestocked", "LastStockCount", "MinimumStockLevel", "ProductVariantId", "ReservedQuantity", "TotalQuantity", "UnitCost", "UpdatedAt", "WarehouseId" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 20, 1, 10, 100, 50.0m, null, 1 },
-                    { 2, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 25, 2, 15, 120, 55.0m, null, 1 },
-                    { 3, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 10, 3, 5, 80, 40.0m, null, 1 },
-                    { 4, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 10, 4, 0, 60, 45.0m, null, 1 },
-                    { 5, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 30, 5, 20, 150, 30.0m, null, 1 },
-                    { 6, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 15, 6, 5, 90, 35.0m, null, 1 },
-                    { 7, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 20, 7, 10, 110, 60.0m, null, 1 },
-                    { 8, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 25, 8, 15, 130, 65.0m, null, 1 },
-                    { 9, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 10, 9, 5, 70, 40.0m, null, 1 },
-                    { 10, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 15, 10, 10, 95, 42.0m, null, 1 }
+                    { 1, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 20, 1, 10, 100, 50.0m, null, 1 },
+                    { 2, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 25, 2, 15, 120, 55.0m, null, 1 },
+                    { 3, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 10, 3, 5, 80, 40.0m, null, 1 },
+                    { 4, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 10, 4, 0, 60, 45.0m, null, 1 },
+                    { 5, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 30, 5, 20, 150, 30.0m, null, 1 },
+                    { 6, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 15, 6, 5, 90, 35.0m, null, 1 },
+                    { 7, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 20, 7, 10, 110, 60.0m, null, 1 },
+                    { 8, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 25, 8, 15, 130, 65.0m, null, 1 },
+                    { 9, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 10, 9, 5, 70, 40.0m, null, 1 },
+                    { 10, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 15, 10, 10, 95, 42.0m, null, 1 }
                 });
 
             migrationBuilder.InsertData(
@@ -2413,11 +2434,11 @@ namespace OnlineStore.Migrations
 
             migrationBuilder.InsertData(
                 table: "Users",
-                columns: new[] { "Id", "CityId", "CountryId", "CreatedAt", "Email", "FullName", "IsActive", "IsDeleted", "PasswordHash", "PhoneNumber", "Provider", "StateId", "UpdatedAt", "UserAvailablePoints", "UserType" },
+                columns: new[] { "Id", "CityId", "CountryId", "CreatedAt", "DeletedAt", "Email", "FullName", "IsActive", "IsDeleted", "PasswordHash", "PhoneNumber", "Provider", "StateId", "UpdatedAt", "UserAvailablePoints", "UserType" },
                 values: new object[,]
                 {
-                    { 1, 1, 1, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "dalia@effortz.co", "Dalia Ali", true, false, "AQAAAAIAAYagAAAAEFiMjDe70MmfsT4pSIO2bsgI3QYt6fnyGNRbkpTVi8e6vk+TzkhNNq6BUHT4P1p2Tw==", "98988787", null, 1, null, 0, "Admin" },
-                    { 2, 3, 2, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "dalia@gmail.com", "Dalia Ahmed", true, false, "AQAAAAIAAYagAAAAEFiMjDe70MmfsT4pSIO2bsgI3QYt6fnyGNRbkpTVi8e6vk+TzkhNNq6BUHT4P1p2Tw==", "98988707", null, 3, null, 0, "User" }
+                    { 1, 1, 1, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "dalia@effortz.co", "Dalia Ali", true, false, "AQAAAAIAAYagAAAAEFiMjDe70MmfsT4pSIO2bsgI3QYt6fnyGNRbkpTVi8e6vk+TzkhNNq6BUHT4P1p2Tw==", "98988787", null, 1, null, 0, "Admin" },
+                    { 2, 3, 2, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "dalia@gmail.com", "Dalia Ahmed", true, false, "AQAAAAIAAYagAAAAEFiMjDe70MmfsT4pSIO2bsgI3QYt6fnyGNRbkpTVi8e6vk+TzkhNNq6BUHT4P1p2Tw==", "98988707", null, 3, null, 0, "User" }
                 });
 
             migrationBuilder.InsertData(
@@ -2476,11 +2497,6 @@ namespace OnlineStore.Migrations
                 name: "IX_Categories_ParentId",
                 table: "Categories",
                 column: "ParentId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_CategoryCoupon_CouponsId",
-                table: "CategoryCoupon",
-                column: "CouponsId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_CategoryProduct_ProductsId",
@@ -2566,16 +2582,6 @@ namespace OnlineStore.Migrations
                 column: "OrderId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_OrderItems_ProductId",
-                table: "OrderItems",
-                column: "ProductId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_OrderItems_ProductVariantId",
-                table: "OrderItems",
-                column: "ProductVariantId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Orders_CouponId",
                 table: "Orders",
                 column: "CouponId");
@@ -2585,11 +2591,6 @@ namespace OnlineStore.Migrations
                 table: "Orders",
                 column: "ReferenceNumber",
                 unique: true);
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Orders_ShippingAddressId",
-                table: "Orders",
-                column: "ShippingAddressId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Orders_ShippingMethodId",
@@ -2795,11 +2796,6 @@ namespace OnlineStore.Migrations
                 column: "Type");
 
             migrationBuilder.CreateIndex(
-                name: "IX_StockMovements_UserId",
-                table: "StockMovements",
-                column: "UserId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_SupportTickets_OrderId",
                 table: "SupportTickets",
                 column: "OrderId");
@@ -2896,6 +2892,9 @@ namespace OnlineStore.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
+                name: "Addresses");
+
+            migrationBuilder.DropTable(
                 name: "AppSettingTranslations");
 
             migrationBuilder.DropTable(
@@ -2903,9 +2902,6 @@ namespace OnlineStore.Migrations
 
             migrationBuilder.DropTable(
                 name: "CartItems");
-
-            migrationBuilder.DropTable(
-                name: "CategoryCoupon");
 
             migrationBuilder.DropTable(
                 name: "CategoryProduct");
@@ -3058,22 +3054,19 @@ namespace OnlineStore.Migrations
                 name: "Returns");
 
             migrationBuilder.DropTable(
+                name: "ProductVariants");
+
+            migrationBuilder.DropTable(
                 name: "Warehouses");
 
             migrationBuilder.DropTable(
                 name: "ProductAttributes");
 
             migrationBuilder.DropTable(
-                name: "ProductVariants");
-
-            migrationBuilder.DropTable(
                 name: "Orders");
 
             migrationBuilder.DropTable(
                 name: "Products");
-
-            migrationBuilder.DropTable(
-                name: "Addresses");
 
             migrationBuilder.DropTable(
                 name: "Coupons");

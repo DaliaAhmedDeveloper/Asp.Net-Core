@@ -21,6 +21,8 @@ public class UserPointConfiguration : IEntityTypeConfiguration<UserPoint>
         builder.HasKey(a => a.Id);
         builder.HasOne(a => a.User)
                .WithMany(u => u.Points)
-               .HasForeignKey(a => a.UserId).IsRequired(false);
+               .HasForeignKey(a => a.UserId)
+               .OnDelete(DeleteBehavior.Cascade)
+               ;
     }
 }

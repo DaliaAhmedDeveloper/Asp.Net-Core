@@ -23,5 +23,11 @@ public class WalletTransactionConfiguration : IEntityTypeConfiguration<WalletTra
         builder.Property(wt => wt.Description).IsRequired().HasMaxLength(100);
         builder.Property(wt => wt.Amount).HasPrecision(18, 4).IsRequired();
         builder.Property(wt => wt.CreatedAt).IsRequired();
+
+         builder.HasOne(wt => wt.Wallet)
+               .WithMany(w => w.Transactions)
+               .HasForeignKey(wt => wt.WalletId)
+               .OnDelete(DeleteBehavior.Cascade)
+               ;
     }
 }

@@ -1,6 +1,6 @@
 namespace OnlineStore.Models;
 
-public class ProductVariant
+public class ProductVariant : BaseEntity
 {
 
     public int Id { get; set; }

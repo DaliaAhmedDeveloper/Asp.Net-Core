@@ -50,16 +50,6 @@ public class SupportTicketConfiguration : IEntityTypeConfiguration<SupportTicket
         builder.HasOne(t => t.User)
                .WithMany(u => u.SupportTickets)
                .HasForeignKey(t => t.UserId)
-               .IsRequired();
-
-        builder.HasOne(t => t.Order)
-               .WithMany(o => o.SupportTickets)
-               .HasForeignKey(t => t.OrderId)
-               .IsRequired(false);
-
-        builder.HasMany(t => t.Messages)
-               .WithOne(m => m.Ticket)
-               .HasForeignKey(m => m.TicketId)
-               .IsRequired();
+               .OnDelete(DeleteBehavior.Cascade);
     }
 }

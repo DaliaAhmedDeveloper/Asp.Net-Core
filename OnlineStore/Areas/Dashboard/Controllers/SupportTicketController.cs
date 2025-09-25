@@ -42,7 +42,7 @@ public class SupportTicketController : Controller
             Id = ticket.Id,
             TicketNumber = ticket.TicketNumber,
             UserName = ticket.User?.FullName ?? "",
-            OrderNumber = ticket.Order?.ReferenceNumber ?? "",
+            OrderNumber = ticket.OrderNumber ?? "",
             Priority = ticket.Priority,
             Status = ticket.Status,
             Category = ticket.Category,

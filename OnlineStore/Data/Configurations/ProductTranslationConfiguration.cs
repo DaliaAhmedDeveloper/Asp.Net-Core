@@ -26,6 +26,8 @@ public class ProductTranslationConfiguration : IEntityTypeConfiguration<ProductT
         builder.Property(pt => pt.LanguageCode).IsRequired().HasMaxLength(10);
         builder.HasOne(pt => pt.Product)
                .WithMany(p => p.Translations)
-               .HasForeignKey(pt => pt.ProductId).IsRequired(false);
+               .HasForeignKey(pt => pt.ProductId)
+               .OnDelete(DeleteBehavior.Cascade)
+               ;
     }
 }

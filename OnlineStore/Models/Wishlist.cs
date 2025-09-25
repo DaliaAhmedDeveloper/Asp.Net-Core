@@ -1,5 +1,5 @@
 namespace OnlineStore.Models;
-public class Wishlist
+public class Wishlist : BaseEntity
 {
     public int Id { get; set; }
 

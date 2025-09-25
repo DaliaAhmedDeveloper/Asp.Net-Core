@@ -24,6 +24,7 @@ public class AttributeValueTranslationConfiguration : IEntityTypeConfiguration<A
         builder.Property(avt => avt.LanguageCode).IsRequired().HasMaxLength(10);
         builder.HasOne(avt => avt.AttributeValue)
                .WithMany(av => av.Translations)
-               .HasForeignKey(avt => avt.AttributeValueId);
+               .HasForeignKey(avt => avt.AttributeValueId)
+               .OnDelete(DeleteBehavior.Cascade);
     }
 }

@@ -3,7 +3,7 @@ using OnlineStore.Models.Enums;
 
 namespace OnlineStore.Models;
 
-public class Order : BaseEntity
+public class Order : SoftDeleteEntity
 {
     public int Id { get; set; }
     public decimal TotalAmountBeforeSale { get; set; } // before sale on prices
@@ -34,11 +34,10 @@ public class Order : BaseEntity
     public string ShippingMethod { get; set; } = "{}";
     public decimal ShippingMethodCost { get; set; }
     public string ShippingMethodDelieveryDate { get; set; } = string.Empty;
-    public Payment Payment { get; set; } = null!; 
+    public Payment Payment { get; set; } = null!;
     public ICollection<OrderItem> OrderItems { get; set; } = new List<OrderItem>();
     public OrderTracking OrderTracking { get; set; } = null!;
     public ICollection<Return> Returns { get; set; } = new List<Return>();
     public ICollection<Review> Reviews { get; set; } = new List<Review>();
     public ICollection<SupportTicket> SupportTickets { set; get; } = new List<SupportTicket>();
-
 }

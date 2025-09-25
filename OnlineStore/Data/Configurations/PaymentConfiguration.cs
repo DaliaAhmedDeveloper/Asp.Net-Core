@@ -21,7 +21,8 @@ public class PaymentConfiguration : IEntityTypeConfiguration<Payment>
         builder.Property(p => p.Amount).HasPrecision(18, 4).IsRequired();
         builder.Property(p => p.PaymentDate).IsRequired();
         builder.HasOne(p => p.Order)
-               .WithOne(o =>o.Payment)
-               .HasForeignKey<Payment>( p => p.OrderId);
+               .WithOne(o => o.Payment)
+               .HasForeignKey<Payment>(p => p.OrderId)
+               .OnDelete(DeleteBehavior.Cascade);
     }
 }

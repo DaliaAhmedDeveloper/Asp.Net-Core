@@ -1,6 +1,6 @@
 namespace OnlineStore.Models;
 
-public class Warehouse : BaseEntity
+public class Warehouse : SoftDeleteEntity
 {
     public int Id { get; set; }
     public string Code { get; set; } = string.Empty;
@@ -14,7 +14,7 @@ public class Warehouse : BaseEntity
     public string Email { get; set; } = string.Empty;
     public bool IsActive { get; set; } = true;
     public bool IsDefault { get; set; } = false;
-    
+
     // Navigation properties
     public ICollection<Stock> Stocks { get; set; } = new List<Stock>();
 } 

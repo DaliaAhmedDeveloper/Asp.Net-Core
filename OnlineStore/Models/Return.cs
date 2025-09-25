@@ -2,7 +2,7 @@ using OnlineStore.Models.Enums;
 
 namespace OnlineStore.Models;
 
-public class Return
+public class Return : BaseEntity
 {
     public int Id { get; set; }
 

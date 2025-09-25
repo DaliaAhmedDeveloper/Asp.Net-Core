@@ -89,7 +89,7 @@ public class AppDbContext : DbContext
         its ok it will work but its not the best way , why ?
         nameof(BaseEntity.IsDeleted) here if u change the name of property later compiler will show an error here
         this property is not correct , but if u hard codded it as text not compiler error so will through exception in run time */
-        var prop = Expression.Property(parameter, nameof(BaseEntity.IsDeleted));
+        var prop = Expression.Property(parameter, nameof(SoftDeleteEntity.IsDeleted));
 
         /*
         here also we cant use false direct ?? the answer is NOOO , why ??
@@ -106,10 +106,27 @@ public class AppDbContext : DbContext
     public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
     {
         // fetch all objects inherit from BaseEntity class
-        var entries = ChangeTracker.Entries<BaseEntity>();
+        var BaseEntityentries = ChangeTracker.Entries<BaseEntity>();
+        var SoftDeleteEntityentries = ChangeTracker.Entries<SoftDeleteEntity>();
 
         // loop through objects (objects here are the models)
-        foreach (var entry in entries)
+        foreach (var entry in BaseEntityentries)
+        {
+            switch (entry.State) // entry has state property which is return the state of this database object
+            {
+                // if its first time it will be added (EntityState.Added)
+                case EntityState.Added:
+                    entry.Entity.CreatedAt = DateTime.UtcNow;
+                    break;
+
+                // if its not the first time it will be Modified (EntityState.Modified)
+                case EntityState.Modified:
+                    entry.Entity.UpdatedAt = DateTime.UtcNow;
+                    break;
+            }
+        }
+        // loop through objects (objects here are the models)
+        foreach (var entry in SoftDeleteEntityentries)
         {
             switch (entry.State) // entry has state property which is return the state of this database object
             {
@@ -123,11 +140,12 @@ public class AppDbContext : DbContext
                     entry.Entity.UpdatedAt = DateTime.UtcNow;
                     break;
 
-                    // // if its deleted ,, no need here because i will use hard delete also 
-                    // case EntityState.Deleted:
-                    //     entry.State = EntityState.Modified;
-                    //     entry.Entity.IsDeleted = true;
-                    //     break;
+                // // if its deleted ,, no need here because i will use hard delete also 
+                case EntityState.Deleted:
+                    entry.State = EntityState.Modified;
+                    entry.Entity.IsDeleted = true;
+                    entry.Entity.DeletedAt = DateTime.UtcNow;
+                    break;
             }
         }
 
@@ -140,7 +158,7 @@ public class AppDbContext : DbContext
         // Apply IsDeleted = false globally
         foreach (var entityType in modelBuilder.Model.GetEntityTypes()) // here loop to all models objects
         {
-            if (typeof(BaseEntity).IsAssignableFrom(entityType.ClrType)) // here check if inherit from BaseEntity class
+            if (typeof(SoftDeleteEntity).IsAssignableFrom(entityType.ClrType)) // here check if inherit from BaseEntity class
             {
                 /* 
                 clr : stands for common language runtime

@@ -1,6 +1,6 @@
 namespace OnlineStore.Models;
 
-public class FailedTask
+public class FailedTask : BaseEntity
 {
     public int Id { get; set; } // primary key
     public string TaskName { get; set; } = string.Empty; // name of the task

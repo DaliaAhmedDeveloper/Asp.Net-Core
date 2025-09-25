@@ -24,6 +24,7 @@ public class LogTranslationConfiguration : IEntityTypeConfiguration<LogTranslati
         builder.Property(lt => lt.LanguageCode).IsRequired().HasMaxLength(10);
         builder.HasOne(lt => lt.Log)
                .WithMany(l => l.Translations)
-               .HasForeignKey(lt => lt.LogId);
+               .HasForeignKey(lt => lt.LogId)
+               .OnDelete(DeleteBehavior.Cascade);
     }
 }
