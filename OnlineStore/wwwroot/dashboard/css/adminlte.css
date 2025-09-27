@@ -15186,6 +15186,7 @@ html.maximized-card {
   align-items: center;
   justify-content: center;
   min-height: 100vh;
+  background-color: #212529!important;
 }
 
 .login-box,

@@ -16,6 +16,7 @@
   <data name="Attributes" xml:space="preserve"><value>Attributes</value></data>
   <data name="AttributeValues" xml:space="preserve"><value>Attribute Values</value></data>
   <data name="Orders" xml:space="preserve"><value>Orders</value></data>
+  <data name="ShippingMethods" xml:space="preserve"><value>Shipping Methods</value></data>
   <data name="Notifications" xml:space="preserve"><value>Notifications</value></data>
   <data name="Locations" xml:space="preserve"><value>Locations</value></data>
   <data name="AddCountry" xml:space="preserve"><value>Add Country</value></data>

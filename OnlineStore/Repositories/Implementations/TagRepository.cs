@@ -20,7 +20,7 @@ public class TagRepository : GenericRepository<Tag>, ITagRepository
                 .ToListAsync();
     }
     // get all with pagination 
-    public  async Task<IEnumerable<Tag>> GetAllWithPaginationAsync(
+    public async Task<IEnumerable<Tag>> GetAllWithPaginationAsync(
         string searchTxt,
         int pageNumber = 1,
         int pageSize = 10)
@@ -29,5 +29,19 @@ public class TagRepository : GenericRepository<Tag>, ITagRepository
             return await _context.Tags.Include(c => c.Translations).Where(t => t.Code != null && t.Code.Contains(searchTxt) || t.Translations.Any(t => t.Name.Contains(searchTxt))).Skip((pageNumber - 1) * pageSize).Take(pageSize).ToListAsync();
 
         return await _context.Tags.Include(c => c.Translations).Skip((pageNumber - 1) * pageSize).Take(pageSize).ToListAsync();
+    }
+    // get with relations
+     public async Task<Tag?> GetByIdAndRelationsAsync(int id)
+    {
+        return await _context.Tags
+        .AsTracking()
+        .Include(c => c.Products)
+        .ThenInclude(p => p.Tags)
+        .FirstOrDefaultAsync(t => t.Id == id);
+    }
+    //
+    public async Task<Tag?> GetByCode(string code)
+    {
+        return await _context.Tags.FirstOrDefaultAsync(t => t.Code == code);
     }
 }

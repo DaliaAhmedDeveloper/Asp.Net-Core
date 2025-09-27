@@ -7,7 +7,7 @@ public static class CategorySeeder
     public static void Seed(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<Category>().HasData(
-             new Category { Id = 1, Slug = "Uncategorized"  , ImageUrl ="default.png"},
+             new Category { Id = 1, Slug = "uncategorized"  , ImageUrl ="default.png"},
              new Category { Id = 2, Slug = "electronics", ImageUrl = "default.png" },
              new Category { Id = 3, Slug = "tV", ParentId = 1  , ImageUrl ="default.png"},
              new Category { Id = 4, Slug = "laptops", ParentId = 1 , ImageUrl ="default.png" },

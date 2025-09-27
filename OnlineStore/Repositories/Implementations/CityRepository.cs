@@ -11,7 +11,7 @@ public class CityRepository : GenericRepository<City>, ICityRepository
     public CityRepository(AppDbContext context, ILanguageService language) : base(context)
 
     {
-        _language = language;
+        _language = language; 
     }
 
     // get all cities based on language by state id

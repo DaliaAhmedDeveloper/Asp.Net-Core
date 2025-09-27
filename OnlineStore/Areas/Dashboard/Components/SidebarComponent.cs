@@ -41,6 +41,8 @@ public class SidebarViewComponent : ViewComponent
 
                 // Orders
                 CanListOrder = (await _authorizationService.AuthorizeAsync(UserClaimsPrincipal, null, "order.list")).Succeeded,
+                // Shipping Method
+                CanListShippingMethod = (await _authorizationService.AuthorizeAsync(UserClaimsPrincipal, null, "shippingMethod.list")).Succeeded,
 
                 // Notifications
                 CanListNotification = (await _authorizationService.AuthorizeAsync(UserClaimsPrincipal, null, "notification.list")).Succeeded,

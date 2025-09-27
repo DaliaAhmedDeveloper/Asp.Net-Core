@@ -103,12 +103,7 @@ public class ProductVariantService : IProductVariantService
 
     // delete for web
     public async Task<bool> DeleteForWeb(int id)
-    {
-        var ProductVariant = await _ProductVariantRepo.GetByIdAsync(id);
-        if (ProductVariant == null)
-            return false;
-
-        await _ProductVariantRepo.UpdateAsync(ProductVariant);
-        return true;
+    { 
+       return await _ProductVariantRepo.DeleteAsync(id);
     }
 }

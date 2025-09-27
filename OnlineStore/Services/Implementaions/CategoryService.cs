@@ -2,11 +2,9 @@ using System.Transactions;
 using Microsoft.Extensions.Localization;
 using OnlineStore.Helpers;
 using OnlineStore.Models;
-using OnlineStore.Models.Dtos.Requests;
 using OnlineStore.Models.Dtos.Responses;
 using OnlineStore.Models.ViewModels;
 using OnlineStore.Repositories;
-using Org.BouncyCastle.Crypto.Engines;
 
 namespace OnlineStore.Services;
 
@@ -145,21 +143,24 @@ public class CategoryService : ICategoryService
             return false;
 
         var uncategorized = await _categoryRepo.GetBySlug("uncategorized");
+
         if (uncategorized == null)
             throw new Exception("Uncategorized category not found");
+
+        if (uncategorized.Id == id)
+            throw new Exception("Uncategorized category Is Not Able To Delete");
 
         using (var scope = new TransactionScope(TransactionScopeAsyncFlowOption.Enabled))
         {
             foreach (var product in category.Products)
             {
-                if (product.Categories.Count <= 1)
-                {
-                    product.Categories.Clear();
-                    product.Categories.Add(uncategorized);
-                }
-                else
+                if (product.Categories.Any(c => c.Id == uncategorized.Id))
+                    product.Categories.Remove(category);
+
+                if (product.Categories.Count() == 1 && !product.Categories.Any(c => c.Id == uncategorized.Id))
                 {
                     product.Categories.Remove(category);
+                    product.Categories.Add(uncategorized);
                 }
             }
 
@@ -167,24 +168,13 @@ public class CategoryService : ICategoryService
             {
                 foreach (var child in category.Children.ToList())
                 {
-                    foreach (var product in child.Products)
-                    {
-                        if (product.Categories.Count <= 1)
-                        {
-                            product.Categories.Clear();
-                            product.Categories.Add(uncategorized);
-                        }
-                        else
-                        {
-                            product.Categories.Remove(child);
-                        }
-                    }
-
+                    child.ParentId = null;
                     await _categoryRepo.DeleteAsync(child);
                 }
             }
+            var deleteStatus = await _categoryRepo.DeleteAsync(category);
             scope.Complete();
-            return await _categoryRepo.DeleteAsync(category);
+            return deleteStatus;
         }
 
     }

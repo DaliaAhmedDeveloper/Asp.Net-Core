@@ -101,6 +101,7 @@ builder.Services.AddScoped<IWalletTransactionService, WalletTransactionService>(
 builder.Services.AddScoped<INotificationService, NotificationService>();
 builder.Services.AddScoped<IOrderService, OrderService>();
 builder.Services.AddScoped<IUserPointService, UserPointService>();
+builder.Services.AddScoped<IShippingMethodService, ShippingMethodService>();
 
 builder.Services.AddScoped<ICountryService, CountryService>();
 builder.Services.AddScoped<ICityService, CityService>();

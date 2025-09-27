@@ -1,6 +1,6 @@
 namespace OnlineStore.Models;
 
-public class ProductVariant : BaseEntity
+public class ProductVariant : SoftDeleteEntity
 {
 
     public int Id { get; set; }
@@ -8,7 +8,7 @@ public class ProductVariant : BaseEntity
     public decimal? SalePrice { get; set; }
     public bool IsDefault { get; set; }
     public int ProductId { get; set; }
-    public Product Product { get; set; } = null!;// one product many variants
+    public Product Product { get; set; } = null!; // one product many variants
     public ICollection<VariantAttributeValue> VariantAttributeValues { get; set; } = new List<VariantAttributeValue>(); // variant has many attr value
     public Stock Stock { set; get; } = null!;
 

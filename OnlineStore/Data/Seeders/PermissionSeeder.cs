@@ -1,4 +1,5 @@
 namespace OnlineStore.Data.Seeders;
+
 using Microsoft.EntityFrameworkCore;
 public static class PermissionSeeder
 {
@@ -99,11 +100,26 @@ public static class PermissionSeeder
             CreatePermission("product.show"),
             CreatePermission("product.delete"),
 
-            // Order
+            // Variant
+            CreatePermission("variant.add"),
+            CreatePermission("variant.update"),
+            CreatePermission("variant.list"),
+            CreatePermission("variant.show"),
+            CreatePermission("variant.delete"),
+
+            // Order 
             CreatePermission("order.list"),
             CreatePermission("order.show"),
             CreatePermission("order.update"),
             CreatePermission("order.delete"),
+            
+            // shipping method
+            CreatePermission("shippingMethod.list"),
+            CreatePermission("shippingMethod.add"),
+            CreatePermission("shippingMethod.show"),
+            CreatePermission("shippingMethod.update"),
+            CreatePermission("shippingMethod.delete"),
+
 
             // Return
             CreatePermission("return.list"),
@@ -128,6 +144,7 @@ public static class PermissionSeeder
             // Support Ticket
             CreatePermission("supportTicket.list"),
             CreatePermission("supportTicket.show"),
+            CreatePermission("supportTicket.delete"),
 
             // Ticket Message
             CreatePermission("ticketMessage.add"),
@@ -152,10 +169,10 @@ public static class PermissionSeeder
                 "user.delete" => "حذف مستخدم",
 
                 // Tag
-                "tag.add"    => "إضافة تاج",
+                "tag.add" => "إضافة تاج",
                 "tag.update" => "تعديل تاج",
-                "tag.list"   => "عرض التاجات",
-                "tag.show"   => "عرض تاج",
+                "tag.list" => "عرض التاجات",
+                "tag.show" => "عرض تاج",
                 "tag.delete" => "حذف تاج",
 
 
@@ -235,11 +252,25 @@ public static class PermissionSeeder
                 "product.show" => "عرض منتج",
                 "product.delete" => "حذف منتج",
 
+                // Variant
+                "variant.add" => "إضافة متغير",
+                "variant.update" => "تعديل متغير",
+                "variant.list" => "عرض المتغيرات",
+                "variant.show" => "عرض متغير",
+                "variant.delete" => "حذف متغير",
+
                 // Order
                 "order.list" => "عرض الطلبات",
                 "order.show" => "عرض طلب",
                 "order.update" => "تعديل الطلب",
                 "order.delete" => "حذف الطلب",
+
+                // ShippingMethod
+                "shippingMethod.list" => "عرض طرق الشحن",
+                "shippingMethod.add" => "اضافه طريقة شحن",
+                "shippingMethod.show" => "عرض طريقة شحن",
+                "shippingMethod.update" => "تعديل طريقة شحن",
+                "shippingMethod.delete" => "حذف طريقة شحن",
 
                 // Return
                 "return.list" => "عرض المرتجعات",
@@ -264,6 +295,7 @@ public static class PermissionSeeder
                 // Support Ticket
                 "supportTicket.list" => "عرض التذاكر",
                 "supportTicket.show" => "عرض تذكرة",
+                 "supportTicket.delete" => "حذف تذكرة",
 
                 // Ticket Message
                 "ticketMessage.add" => "إضافة رسالة تذكرة",
@@ -366,11 +398,25 @@ public static class PermissionSeeder
                 "product.show" => "Show Product",
                 "product.delete" => "Delete Product",
 
+                // variant
+                "variant.add" => "Add Variant",
+                "variant.update" => "Update Variant",
+                "variant.list" => "List Variants",
+                "variant.show" => "Show Variant",
+                "variant.delete" => "Delete Variant",
+
                 // Order
                 "order.list" => "List Orders",
                 "order.show" => "Show Order",
                 "order.update" => "Update Order",
                 "order.delete" => "Delete Order",
+
+                // ShippingMethod
+                "shippingMethod.list" => "List Shipping Methods",
+                "shippingMethod.add" => "Add Shipping Method",
+                "shippingMethod.show" => "Show Shipping Method",
+                "shippingMethod.update" => "Update Shipping Method",
+                "shippingMethod.delete" => "Delete Shipping Method",
 
                 // Return
                 "return.list" => "List Returns",
@@ -395,6 +441,7 @@ public static class PermissionSeeder
                 // Support Ticket
                 "supportTicket.list" => "List Support Tickets",
                 "supportTicket.show" => "Show Support Ticket",
+                "supportTicket.delete" => "Delete Support Ticket",
 
                 // Ticket Message
                 "ticketMessage.add" => "Add Ticket Message",

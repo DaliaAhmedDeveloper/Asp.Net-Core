@@ -241,7 +241,6 @@ public class ProductRepository : GenericRepository<Product>, IProductRepository
         .FirstOrDefaultAsync();
     }
     // latest 
-    
     public override async Task<IEnumerable<Product>> GetLatestAsync()
     {
         return await _dbSet.OrderByDescending(p => p.CreatedAt)

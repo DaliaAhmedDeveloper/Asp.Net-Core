@@ -1,0 +1,78 @@
+@model OnlineStore.Models.ViewModels.ShippingMethodViewModel
+
+
+@using System.Globalization
+
+@{
+  var lang = CultureInfo.CurrentCulture.TwoLetterISOLanguageName;
+  ViewData["Title"] = @Localizer["PageTitle"];
+}
+
+<div class="app-content-header">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-6">
+        <h3 class="mb-0">@ViewData["Title"]</h3>
+      </div>
+      <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-end">
+          <li class="breadcrumb-item"><a asp-area="Dashboard" asp-controller="ShippingMethod" asp-action="Index">@Localizer["Methods"]</a></li>
+          <li class="breadcrumb-item active" aria-current="page">@ViewData["Title"]</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="app-content">
+  <div class="container-fluid">
+    <div class="card card-primary card-outline mb-4">
+      <form asp-area="Dashboard" asp-controller="ShippingMethod" asp-action="Edit" asp-route-id="@Model.Id" method="POST"
+        enctype="multipart/form-data">
+        @Html.AntiForgeryToken()
+        <div class="card-body">
+          <div class="row g-3">
+
+            <!-- Slug -->
+            <div class="col-md-6">
+              <label asp-for="Name" class="form-label"></label>
+              <input asp-for="Name" class="form-control" />
+              <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+             <div class="col-12"></div>
+
+            <!-- Name En -->
+            <div class="col-md-6">
+              <label asp-for="NameEn" class="form-label"></label>
+              <input asp-for="NameEn" class="form-control" />
+              <span asp-validation-for="NameEn" class="text-danger"></span>
+            </div>
+
+            <!-- Name Ar -->
+            <div class="col-md-6">
+              <label asp-for="NameAr" class="form-label"></label>
+              <input asp-for="NameAr" class="form-control" />
+              <span asp-validation-for="NameAr" class="text-danger"></span>
+            </div>
+            <!-- cost -->
+            <div class="col-md-6">
+              <label asp-for="Cost" class="form-label"></label>
+              <input asp-for="Cost" class="form-control" />
+              <span asp-validation-for="Cost" class="text-danger"></span>
+            </div>
+            <!-- Delivery time  -->
+            <div class="col-md-6">
+              <label asp-for="DeliveryTime" class="form-label"></label>
+              <input asp-for="DeliveryTime" class="form-control" />
+              <span asp-validation-for="DeliveryTime" class="text-danger"></span>
+            </div>
+        </div>
+         <button type="submit" class="btn btn-success mt-3">@Localizer["Submit"]</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+@section Scripts {
+  <partial name="_ValidationScriptsPartial" />
+}

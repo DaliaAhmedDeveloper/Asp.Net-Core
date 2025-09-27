@@ -1285,6 +1285,12 @@ D:\study\ASP.NET_CORE\github\OnlineStore\obj\Debug\net8.0\OnlineStore.Resources.
 D:\study\ASP.NET_CORE\github\OnlineStore\obj\Debug\net8.0\OnlineStore.Resources.Areas.Dashboard.Views.Role.index.en.resources
 D:\study\ASP.NET_CORE\github\OnlineStore\obj\Debug\net8.0\OnlineStore.Resources.Areas.Dashboard.Views.Shared.Components.Sidebar.Default.ar.resources
 D:\study\ASP.NET_CORE\github\OnlineStore\obj\Debug\net8.0\OnlineStore.Resources.Areas.Dashboard.Views.Shared.Components.Sidebar.Default.en.resources
+D:\study\ASP.NET_CORE\github\OnlineStore\obj\Debug\net8.0\OnlineStore.Resources.Areas.Dashboard.Views.ShippingMethod.create.ar.resources
+D:\study\ASP.NET_CORE\github\OnlineStore\obj\Debug\net8.0\OnlineStore.Resources.Areas.Dashboard.Views.ShippingMethod.create.en.resources
+D:\study\ASP.NET_CORE\github\OnlineStore\obj\Debug\net8.0\OnlineStore.Resources.Areas.Dashboard.Views.ShippingMethod.edit.ar.resources
+D:\study\ASP.NET_CORE\github\OnlineStore\obj\Debug\net8.0\OnlineStore.Resources.Areas.Dashboard.Views.ShippingMethod.edit.en.resources
+D:\study\ASP.NET_CORE\github\OnlineStore\obj\Debug\net8.0\OnlineStore.Resources.Areas.Dashboard.Views.ShippingMethod.index.ar.resources
+D:\study\ASP.NET_CORE\github\OnlineStore\obj\Debug\net8.0\OnlineStore.Resources.Areas.Dashboard.Views.ShippingMethod.index.en.resources
 D:\study\ASP.NET_CORE\github\OnlineStore\obj\Debug\net8.0\OnlineStore.Resources.Areas.Dashboard.Views.State.create.ar.resources
 D:\study\ASP.NET_CORE\github\OnlineStore\obj\Debug\net8.0\OnlineStore.Resources.Areas.Dashboard.Views.State.create.en.resources
 D:\study\ASP.NET_CORE\github\OnlineStore\obj\Debug\net8.0\OnlineStore.Resources.Areas.Dashboard.Views.State.details.ar.resources

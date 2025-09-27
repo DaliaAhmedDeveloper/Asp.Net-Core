@@ -58,7 +58,7 @@ public class OrderHelper
     {
         var coupon = await _unitOfWork.Coupon.GetByIdAsync(dto.CouponId);
         var shippingAddress = await _unitOfWork.Address.GetByIdAsync(dto.ShippingAddressId);
-        var shippingMethod = await _unitOfWork.ShippingMethod.GetByIdAsync(dto.ShippingMethodId);
+        var shippingMethod = await _unitOfWork.ShippingMethod.GetWithTranslationsAsync(dto.ShippingMethodId);
         var user = await _unitOfWork.User.GetByIdAsync(userId);
         var order = new Order
         {
@@ -112,16 +112,16 @@ public class OrderHelper
             {
                 ProductName = JsonSerializer.Serialize(new
                 {
-                    en = i.Product.Translations.Where(tr => tr.LanguageCode == "en").Select(tr=> tr.Name).FirstOrDefault(),
-                    ar = i.Product.Translations.Where(tr => tr.LanguageCode == "ar").Select(tr=> tr.Name).FirstOrDefault()
+                    en = i.Product.Translations.Where(tr => tr.LanguageCode == "en").Select(tr=> tr.Name).FirstOrDefault() ?? "",
+                    ar = i.Product.Translations.Where(tr => tr.LanguageCode == "ar").Select(tr=> tr.Name).FirstOrDefault() ?? ""
                 }),
                 ProductAttribute = JsonSerializer.Serialize(new
                 {
                     attribute = i.ProductVariant.VariantAttributes.Select(va => new
                     {
                         slug = va.Attribute.Slug,
-                        en = va.Attribute.Translations.Where(tr => tr.LanguageCode == "en").Select(tr => tr.Name).FirstOrDefault(),
-                        ar = va.Attribute.Translations.Where(tr => tr.LanguageCode == "ar").Select(tr => tr.Name).FirstOrDefault(),
+                        en = va.Attribute.Translations.Where(tr => tr.LanguageCode == "en").Select(tr => tr.Name).FirstOrDefault() ?? "",
+                        ar = va.Attribute.Translations.Where(tr => tr.LanguageCode == "ar").Select(tr => tr.Name).FirstOrDefault() ?? "",
                         value = new
                         {
                             slug = va.Attribute?.AttributeValue != null ? va.Attribute?.AttributeValue.Slug : "",

@@ -33,10 +33,12 @@ public class ProductVariantController : Controller
     [Authorize(Policy = "variant.list")]
     public async Task<IActionResult> Index(int productId)
     {
-        ViewBag.product = await _product.GetForWeb(productId);
-        // return Ok(ViewBag.product);
+        var product = await _product.GetForWeb(productId);
+        if (product == null || product.IsDeleted == true)
+            return NotFound();
+
+        ViewBag.product = product;
         var result = await _productVariant.GetAllByProductForWeb(productId);
-        return Content("hhh");
         return View(result);
     }
 
@@ -128,11 +130,14 @@ public class ProductVariantController : Controller
     [Authorize(Policy = "variant.delete")]
     public async Task<IActionResult> Delete(int id)
     {
+        var variant = await _productVariant.GetForWeb(id);
+        var pId = variant?.ProductId;
         bool record = await _productVariant.DeleteForWeb(id);
         if (!record)
             return NotFound();
 
         TempData["SuccessMessage"] = "productVariant deleted successfully!";
-        return RedirectToAction(nameof(Index));
+        return RedirectToAction(nameof(Index), new { productId = pId  });
+
     }
 }

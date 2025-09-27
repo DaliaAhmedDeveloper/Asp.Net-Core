@@ -24,6 +24,9 @@ public class SidebarViewModel
     // Orders
     public bool CanListOrder { get; set; }
 
+    // Shipping Method
+    public bool CanListShippingMethod { get; set; }
+
     // Notifications
     public bool CanListNotification { get; set; }
 

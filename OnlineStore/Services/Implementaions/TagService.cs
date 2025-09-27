@@ -1,5 +1,6 @@
 namespace OnlineStore.Services;
 
+using System.Transactions;
 using OnlineStore.Models;
 using OnlineStore.Models.Dtos.Responses;
 using OnlineStore.Models.ViewModels;
@@ -81,9 +82,40 @@ public class TagService : ITagService
     }
    
     // delete Tag
-    public async Task<bool> DeleteForWeb(int id)
+     public async Task<bool> DeleteForWeb(int id)
     {
-        return await _tagRepo.DeleteAsync(id);
+        var tag = await _tagRepo.GetByIdAndRelationsAsync(id);
+
+        if (tag == null)
+            return false;
+
+        var untaged= await _tagRepo.GetByCode("untaged");
+
+        if (untaged == null)
+            throw new Exception("UnTaged Tag not found");
+
+        if (untaged.Id == id)
+            throw new Exception("UnTaged Tag Is Not Able To Delete");
+
+        using (var scope = new TransactionScope(TransactionScopeAsyncFlowOption.Enabled))
+        {
+            foreach (var product in tag.Products)
+            {
+                if (product.Tags.Any(c => c.Id == untaged.Id))
+                    product.Tags.Remove(tag);
+
+                if (product.Tags.Count() == 1 && !product.Tags.Any(c => c.Id == untaged.Id))
+                {
+                    product.Tags.Remove(tag);
+                    product.Tags.Add(untaged);
+                }
+            }
+            var deleteStatus = await _tagRepo.DeleteAsync(id);
+            scope.Complete();
+            return deleteStatus;
+        }
+
     }
+
    
 } 

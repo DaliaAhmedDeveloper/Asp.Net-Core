@@ -220,7 +220,6 @@ public class ProductService : IProductService
     // delete Product
     public async Task<bool> DeleteForWeb(int id)
     {
-        var Product = await _unitOfWork.Product.GetByIdAsync(id);
         return await _unitOfWork.Product.DeleteAsync(id);
     }
 

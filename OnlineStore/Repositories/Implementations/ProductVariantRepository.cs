@@ -14,7 +14,7 @@ public class ProductVariantRepository : GenericRepository<ProductVariant>, IProd
         int pageNumber = 1,
         int pageSize = 10)
     {
-        // if (!string.IsNullOrEmpty(searchTxt))
+        //if (!string.IsNullOrEmpty(searchTxt))
         //     return await _context.Variants.Where(v => v..Contains(searchTxt)).Skip((pageNumber - 1) * pageSize).Take(pageSize).ToListAsync();
 
         return await _context.Variants.Skip((pageNumber - 1) * pageSize).Take(pageSize).ToListAsync();
@@ -50,17 +50,33 @@ public class ProductVariantRepository : GenericRepository<ProductVariant>, IProd
     }
 
     // GetByIdWithAvaAsync
-    public async Task<ProductVariant?> GetByIdWithAvaAsync(int id , bool? tracking = false)
+    public async Task<ProductVariant?> GetByIdWithAvaAsync(int id, bool? tracking = false)
     {
         IQueryable<ProductVariant> query = _context.Variants;
         if (tracking == true)
         {
-           query =  query.AsTracking();
+            query = query.AsTracking();
         }
         return await query
         .Include(v => v.Stock)
         .Include(v => v.VariantAttributeValues)
         .FirstOrDefaultAsync(v => v.Id == id);
+    }
+
+    // delete with VariantAttributeValues table recoreds 
+    public override async Task<bool> DeleteAsync(int id)
+    {
+        var entity = await GetByIdAsync(id);
+        if (entity == null)
+            return false;
+
+        var keys = await _context.VariantAttributeValues.Where(vav => vav.ProductVariantId == id).ToListAsync();
+        foreach (var key in keys)
+        {
+            _context.Remove(key);
+        }
+        _context.Remove(entity);
+        return await _context.SaveChangesAsync() > 0;
     }
       
 }

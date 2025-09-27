@@ -58,7 +58,6 @@ public class NotificationService : INotificationService
     public async Task<bool> DeleteForWeb(int id)
     {
         return await _notificationRepo.DeleteAsync(id);
-        
     }
    
 }

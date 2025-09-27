@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="Methods" xml:space="preserve">
+    <value>طرق الشحن</value>
+  </data>
+   <data name="Home" xml:space="preserve">
+    <value>الرئيسية</value>
+  </data>
+  <data name="ListAllMethods" xml:space="preserve">
+    <value>قائمة طرق الشحن</value>
+  </data>
+  <data name="SearchText" xml:space="preserve">
+    <value>نص البحث</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>بحث</value>
+  </data>
+  <data name="AddNewMethod" xml:space="preserve">
+    <value>إضافة طريقه شحن جديدة</value>
+  </data>
+  <data name="NoRecords" xml:space="preserve">
+    <value>لا توجد سجلات.</value>
+  </data>
+  <data name="Number" xml:space="preserve">
+    <value>رقم</value>
+  </data>
+  <data name="Code" xml:space="preserve">
+    <value>الرمز</value>
+  </data>
+  <data name="NameInArabic" xml:space="preserve">
+    <value>الاسم بالعربية</value>
+  </data>
+  <data name="NameInEnglish" xml:space="preserve">
+    <value>الاسم بالإنجليزية</value>
+  </data>
+  <data name="Cost" xml:space="preserve">
+    <value>التكلفه</value>
+  </data>
+  <data name="DeliveryTime" xml:space="preserve">
+    <value> الوقت المتوقع </value>
+  </data>
+  <data name="Actions" xml:space="preserve">
+    <value>الإجراءات</value>
+  </data>
+
+</root>

@@ -8,12 +8,13 @@ public static class TagSeeder
     public static void Seed(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<Tag>().HasData(
-            new Tag { Id = 1, Code = "Electronics" },
+            new Tag { Id = 1, Code = "untaged" },
             new Tag { Id = 2, Code = "Smart" },
             new Tag { Id = 3, Code = "Electricity" },
             new Tag { Id = 4, Code = "White" },
             new Tag { Id = 5, Code = "Large" },
-            new Tag { Id = 6, Code = "Good Deal" }
+            new Tag { Id = 6, Code = "Good Deal" },
+            new Tag { Id = 7, Code = "Electronics" }
         );
 
         // translations

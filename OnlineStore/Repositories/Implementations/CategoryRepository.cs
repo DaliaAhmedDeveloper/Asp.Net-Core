@@ -75,6 +75,7 @@ public class CategoryRepository : GenericRepository<Category>, ICategoryReposito
         return await _context.Categories
         .AsTracking()
         .Include(c => c.Products)
+        .ThenInclude(p => p.Categories)
         .Include(c => c.Children)
         .ThenInclude(child => child.Products)
         .FirstOrDefaultAsync(c => c.Id == id);
